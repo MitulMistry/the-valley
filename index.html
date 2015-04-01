@@ -5,52 +5,28 @@
 	<!--The Valley (v0.01)-->
 	<title>The Valley</title>
 
-	<!--jQuery-->
-	<!--<script src="lib/jquery-1.11.2.min.js"></script>-->
+	<script src="lib/phaser.js"></script>
+	<script src="script/stateBoot.js"></script>
+	<script src="script/statePreload.js"></script>
+	<script src="script/stateMenu.js"></script>
+	<script src="script/stateAdventure.js"></script>
+	<script src="script/stateAnotherLife.js"></script>
 
-	<!--Phaser-->
-	<script type="text/javascript" src="lib/phaser.js"></script>
-	<style type="text/css">
-		body {
-			margin: 0;
-		}
+	<style>
+		body {margin: 0;}
 	</style>
+	<script>
+			(function() {
+				var game = new Phaser.Game(320, 480, Phaser.CANVAS, "game");
+				game.state.add("stateBoot", boot);
+				game.state.add("statePreload",preload);
+				game.state.add("stateMenu",mainMenu);
+				//game.state.add("stateAdventure",theGame);
+				//game.state.add("stateAnotherLife",gameOver);
+				game.state.start("stateBoot");
+			})();
+	</script>
 </head>
 <body>
-
-	<!--Phaser-->
-	<script type="text/javascript">
-
-		var game = new Phaser.Game(800, 600, Phaser.CANVAS, '', { preload: preload, create: create, render: render, update: update });
-		var textBounding01;
-
-		function preload() {
-		}
-
-		function create() {
-
-			textBounding01 = new Phaser.Rectangle(150, 0, 500, 400);
-
-			var style = { font: 'bold 14pt Arial', fill: 'white', align: 'left', wordWrap: true, wordWrapWidth: 450 };
-
-			var text = game.add.text(game.world.centerX, game.world.centerY * .75, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam a consequat sapien. Donec blandit est sem, maximus tempor augue sagittis id. Nullam luctus nibh turpis, ut imperdiet orci porttitor ac. Nam vel posuere orci. Vestibulum sed magna mi. Aenean quis porta turpis. Aliquam non venenatis lectus.", style);
-
-			text.anchor.set(0.5);
-
-			text.inputEnabled = true;
-
-			text.input.enableDrag({ pixelPerfect: false, boundsRect: textBounding01 });
-		}
-
-		function render() {
-
-			//game.debug.geom(textBounding01, '#000099');
-
-		}
-
-		function update() {
-		}
-	</script>
-
 </body>
 </html>
