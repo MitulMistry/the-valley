@@ -13,18 +13,22 @@
 	<script src="script/stateAnotherLife.js"></script>
 
 	<style>
-		body {margin: 0;}
+		body {
+			margin: 0;
+			background-color: #272727;
+		}
 	</style>
+
 	<script>
-			(function() {
-				var game = new Phaser.Game(320, 480, Phaser.CANVAS, "game");
-				game.state.add("stateBoot", boot);
-				game.state.add("statePreload",preload);
-				game.state.add("stateMenu",mainMenu);
-				//game.state.add("stateAdventure",theGame);
-				//game.state.add("stateAnotherLife",gameOver);
-				game.state.start("stateBoot");
-			})();
+		(function() {
+			var game = new Phaser.Game(800, 600, Phaser.CANVAS, "game");
+			game.state.add("stateBoot", boot);
+			game.state.add("statePreload",preload);
+			game.state.add("stateMenu",mainMenu);
+			game.state.add("stateAdventure",theGame);
+			//game.state.add("stateAnotherLife",gameOver);
+			game.state.start("stateBoot");
+		})();
 	</script>
 </head>
 <body>

@@ -4,13 +4,13 @@
 
 boot.prototype = {
 	preload: function () {
-		this.game.load.image("loading", "img/loading.png");
+		this.game.load.image("loading", "img/menu_loading.png");
 	},
 	create: function () {
 		this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 		this.scale.pageAlignHorizontally = true;
 		this.scale.setScreenSize();
 		this.game.state.start("statePreload");
-		this.game.stage.backgroundColor = '#000099';
+		//this.game.stage.backgroundColor = '#000099';
 	}
 }
