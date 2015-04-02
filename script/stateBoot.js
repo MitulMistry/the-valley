@@ -11,6 +11,6 @@ boot.prototype = {
 		this.scale.pageAlignHorizontally = true;
 		this.scale.setScreenSize();
 		this.game.state.start("statePreload");
-		//this.game.stage.backgroundColor = '#000099';
+		this.game.stage.backgroundColor = '#000000';
 	}
 }

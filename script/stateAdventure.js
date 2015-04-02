@@ -8,7 +8,7 @@
 
 theGame.prototype = {
 	create: function () {
-		//this.game.stage.backgroundColor = '#000099';
+		this.game.stage.backgroundColor = '#000000';
 
 		var frame01Width = this.game.width * 0.7225;
 		var frame01Height = this.game.height * 0.5;
@@ -25,6 +25,8 @@ theGame.prototype = {
 		//textBounding01 = new Phaser.Rectangle(150, 0, 500, 400);
 
 		//var style = { font: 'bold 12pt Arial', fill: 'white', align: 'left', wordWrap: true, wordWrapWidth: frame01Width };
+
+		//Embedding fonts? Google Fonts?
 		var style1 = { font: '14pt Berlin Sans FB', fill: '#EFB143', align: 'left', wordWrap: true, wordWrapWidth: frame01Width };
 		var style2 = { font: 'bold 12pt Arial', fill: 'white', align: 'left', wordWrap: true, wordWrapWidth: frame01Width };
 
