@@ -17,12 +17,15 @@ mainMenu.prototype = {
 
 		var newGameButton = this.game.add.button(this.game.width / 2, this.game.height * 0.5333, "newgame", this.newGameStart, this);
 		newGameButton.anchor.setTo(0.5, 0.5);
+		newGameButton.input.useHandCursor = true;
 
 		var loadGameButton = this.game.add.button(this.game.width / 2, this.game.height * 0.6333, "loadgame", this.loadGameStart, this);
 		loadGameButton.anchor.setTo(0.5, 0.5);
+		loadGameButton.input.useHandCursor = true;
 		
 		var quitGameButton = this.game.add.button(this.game.width / 2, this.game.height * 0.8, "quit", this.quitGame, this);
 		quitGameButton.anchor.setTo(0.5, 0.5);
+		quitGameButton.input.useHandCursor = true;
 
 		var gameLogo = this.game.add.sprite(this.game.width / 2, this.game.height * 0.9033, "logo");
 		gameLogo.anchor.setTo(0.5, 0.5);
@@ -42,16 +45,20 @@ mainMenu.prototype = {
 		iconSoundButton.anchor.setTo(0.5, 0.5);
 
 		//Text info
-		var styleMenuText = { font: 'bold 12pt Arial', fill: '#3A3A3A', align: 'left' };
+		var styleMenuText01 = { font: 'bold 12pt Arial', fill: '#3A3A3A', align: 'left' };
+		var styleMenuText02 = { font: 'bold 10pt Arial', fill: '#3A3A3A', align: 'left' };
 
-		var menuText = this.game.add.text(this.game.width / 2, this.game.height * 0.9533, "Mitul Mistry 2015 - v0.01", styleMenuText);
+		var menuText = this.game.add.text(this.game.width / 2, this.game.height * 0.9533, "Mitul Mistry 2015 - v0.01", styleMenuText01);
+		menuText.anchor.setTo(0.5, 0.5);
+
+		var menuText = this.game.add.text(this.game.width / 2, this.game.height * 0.98, "Made using Phaser HTML5 framework", styleMenuText02);
 		menuText.anchor.setTo(0.5, 0.5);
 	},
 	newGameStart: function () {
 		this.game.state.start("stateAdventure");
 	},
 	loadGameStart: function () {
-		//this.game.state.start("stateAdventure");
+		this.game.state.start("stateAdventure");
 	},
 	quitGame: function () {
 		this.game.destroy();

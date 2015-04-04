@@ -32,6 +32,7 @@ preload.prototype = {
 		this.game.load.image("slider01_back", "img/slider01_back.png");
 		this.game.load.image("slider02_back", "img/slider02_back.png");
 
+		this.game.load.image("rectangle_black", "img/primitive_rectangle_black.png");
 	},
 	create: function () {
 		this.game.stage.backgroundColor = '#000000';

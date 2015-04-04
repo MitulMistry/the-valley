@@ -1,9 +1,9 @@
 ﻿var theGame = function (game) {
 	spriteNumber = null;
-	number = 0;
+	//number = 0;
 	workingButtons = true;
-	higher = true;
-	score = 0;
+	//higher = true;
+	//score = 0;
 }
 
 //global variables
@@ -31,12 +31,12 @@ theGame.prototype = {
 		slider01 = this.game.add.sprite(this.game.width - frame01XPos, frame01YPos, "slider01");
 		slider02 = this.game.add.sprite(this.game.width - frame02XPos, frame02YPos, "slider01");
 
+
 		//--------Sliders--------
 		//Maybe draw rectangle primitives instead? Then you can update them depending on size of text / screen
 		slider01.inputEnabled = true;
 		slider01.input.enableDrag({ boundsSprite: slider01back });
 		slider01.input.boundsSprite = slider01back;
-		//slider01.events.onInputOver.add(this.over, this);
 		slider01.events.onInputOver.add(this.over, this);
 		slider01.events.onInputOut.add(this.out, this);
 
@@ -49,9 +49,17 @@ theGame.prototype = {
 
 		//slider02.events.onDragStart.add(this.slider02Drag, this);
 
-		//var textBounding01;
+		//-------Masks-------
 
-		//textBounding01 = new Phaser.Rectangle(150, 0, 500, 400);
+		//	A mask is a Graphics object
+		var textMask01 = this.game.add.graphics(0, 0);
+		var textMask02 = this.game.add.graphics(0, 0);
+
+		//	Shapes drawn to the Graphics object must be filled.
+		textMask01.beginFill(0xffffff);
+		textMask01.drawRect(frame01XPos, frame01YPos, this.game.width, frame01Height);
+		textMask02.beginFill(0xffffff);
+		textMask02.drawRect(frame02XPos, frame02YPos, this.game.width, frame02Height);
 
 		//var style = { font: 'bold 12pt Arial', fill: 'white', align: 'left', wordWrap: true, wordWrapWidth: frame01Width };
 
@@ -63,14 +71,17 @@ theGame.prototype = {
 		text1 = this.game.add.text(frame01XPos, frame01YPos, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam a consequat sapien. Donec blandit est sem, maximus tempor augue sagittis id. Nullam luctus nibh turpis, ut imperdiet orci porttitor ac. Nam vel posuere orci. Vestibulum sed magna mi. Aenean quis porta turpis. Aliquam non venenatis lectus.\n\nQuisque eget lorem at lorem efficitur lobortis eget id purus. Donec a purus ac massa elementum sodales tincidunt id purus. Vestibulum viverra lectus quam, vel cursus augue ultrices convallis. Sed dictum vestibulum velit nec ornare. Vivamus vitae massa quis libero pharetra lacinia. Pellentesque tristique tellus id commodo dignissim.", style1);
 		//text1.lineSpacing = 5;
 
+		text1.mask = textMask01;
+
 		//Add choices to group?
 		text2 = this.game.add.text(frame02XPos, frame02YPos, "Morbi ultricies ante orci, vitae semper nibh consectetur dignissim. \n\nDonec odio turpis, pharetra vel dolor a, malesuada vulputate turpis. \n\nIn vel porta urna,volutpat auctor ante. \n\nPhasellus quam nisi, consequat in elementum ut, accumsan in ex.", style2);
 
-		//text1.anchor.set(0.5);
+		text2.mask = textMask02;
 		
-		text1.inputEnabled = true;
+		//text1.inputEnabled = true;
 		//text1.input.enableDrag({ lockCenter: false, pixelPerfect: false });
 		//text1.input.enableDrag({ pixelPerfect: false, boundsRect: textBounding01 });
+
 
 		//--------Icons--------
 		var iconXoffset = this.game.width * .0625;
@@ -128,19 +139,15 @@ theGame.prototype = {
 	},
 	iconSound: function () {
 
-	},
-	/*
+	},/*
 	render: function () {
 
 		//this.game.debug.geom(textBounding01, '#000099');
+		//this.game.debug.geom(floor,'#0fffff');
 
 	},*/
-	
 	update: function () {
-		//if (slider01.isDragged)
-		//{
-		text1.y = slider01.y;
-		text2.y = slider02.y;
-	//	}
+		text1.y = -slider01.y + 145;
+		text2.y = -slider02.y + 790;
 	}
 }
