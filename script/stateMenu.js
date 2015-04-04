@@ -32,9 +32,11 @@ mainMenu.prototype = {
 
 		var iconTwitterButton = this.game.add.button(iconXoffset, this.game.height * 0.8267, "twitter_color", this.iconTwitter, this);
 		iconTwitterButton.anchor.setTo(0.5, 0.5);
+		iconTwitterButton.input.useHandCursor = true;
 
 		var iconFacebookButton = this.game.add.button(iconXoffset, this.game.height * 0.9283, "facebook_color", this.iconFacebook, this);
 		iconFacebookButton.anchor.setTo(0.5, 0.5);
+		iconFacebookButton.input.useHandCursor = true;
 
 		var iconSoundButton = this.game.add.button(this.game.width - iconXoffset, this.game.height * 0.9283, "sound", this.iconSound, this);
 		iconSoundButton.anchor.setTo(0.5, 0.5);

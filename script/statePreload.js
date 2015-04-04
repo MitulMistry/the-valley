@@ -27,6 +27,8 @@ preload.prototype = {
 
 		//Game graphics
 		this.game.load.image("slider01", "img/slider01.png");
+		this.game.load.image("slider01_hover", "img/slider01_hover.png");
+		this.game.load.image("slider01_press", "img/slider01_press.png");
 		this.game.load.image("slider01_back", "img/slider01_back.png");
 		this.game.load.image("slider02_back", "img/slider02_back.png");
 
