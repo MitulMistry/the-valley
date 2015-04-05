@@ -6,6 +6,25 @@
 	//score = 0;
 }
 
+//Sprite sheet frame numbers
+var iconFontBaseFrame = 0;
+var iconFontOverFrame = 1;
+var iconFontClickFrame = 2;
+var iconSaveBaseFrame = 3;
+var iconSaveOverFrame = 4;
+var iconSaveClickFrame = 5;
+var iconSoundBaseFrame = 6;
+var iconSoundOverFrame = 7;
+var iconSoundClickFrame = 8;
+var iconTwitterBaseFrame01 = 9;
+var iconTwitterBaseFrame02 = 10;
+var iconTwitterOverFrame = 11;
+var iconTwitterClickFrame = 12;
+var iconFacebookBaseFrame01 = 13;
+var iconFacebookBaseFrame02 = 14;
+var iconFacebookOverFrame = 15;
+var iconFacebookClickFrame = 16;
+
 //global variables
 var text1;
 var text2;
@@ -64,16 +83,16 @@ theGame.prototype = {
 		slider01.inputEnabled = true;
 		slider01.input.enableDrag({ boundsSprite: slider01back });
 		slider01.input.boundsSprite = slider01back;
-		slider01.events.onInputOver.add(this.over, this, slider01);
-		slider01.events.onInputOut.add(this.out, this, slider01);
-		slider01.events.onInputDown.add(this.down, this, slider01);
+		slider01.events.onInputOver.add(this.sliderOver, this);
+		slider01.events.onInputOut.add(this.sliderOut, this);
+		slider01.events.onInputDown.add(this.sliderDown, this);
 
 		slider02.inputEnabled = true;
 		slider02.input.enableDrag({ boundsSprite: slider02back });
 		slider02.input.boundsSprite = slider02back;
-		slider02.events.onInputOver.add(this.over, this, slider02);
-		slider02.events.onInputOut.add(this.out, this, slider02);
-		slider02.events.onInputDown.add(this.down, this, slider02);
+		slider02.events.onInputOver.add(this.sliderOver, this);
+		slider02.events.onInputOut.add(this.sliderOut, this);
+		slider02.events.onInputDown.add(this.sliderDown, this);
 				
 		//-------Masks-------
 
@@ -141,33 +160,128 @@ theGame.prototype = {
 		//--------Icons--------
 		var iconXoffset = this.game.width * .0625;
 
-		var iconTwitterButton = this.game.add.button(iconXoffset, this.game.height * 0.8267, "twitter", this.iconTwitter, this);
+		var iconTwitterButton = this.game.add.button(iconXoffset, this.game.height * 0.8267, "icons", this.iconTwitter, this);
 		iconTwitterButton.anchor.setTo(0.5, 0.5);
+		iconTwitterButton.frame = 9;
 		iconTwitterButton.input.useHandCursor = true;
+		iconTwitterButton.events.onInputOver.add(this.iconOver, this);
+		iconTwitterButton.events.onInputOut.add(this.iconOut, this);
+		iconTwitterButton.events.onInputDown.add(this.iconDown, this);
 
-		var iconFacebookButton = this.game.add.button(iconXoffset, this.game.height * 0.9283, "facebook", this.iconFacebook, this);
+		var iconFacebookButton = this.game.add.button(iconXoffset, this.game.height * 0.9283, "icons", this.iconFacebook, this);
 		iconFacebookButton.anchor.setTo(0.5, 0.5);
+		iconFacebookButton.frame = 13;
 		iconFacebookButton.input.useHandCursor = true;
+		iconFacebookButton.events.onInputOver.add(this.iconOver, this);
+		iconFacebookButton.events.onInputOut.add(this.iconOut, this);
+		iconFacebookButton.events.onInputDown.add(this.iconDown, this);
 
-		var iconFontButton = this.game.add.button(this.game.width - iconXoffset, this.game.height * 0.72, "font", this.iconFont, this);
+		var iconFontButton = this.game.add.button(this.game.width - iconXoffset, this.game.height * 0.72, "icons", this.iconFont, this);
 		iconFontButton.anchor.setTo(0.5, 0.5);
+		iconFontButton.frame = 0;
+		iconFontButton.events.onInputOver.add(this.iconOver, this);
+		iconFontButton.events.onInputOut.add(this.iconOut, this);
+		iconFontButton.events.onInputDown.add(this.iconDown, this);
+		iconFontButton.events.onInputUp.add(this.iconUp, this);
 
-		var iconSaveButton = this.game.add.button(this.game.width - iconXoffset, this.game.height * 0.8267, "save", this.iconSave, this);
+		var iconSaveButton = this.game.add.button(this.game.width - iconXoffset, this.game.height * 0.8267, "icons", this.iconSave, this);
 		iconSaveButton.anchor.setTo(0.5, 0.5);
+		iconSaveButton.frame = 3;
 		iconSaveButton.input.useHandCursor = true;
+		iconSaveButton.events.onInputOver.add(this.iconOver, this);
+		iconSaveButton.events.onInputOut.add(this.iconOut, this);
+		iconSaveButton.events.onInputDown.add(this.iconDown, this);
+		iconSaveButton.events.onInputUp.add(this.iconUp, this);
 
-		var iconSoundButton = this.game.add.button(this.game.width - iconXoffset, this.game.height * 0.9283, "sound", this.iconSound, this);
+		var iconSoundButton = this.game.add.button(this.game.width - iconXoffset, this.game.height * 0.9283, "icons", this.iconSound, this);
 		iconSoundButton.anchor.setTo(0.5, 0.5);
+		iconSoundButton.frame = 6;
+		iconSoundButton.events.onInputOver.add(this.iconOver, this);
+		iconSoundButton.events.onInputOut.add(this.iconOut, this);
+		iconSoundButton.events.onInputDown.add(this.iconDown, this);
+		iconSoundButton.events.onInputUp.add(this.iconUp, this);
+
+		//Fade in
+		var blackFade = this.game.add.sprite(0, 0, "rectangle_black");
+		blackFade.height = this.game.height;
+		blackFade.width = this.game.width;
+		var blackFadeTween = this.game.add.tween(blackFade);
+		blackFadeTween.to({ alpha: 0 }, 500);
+		blackFadeTween.start();
+		blackFade.destroy;
 	},
-	over: function (sprite) {
+	sliderOver: function (sprite) {
 		sprite.frame = 1;
 	},
-	out: function (sprite) {
+	sliderOut: function (sprite) {
 		sprite.frame = 0;
 	},
-	down: function (sprite) {
+	sliderDown: function (sprite) {
 		sprite.frame = 2;
-	},/*
+	},
+	iconOver: function (sprite) {
+		if (sprite.frame === iconTwitterBaseFrame01) {
+			sprite.frame = iconTwitterBaseFrame02;
+		}
+		else if (sprite.frame === iconFacebookBaseFrame01) {
+			sprite.frame = iconFacebookBaseFrame02;
+		}
+		else if (sprite.frame === iconFontBaseFrame) {
+			sprite.frame = iconFontOverFrame;
+		}
+		else if (sprite.frame === iconSaveBaseFrame) {
+			sprite.frame = iconSaveOverFrame;
+		}
+		else if (sprite.frame === iconSoundBaseFrame) {
+			sprite.frame = iconSoundOverFrame;
+		}
+	},
+	iconOut: function (sprite) {
+		if (sprite.frame === iconTwitterBaseFrame02) {
+			sprite.frame = iconTwitterBaseFrame01;
+		}
+		else if (sprite.frame === iconFacebookBaseFrame02) {
+			sprite.frame = iconFacebookBaseFrame01;
+		}
+		else if (sprite.frame === iconFontOverFrame) {
+			sprite.frame = iconFontBaseFrame;
+		}
+		else if (sprite.frame === iconSaveOverFrame) {
+			sprite.frame = iconSaveBaseFrame;
+		}
+		else if (sprite.frame === iconSoundOverFrame) {
+			sprite.frame = iconSoundBaseFrame;
+		}
+	},
+	iconDown: function (sprite) {
+		if (sprite.frame === iconTwitterBaseFrame02) {
+			sprite.frame = iconTwitterBaseFrame01;
+		}
+		else if (sprite.frame === iconFacebookBaseFrame02) {
+			sprite.frame = iconFacebookBaseFrame01;
+		}
+		else if (sprite.frame === iconFontOverFrame) {
+			sprite.frame = iconFontClickFrame;
+		}
+		else if (sprite.frame === iconSaveOverFrame) {
+			sprite.frame = iconSaveClickFrame;
+		}
+		else if (sprite.frame === iconSoundOverFrame) {
+			sprite.frame = iconSoundClickFrame;
+		}
+	},
+	iconUp: function (sprite) {
+		if (sprite.frame === iconFontClickFrame) {
+			sprite.frame = iconFontOverFrame;
+		}
+		if (sprite.frame === iconSaveClickFrame) {
+			sprite.frame = iconSaveOverFrame;
+		}
+		if (sprite.frame === iconSoundClickFrame) {
+			sprite.frame = iconSoundOverFrame;
+		}
+	},
+	/*
 	clicked: function () {
 		//console.log('boom');
 	},*/

@@ -1,5 +1,18 @@
 ﻿var mainMenu = function (game) { }
 
+//Sprite sheet frame numbers
+var iconSoundBaseFrame = 6;
+var iconSoundOverFrame = 7;
+var iconSoundClickFrame = 8;
+var iconTwitterBaseFrame01 = 9;
+var iconTwitterBaseFrame02 = 10;
+var iconTwitterOverFrame = 11;
+var iconTwitterClickFrame = 12;
+var iconFacebookBaseFrame01 = 13;
+var iconFacebookBaseFrame02 = 14;
+var iconFacebookOverFrame = 15;
+var iconFacebookClickFrame = 16;
+
 mainMenu.prototype = {
 	create: function () {
 		this.game.stage.backgroundColor = '#000000';
@@ -33,16 +46,30 @@ mainMenu.prototype = {
 		//Icons
 		var iconXoffset = this.game.width * .0625;
 
-		var iconTwitterButton = this.game.add.button(iconXoffset, this.game.height * 0.8267, "twitter_color", this.iconTwitter, this);
+		var iconTwitterButton = this.game.add.button(iconXoffset, this.game.height * 0.8267, "icons", this.iconTwitter, this);
 		iconTwitterButton.anchor.setTo(0.5, 0.5);
+		iconTwitterButton.frame = 10;
 		iconTwitterButton.input.useHandCursor = true;
+		iconTwitterButton.events.onInputOver.add(this.iconOver, this);
+		iconTwitterButton.events.onInputOut.add(this.iconOut, this);
+		iconTwitterButton.events.onInputDown.add(this.iconDown, this);
 
-		var iconFacebookButton = this.game.add.button(iconXoffset, this.game.height * 0.9283, "facebook_color", this.iconFacebook, this);
+		var iconFacebookButton = this.game.add.button(iconXoffset, this.game.height * 0.9283, "icons", this.iconFacebook, this);
 		iconFacebookButton.anchor.setTo(0.5, 0.5);
+		iconFacebookButton.frame = 14;
 		iconFacebookButton.input.useHandCursor = true;
+		iconFacebookButton.events.onInputOver.add(this.iconOver, this);
+		iconFacebookButton.events.onInputOut.add(this.iconOut, this);
+		iconFacebookButton.events.onInputDown.add(this.iconDown, this);
 
-		var iconSoundButton = this.game.add.button(this.game.width - iconXoffset, this.game.height * 0.9283, "sound", this.iconSound, this);
+		var iconSoundButton = this.game.add.button(this.game.width - iconXoffset, this.game.height * 0.9283, "icons", this.iconSound, this);
+		iconSoundButton.frame = 6;
 		iconSoundButton.anchor.setTo(0.5, 0.5);
+		//iconSoundButton.input.useHandCursor = true;
+		iconSoundButton.events.onInputOver.add(this.iconOver, this);
+		iconSoundButton.events.onInputOut.add(this.iconOut, this);
+		iconSoundButton.events.onInputDown.add(this.iconDown, this);
+		iconSoundButton.events.onInputUp.add(this.iconUp, this);
 
 		//Text info
 		var styleMenuText01 = { font: 'bold 12pt Arial', fill: '#3A3A3A', align: 'left' };
@@ -53,6 +80,59 @@ mainMenu.prototype = {
 
 		var menuText = this.game.add.text(this.game.width / 2, this.game.height * 0.98, "Made using Phaser HTML5 framework", styleMenuText02);
 		menuText.anchor.setTo(0.5, 0.5);
+		
+		//Fade in
+		var blackFade = this.game.add.sprite(0, 0, "rectangle_black");
+		blackFade.height = this.game.height;
+		blackFade.width = this.game.width;
+		var blackFadeTween = this.game.add.tween(blackFade);
+		blackFadeTween.to({ alpha: 0 }, 500);
+		blackFadeTween.start();
+		blackFade.destroy;
+	},
+	iconOver: function (sprite) {
+		if (sprite.frame === iconTwitterBaseFrame02)
+		{
+			sprite.frame = iconTwitterOverFrame;
+		}
+		else if (sprite.frame === iconFacebookBaseFrame02)
+		{
+			sprite.frame = iconFacebookOverFrame;
+		}
+		else if (sprite.frame === iconSoundBaseFrame)
+		{
+			sprite.frame = iconSoundOverFrame;
+		}
+	},
+	iconOut: function (sprite) {
+		if (sprite.frame === iconTwitterOverFrame) {
+			sprite.frame = iconTwitterBaseFrame02;
+		}
+		else if (sprite.frame === iconFacebookOverFrame) {
+			sprite.frame = iconFacebookBaseFrame02;
+		}
+		else if (sprite.frame === iconSoundOverFrame || sprite.frame === iconSoundClickFrame) {
+			sprite.frame = iconSoundBaseFrame;
+		}
+	},
+	iconDown: function (sprite) {
+		if (sprite.frame === iconTwitterOverFrame) {
+			sprite.frame = iconTwitterBaseFrame02;
+			//sprite.frame = iconTwitterClickFrame;
+			//this.game.time.events.add(500, iconOut(sprite), this);
+		}
+		else if (sprite.frame === iconFacebookOverFrame) {
+			sprite.frame = iconFacebookBaseFrame02;
+			//sprite.frame = iconFacebookClickFrame;
+		}
+		else if (sprite.frame === iconSoundOverFrame) {
+			sprite.frame = iconSoundClickFrame;
+		}
+	},
+	iconUp: function (sprite) {
+		if (sprite.frame === iconSoundClickFrame) {
+			sprite.frame = iconSoundOverFrame;
+		}
 	},
 	newGameStart: function () {
 		this.game.state.start("stateAdventure");

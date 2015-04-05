@@ -8,6 +8,8 @@ preload.prototype = {
 
 		//Load assets
 		//-------------------------
+		this.game.load.image("splashLogo", "img/quantum_logo.png");
+
 		//Main menu graphics
 		this.game.load.image("gametitle", "img/menu_gametitle.png");
 		this.game.load.image("newgame", "img/menu_newgame.png");
@@ -17,21 +19,18 @@ preload.prototype = {
 		this.game.load.image("menu_bg01", "img/menu_bg01.png");
 
 		//Icons
-		this.game.load.image("font", "img/icon_font.png");
-		this.game.load.image("save", "img/icon_save.png");
-		this.game.load.image("sound", "img/icon_sound.png");
-		this.game.load.image("facebook", "img/icon_facebook.png");
-		this.game.load.image("facebook_color", "img/icon_facebook_color.png");
-		this.game.load.image("twitter", "img/icon_twitter.png");
-		this.game.load.image("twitter_color", "img/icon_twitter_color.png");
+		this.game.load.spritesheet("icons", "img/icons_01.png", 40, 40);
 
 		//Game graphics
 		this.game.load.spritesheet("slider01", "img/slider01_sprite.png", 13, 62);
 		this.game.load.image("slider01_back", "img/slider01_back.png");
 		this.game.load.image("slider02_back", "img/slider02_back.png");
+
+		this.game.load.image("rectangle_black", "img/primitive_rectangle_black.png");
 	},
 	create: function () {
 		this.game.stage.backgroundColor = '#000000';
+		//this.game.state.start("stateSplash");
 		this.game.state.start("stateMenu");
 	}
 }
