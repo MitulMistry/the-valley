@@ -26,13 +26,9 @@ preload.prototype = {
 		this.game.load.image("twitter_color", "img/icon_twitter_color.png");
 
 		//Game graphics
-		this.game.load.image("slider01", "img/slider01.png");
-		this.game.load.image("slider01_hover", "img/slider01_hover.png");
-		this.game.load.image("slider01_press", "img/slider01_press.png");
+		this.game.load.spritesheet("slider01", "img/slider01_sprite.png", 13, 62);
 		this.game.load.image("slider01_back", "img/slider01_back.png");
 		this.game.load.image("slider02_back", "img/slider02_back.png");
-
-		this.game.load.image("rectangle_black", "img/primitive_rectangle_black.png");
 	},
 	create: function () {
 		this.game.stage.backgroundColor = '#000000';

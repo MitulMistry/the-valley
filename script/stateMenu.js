@@ -21,7 +21,7 @@ mainMenu.prototype = {
 
 		var loadGameButton = this.game.add.button(this.game.width / 2, this.game.height * 0.6333, "loadgame", this.loadGameStart, this);
 		loadGameButton.anchor.setTo(0.5, 0.5);
-		loadGameButton.input.useHandCursor = true;
+		//loadGameButton.input.useHandCursor = true;
 		
 		var quitGameButton = this.game.add.button(this.game.width / 2, this.game.height * 0.8, "quit", this.quitGame, this);
 		quitGameButton.anchor.setTo(0.5, 0.5);
@@ -58,7 +58,7 @@ mainMenu.prototype = {
 		this.game.state.start("stateAdventure");
 	},
 	loadGameStart: function () {
-		this.game.state.start("stateAdventure");
+		//this.game.state.start("stateAdventure");
 	},
 	quitGame: function () {
 		this.game.destroy();
