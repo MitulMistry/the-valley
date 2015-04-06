@@ -12,11 +12,15 @@ preload.prototype = {
 
 		//Main menu graphics
 		this.game.load.image("gametitle", "img/menu_gametitle.png");
-		this.game.load.image("newgame", "img/menu_newgame.png");
-		this.game.load.image("loadgame", "img/menu_loadgame.png");
-		this.game.load.image("quit", "img/menu_quit.png");
 		this.game.load.image("logo", "img/menu_logo.png");
 		this.game.load.image("menu_bg01", "img/menu_bg01.png");
+
+		this.game.load.image("menu_bg_circle01", "img/menu_bg_circle01.png");
+		this.game.load.image("menu_bg_circle02", "img/menu_bg_circle02.png");
+		this.game.load.image("menu_bg_circle03", "img/menu_bg_circle03.png");
+
+		this.game.load.spritesheet("menu01", "img/menu_sprite01.png", 146, 26);
+		this.game.load.spritesheet("menu02", "img/menu_sprite02.png", 58, 30);
 
 		//Icons
 		this.game.load.spritesheet("icons", "img/icons_01.png", 40, 40);
@@ -27,6 +31,7 @@ preload.prototype = {
 		this.game.load.image("slider02_back", "img/slider02_back.png");
 
 		this.game.load.image("rectangle_black", "img/primitive_rectangle_black.png");
+		this.game.load.image("blackGradient", "img/bg_black_gradient01.png");
 	},
 	create: function () {
 		this.game.stage.backgroundColor = '#000000';

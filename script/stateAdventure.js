@@ -1,7 +1,7 @@
 ﻿var theGame = function (game) {
-	spriteNumber = null;
+	//spriteNumber = null;
 	//number = 0;
-	workingButtons = true;
+	//workingButtons = true;
 	//higher = true;
 	//score = 0;
 }
@@ -51,6 +51,13 @@ theGame.prototype = {
 		//Rotate BG (50000)
 		//this.game.add.tween(menuBG).to({ angle: 360 }, 370000, Phaser.Easing.Linear.None, true).loop(true);
 
+		var blackGradient = this.game.add.sprite(0, 0, "blackGradient");
+		var blackGradient2 = this.game.add.sprite(0, 0, "blackGradient");
+		blackGradient.width = this.game.width;
+		blackGradient2.width = this.game.width;
+		blackGradient2.y = this.game.height;
+		blackGradient2.scale.y = -1;
+
 		var frame01Width = this.game.width * 0.7225;
 		var frame01Height = this.game.height * 0.5;
 		var frame01XPos = ((this.game.width - frame01Width) / 2) - 11;
@@ -83,6 +90,8 @@ theGame.prototype = {
 		slider01.inputEnabled = true;
 		slider01.input.enableDrag({ boundsSprite: slider01back });
 		slider01.input.boundsSprite = slider01back;
+		slider01.input.dragFromCenter = false;
+		slider01.input.allowHorizontalDrag = false;
 		slider01.events.onInputOver.add(this.sliderOver, this);
 		slider01.events.onInputOut.add(this.sliderOut, this);
 		slider01.events.onInputDown.add(this.sliderDown, this);
@@ -90,6 +99,8 @@ theGame.prototype = {
 		slider02.inputEnabled = true;
 		slider02.input.enableDrag({ boundsSprite: slider02back });
 		slider02.input.boundsSprite = slider02back;
+		slider02.input.dragFromCenter = false;
+		slider02.input.allowHorizontalDrag = false;
 		slider02.events.onInputOver.add(this.sliderOver, this);
 		slider02.events.onInputOut.add(this.sliderOut, this);
 		slider02.events.onInputDown.add(this.sliderDown, this);
@@ -176,30 +187,30 @@ theGame.prototype = {
 		iconFacebookButton.events.onInputOut.add(this.iconOut, this);
 		iconFacebookButton.events.onInputDown.add(this.iconDown, this);
 
-		var iconFontButton = this.game.add.button(this.game.width - iconXoffset, this.game.height * 0.72, "icons", this.iconFont, this);
+		var iconFontButton = this.game.add.button(this.game.width - iconXoffset, this.game.height * 0.72, "icons", this.iconFont, this, iconFontOverFrame, iconFontBaseFrame, iconFontClickFrame);
 		iconFontButton.anchor.setTo(0.5, 0.5);
-		iconFontButton.frame = 0;
-		iconFontButton.events.onInputOver.add(this.iconOver, this);
-		iconFontButton.events.onInputOut.add(this.iconOut, this);
-		iconFontButton.events.onInputDown.add(this.iconDown, this);
-		iconFontButton.events.onInputUp.add(this.iconUp, this);
+		iconFontButton.frame = iconFontBaseFrame;
+		//iconFontButton.events.onInputOver.add(this.iconOver, this);
+		//iconFontButton.events.onInputOut.add(this.iconOut, this);
+		//iconFontButton.events.onInputDown.add(this.iconDown, this);
+		//iconFontButton.events.onInputUp.add(this.iconUp, this);
 
-		var iconSaveButton = this.game.add.button(this.game.width - iconXoffset, this.game.height * 0.8267, "icons", this.iconSave, this);
+		var iconSaveButton = this.game.add.button(this.game.width - iconXoffset, this.game.height * 0.8267, "icons", this.iconSave, this, iconSaveOverFrame, iconSaveBaseFrame, iconSaveClickFrame);
 		iconSaveButton.anchor.setTo(0.5, 0.5);
-		iconSaveButton.frame = 3;
+		iconSaveButton.frame = iconSaveBaseFrame;
 		iconSaveButton.input.useHandCursor = true;
-		iconSaveButton.events.onInputOver.add(this.iconOver, this);
-		iconSaveButton.events.onInputOut.add(this.iconOut, this);
-		iconSaveButton.events.onInputDown.add(this.iconDown, this);
-		iconSaveButton.events.onInputUp.add(this.iconUp, this);
+		//iconSaveButton.events.onInputOver.add(this.iconOver, this);
+		//iconSaveButton.events.onInputOut.add(this.iconOut, this);
+		//iconSaveButton.events.onInputDown.add(this.iconDown, this);
+		//iconSaveButton.events.onInputUp.add(this.iconUp, this);
 
-		var iconSoundButton = this.game.add.button(this.game.width - iconXoffset, this.game.height * 0.9283, "icons", this.iconSound, this);
+		var iconSoundButton = this.game.add.button(this.game.width - iconXoffset, this.game.height * 0.9283, "icons", this.iconSound, this, iconSoundOverFrame, iconSoundBaseFrame, iconSoundClickFrame);
 		iconSoundButton.anchor.setTo(0.5, 0.5);
-		iconSoundButton.frame = 6;
-		iconSoundButton.events.onInputOver.add(this.iconOver, this);
-		iconSoundButton.events.onInputOut.add(this.iconOut, this);
-		iconSoundButton.events.onInputDown.add(this.iconDown, this);
-		iconSoundButton.events.onInputUp.add(this.iconUp, this);
+		iconSoundButton.frame = iconSoundBaseFrame;
+		//iconSoundButton.events.onInputOver.add(this.iconOver, this);
+		//iconSoundButton.events.onInputOut.add(this.iconOut, this);
+		//iconSoundButton.events.onInputDown.add(this.iconDown, this);
+		//iconSoundButton.events.onInputUp.add(this.iconUp, this);
 
 		//Fade in
 		var blackFade = this.game.add.sprite(0, 0, "rectangle_black");
@@ -226,7 +237,7 @@ theGame.prototype = {
 		else if (sprite.frame === iconFacebookBaseFrame01) {
 			sprite.frame = iconFacebookBaseFrame02;
 		}
-		else if (sprite.frame === iconFontBaseFrame) {
+		/*else if (sprite.frame === iconFontBaseFrame) {
 			sprite.frame = iconFontOverFrame;
 		}
 		else if (sprite.frame === iconSaveBaseFrame) {
@@ -234,7 +245,7 @@ theGame.prototype = {
 		}
 		else if (sprite.frame === iconSoundBaseFrame) {
 			sprite.frame = iconSoundOverFrame;
-		}
+		}*/
 	},
 	iconOut: function (sprite) {
 		if (sprite.frame === iconTwitterBaseFrame02) {
@@ -243,7 +254,7 @@ theGame.prototype = {
 		else if (sprite.frame === iconFacebookBaseFrame02) {
 			sprite.frame = iconFacebookBaseFrame01;
 		}
-		else if (sprite.frame === iconFontOverFrame) {
+		/*else if (sprite.frame === iconFontOverFrame) {
 			sprite.frame = iconFontBaseFrame;
 		}
 		else if (sprite.frame === iconSaveOverFrame) {
@@ -251,7 +262,7 @@ theGame.prototype = {
 		}
 		else if (sprite.frame === iconSoundOverFrame) {
 			sprite.frame = iconSoundBaseFrame;
-		}
+		}*/
 	},
 	iconDown: function (sprite) {
 		if (sprite.frame === iconTwitterBaseFrame02) {
@@ -260,7 +271,7 @@ theGame.prototype = {
 		else if (sprite.frame === iconFacebookBaseFrame02) {
 			sprite.frame = iconFacebookBaseFrame01;
 		}
-		else if (sprite.frame === iconFontOverFrame) {
+		/*else if (sprite.frame === iconFontOverFrame) {
 			sprite.frame = iconFontClickFrame;
 		}
 		else if (sprite.frame === iconSaveOverFrame) {
@@ -268,9 +279,9 @@ theGame.prototype = {
 		}
 		else if (sprite.frame === iconSoundOverFrame) {
 			sprite.frame = iconSoundClickFrame;
-		}
+		}*/
 	},
-	iconUp: function (sprite) {
+	/*iconUp: function (sprite) {
 		if (sprite.frame === iconFontClickFrame) {
 			sprite.frame = iconFontOverFrame;
 		}
@@ -280,10 +291,6 @@ theGame.prototype = {
 		if (sprite.frame === iconSoundClickFrame) {
 			sprite.frame = iconSoundOverFrame;
 		}
-	},
-	/*
-	clicked: function () {
-		//console.log('boom');
 	},*/
 	iconTwitter: function () {
 		window.open("https://twitter.com/home?status=Check%20out%20the%20epic%20text%20adventure%20-%20%22The%20Valley%22%20http://MitulMistry.com/%20%23indiedev", '_blank');
@@ -299,17 +306,8 @@ theGame.prototype = {
 	},
 	iconSound: function () {
 
-	},/*
-	render: function () {
-
-		//this.game.debug.geom(textBounding01, '#000099');
-		//this.game.debug.geom(floor,'#0fffff');
-
-	},*/
+	},
 	update: function () {
-		//text1.y = -slider01.y + 145;
-		//text2.y = -slider02.y + 770;
-
 		//Move text based on sliders
 		text1.y = text1_topGap - (((slider01.y - text1_topGap) / rightSliderGap01) * text1_distance);
 
