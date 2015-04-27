@@ -190,27 +190,15 @@ theGame.prototype = {
 		var iconFontButton = this.game.add.button(this.game.width - iconXoffset, this.game.height * 0.72, "icons", this.iconFont, this, iconFontOverFrame, iconFontBaseFrame, iconFontClickFrame);
 		iconFontButton.anchor.setTo(0.5, 0.5);
 		iconFontButton.frame = iconFontBaseFrame;
-		//iconFontButton.events.onInputOver.add(this.iconOver, this);
-		//iconFontButton.events.onInputOut.add(this.iconOut, this);
-		//iconFontButton.events.onInputDown.add(this.iconDown, this);
-		//iconFontButton.events.onInputUp.add(this.iconUp, this);
 
 		var iconSaveButton = this.game.add.button(this.game.width - iconXoffset, this.game.height * 0.8267, "icons", this.iconSave, this, iconSaveOverFrame, iconSaveBaseFrame, iconSaveClickFrame);
 		iconSaveButton.anchor.setTo(0.5, 0.5);
 		iconSaveButton.frame = iconSaveBaseFrame;
 		iconSaveButton.input.useHandCursor = true;
-		//iconSaveButton.events.onInputOver.add(this.iconOver, this);
-		//iconSaveButton.events.onInputOut.add(this.iconOut, this);
-		//iconSaveButton.events.onInputDown.add(this.iconDown, this);
-		//iconSaveButton.events.onInputUp.add(this.iconUp, this);
 
 		var iconSoundButton = this.game.add.button(this.game.width - iconXoffset, this.game.height * 0.9283, "icons", this.iconSound, this, iconSoundOverFrame, iconSoundBaseFrame, iconSoundClickFrame);
 		iconSoundButton.anchor.setTo(0.5, 0.5);
 		iconSoundButton.frame = iconSoundBaseFrame;
-		//iconSoundButton.events.onInputOver.add(this.iconOver, this);
-		//iconSoundButton.events.onInputOut.add(this.iconOut, this);
-		//iconSoundButton.events.onInputDown.add(this.iconDown, this);
-		//iconSoundButton.events.onInputUp.add(this.iconUp, this);
 
 		//Fade in
 		var blackFade = this.game.add.sprite(0, 0, "rectangle_black");
@@ -237,15 +225,6 @@ theGame.prototype = {
 		else if (sprite.frame === iconFacebookBaseFrame01) {
 			sprite.frame = iconFacebookBaseFrame02;
 		}
-		/*else if (sprite.frame === iconFontBaseFrame) {
-			sprite.frame = iconFontOverFrame;
-		}
-		else if (sprite.frame === iconSaveBaseFrame) {
-			sprite.frame = iconSaveOverFrame;
-		}
-		else if (sprite.frame === iconSoundBaseFrame) {
-			sprite.frame = iconSoundOverFrame;
-		}*/
 	},
 	iconOut: function (sprite) {
 		if (sprite.frame === iconTwitterBaseFrame02) {
@@ -254,15 +233,6 @@ theGame.prototype = {
 		else if (sprite.frame === iconFacebookBaseFrame02) {
 			sprite.frame = iconFacebookBaseFrame01;
 		}
-		/*else if (sprite.frame === iconFontOverFrame) {
-			sprite.frame = iconFontBaseFrame;
-		}
-		else if (sprite.frame === iconSaveOverFrame) {
-			sprite.frame = iconSaveBaseFrame;
-		}
-		else if (sprite.frame === iconSoundOverFrame) {
-			sprite.frame = iconSoundBaseFrame;
-		}*/
 	},
 	iconDown: function (sprite) {
 		if (sprite.frame === iconTwitterBaseFrame02) {
@@ -271,27 +241,7 @@ theGame.prototype = {
 		else if (sprite.frame === iconFacebookBaseFrame02) {
 			sprite.frame = iconFacebookBaseFrame01;
 		}
-		/*else if (sprite.frame === iconFontOverFrame) {
-			sprite.frame = iconFontClickFrame;
-		}
-		else if (sprite.frame === iconSaveOverFrame) {
-			sprite.frame = iconSaveClickFrame;
-		}
-		else if (sprite.frame === iconSoundOverFrame) {
-			sprite.frame = iconSoundClickFrame;
-		}*/
 	},
-	/*iconUp: function (sprite) {
-		if (sprite.frame === iconFontClickFrame) {
-			sprite.frame = iconFontOverFrame;
-		}
-		if (sprite.frame === iconSaveClickFrame) {
-			sprite.frame = iconSaveOverFrame;
-		}
-		if (sprite.frame === iconSoundClickFrame) {
-			sprite.frame = iconSoundOverFrame;
-		}
-	},*/
 	iconTwitter: function () {
 		window.open("https://twitter.com/home?status=Check%20out%20the%20epic%20text%20adventure%20-%20%22The%20Valley%22%20http://MitulMistry.com/%20%23indiedev", '_blank');
 	},
@@ -310,7 +260,6 @@ theGame.prototype = {
 	update: function () {
 		//Move text based on sliders
 		text1.y = text1_topGap - (((slider01.y - text1_topGap) / rightSliderGap01) * text1_distance);
-
 		text2.y = text2_topGap - (((slider02.y - text2_topGap) / rightSliderGap02) * text2_distance);
 	}
 }
