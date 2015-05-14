@@ -57,13 +57,18 @@ mainMenu.prototype = {
 		loadGameButton.frame = 3;
 		//loadGameButton.input.useHandCursor = true;
 		
+		/*
 		var quitGameButton = this.game.add.button(this.game.width / 2, this.game.height * 0.8, "menu02", this.quitGame, this, 1, 0, 2);
 		quitGameButton.anchor.setTo(0.5, 0.5);
 		quitGameButton.frame = 0;
 		quitGameButton.input.useHandCursor = true;
+		*/
 
 		var gameLogo = this.game.add.sprite(this.game.width / 2, this.game.height * 0.9033, "logo");
 		gameLogo.anchor.setTo(0.5, 0.5);
+
+		//Email bugs / support?
+		//mailto support@quantumrabbit.com ? or quantumrabbit@gmail.com
 
 		//Icons
 		var iconXoffset = this.game.width * .0625;
@@ -165,9 +170,11 @@ mainMenu.prototype = {
 	loadGameStart: function () {
 		//this.game.state.start("stateAdventure");
 	},
+	/*
 	quitGame: function () {
 		this.game.destroy();
 	},
+	*/
 	iconTwitter: function () {
 		//Maybe have some funny tweets based on module you're playing, etc? "I just killed a gopher"
 		window.open("https://twitter.com/home?status=Check%20out%20the%20epic%20text%20adventure%20-%20%22The%20Valley%22%20http://MitulMistry.com/%20%23indiedev", '_blank');

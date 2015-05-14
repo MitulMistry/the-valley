@@ -1,9 +1,5 @@
 ﻿var theGame = function (game) {
-	//spriteNumber = null;
-	//number = 0;
-	//workingButtons = true;
-	//higher = true;
-	//score = 0;
+
 }
 
 //Sprite sheet frame numbers
@@ -25,6 +21,9 @@ var iconFacebookBaseFrame02 = 14;
 var iconFacebookOverFrame = 15;
 var iconFacebookClickFrame = 16;
 
+//DEBUG MODE - turn on and off
+var debugMode = true;
+
 //global variables
 var text1;
 var text2;
@@ -38,6 +37,13 @@ var text1_topGap;
 var rightSliderGap02;
 var text2_distance;
 var text2_topGap;
+
+var mainFont = '13pt Berlin Sans FB';
+var fontColorPower = '#F45E14';
+var fontColorKarma = '#12B516';
+var fontColorIntellect = '#00B0FF';
+var fontColorLove = '#FC32DA';
+var fontColorDarkTetrad = '#E60B1A';
 
 theGame.prototype = {
 	create: function () {
@@ -104,7 +110,30 @@ theGame.prototype = {
 		slider02.events.onInputOver.add(this.sliderOver, this);
 		slider02.events.onInputOut.add(this.sliderOut, this);
 		slider02.events.onInputDown.add(this.sliderDown, this);
-				
+
+		//Debug items (Strip from final build)
+		//-------------------------------------
+		var textPointsPower;
+		var textPointsKarma;
+		var textPointsIntellect;
+		var textPointsLove;
+		var textPointsDarkTetrad;
+		
+		var stylePointsPower = { font: mainFont, fill: fontColorPower, align: 'left', wordWrap: true, wordWrapWidth: frame01Width };
+		var stylePointsKarma = { font: mainFont, fill: fontColorKarma, align: 'left', wordWrap: true, wordWrapWidth: frame01Width };
+		var stylePointsIntellect = { font: mainFont, fill: fontColorIntellect, align: 'left', wordWrap: true, wordWrapWidth: frame01Width };
+		var stylePointsLove = { font: mainFont, fill: fontColorLove, align: 'left', wordWrap: true, wordWrapWidth: frame01Width };
+		var stylePointsDarkTetrad = { font: mainFont, fill: fontColorDarkTetrad, align: 'left', wordWrap: true, wordWrapWidth: frame01Width };
+		
+		if (debugMode) {
+			textPointsPower = this.game.add.text(this.game.width - frame01XPos + 30, frame01YPos, "100", stylePointsPower);
+			textPointsKarma = this.game.add.text(this.game.width - frame01XPos + 30, frame01YPos + 20, "100", stylePointsKarma);
+			textPointsIntellect = this.game.add.text(this.game.width - frame01XPos + 30, frame01YPos + 40, "100", stylePointsIntellect);
+			textPointsLove = this.game.add.text(this.game.width - frame01XPos + 30, frame01YPos + 60, "100", stylePointsLove);
+			textPointsDarkTetrad = this.game.add.text(this.game.width - frame01XPos + 30, frame01YPos + 80, "100", stylePointsDarkTetrad);
+		}
+		//-------------------------------------
+		
 		//-------Masks-------
 
 		//	A mask is a Graphics object

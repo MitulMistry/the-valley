@@ -1,7 +1,7 @@
 ﻿//constructor function https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects
 //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Introduction_to_Object-Oriented_JavaScript
 
-var SaveGame = function (playerPower, playerKarma, playerDarkTetrad, playerIntellect, playerLove, /*gameLog,*/numberOfModules, currentModule, fontSize, fontColor) {
+var saveGame = function (playerPower, playerKarma, playerDarkTetrad, playerIntellect, playerLove, /*gameLog,*/numberOfModules, currentModule, fontSize, fontColor) {
 
 	this.playerPower = 0;
 	this.playerKarma = 0;
@@ -49,7 +49,7 @@ var SaveGame = function (playerPower, playerKarma, playerDarkTetrad, playerIntel
 };
 
 //Set current story module
-SaveGame.prototype.setCurrentModule = function (module) {
+saveGame.prototype.setCurrentModule = function (module) {
 
 	if (typeof module !== 'undefined') {
 		this.currentModule = module;
@@ -57,27 +57,28 @@ SaveGame.prototype.setCurrentModule = function (module) {
 };
 
 //Update font preferences
-SaveGame.prototype.updateFontPreferences = function (font, fontColor, fontSize) {
+saveGame.prototype.updateFontPreferences = function (font, fontColor, fontSize) {
 
 };
 
 //Load last story node written to game log
-SaveGame.prototype.loadLastNode = function () {
+saveGame.prototype.loadLastNode = function () {
 
 };
 
 //Write story node outcome to game log
-SaveGame.prototype.writeToGameLog = function (referenceNode, decision) {
+saveGame.prototype.writeToGameLog = function (referenceNode, decision) {
 
 };
 
 //Write additional variables
-SaveGame.prototype.writeToAdditionalVariables = function (reference, value) {
+saveGame.prototype.writeToAdditionalVariables = function (reference, value) {
 	//push reference and value pair onto additionalVariables data structure
 };
 
 //Read additional variables
-SaveGame.prototype.readAdditionalVariables = function (reference, value) {
+saveGame.prototype.readAdditionalVariables = function (reference, value) {
 	//search for reference and value pair in additionalVariables data structure
-	//if found, return true
+	//if found, return value (true if boolean, number if integer)
+	//if not found, return false
 };
