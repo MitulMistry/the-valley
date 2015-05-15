@@ -8,7 +8,6 @@ var saveGame = function (playerPower, playerKarma, playerDarkTetrad, playerIntel
 	this.playerDarkTetrad = 0;
 	this.playerIntellect = 0;
 	this.playerLove = 0;
-	//this.volumeLevel = 5;
 	this.fontSize = 13;
 	this.fontColor = '#EFB143';
 	this.numberOfModules = 0;
@@ -29,9 +28,6 @@ var saveGame = function (playerPower, playerKarma, playerDarkTetrad, playerIntel
 	if (typeof playerLove !== 'undefined') {
 		this.playerLove = playerLove;
 	}
-	/*if (typeof volumeLevel !== 'undefined') {
-		this.volumeLevel = volumeLevel;
-	}*/
 	if (typeof fontSize !== 'undefined') {
 		this.fontSize = fontSize;
 	}
@@ -46,6 +42,7 @@ var saveGame = function (playerPower, playerKarma, playerDarkTetrad, playerIntel
 
 	//this.gameLog = some sort of data structure mapping player decisions
 	//this.additionalVariables = data structure logging other decisions (i.e. "if you gathered food last decision node, then...")
+	this.gameLogMap = new map;
 };
 
 //Set current story module
