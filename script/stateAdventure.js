@@ -45,6 +45,8 @@ var fontColorIntellect = '#00B0FF';
 var fontColorLove = '#FC32DA';
 var fontColorDarkTetrad = '#E60B1A';
 
+var currentNodeKey = "AA000AA000AB";
+
 theGame.prototype = {
 	create: function () {
 		this.game.stage.backgroundColor = '#000000';
@@ -150,8 +152,11 @@ theGame.prototype = {
 		var style1 = { font: '13pt Berlin Sans FB', fill: '#EFB143', align: 'left', wordWrap: true, wordWrapWidth: frame01Width };
 		var style2 = { font: 'bold 12pt Arial', fill: 'white', align: 'left', wordWrap: true, wordWrapWidth: frame01Width };
 
+		var textPrint = testStoryModuleMap.get(currentNodeKey);
+		text1 = this.game.add.text(frame01XPos, frame01YPos, textPrint, style1);
+
 		//Add story text to group? Then move group as a whole with slider?
-		text1 = this.game.add.text(frame01XPos, frame01YPos, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam a consequat sapien. Donec blandit est sem, maximus tempor augue sagittis id. Nullam luctus nibh turpis, ut imperdiet orci porttitor ac. Nam vel posuere orci. Vestibulum sed magna mi. Aenean quis porta turpis. Aliquam non venenatis lectus.\n\nQuisque eget lorem at lorem efficitur lobortis eget id purus. Donec a purus ac massa elementum sodales tincidunt id purus. Vestibulum viverra lectus quam, vel cursus augue ultrices convallis. Sed dictum vestibulum velit nec ornare. Vivamus vitae massa quis libero pharetra lacinia. Pellentesque tristique tellus id commodo dignissim.\n\nProin molestie sagittis enim sit amet luctus. Pellentesque quis sollicitudin diam, vel rutrum leo. Suspendisse dapibus purus vel odio convallis porta. Maecenas suscipit faucibus magna id blandit. Phasellus magna nunc, suscipit vitae bibendum eget, dapibus eu est. Etiam elit neque, sagittis eget ante sed, lobortis pretium nibh. Vivamus facilisis auctor est eget aliquam. Vestibulum quis neque in lectus porta mollis.\n\nAliquam eget lectus et dui sollicitudin consectetur vitae nec velit. Pellentesque eget ante vehicula, tincidunt est sit amet, lacinia ligula. Quisque et ultricies nisi, sodales sagittis elit. Integer suscipit odio justo, nec consequat urna sagittis in. Maecenas non arcu non nulla ultrices lobortis vitae at leo. Etiam vel nisl nisi. Curabitur pellentesque, elit porta sodales pharetra, metus libero cursus libero, nec dictum eros ex nec urna. Fusce convallis facilisis semper. Quisque ultrices dignissim nibh.", style1);
+		//text1 = this.game.add.text(frame01XPos, frame01YPos, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam a consequat sapien. Donec blandit est sem, maximus tempor augue sagittis id. Nullam luctus nibh turpis, ut imperdiet orci porttitor ac. Nam vel posuere orci. Vestibulum sed magna mi. Aenean quis porta turpis. Aliquam non venenatis lectus.\n\nQuisque eget lorem at lorem efficitur lobortis eget id purus. Donec a purus ac massa elementum sodales tincidunt id purus. Vestibulum viverra lectus quam, vel cursus augue ultrices convallis. Sed dictum vestibulum velit nec ornare. Vivamus vitae massa quis libero pharetra lacinia. Pellentesque tristique tellus id commodo dignissim.\n\nProin molestie sagittis enim sit amet luctus. Pellentesque quis sollicitudin diam, vel rutrum leo. Suspendisse dapibus purus vel odio convallis porta. Maecenas suscipit faucibus magna id blandit. Phasellus magna nunc, suscipit vitae bibendum eget, dapibus eu est. Etiam elit neque, sagittis eget ante sed, lobortis pretium nibh. Vivamus facilisis auctor est eget aliquam. Vestibulum quis neque in lectus porta mollis.\n\nAliquam eget lectus et dui sollicitudin consectetur vitae nec velit. Pellentesque eget ante vehicula, tincidunt est sit amet, lacinia ligula. Quisque et ultricies nisi, sodales sagittis elit. Integer suscipit odio justo, nec consequat urna sagittis in. Maecenas non arcu non nulla ultrices lobortis vitae at leo. Etiam vel nisl nisi. Curabitur pellentesque, elit porta sodales pharetra, metus libero cursus libero, nec dictum eros ex nec urna. Fusce convallis facilisis semper. Quisque ultrices dignissim nibh.", style1);
 		//text1.lineSpacing = 5;
 
 		text1.mask = textMask01;

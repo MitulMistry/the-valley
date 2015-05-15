@@ -1,7 +1,7 @@
 ﻿//constructor function https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects
 //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Introduction_to_Object-Oriented_JavaScript
 
-var saveGame = function (playerPower, playerKarma, playerDarkTetrad, playerIntellect, playerLove, /*gameLog,*/numberOfModules, currentModule, fontSize, fontColor) {
+var saveGame = function (playerPower, playerKarma, playerDarkTetrad, playerIntellect, playerLove, /*gameLog,*/numberOfModules, currentModule, currentNodeKey, fontSize, fontColor) {
 
 	this.playerPower = 0;
 	this.playerKarma = 0;
@@ -12,6 +12,7 @@ var saveGame = function (playerPower, playerKarma, playerDarkTetrad, playerIntel
 	this.fontColor = '#EFB143';
 	this.numberOfModules = 0;
 	this.currentModule = 0;
+	this.currentNodeKey;
 
 	if (typeof playerPower !== 'undefined') {
 		this.playerPower = playerPower;
