@@ -182,50 +182,54 @@ testChoicesModuleMap.set("AA000AA000AB", choiceAA000AA000AB);
 var currentModuleText;
 var currentModuleChoices;
 
-var textManager = function ()
+var textManager = function (moduleNumber)
 {
-
+	if (typeof moduleNumber === 'number')
+	{
+		this.loadModule(moduleNumber);
+	}
 }
 
 textManager.prototype.loadModule = function (moduleNumber)
 {
+	this.loadJSON();
 	if (typeof moduleNumber === 'number')
 	{
 		if (moduleNumber == MODULE_ASCENT_OF_MAN)
 		{
-			this.parseModule({ currentModuleTextPath: "../script/storyModules/module01AscentOfManTEXT.csv", currentModuleChoicesPath: "../script/storyModules/module01AscentOfManCHOICES.csv" });
+			this.parseModule({ currentModuleTextPath: "/script/storyModules/module01AscentOfManTEXT.csv", currentModuleChoicesPath: "/script/storyModules/module01AscentOfManCHOICES.csv" });
 		}
 		else if (moduleNumber == MODULE_VALLEY_SPIRIT)
 		{
-			this.parseModule({ currentModuleTextPath: "../script/storyModules/module02ValleySpiritTEXT.csv", currentModuleChoicesPath: "../script/storyModules/module02ValleySpiritCHOICES.csv" });
+			this.parseModule({ currentModuleTextPath: "/script/storyModules/module02ValleySpiritTEXT.csv", currentModuleChoicesPath: "/script/storyModules/module02ValleySpiritCHOICES.csv" });
 		}
 		else if (moduleNumber == MODULE_LOTTERY_IN_BABYLON)
 		{
-			this.parseModule({ currentModuleTextPath: "../script/storyModules/module03LotteryInBabylonTEXT.csv", currentModuleChoicesPath: "../script/storyModules/module03LotteryInBabylonCHOICES.csv" });
+			this.parseModule({ currentModuleTextPath: "/script/storyModules/module03LotteryInBabylonTEXT.csv", currentModuleChoicesPath: "/script/storyModules/module03LotteryInBabylonCHOICES.csv" });
 		}
 		else if (moduleNumber == MODULE_THE_PROMETHEANS)
 		{
-			this.parseModule({ currentModuleTextPath: "../script/storyModules/module04ThePrometheansTEXT.csv", currentModuleChoicesPath: "../script/storyModules/module04ThePrometheansCHOICES.csv" });
+			this.parseModule({ currentModuleTextPath: "/script/storyModules/module04ThePrometheansTEXT.csv", currentModuleChoicesPath: "/script/storyModules/module04ThePrometheansCHOICES.csv" });
 		}
 		else if (moduleNumber == MODULE_DEAD_PRESIDENTS)
 		{
-			this.parseModule({ currentModuleTextPath: "../script/storyModules/module05DeadPresidentsTEXT.csv", currentModuleChoicesPath: "../script/storyModules/module05DeadPresidentsCHOICES.csv" });
+			this.parseModule({ currentModuleTextPath: "/script/storyModules/module05DeadPresidentsTEXT.csv", currentModuleChoicesPath: "/script/storyModules/module05DeadPresidentsCHOICES.csv" });
 		}
 		else if (moduleNumber == MODULE_SHAKE_HANDS_WITH_THE_DEVIL)
 		{
-			this.parseModule({ currentModuleTextPath: "../script/storyModules/module06ShakeHandsWithTheDevilTEXT.csv", currentModuleChoicesPath: "../script/storyModules/module06ShakeHandsWithTheDevilCHOICES.csv" });
+			this.parseModule({ currentModuleTextPath: "/script/storyModules/module06ShakeHandsWithTheDevilTEXT.csv", currentModuleChoicesPath: "/script/storyModules/module06ShakeHandsWithTheDevilCHOICES.csv" });
 		}
 		else if (moduleNumber == MODULE_MORAL_HAZZARD)
 		{
-			this.parseModule({ currentModuleTextPath: "../script/storyModules/module07MoralHazzardTEXT.csv", currentModuleChoicesPath: "../script/storyModules/module07MoralHazzardCHOICES.csv" });
+			this.parseModule({ currentModuleTextPath: "/script/storyModules/module07MoralHazzardTEXT.csv", currentModuleChoicesPath: "/script/storyModules/module07MoralHazzardCHOICES.csv" });
 		}
 		else if (moduleNumber == MODULE_PLUTOCRATS_OF_MARS)
 		{
-			this.parseModule({ currentModuleTextPath: "../script/storyModules/module08PlutocratsOfMarsTEXT.csv", currentModuleChoicesPath: "../script/storyModules/module08PlutocratsOfMarsCHOICES.csv" });
+			this.parseModule({ currentModuleTextPath: "/script/storyModules/module08PlutocratsOfMarsTEXT.csv", currentModuleChoicesPath: "/script/storyModules/module08PlutocratsOfMarsCHOICES.csv" });
 		}
 		else if (moduleNumber == MODULE_GHOSTS_OF_PERSIA)
 		{
-			this.parseModule({ currentModuleTextPath: "../script/storyModules/module09GhostsOfPersiaTEXT.csv", currentModuleChoicesPath: "../script/storyModules/module09GhostsOfPersiaCHOICES.csv" });
+			this.parseModule({ currentModuleTextPath: "/script/storyModules/module09GhostsOfPersiaTEXT.csv", currentModuleChoicesPath: "/script/storyModules/module09GhostsOfPersiaCHOICES.csv" });
 		}
 		else {
 			//error - do nothing
@@ -235,12 +239,36 @@ textManager.prototype.loadModule = function (moduleNumber)
 
 textManager.prototype.parseModule = function (currentModuleTextPath, currentModuleChoicesPath)
 {
+
+	//http://iviewsource.com/codingtutorials/getting-started-with-javascript-object-notation-json-for-absolute-beginners/
+	//currentModuleText = JSON.parse("/script/storyModules/CSV_TEST.json");
+
 	//var config = buildConfig();
 	//"../script/storyModules/module01AscentOfManTEXT.csv"
 	//"../script/storyModules/module01AscentOfManCHOICES.csv"
+	//http://mitulmistry.com/test/module01AscentOfManTEXT.csv
+	//http://mitulmistry.com/test/module01AscentOfManCHOICES.csv
+	//"../script/mechanics/CSV_TEST2.csv"
 
 	//Papa.parse("http://example.com/file.csv", { download: true, complete: function(results) { console.log(results); } });
 
+	//testPASSED = true;
+	//http://stackoverflow.com/questions/26266459/retrieve-parsed-data-from-csv-in-javascript-object-using-papa-parse
+
+	//https://www.google.com/search?q=fileInput.files&ie=utf-8&oe=utf-8#q=javascript+local+database
+	/*
+	Papa.parse("/script/mechanics/CSV_TEST2.csv", {
+		//header: true, //treats first line as header
+		//dynamicTyping: true, //makes sure data is parsed as correct types as opposed to all strings
+		download: true,
+		complete: function (results) {
+			console.log(results);
+			currentModuleText = results; //callback
+		}
+	});
+	*/
+
+	/*
 	Papa.parse(currentModuleTextPath, {
 		header: true, //treats first line as header
 		dynamicTyping: true, //makes sure data is parsed as correct types as opposed to all strings
@@ -256,28 +284,30 @@ textManager.prototype.parseModule = function (currentModuleTextPath, currentModu
 			currentModuleChoices = results;
 		}
 	});
+	*/
 }
 
-/*
-textManager.prototype.buildConfig = function ()
+textManager.prototype.getText = function (key)
 {
-	return {
-		delimiter: "",	// auto-detect
-		newline: "",	// auto-detect
-		header: true,
-		dynamicTyping: false,
-		preview: 0,
-		encoding: "",
-		worker: false,
-		comments: false,
-		step: undefined,
-		complete: undefined,
-		error: undefined,
-		download: false,
-		skipEmptyLines: false,
-		chunk: undefined,
-		fastMode: undefined,
-		beforeFirstChunk: undefined
-	};
+	//$ just means jquery, so $.getJSON means jquery.getJSON
+	if (typeof key !== 'undefined') {
+		$.getJSON('/script/storyModules/module01AscentOfManTEXT.json', function (data) {
+			console.log("SUCCESS: " + data[1].TEXT);
+			//return data[key].text;
+		});
+	}
 }
-*/
+
+var currentModuleTextMap = new Map();
+var currentModuleChoicesMap = new Map();
+
+textManager.prototype.loadJSON = function (currentModuleTextPath, currentModuleChoicesPath) {
+	//if (typeof key !== 'undefined') {
+		$.getJSON('/script/storyModules/module01AscentOfManTEXT.json', function (data) {
+			for (var i = 0; i < data.length; i++) {
+				currentModuleTextMap.set(data[i].KEY, data[i].TEXT);
+				console.log("SUCCESS: " + data[i].KEY + data[i].TEXT);
+			}
+		});
+	//}
+}

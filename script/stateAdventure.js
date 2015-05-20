@@ -23,6 +23,7 @@ var iconFacebookClickFrame = 16;
 
 //DEBUG MODE - turn on and off
 var debugMode = true;
+var testPASSED = false; //DEBUG - delete
 
 //global variables
 var text1;
@@ -45,7 +46,9 @@ var fontColorIntellect = '#00B0FF';
 var fontColorLove = '#FC32DA';
 var fontColorDarkTetrad = '#E60B1A';
 
-var currentNodeKey = "AA000AA000AB";
+var currentNodeKey = "AA001AD000AA"; //AA000AA000AB
+
+var mainTextManager = new textManager(MODULE_ASCENT_OF_MAN);
 
 theGame.prototype = {
 	create: function () {
@@ -134,6 +137,13 @@ theGame.prototype = {
 			textPointsLove = this.game.add.text(this.game.width - frame01XPos + 30, frame01YPos + 60, "100", stylePointsLove);
 			textPointsDarkTetrad = this.game.add.text(this.game.width - frame01XPos + 30, frame01YPos + 80, "100", stylePointsDarkTetrad);
 		}
+
+		//To test if the code is getting to a breakpoint (before reaching this line), put textTest = true;
+		var textTEST;
+		if (debugMode && testPASSED) {
+			textTEST = this.game.add.text(this.game.width / 2, frame01YPos / 2, "TEST PASSED", stylePointsKarma);
+		textTEST.anchor.setTo(0.5, 0.5);}
+
 		//-------------------------------------
 		
 		//-------Masks-------
@@ -152,16 +162,16 @@ theGame.prototype = {
 		var style1 = { font: '13pt Berlin Sans FB', fill: '#EFB143', align: 'left', wordWrap: true, wordWrapWidth: frame01Width };
 		var style2 = { font: 'bold 12pt Arial', fill: 'white', align: 'left', wordWrap: true, wordWrapWidth: frame01Width };
 
-		var textPrint = testStoryModuleMap.get(currentNodeKey);
+		//var textPrint = testStoryModuleMap.get(currentNodeKey);
+		//var textPrint = mainTextManager.getText(currentNodeKey);
+		var textPrint = currentModuleTextMap.get(currentNodeKey);
+		
 		text1 = this.game.add.text(frame01XPos, frame01YPos, textPrint, style1);
-
-		//Add story text to group? Then move group as a whole with slider?
-		//text1 = this.game.add.text(frame01XPos, frame01YPos, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam a consequat sapien. Donec blandit est sem, maximus tempor augue sagittis id. Nullam luctus nibh turpis, ut imperdiet orci porttitor ac. Nam vel posuere orci. Vestibulum sed magna mi. Aenean quis porta turpis. Aliquam non venenatis lectus.\n\nQuisque eget lorem at lorem efficitur lobortis eget id purus. Donec a purus ac massa elementum sodales tincidunt id purus. Vestibulum viverra lectus quam, vel cursus augue ultrices convallis. Sed dictum vestibulum velit nec ornare. Vivamus vitae massa quis libero pharetra lacinia. Pellentesque tristique tellus id commodo dignissim.\n\nProin molestie sagittis enim sit amet luctus. Pellentesque quis sollicitudin diam, vel rutrum leo. Suspendisse dapibus purus vel odio convallis porta. Maecenas suscipit faucibus magna id blandit. Phasellus magna nunc, suscipit vitae bibendum eget, dapibus eu est. Etiam elit neque, sagittis eget ante sed, lobortis pretium nibh. Vivamus facilisis auctor est eget aliquam. Vestibulum quis neque in lectus porta mollis.\n\nAliquam eget lectus et dui sollicitudin consectetur vitae nec velit. Pellentesque eget ante vehicula, tincidunt est sit amet, lacinia ligula. Quisque et ultricies nisi, sodales sagittis elit. Integer suscipit odio justo, nec consequat urna sagittis in. Maecenas non arcu non nulla ultrices lobortis vitae at leo. Etiam vel nisl nisi. Curabitur pellentesque, elit porta sodales pharetra, metus libero cursus libero, nec dictum eros ex nec urna. Fusce convallis facilisis semper. Quisque ultrices dignissim nibh.", style1);
 		//text1.lineSpacing = 5;
 
 		text1.mask = textMask01;
 
-		//Add choices to group?
+		//Add choices to group? Then move group as a whole with slider?
 		text2 = this.game.add.text(frame02XPos, frame02YPos, "Morbi ultricies ante orci, vitae semper nibh consectetur dignissim. \n\nDonec odio turpis, pharetra vel dolor a, malesuada vulputate turpis. \n\nIn vel porta urna,volutpat auctor ante. \n\nPhasellus quam nisi, consequat in elementum ut, accumsan in ex.\n\nSed pulvinar nunc urna, in porttitor lectus imperdiet nec.\n\nSuspendisse accumsan congue gravida. \n\nPhasellus quam nisi, consequat in elementum ut, accumsan in ex.\n\nSed pulvinar nunc urna, in porttitor lectus imperdiet nec.\n\nSuspendisse accumsan congue gravida.", style2);
 		text2.lineSpacing = -3.5;
 
