@@ -13,6 +13,10 @@ var iconFacebookBaseFrame02 = 14;
 var iconFacebookOverFrame = 15;
 var iconFacebookClickFrame = 16;
 
+var currentNodeKey = "AA001AD000AA"; //AA000AA000AB
+var mainTextManager = new textManager(MODULE_ASCENT_OF_MAN);
+var testContinue = false;
+
 mainMenu.prototype = {
 	create: function () {
 		this.game.stage.backgroundColor = '#000000';
@@ -165,7 +169,8 @@ mainMenu.prototype = {
 		}
 	},*/
 	newGameStart: function () {
-		this.game.state.start("stateAdventure");
+		//this.game.state.start("stateAdventure");
+		this.game.state.start("statePreload2");
 	},
 	loadGameStart: function () {
 		//this.game.state.start("stateAdventure");

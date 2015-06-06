@@ -46,9 +46,18 @@ var fontColorIntellect = '#00B0FF';
 var fontColorLove = '#FC32DA';
 var fontColorDarkTetrad = '#E60B1A';
 
+var textPrint;
+
+//var currentSaveGame = new saveGame;
+
+/*
+--Relocated to stateMenu.js
 var currentNodeKey = "AA001AD000AA"; //AA000AA000AB
 
 var mainTextManager = new textManager(MODULE_ASCENT_OF_MAN);
+
+var testContinue = false;
+*/
 
 theGame.prototype = {
 	create: function () {
@@ -164,9 +173,12 @@ theGame.prototype = {
 
 		//var textPrint = testStoryModuleMap.get(currentNodeKey);
 		//var textPrint = mainTextManager.getText(currentNodeKey);
-		var textPrint = currentModuleTextMap.get(currentNodeKey);
+
+		textPrint = currentModuleTextMap.get(currentNodeKey);
 		
-		text1 = this.game.add.text(frame01XPos, frame01YPos, textPrint, style1);
+		//text1 = this.game.add.text(frame01XPos, frame01YPos, textPrint, style1);
+
+		text1 = this.game.add.text(frame01XPos, frame01YPos, "Morbi ultricies ante orci, vitae semper nibh consectetur dignissim. \n\nDonec odio turpis, pharetra vel dolor a, malesuada vulputate turpis. In vel porta urna,volutpat auctor ante. Phasellus quam nisi, consequat in elementum ut, accumsan in ex.\n\nSed pulvinar nunc urna, in porttitor lectus imperdiet nec. Suspendisse accumsan congue gravida. \n\nPhasellus quam nisi, consequat in elementum ut, accumsan in ex. Sed pulvinar nunc urna, in porttitor lectus imperdiet nec.\n\nSuspendisse accumsan congue gravida.", style1);
 		//text1.lineSpacing = 5;
 
 		text1.mask = textMask01;
@@ -293,7 +305,8 @@ theGame.prototype = {
 		window.open("https://www.facebook.com/sharer/sharer.php?u=http://MitulMistry.com", '_blank');
 	},
 	iconFont: function () {
-
+		textPrint = currentModuleTextMap.get(currentNodeKey);
+		text1.setText(textPrint);
 	},
 	iconSave: function () {
 		this.game.state.start("stateMenu");
@@ -305,5 +318,7 @@ theGame.prototype = {
 		//Move text based on sliders
 		text1.y = text1_topGap - (((slider01.y - text1_topGap) / rightSliderGap01) * text1_distance);
 		text2.y = text2_topGap - (((slider02.y - text2_topGap) / rightSliderGap02) * text2_distance);
+
+		
 	}
 }

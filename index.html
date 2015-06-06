@@ -24,6 +24,7 @@
 	<script src="script/stateMenu.js"></script> 
 	<script src="script/stateAdventure.js"></script>
 	<script src="script/stateAnotherLife.js"></script>
+	<script src="script/statePreload2.js"></script>
 
 	<!--<script src="lib/phaser-state-transition.js"></script>-->
 
@@ -42,7 +43,8 @@
 			game.state.add("stateBoot", boot);
 			game.state.add("statePreload", preload);
 			game.state.add("stateSplash", splash);
-			game.state.add("stateMenu",mainMenu);
+			game.state.add("stateMenu", mainMenu);
+			game.state.add("statePreload2", preload2);
 			game.state.add("stateAdventure",theGame);
 			//game.state.add("stateAnotherLife",gameOver);
 			game.state.start("stateBoot");
