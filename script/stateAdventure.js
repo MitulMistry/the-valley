@@ -63,6 +63,10 @@ var frame02XPos;
 var frame02YPos;
 
 var mainFont = '13pt Berlin Sans FB';
+var mainFontColor = '#FFBD29';
+var choiceColor = '#FFFFFF';
+var choiceHighlightColor = '#FFF700';
+var choicePressColor = '#FFB000';
 var fontColorPower = '#F45E14';
 var fontColorKarma = '#12B516';
 var fontColorIntellect = '#00B0FF';
@@ -194,8 +198,8 @@ theGame.prototype = {
 		textMask02.drawRect(frame02XPos, frame02YPos, this.game.width, frame02Height);
 
 		//Embedding fonts? Google Fonts?
-		var style1 = { font: '13pt Berlin Sans FB', fill: '#EFB143', align: 'left', wordWrap: true, wordWrapWidth: frame01Width };
-		var style2 = { font: 'bold 12pt Arial', fill: 'white', align: 'left', wordWrap: true, wordWrapWidth: frame01Width };
+		var style1 = { font: mainFont, fill: mainFontColor, align: 'left', wordWrap: true, wordWrapWidth: frame01Width };
+		var style2 = { font: 'bold 12pt Arial', fill: choiceColor, align: 'left', wordWrap: true, wordWrapWidth: frame01Width };
 
 		choicesTextGroup = this.game.add.group();
 
@@ -218,7 +222,7 @@ theGame.prototype = {
 		choice1.events.onInputOver.add(this.choiceOver, this);
 		choice1.events.onInputOut.add(this.choiceOut, this);
 		choice1.events.onInputDown.add(this.choiceDown, this);
-		choice1.events.onInputUp.add(this.choiceUp, this);
+		choice1.events.onInputUp.add(this.choiceUp1, this);
 
 		choice2 = this.game.add.text(frame02XPos, frame02YPos + choice1.height + choicesSpacer, "Choice 2: Donec odio turpis, pharetra vel dolor a, malesuada vulputate turpis. Phasellus quam nisi, consequat in elementum ut, accumsan in ex.", style2, choicesTextGroup);
 		choice2.inputEnabled = true;
@@ -226,7 +230,7 @@ theGame.prototype = {
 		choice2.events.onInputOver.add(this.choiceOver, this);
 		choice2.events.onInputOut.add(this.choiceOut, this);
 		choice2.events.onInputDown.add(this.choiceDown, this);
-		choice2.events.onInputUp.add(this.choiceUp, this);
+		choice2.events.onInputUp.add(this.choiceUp2, this);
 
 		choice3 = this.game.add.text(frame02XPos, frame02YPos + choice1.height + choice2.height + (choicesSpacer * 2), "Choice 3: In vel porta urna,volutpat auctor ante.", style2, choicesTextGroup);
 		choice3.inputEnabled = true;
@@ -234,7 +238,7 @@ theGame.prototype = {
 		choice3.events.onInputOver.add(this.choiceOver, this);
 		choice3.events.onInputOut.add(this.choiceOut, this);
 		choice3.events.onInputDown.add(this.choiceDown, this);
-		choice3.events.onInputUp.add(this.choiceUp, this);
+		choice3.events.onInputUp.add(this.choiceUp3, this);
 
 		choice4 = this.game.add.text(frame02XPos, frame02YPos + choice1.height + choice2.height + choice3.height + (choicesSpacer * 3), "Choice 4: Phasellus quam nisi, consequat in elementum ut, accumsan in ex.", style2, choicesTextGroup);
 		choice4.inputEnabled = true;
@@ -242,7 +246,7 @@ theGame.prototype = {
 		choice4.events.onInputOver.add(this.choiceOver, this);
 		choice4.events.onInputOut.add(this.choiceOut, this);
 		choice4.events.onInputDown.add(this.choiceDown, this);
-		choice4.events.onInputUp.add(this.choiceUp, this);
+		choice4.events.onInputUp.add(this.choiceUp4, this);
 
 		choice5 = this.game.add.text(frame02XPos, frame02YPos + choice1.height + choice2.height + choice3.height + +choice4.height + (choicesSpacer * 4), "Choice 5: Suspendisse accumsan congue gravida. Phasellus quam nisi, consequat in elementum ut, accumsan in ex.", style2, choicesTextGroup);
 		choice5.inputEnabled = true;
@@ -250,7 +254,7 @@ theGame.prototype = {
 		choice5.events.onInputOver.add(this.choiceOver, this);
 		choice5.events.onInputOut.add(this.choiceOut, this);
 		choice5.events.onInputDown.add(this.choiceDown, this);
-		choice5.events.onInputUp.add(this.choiceUp, this);
+		choice5.events.onInputUp.add(this.choiceUp5, this);
 
 		choicesTextGroup.mask = textMask02;
 		//choicesTextGroup.anchor.setTo(0, 0);
@@ -406,19 +410,35 @@ theGame.prototype = {
 		}*/
 	},
 	choiceOver: function (item) {
-		item.fill = "#FFF700";
+		item.fill = choiceHighlightColor;
 	},
 	choiceOut: function (item) {
-		item.fill = "#FFFFFF";
+		item.fill = choiceColor;
 		//item.fill = previous fill color;
 	},
 	choiceDown: function (item) {
-		item.fill = "#FFB000";
+		item.fill = choicePressColor;
 	},
-	choiceUp: function (item) {
-		item.fill = "#FFF700";
-		//THIS IS WHERE THE DECISION LOGIC HAPPENS
-		this.makeDecision();
+	choiceUp1: function (item) {
+		//http://www.html5gamedevs.com/topic/5351-call-a-function-with-arguments-when-oninputdown/
+		item.fill = choiceHighlightColor;
+		this.makeDecision(1);
+	},
+	choiceUp2: function (item) {
+		item.fill = choiceHighlightColor;
+		this.makeDecision(2);
+	},
+	choiceUp3: function (item) {
+		item.fill = choiceHighlightColor;
+		this.makeDecision(3);
+	},
+	choiceUp4: function (item) {
+		item.fill = choiceHighlightColor;
+		this.makeDecision(4);
+	},
+	choiceUp5: function (item) {
+		item.fill = choiceHighlightColor;
+		this.makeDecision(5);
 	},
 	loadChoices: function() {
 		var stringTest;
@@ -491,9 +511,9 @@ theGame.prototype = {
 			//error
 		}
 	},
-	makeDecision: function () {
+	makeDecision: function (choiceNumber) {
 		//THIS IS WHERE THE DECISION LOGIC HAPPENS
-		alert("Decision made!");
+		alert("Decision made! Choice " + choiceNumber);
 	},
 	update: function () {
 		//Move text based on sliders
