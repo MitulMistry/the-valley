@@ -182,12 +182,9 @@ testChoicesModuleMap.set("AA000AA000AB", choiceAA000AA000AB);
 var currentModuleText;
 var currentModuleChoices;
 
-var textManager = function (moduleNumber)
+var textManager = function ()
 {
-	if (typeof moduleNumber === 'number')
-	{
-		this.loadModule(moduleNumber);
-	}
+
 }
 
 textManager.prototype.loadModule = function (moduleNumber)
@@ -197,39 +194,48 @@ textManager.prototype.loadModule = function (moduleNumber)
 	{
 		if (moduleNumber == MODULE_ASCENT_OF_MAN)
 		{
-			this.loadJSON({ currentModuleTextPath: "/script/storyModules/module01AscentOfManTEXT.csv", currentModuleChoicesPath: "/script/storyModules/module01AscentOfManCHOICES.csv" });
+			currentNodeKey = "AA000AA000AA";
+			this.loadJSON({ currentModuleTextPath: "/script/storyModules/module01AscentOfManTEXT.json", currentModuleChoicesPath: "/script/storyModules/module01AscentOfManCHOICES.json" });
 		}
 		else if (moduleNumber == MODULE_VALLEY_SPIRIT)
 		{
-			this.loadJSON({ currentModuleTextPath: "/script/storyModules/module02ValleySpiritTEXT.csv", currentModuleChoicesPath: "/script/storyModules/module02ValleySpiritCHOICES.csv" });
+			//currentNodeKey = "";
+			this.loadJSON({ currentModuleTextPath: "/script/storyModules/module02ValleySpiritTEXT.json", currentModuleChoicesPath: "/script/storyModules/module02ValleySpiritCHOICES.json" });
 		}
 		else if (moduleNumber == MODULE_LOTTERY_IN_BABYLON)
 		{
-			this.loadJSON({ currentModuleTextPath: "/script/storyModules/module03LotteryInBabylonTEXT.csv", currentModuleChoicesPath: "/script/storyModules/module03LotteryInBabylonCHOICES.csv" });
+			//currentNodeKey = "";
+			this.loadJSON({ currentModuleTextPath: "/script/storyModules/module03LotteryInBabylonTEXT.json", currentModuleChoicesPath: "/script/storyModules/module03LotteryInBabylonCHOICES.json" });
 		}
 		else if (moduleNumber == MODULE_THE_PROMETHEANS)
 		{
-			this.loadJSON({ currentModuleTextPath: "/script/storyModules/module04ThePrometheansTEXT.csv", currentModuleChoicesPath: "/script/storyModules/module04ThePrometheansCHOICES.csv" });
+			//currentNodeKey = "";
+			this.loadJSON({ currentModuleTextPath: "/script/storyModules/module04ThePrometheansTEXT.json", currentModuleChoicesPath: "/script/storyModules/module04ThePrometheansCHOICES.json" });
 		}
 		else if (moduleNumber == MODULE_DEAD_PRESIDENTS)
 		{
-			this.loadJSON({ currentModuleTextPath: "/script/storyModules/module05DeadPresidentsTEXT.csv", currentModuleChoicesPath: "/script/storyModules/module05DeadPresidentsCHOICES.csv" });
+			//currentNodeKey = "";
+			this.loadJSON({ currentModuleTextPath: "/script/storyModules/module05DeadPresidentsTEXT.json", currentModuleChoicesPath: "/script/storyModules/module05DeadPresidentsCHOICES.json" });
 		}
 		else if (moduleNumber == MODULE_SHAKE_HANDS_WITH_THE_DEVIL)
 		{
-			this.loadJSON({ currentModuleTextPath: "/script/storyModules/module06ShakeHandsWithTheDevilTEXT.csv", currentModuleChoicesPath: "/script/storyModules/module06ShakeHandsWithTheDevilCHOICES.csv" });
+			//currentNodeKey = "";
+			this.loadJSON({ currentModuleTextPath: "/script/storyModules/module06ShakeHandsWithTheDevilTEXT.json", currentModuleChoicesPath: "/script/storyModules/module06ShakeHandsWithTheDevilCHOICES.json" });
 		}
 		else if (moduleNumber == MODULE_MORAL_HAZZARD)
 		{
-			this.loadJSON({ currentModuleTextPath: "/script/storyModules/module07MoralHazzardTEXT.csv", currentModuleChoicesPath: "/script/storyModules/module07MoralHazzardCHOICES.csv" });
+			//currentNodeKey = "";
+			this.loadJSON({ currentModuleTextPath: "/script/storyModules/module07MoralHazzardTEXT.json", currentModuleChoicesPath: "/script/storyModules/module07MoralHazzardCHOICES.json" });
 		}
 		else if (moduleNumber == MODULE_PLUTOCRATS_OF_MARS)
 		{
-			this.loadJSON({ currentModuleTextPath: "/script/storyModules/module08PlutocratsOfMarsTEXT.csv", currentModuleChoicesPath: "/script/storyModules/module08PlutocratsOfMarsCHOICES.csv" });
+			//currentNodeKey = "";
+			this.loadJSON({ currentModuleTextPath: "/script/storyModules/module08PlutocratsOfMarsTEXT.json", currentModuleChoicesPath: "/script/storyModules/module08PlutocratsOfMarsCHOICES.json" });
 		}
 		else if (moduleNumber == MODULE_GHOSTS_OF_PERSIA)
 		{
-			this.loadJSON({ currentModuleTextPath: "/script/storyModules/module09GhostsOfPersiaTEXT.csv", currentModuleChoicesPath: "/script/storyModules/module09GhostsOfPersiaCHOICES.csv" });
+			//currentNodeKey = "";
+			this.loadJSON({ currentModuleTextPath: "/script/storyModules/module09GhostsOfPersiaTEXT.json", currentModuleChoicesPath: "/script/storyModules/module09GhostsOfPersiaCHOICES.json" });
 		}
 		else {
 			//error - do nothing
@@ -300,6 +306,7 @@ textManager.prototype.getText = function (key)
 
 var currentModuleTextMap = new Map();
 var currentModuleChoicesMap = new Map();
+var currentModuleChoicesData;
 
 textManager.prototype.loadJSON = function (currentModuleTextPath, currentModuleChoicesPath) {
 	//if (typeof (currentModuleTextPath && currentModuleChoicesPath) !== 'undefined') {
@@ -309,7 +316,14 @@ textManager.prototype.loadJSON = function (currentModuleTextPath, currentModuleC
 				currentModuleTextMap.set(data[i].KEY, data[i].TEXT);
 				console.log("SUCCESS: " + data[i].KEY + data[i].TEXT);
 			}
-			testContinue = true;
+			dataLoadedFlag1 = true;
+			//--End AJAX callback
+		});
+
+		$.getJSON('/script/storyModules/module01AscentOfManCHOICES.json', function (data) {
+			//--This following section is the AJAX callback - executes upon successfully loading the data
+			currentModuleChoicesData = data;
+			dataLoadedFlag2 = true;
 			//--End AJAX callback
 		});
 	//}

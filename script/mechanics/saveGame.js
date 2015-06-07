@@ -1,7 +1,8 @@
 ﻿//constructor function https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects
 //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Introduction_to_Object-Oriented_JavaScript
 
-var saveGame = function (playerPower, playerKarma, playerDarkTetrad, playerIntellect, playerLove, /*gameLog,*/numberOfModules, currentModule, currentNodeKey, fontSize, fontColor) {
+var saveGame = function (playerPower, playerKarma, playerDarkTetrad, playerIntellect, playerLove, numberOfModules, currentModule, currentNodeKey, fontSize, fontColor) {
+	//gameLog,
 
 	this.playerPower = 0;
 	this.playerKarma = 0;
@@ -43,8 +44,8 @@ var saveGame = function (playerPower, playerKarma, playerDarkTetrad, playerIntel
 
 	//this.gameLog = some sort of data structure mapping player decisions
 	//this.additionalVariables = data structure logging other decisions (i.e. "if you gathered food last decision node, then...")
-	this.gameLogMap = new map;
-};
+	//this.gameLogMap = new map;
+}
 
 //Set current story module
 saveGame.prototype.setCurrentModule = function (module) {
@@ -52,31 +53,31 @@ saveGame.prototype.setCurrentModule = function (module) {
 	if (typeof module !== 'undefined') {
 		this.currentModule = module;
 	}
-};
+}
 
 //Update font preferences
 saveGame.prototype.updateFontPreferences = function (font, fontColor, fontSize) {
 
-};
+}
 
 //Load last story node written to game log
 saveGame.prototype.loadLastNode = function () {
 
-};
+}
 
 //Write story node outcome to game log
 saveGame.prototype.writeToGameLog = function (referenceNode, decision) {
 
-};
+}
 
 //Write additional variables
 saveGame.prototype.writeToAdditionalVariables = function (reference, value) {
 	//push reference and value pair onto additionalVariables data structure
-};
+}
 
 //Read additional variables
 saveGame.prototype.readAdditionalVariables = function (reference, value) {
 	//search for reference and value pair in additionalVariables data structure
 	//if found, return value (true if boolean, number if integer)
 	//if not found, return false
-};
+}

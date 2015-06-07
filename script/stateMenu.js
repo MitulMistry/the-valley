@@ -13,9 +13,12 @@ var iconFacebookBaseFrame02 = 14;
 var iconFacebookOverFrame = 15;
 var iconFacebookClickFrame = 16;
 
-var currentNodeKey = "AA001AD000AA"; //AA000AA000AB
-var mainTextManager = new textManager(MODULE_ASCENT_OF_MAN);
-var testContinue = false;
+var currentSaveGame = new saveGame();
+var currentNodeKey;// = "AA000AA000AA"; //AA000AA000AB
+var currentModule = MODULE_ASCENT_OF_MAN;
+var mainTextManager = new textManager();
+var dataLoadedFlag1 = false;
+var dataLoadedFlag2 = false;
 
 mainMenu.prototype = {
 	create: function () {
@@ -170,6 +173,8 @@ mainMenu.prototype = {
 	},*/
 	newGameStart: function () {
 		//this.game.state.start("stateAdventure");
+		//currentSaveGame = new saveGame();
+		//currentSaveGame = new saveGame({ currentModule: MODULE_ASCENT_OF_MAN, currentNodeKey: "AA000AA000AA" });
 		this.game.state.start("statePreload2");
 	},
 	loadGameStart: function () {

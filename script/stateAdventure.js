@@ -30,6 +30,16 @@ var text1;
 var text2;
 var slider01;
 var slider02;
+var slider01back;
+var slider02back;
+
+var choicesTextGroup;
+var choice1;
+var choice2;
+var choice3;
+var choice4;
+var choice5;
+var choicesSpacer = 15;
 
 var rightSliderGap01;
 var text1_distance;
@@ -39,6 +49,16 @@ var rightSliderGap02;
 var text2_distance;
 var text2_topGap;
 
+var frame01Width;
+var frame01Height;
+var frame01XPos;
+var frame01YPos;
+
+var frame02Width;
+var frame02Height;
+var frame02XPos;
+var frame02YPos;
+
 var mainFont = '13pt Berlin Sans FB';
 var fontColorPower = '#F45E14';
 var fontColorKarma = '#12B516';
@@ -47,8 +67,6 @@ var fontColorLove = '#FC32DA';
 var fontColorDarkTetrad = '#E60B1A';
 
 var textPrint;
-
-//var currentSaveGame = new saveGame;
 
 /*
 --Relocated to stateMenu.js
@@ -78,18 +96,18 @@ theGame.prototype = {
 		blackGradient2.y = this.game.height;
 		blackGradient2.scale.y = -1;
 
-		var frame01Width = this.game.width * 0.7225;
-		var frame01Height = this.game.height * 0.5;
-		var frame01XPos = ((this.game.width - frame01Width) / 2) - 11;
-		var frame01YPos = this.game.height * 0.12;
+		frame01Width = this.game.width * 0.7225;
+		frame01Height = this.game.height * 0.5;
+		frame01XPos = ((this.game.width - frame01Width) / 2) - 11;
+		frame01YPos = this.game.height * 0.12;
 		
-		var frame02Width = frame01Width;
-		var frame02Height = this.game.height * 0.3067;
-		var frame02XPos = frame01XPos;
-		var frame02YPos = ((this.game.height - frame01YPos - frame01Height - frame02Height) / 2) + frame01YPos + frame01Height;
+		frame02Width = frame01Width;
+		frame02Height = this.game.height * 0.3067;
+		frame02XPos = frame01XPos;
+		frame02YPos = ((this.game.height - frame01YPos - frame01Height - frame02Height) / 2) + frame01YPos + frame01Height;
 
-		var slider01back = this.game.add.sprite(this.game.width - frame01XPos, frame01YPos, "slider01_back");
-		var slider02back = this.game.add.sprite(this.game.width - frame02XPos, frame02YPos, "slider02_back");
+		slider01back = this.game.add.sprite(this.game.width - frame01XPos, frame01YPos, "slider01_back");
+		slider02back = this.game.add.sprite(this.game.width - frame02XPos, frame02YPos, "slider02_back");
 		slider01back.height = frame01Height;
 		slider02back.height = frame02Height;
 		slider01 = this.game.add.sprite(this.game.width - frame01XPos, frame01YPos, "slider01");
@@ -139,6 +157,7 @@ theGame.prototype = {
 		var stylePointsLove = { font: mainFont, fill: fontColorLove, align: 'left', wordWrap: true, wordWrapWidth: frame01Width };
 		var stylePointsDarkTetrad = { font: mainFont, fill: fontColorDarkTetrad, align: 'left', wordWrap: true, wordWrapWidth: frame01Width };
 		
+		//currentSaveGame.playerPower
 		if (debugMode) {
 			textPointsPower = this.game.add.text(this.game.width - frame01XPos + 30, frame01YPos, "100", stylePointsPower);
 			textPointsKarma = this.game.add.text(this.game.width - frame01XPos + 30, frame01YPos + 20, "100", stylePointsKarma);
@@ -171,6 +190,8 @@ theGame.prototype = {
 		var style1 = { font: '13pt Berlin Sans FB', fill: '#EFB143', align: 'left', wordWrap: true, wordWrapWidth: frame01Width };
 		var style2 = { font: 'bold 12pt Arial', fill: 'white', align: 'left', wordWrap: true, wordWrapWidth: frame01Width };
 
+		choicesTextGroup = this.game.add.group();
+
 		//var textPrint = testStoryModuleMap.get(currentNodeKey);
 		//var textPrint = mainTextManager.getText(currentNodeKey);
 
@@ -184,32 +205,55 @@ theGame.prototype = {
 		text1.mask = textMask01;
 
 		//Add choices to group? Then move group as a whole with slider?
-		text2 = this.game.add.text(frame02XPos, frame02YPos, "Morbi ultricies ante orci, vitae semper nibh consectetur dignissim. \n\nDonec odio turpis, pharetra vel dolor a, malesuada vulputate turpis. \n\nIn vel porta urna,volutpat auctor ante. \n\nPhasellus quam nisi, consequat in elementum ut, accumsan in ex.\n\nSed pulvinar nunc urna, in porttitor lectus imperdiet nec.\n\nSuspendisse accumsan congue gravida. \n\nPhasellus quam nisi, consequat in elementum ut, accumsan in ex.\n\nSed pulvinar nunc urna, in porttitor lectus imperdiet nec.\n\nSuspendisse accumsan congue gravida.", style2);
+		choice1 = this.game.add.text(frame02XPos, frame02YPos, "Choice 1: Morbi ultricies ante orci, vitae semper nibh consectetur dignissim. Sed pulvinar nunc urna, in porttitor lectus imperdiet nec. Suspendisse accumsan congue gravida.", style2, choicesTextGroup);
+		choice1.inputEnabled = true;
+		choice1.input.useHandCursor = true;
+		choice1.events.onInputOver.add(this.choiceOver, this);
+		choice1.events.onInputOut.add(this.choiceOut, this);
+		choice1.events.onInputDown.add(this.choiceDown, this);
+		choice1.events.onInputUp.add(this.choiceUp, this);
+
+		choice2 = this.game.add.text(frame02XPos, frame02YPos + choice1.height + choicesSpacer, "Choice 2: Donec odio turpis, pharetra vel dolor a, malesuada vulputate turpis. Phasellus quam nisi, consequat in elementum ut, accumsan in ex.", style2, choicesTextGroup);
+		choice2.inputEnabled = true;
+		choice2.input.useHandCursor = true;
+		choice2.events.onInputOver.add(this.choiceOver, this);
+		choice2.events.onInputOut.add(this.choiceOut, this);
+		choice2.events.onInputDown.add(this.choiceDown, this);
+		choice2.events.onInputUp.add(this.choiceUp, this);
+
+		choice3 = this.game.add.text(frame02XPos, frame02YPos + choice1.height + choice2.height + (choicesSpacer * 2), "Choice 3: In vel porta urna,volutpat auctor ante.", style2, choicesTextGroup);
+		choice3.inputEnabled = true;
+		choice3.input.useHandCursor = true;
+		choice3.events.onInputOver.add(this.choiceOver, this);
+		choice3.events.onInputOut.add(this.choiceOut, this);
+		choice3.events.onInputDown.add(this.choiceDown, this);
+		choice3.events.onInputUp.add(this.choiceUp, this);
+
+		choice4 = this.game.add.text(frame02XPos, frame02YPos + choice1.height + choice2.height + choice3.height + (choicesSpacer * 3), "Choice 4: Phasellus quam nisi, consequat in elementum ut, accumsan in ex.", style2, choicesTextGroup);
+		choice4.inputEnabled = true;
+		choice4.input.useHandCursor = true;
+		choice4.events.onInputOver.add(this.choiceOver, this);
+		choice4.events.onInputOut.add(this.choiceOut, this);
+		choice4.events.onInputDown.add(this.choiceDown, this);
+		choice4.events.onInputUp.add(this.choiceUp, this);
+
+		choice5 = this.game.add.text(frame02XPos, frame02YPos + choice1.height + choice2.height + choice3.height + +choice4.height + (choicesSpacer * 4), "Choice 5: Suspendisse accumsan congue gravida. Phasellus quam nisi, consequat in elementum ut, accumsan in ex.", style2, choicesTextGroup);
+		choice5.inputEnabled = true;
+		choice5.input.useHandCursor = true;
+		choice5.events.onInputOver.add(this.choiceOver, this);
+		choice5.events.onInputOut.add(this.choiceOut, this);
+		choice5.events.onInputDown.add(this.choiceDown, this);
+		choice5.events.onInputUp.add(this.choiceUp, this);
+
+		choicesTextGroup.mask = textMask02;
+		//choicesTextGroup.anchor.setTo(0, 0);
+
+		/*text2 = this.game.add.text(frame02XPos, frame02YPos, "Morbi ultricies ante orci, vitae semper nibh consectetur dignissim. \n\nDonec odio turpis, pharetra vel dolor a, malesuada vulputate turpis. \n\nIn vel porta urna,volutpat auctor ante. \n\nPhasellus quam nisi, consequat in elementum ut, accumsan in ex.\n\nSed pulvinar nunc urna, in porttitor lectus imperdiet nec.\n\nSuspendisse accumsan congue gravida. \n\nPhasellus quam nisi, consequat in elementum ut, accumsan in ex.\n\nSed pulvinar nunc urna, in porttitor lectus imperdiet nec.\n\nSuspendisse accumsan congue gravida.", style2);
 		text2.lineSpacing = -3.5;
 
 		text2.mask = textMask02;
-		
-		//Adjust slider height based on amount of text, or else hide
-		if (text1.height > frame01Height)
-		{
-			slider01.visible = true;
-			slider01back.visible = true;
-			slider01.height = (frame01Height / text1.height) * frame01Height;
-		} else {
-			slider01.height = frame01Height;
-			slider01.visible = false;
-			slider01back.visible = false;
-		}
-
-		if (text2.height > frame02Height) {
-			slider02.visible = true;
-			slider02back.visible = true;
-			slider02.height = (frame02Height / text2.height) * frame02Height;
-		} else {
-			slider02.height = frame02Height;
-			slider02.visible = false;
-			slider02back.visible = false;
-		}
+		*/
+		this.adjustSliders();
 
 		//Slider movement calculations
 		rightSliderGap01 = slider01back.height - slider01.height;
@@ -217,8 +261,12 @@ theGame.prototype = {
 		text1_topGap = frame01YPos;
 
 		rightSliderGap02 = slider02back.height - slider02.height;
-		text2_distance = (rightSliderGap02 / slider02back.height) * text2.height;
+		text2_distance = (rightSliderGap02 / slider02back.height) * choicesTextGroup.height;
 		text2_topGap = frame02YPos;
+
+		/*rightSliderGap02 = slider02back.height - slider02.height;
+		text2_distance = (rightSliderGap02 / slider02back.height) * text2.height;
+		text2_topGap = frame02YPos;*/
 
 		//text1.inputEnabled = true;
 		//text1.input.enableDrag({ lockCenter: false, pixelPerfect: false });
@@ -305,7 +353,7 @@ theGame.prototype = {
 		window.open("https://www.facebook.com/sharer/sharer.php?u=http://MitulMistry.com", '_blank');
 	},
 	iconFont: function () {
-		textPrint = currentModuleTextMap.get(currentNodeKey);
+		//textPrint = currentModuleTextMap.get(currentNodeKey);
 		text1.setText(textPrint);
 	},
 	iconSave: function () {
@@ -314,11 +362,49 @@ theGame.prototype = {
 	iconSound: function () {
 
 	},
+	adjustSliders: function() {
+		//Adjust slider height based on amount of text, or else hide
+		if (text1.height > frame01Height) {
+			slider01.visible = true;
+			slider01back.visible = true;
+			slider01.height = (frame01Height / text1.height) * frame01Height;
+		} else {
+			slider01.height = frame01Height;
+			slider01.visible = false;
+			slider01back.visible = false;
+		}
+		
+		if (choicesTextGroup.height > frame02Height) {
+			slider02.visible = true;
+			slider02back.visible = true;
+			slider02.height = (frame02Height / choicesTextGroup.height) * frame02Height;
+		} else {
+			slider02.height = frame02Height;
+			slider02.visible = false;
+			slider02back.visible = false;
+		}
+	},
+	choiceOver: function (item) {
+		item.fill = "#FFF700";
+	},
+	choiceOut: function (item) {
+		item.fill = "#FFFFFF";
+		//item.fill = previous fill color;
+	},
+	choiceDown: function (item) {
+		item.fill = "#FFB000";
+	},
+	choiceUp: function (item) {
+		item.fill = "#FFF700";
+		//THIS IS WHERE THE DECISION LOGIC HAPPENS
+	},
 	update: function () {
 		//Move text based on sliders
 		text1.y = text1_topGap - (((slider01.y - text1_topGap) / rightSliderGap01) * text1_distance);
-		text2.y = text2_topGap - (((slider02.y - text2_topGap) / rightSliderGap02) * text2_distance);
-
+		choicesTextGroup.y = 1 - (((slider02.y - text2_topGap) / rightSliderGap02) * text2_distance);
+		//text2.y = text2_topGap - (((slider02.y - text2_topGap) / rightSliderGap02) * text2_distance);
+		text1.setText(textPrint); //!!!!!!!!!
+		this.adjustSliders();
 		
 	}
 }
