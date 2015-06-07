@@ -314,7 +314,7 @@ textManager.prototype.loadJSON = function (currentModuleTextPath, currentModuleC
 			//--This following section is the AJAX callback - executes upon successfully loading the data
 			for (var i = 0; i < data.length; i++) {
 				currentModuleTextMap.set(data[i].KEY, data[i].TEXT);
-				console.log("SUCCESS: " + data[i].KEY + data[i].TEXT);
+				//console.log("SUCCESS: " + data[i].KEY + data[i].TEXT);
 			}
 			dataLoadedFlag1 = true;
 			//--End AJAX callback

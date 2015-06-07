@@ -40,6 +40,9 @@ var choice3;
 var choice4;
 var choice5;
 var choicesSpacer = 15;
+var loadedChoices = []; //array of index numbers to be used in the loaded JSON choice data object
+var choicesHeight = 100;
+var continueText = "Continue..."; //Text to show when the choice is only to continue
 
 var rightSliderGap01;
 var text1_distance;
@@ -67,6 +70,8 @@ var fontColorLove = '#FC32DA';
 var fontColorDarkTetrad = '#E60B1A';
 
 var textPrint;
+
+//currentNodeKey = "AA001AD000AA";
 
 /*
 --Relocated to stateMenu.js
@@ -145,6 +150,8 @@ theGame.prototype = {
 
 		//Debug items (Strip from final build)
 		//-------------------------------------
+		//currentNodeKey = "AA001AD000AA"; //Change start node for testing.
+
 		var textPointsPower;
 		var textPointsKarma;
 		var textPointsIntellect;
@@ -248,6 +255,8 @@ theGame.prototype = {
 		choicesTextGroup.mask = textMask02;
 		//choicesTextGroup.anchor.setTo(0, 0);
 
+		this.loadChoices();
+
 		/*text2 = this.game.add.text(frame02XPos, frame02YPos, "Morbi ultricies ante orci, vitae semper nibh consectetur dignissim. \n\nDonec odio turpis, pharetra vel dolor a, malesuada vulputate turpis. \n\nIn vel porta urna,volutpat auctor ante. \n\nPhasellus quam nisi, consequat in elementum ut, accumsan in ex.\n\nSed pulvinar nunc urna, in porttitor lectus imperdiet nec.\n\nSuspendisse accumsan congue gravida. \n\nPhasellus quam nisi, consequat in elementum ut, accumsan in ex.\n\nSed pulvinar nunc urna, in porttitor lectus imperdiet nec.\n\nSuspendisse accumsan congue gravida.", style2);
 		text2.lineSpacing = -3.5;
 
@@ -271,6 +280,10 @@ theGame.prototype = {
 		//text1.inputEnabled = true;
 		//text1.input.enableDrag({ lockCenter: false, pixelPerfect: false });
 		//text1.input.enableDrag({ pixelPerfect: false, boundsRect: textBounding01 });
+
+		//For some reason text1 needs to be updated here and if you update earlier it shows up all wonky
+		text1.setText(textPrint); //!!!!!!!!!
+		this.adjustSliders();
 
 		//--------Icons--------
 		var iconXoffset = this.game.width * .0625;
@@ -354,7 +367,7 @@ theGame.prototype = {
 	},
 	iconFont: function () {
 		//textPrint = currentModuleTextMap.get(currentNodeKey);
-		text1.setText(textPrint);
+		//text1.setText(textPrint);
 	},
 	iconSave: function () {
 		this.game.state.start("stateMenu");
@@ -372,9 +385,17 @@ theGame.prototype = {
 			slider01.height = frame01Height;
 			slider01.visible = false;
 			slider01back.visible = false;
+		}		
+		if (choicesHeight > frame02Height) {
+			slider02.visible = true;
+			slider02back.visible = true;
+			slider02.height = (frame02Height / choicesHeight) * frame02Height;
+		} else {
+			slider02.height = frame02Height;
+			slider02.visible = false;
+			slider02back.visible = false;
 		}
-		
-		if (choicesTextGroup.height > frame02Height) {
+		/*if (choicesTextGroup.height > frame02Height) {
 			slider02.visible = true;
 			slider02back.visible = true;
 			slider02.height = (frame02Height / choicesTextGroup.height) * frame02Height;
@@ -382,7 +403,7 @@ theGame.prototype = {
 			slider02.height = frame02Height;
 			slider02.visible = false;
 			slider02back.visible = false;
-		}
+		}*/
 	},
 	choiceOver: function (item) {
 		item.fill = "#FFF700";
@@ -397,14 +418,94 @@ theGame.prototype = {
 	choiceUp: function (item) {
 		item.fill = "#FFF700";
 		//THIS IS WHERE THE DECISION LOGIC HAPPENS
+		this.makeDecision();
+	},
+	loadChoices: function() {
+		var stringTest;
+		loadedChoices.length = 0; //Clear the array
+
+		for (var i = 0; i < currentModuleChoicesData.length; i++) {
+			stringTest = currentModuleChoicesData[i].KEY;
+			if (stringTest.substring(0, 12) == currentNodeKey) {
+				//console.log("SUCCESS: " + currentModuleChoicesData[i].KEY);
+				loadedChoices.push(i);
+			}
+		}
+
+		if (loadedChoices.length == 1) {
+			choice1.setText(continueText);
+			choice1.y = frame02YPos;
+			choice2.setText("");
+			choice3.setText("");
+			choice4.setText("");
+			choice5.setText("");
+			choicesHeight = choice1.height;
+		}
+		else if (loadedChoices.length == 2) {
+			choice1.setText(currentModuleChoicesData[loadedChoices[0]].text);
+			choice1.y = frame02YPos;
+			choice2.setText(currentModuleChoicesData[loadedChoices[1]].text);
+			choice2.y = frame02YPos + choice1.height + choicesSpacer;
+			choice3.setText("");
+			choice4.setText("");
+			choice5.setText("");
+			choicesHeight = choice1.height + choice2.height + choicesSpacer;
+		}
+		else if (loadedChoices.length == 3) {
+			choice1.setText(currentModuleChoicesData[loadedChoices[0]].text);
+			choice1.y = frame02YPos;
+			choice2.setText(currentModuleChoicesData[loadedChoices[1]].text);
+			choice2.y = frame02YPos + choice1.height + choicesSpacer;
+			choice3.setText(currentModuleChoicesData[loadedChoices[2]].text);
+			choice3.y = frame02YPos + choice1.height + choice2.height + (choicesSpacer * 2);
+			choice4.setText("");
+			choice5.setText("");
+			choicesHeight = choice1.height + choice2.height + choice3.height + (choicesSpacer * 2);
+		}
+		else if (loadedChoices.length == 4) {
+			choice1.setText(currentModuleChoicesData[loadedChoices[0]].text);
+			choice1.y = frame02YPos;
+			choice2.setText(currentModuleChoicesData[loadedChoices[1]].text);
+			choice2.y = frame02YPos + choice1.height + choicesSpacer;
+			choice3.setText(currentModuleChoicesData[loadedChoices[2]].text);
+			choice3.y = frame02YPos + choice1.height + choice2.height + (choicesSpacer * 2);
+			choice4.setText(currentModuleChoicesData[loadedChoices[3]].text);
+			choice4.y = frame02YPos + choice1.height + choice2.height + choice3.height + (choicesSpacer * 3);
+			choice5.setText("");
+			choicesHeight = choice1.height + choice2.height + choice3.height + choice4.height + (choicesSpacer * 3);
+		}
+		else if (loadedChoices.length == 5) {
+			choice1.setText(currentModuleChoicesData[loadedChoices[0]].text);
+			choice1.y = frame02YPos;
+			choice2.setText(currentModuleChoicesData[loadedChoices[1]].text);
+			choice2.y = frame02YPos + choice1.height + choicesSpacer;
+			choice3.setText(currentModuleChoicesData[loadedChoices[2]].text);
+			choice3.y = frame02YPos + choice1.height + choice2.height + (choicesSpacer * 2);
+			choice4.setText(currentModuleChoicesData[loadedChoices[3]].text);
+			choice4.y = frame02YPos + choice1.height + choice2.height + choice3.height + (choicesSpacer * 3);
+			choice5.setText(currentModuleChoicesData[loadedChoices[4]].text);
+			choice5.y = frame02YPos + choice1.height + choice2.height + choice3.height + +choice4.height + (choicesSpacer * 4);
+			choicesHeight = choice1.height + choice2.height + choice3.height + choice4.height + choice5.height + (choicesSpacer * 4);
+		}
+		else {
+			//error
+		}
+	},
+	makeDecision: function () {
+		//THIS IS WHERE THE DECISION LOGIC HAPPENS
+		alert("Decision made!");
 	},
 	update: function () {
 		//Move text based on sliders
-		text1.y = text1_topGap - (((slider01.y - text1_topGap) / rightSliderGap01) * text1_distance);
-		choicesTextGroup.y = 1 - (((slider02.y - text2_topGap) / rightSliderGap02) * text2_distance);
+		if (slider01.visible == true) {
+			text1.y = text1_topGap - (((slider01.y - text1_topGap) / rightSliderGap01) * text1_distance);
+		}
+		if (slider02.visible == true) {
+			choicesTextGroup.y = 1 - (((slider02.y - text2_topGap) / rightSliderGap02) * text2_distance);
+		}
 		//text2.y = text2_topGap - (((slider02.y - text2_topGap) / rightSliderGap02) * text2_distance);
-		text1.setText(textPrint); //!!!!!!!!!
-		this.adjustSliders();
+		//text1.setText(textPrint); //!!!!!!!!!
+		//this.adjustSliders();
 		
 	}
 }
