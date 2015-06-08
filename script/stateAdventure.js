@@ -512,8 +512,72 @@ theGame.prototype = {
 		}
 	},
 	makeDecision: function (choiceNumber) {
-		//THIS IS WHERE THE DECISION LOGIC HAPPENS
-		alert("Decision made! Choice " + choiceNumber);
+		//alert("Decision made! Choice " + choiceNumber);
+		var tempReference = loadedChoices[choiceNumber - 1]; //-1 because starts with 0, so choice 1 is key 0 in the array
+		var destinationA_dieRoll;
+		var destinationB_dieRoll;
+		var destinationC_dieRoll;
+		var destinationD_dieRoll;
+
+		if (currentModuleChoicesData[tempReference].desinationA_Percentage === null || currentModuleChoicesData[tempReference].desinationA_Percentage == "") {
+			//There's only one destination, go to destinationA
+			//currentNodeKey = destinationA
+			//this.loadStoryNode();
+		}
+		else if (currentModuleChoicesData[tempReference].desinationC_Percentage === null || currentModuleChoicesData[tempReference].desinationC_Percentage == "") {
+			//There's no third destination, so it's between destinationA and destinationB
+			destinationA_dieRoll = (Math.floor(Math.random() * 100) + 1) * currentModuleChoicesData[tempReference].desinationA_Percentage;
+			destinationB_dieRoll = (Math.floor(Math.random() * 100) + 1) * currentModuleChoicesData[tempReference].desinationB_Percentage;
+
+			if (destinationA_dieRoll > destinationB_dieRoll) {
+				//go to destinationA
+			}
+			else {
+				//go to destinationB
+			}
+		}
+		else if (currentModuleChoicesData[tempReference].desinationD_Percentage === null || currentModuleChoicesData[tempReference].desinationD_Percentage == "") {
+			//There's no fourth destination, so it's between destinationA and destinationB anddestinationC
+			destinationA_dieRoll = (Math.floor(Math.random() * 100) + 1) * currentModuleChoicesData[tempReference].desinationA_Percentage;
+			destinationB_dieRoll = (Math.floor(Math.random() * 100) + 1) * currentModuleChoicesData[tempReference].desinationB_Percentage;
+			destinationC_dieRoll = (Math.floor(Math.random() * 100) + 1) * currentModuleChoicesData[tempReference].desinationC_Percentage;
+
+			if (destinationA_dieRoll > destinationB_dieRoll && destinationA_dieRoll > destinationC_dieRoll) {
+				//go to destinationA
+			}
+			else if (destinationB_dieRoll > destinationC_dieRoll) {
+				//go to destinationB
+			}
+			else {
+				//go to destinationC
+			}
+		}
+		else {
+			//There are four destinations
+			destinationA_dieRoll = (Math.floor(Math.random() * 100) + 1) * currentModuleChoicesData[tempReference].desinationA_Percentage;
+			destinationB_dieRoll = (Math.floor(Math.random() * 100) + 1) * currentModuleChoicesData[tempReference].desinationB_Percentage;
+			destinationC_dieRoll = (Math.floor(Math.random() * 100) + 1) * currentModuleChoicesData[tempReference].desinationC_Percentage;
+			destinationD_dieRoll = (Math.floor(Math.random() * 100) + 1) * currentModuleChoicesData[tempReference].desinationD_Percentage;
+
+			if (destinationA_dieRoll > destinationB_dieRoll && destinationA_dieRoll > destinationC_dieRoll && destinationA_dieRoll > destinationD_dieRoll) {
+				//go to destinationA
+			}
+			else if (destinationB_dieRoll > destinationC_dieRoll && destinationB_dieRoll > destinationD_dieRoll) {
+				//go to destinationB
+			}
+			else if (destinationC_dieRoll > destinationD_dieRoll) {
+				//go to destinationC
+			}
+			else {
+				//go to destinationD
+			}
+		}
+	},
+	loadStoryNode: function () {
+
+		//text1.setText(textPrint);
+		this.loadChoices();
+		this.adjustSliders();
 	},
 	update: function () {
 		//Move text based on sliders
