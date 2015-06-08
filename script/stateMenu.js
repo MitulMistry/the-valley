@@ -112,7 +112,7 @@ mainMenu.prototype = {
 		var styleMenuText01 = { font: 'bold 12pt Arial', fill: '#3A3A3A', align: 'left' };
 		var styleMenuText02 = { font: 'bold 10pt Arial', fill: '#3A3A3A', align: 'left' };
 
-		var menuText = this.game.add.text(this.game.width / 2, this.game.height * 0.9533, "Mitul Mistry 2015 - v0.01", styleMenuText01);
+		var menuText = this.game.add.text(this.game.width / 2, this.game.height * 0.9533, "Mitul Mistry 2015 - DEV 0.05", styleMenuText01);
 		menuText.anchor.setTo(0.5, 0.5);
 
 		var menuText = this.game.add.text(this.game.width / 2, this.game.height * 0.98, "Created with Phaser", styleMenuText02);

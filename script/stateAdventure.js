@@ -105,13 +105,14 @@ theGame.prototype = {
 		blackGradient2.y = this.game.height;
 		blackGradient2.scale.y = -1;
 
+		//Dimensions of the text windows 
 		frame01Width = this.game.width * 0.7225;
 		frame01Height = this.game.height * 0.5;
 		frame01XPos = ((this.game.width - frame01Width) / 2) - 11;
 		frame01YPos = this.game.height * 0.12;
 		
 		frame02Width = frame01Width;
-		frame02Height = this.game.height * 0.3067;
+		frame02Height = this.game.height * 0.275; //0.3067
 		frame02XPos = frame01XPos;
 		frame02YPos = ((this.game.height - frame01YPos - frame01Height - frame02Height) / 2) + frame01YPos + frame01Height;
 
@@ -154,7 +155,7 @@ theGame.prototype = {
 
 		//Debug items (Strip from final build)
 		//-------------------------------------
-		//currentNodeKey = "AA001AD000AA"; //Change start node for testing.
+		//currentNodeKey = "AA000AA000AB"; //Change start node for testing.
 
 		var textPointsPower;
 		var textPointsKarma;
@@ -447,7 +448,7 @@ theGame.prototype = {
 		for (var i = 0; i < currentModuleChoicesData.length; i++) {
 			stringTest = currentModuleChoicesData[i].KEY;
 			if (stringTest.substring(0, 12) == currentNodeKey) {
-				//console.log("SUCCESS: " + currentModuleChoicesData[i].KEY);
+				//console.log("SUCCESS: " + currentModuleChoicesData[i].KEY + " " + i);
 				loadedChoices.push(i);
 			}
 		}
@@ -519,63 +520,75 @@ theGame.prototype = {
 		var destinationC_dieRoll;
 		var destinationD_dieRoll;
 
-		if (currentModuleChoicesData[tempReference].desinationA_Percentage === null || currentModuleChoicesData[tempReference].desinationA_Percentage == "") {
+		//alert(currentModuleChoicesData[tempReference].destinationA_percentage);
+
+		if (currentModuleChoicesData[tempReference].destinationA_percentage === null || currentModuleChoicesData[tempReference].destinationA_percentage == "" || currentModuleChoicesData[tempReference].destinationA_percentage == undefined) {
 			//There's only one destination, go to destinationA
-			//currentNodeKey = destinationA
-			//this.loadStoryNode();
+			this.loadStoryNode(currentModuleChoicesData[tempReference].destinationA);
 		}
-		else if (currentModuleChoicesData[tempReference].desinationC_Percentage === null || currentModuleChoicesData[tempReference].desinationC_Percentage == "") {
+		else if (currentModuleChoicesData[tempReference].destinationC_percentage === null || currentModuleChoicesData[tempReference].destinationC_percentage == "" || currentModuleChoicesData[tempReference].destinationC_percentage == undefined) {
 			//There's no third destination, so it's between destinationA and destinationB
-			destinationA_dieRoll = (Math.floor(Math.random() * 100) + 1) * currentModuleChoicesData[tempReference].desinationA_Percentage;
-			destinationB_dieRoll = (Math.floor(Math.random() * 100) + 1) * currentModuleChoicesData[tempReference].desinationB_Percentage;
+			destinationA_dieRoll = (Math.floor(Math.random() * 100) + 1) * currentModuleChoicesData[tempReference].destinationA_percentage;
+			destinationB_dieRoll = (Math.floor(Math.random() * 100) + 1) * currentModuleChoicesData[tempReference].destinationB_percentage;
 
 			if (destinationA_dieRoll > destinationB_dieRoll) {
 				//go to destinationA
+				this.loadStoryNode(currentModuleChoicesData[tempReference].destinationA);
 			}
 			else {
 				//go to destinationB
+				this.loadStoryNode(currentModuleChoicesData[tempReference].destinationB);
 			}
 		}
-		else if (currentModuleChoicesData[tempReference].desinationD_Percentage === null || currentModuleChoicesData[tempReference].desinationD_Percentage == "") {
-			//There's no fourth destination, so it's between destinationA and destinationB anddestinationC
-			destinationA_dieRoll = (Math.floor(Math.random() * 100) + 1) * currentModuleChoicesData[tempReference].desinationA_Percentage;
-			destinationB_dieRoll = (Math.floor(Math.random() * 100) + 1) * currentModuleChoicesData[tempReference].desinationB_Percentage;
-			destinationC_dieRoll = (Math.floor(Math.random() * 100) + 1) * currentModuleChoicesData[tempReference].desinationC_Percentage;
+		else if (currentModuleChoicesData[tempReference].destinationD_percentage === null || currentModuleChoicesData[tempReference].destinationD_percentage == "") {
+			//There's no fourth destination, so it's between destinationA and destinationB and destinationC
+			destinationA_dieRoll = (Math.floor(Math.random() * 100) + 1) * currentModuleChoicesData[tempReference].destinationA_percentage;
+			destinationB_dieRoll = (Math.floor(Math.random() * 100) + 1) * currentModuleChoicesData[tempReference].destinationB_percentage;
+			destinationC_dieRoll = (Math.floor(Math.random() * 100) + 1) * currentModuleChoicesData[tempReference].destinationC_percentage;
 
 			if (destinationA_dieRoll > destinationB_dieRoll && destinationA_dieRoll > destinationC_dieRoll) {
 				//go to destinationA
+				this.loadStoryNode(currentModuleChoicesData[tempReference].destinationA);
 			}
 			else if (destinationB_dieRoll > destinationC_dieRoll) {
 				//go to destinationB
+				this.loadStoryNode(currentModuleChoicesData[tempReference].destinationB);
 			}
 			else {
 				//go to destinationC
+				this.loadStoryNode(currentModuleChoicesData[tempReference].destinationC);
 			}
 		}
 		else {
 			//There are four destinations
-			destinationA_dieRoll = (Math.floor(Math.random() * 100) + 1) * currentModuleChoicesData[tempReference].desinationA_Percentage;
-			destinationB_dieRoll = (Math.floor(Math.random() * 100) + 1) * currentModuleChoicesData[tempReference].desinationB_Percentage;
-			destinationC_dieRoll = (Math.floor(Math.random() * 100) + 1) * currentModuleChoicesData[tempReference].desinationC_Percentage;
-			destinationD_dieRoll = (Math.floor(Math.random() * 100) + 1) * currentModuleChoicesData[tempReference].desinationD_Percentage;
+			destinationA_dieRoll = (Math.floor(Math.random() * 100) + 1) * currentModuleChoicesData[tempReference].destinationA_percentage;
+			destinationB_dieRoll = (Math.floor(Math.random() * 100) + 1) * currentModuleChoicesData[tempReference].destinationB_percentage;
+			destinationC_dieRoll = (Math.floor(Math.random() * 100) + 1) * currentModuleChoicesData[tempReference].destinationC_percentage;
+			destinationD_dieRoll = (Math.floor(Math.random() * 100) + 1) * currentModuleChoicesData[tempReference].destinationD_percentage;
 
 			if (destinationA_dieRoll > destinationB_dieRoll && destinationA_dieRoll > destinationC_dieRoll && destinationA_dieRoll > destinationD_dieRoll) {
 				//go to destinationA
+				this.loadStoryNode(currentModuleChoicesData[tempReference].destinationA);
 			}
 			else if (destinationB_dieRoll > destinationC_dieRoll && destinationB_dieRoll > destinationD_dieRoll) {
 				//go to destinationB
+				this.loadStoryNode(currentModuleChoicesData[tempReference].destinationB);
 			}
 			else if (destinationC_dieRoll > destinationD_dieRoll) {
 				//go to destinationC
+				this.loadStoryNode(currentModuleChoicesData[tempReference].destinationC);
 			}
 			else {
 				//go to destinationD
+				this.loadStoryNode(currentModuleChoicesData[tempReference].destinationD);
 			}
 		}
 	},
-	loadStoryNode: function () {
-
-		//text1.setText(textPrint);
+	loadStoryNode: function (destination) {
+		//alert(destination);
+		currentNodeKey = destination;
+		textPrint = currentModuleTextMap.get(currentNodeKey);
+		text1.setText(textPrint);
 		this.loadChoices();
 		this.adjustSliders();
 	},
