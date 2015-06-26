@@ -589,6 +589,10 @@ theGame.prototype = {
 		currentNodeKey = destination;
 		textPrint = currentModuleTextMap.get(currentNodeKey);
 		text1.setText(textPrint);
+
+		//kern of duty text
+		//text1.setText('');
+
 		this.loadChoices();
 		this.adjustSliders();
 	},
