@@ -156,6 +156,7 @@ theGame.prototype = {
 		//Debug items (Strip from final build)
 		//-------------------------------------
 		//currentNodeKey = "AA000AA000AB"; //Change start node for testing.
+		//currentNodeKey = "AA001AH001AD";
 
 		var textPointsPower;
 		var textPointsKarma;
@@ -445,6 +446,13 @@ theGame.prototype = {
 		var stringTest;
 		loadedChoices.length = 0; //Clear the array
 
+		//Reset choice colors to white
+		choice1.fill = choiceColor;
+		choice2.fill = choiceColor;
+		choice3.fill = choiceColor;
+		choice4.fill = choiceColor;
+		choice5.fill = choiceColor;
+
 		for (var i = 0; i < currentModuleChoicesData.length; i++) {
 			stringTest = currentModuleChoicesData[i].KEY;
 			if (stringTest.substring(0, 12) == currentNodeKey) {
@@ -589,6 +597,7 @@ theGame.prototype = {
 		currentNodeKey = destination;
 		textPrint = currentModuleTextMap.get(currentNodeKey);
 		text1.setText(textPrint);
+		text1.y = frame01YPos;
 
 		//kern of duty text
 		//text1.setText('');

@@ -67,7 +67,7 @@
   },
   {
     "KEY":"AA000AA000AB01",
-    "text":"Help your father. The boar is very dangerous and you are a weak young man, but you must do something to help before it�s too late.",
+    "text":"Help your father. The boar is very dangerous and you are a weak young man, but you must do something to help before it's too late.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -529,7 +529,7 @@
   },
   {
     "KEY":"AA001AE000AA01",
-    "text":"Go above the tree line. It will be easier to find a leopard, but much colder and you�ll have less protection from the elements.",
+    "text":"Go above the tree line. It will be easier to find a leopard, but much colder and you'll have less protection from the elements.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -595,7 +595,7 @@
   },
   {
     "KEY":"AA001AE000AA02",
-    "text":"Stay near the tree line. It will be harder to find a leopard, but not as cold and you�ll have the shelter of the trees.",
+    "text":"Stay near the tree line. It will be harder to find a leopard, but not as cold and you'll have the shelter of the trees.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -727,7 +727,7 @@
   },
   {
     "KEY":"AA001AE000AB02",
-    "text":"Return below the tree line. You aren�t prepared for this cold and you can�t prove yourself as a man by dying on the mountainside.",
+    "text":"Return below the tree line. You aren't prepared for this cold and you can't prove yourself as a man by dying on the mountainside.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -859,7 +859,7 @@
   },
   {
     "KEY":"AA001AE001AA01",
-    "text":"Light a torch and enter the cave. Leopards are notoriously elusive and if you�ve had the good fortune to find one, you must act, regardless of the consequences.",
+    "text":"Light a torch and enter the cave. Leopards are notoriously elusive and if you've had the good fortune to find one, you must act, regardless of the consequences.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -925,7 +925,7 @@
   },
   {
     "KEY":"AA001AE001AA02",
-    "text":"Wait outside for it to come out. Going into the cave alone would be suicide, and it�s more prudent to wait to catch it by surprise.",
+    "text":"Wait outside for it to come out. Going into the cave alone would be suicide, and it's more prudent to wait to catch it by surprise.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -1123,7 +1123,7 @@
   },
   {
     "KEY":"AA001AE001AE02",
-    "text":"Have mercy on the mother and her cubs. You will not be seen as a man by your tribe and you will suffer, but you do not want the mother�s blood on your hands.",
+    "text":"Have mercy on the mother and her cubs. You will not be seen as a man by your tribe and you will suffer, but you do not want the mother's blood on your hands.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -1849,7 +1849,7 @@
   },
   {
     "KEY":"AA001AE002BA01",
-    "text":"Keep going. You�re not going home a failure.",
+    "text":"Keep going. You're not going home a failure.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -2047,7 +2047,7 @@
   },
   {
     "KEY":"AA001AE002BB02",
-    "text":"Attempt to return home. It will be dangerous trying to return home now, but it�s better to risk it than get stranded in the blizzard or suffer an avalanche... or worse.",
+    "text":"Attempt to return home. It will be dangerous trying to return home now, but it's better to risk it than get stranded in the blizzard or suffer an avalanche... or worse.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -2311,7 +2311,7 @@
   },
   {
     "KEY":"AA001AE002CA01",
-    "text":"Shoot it now. You don�t have a good look at the creature, but you may not get another chance.",
+    "text":"Shoot it now. You don't have a good look at the creature, but you may not get another chance.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -3037,7 +3037,7 @@
   },
   {
     "KEY":"AA001AG003AA02",
-    "text":"Return home empty-handed. Your tribe will be disappointed in you and none of the girls will want to marry you, but at least you�ll still be alive.",
+    "text":"Return home empty-handed. Your tribe will be disappointed in you and none of the girls will want to marry you, but at least you'll still be alive.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -3631,7 +3631,7 @@
   },
   {
     "KEY":"AA001AG003BA01",
-    "text":"Assault them head on. It�s a higher risk maneuver, but making a head assault gives you a better chance for a kill. It also gives a better chance for the wolves to kill you.",
+    "text":"Assault them head on. It's a higher risk maneuver, but making a head assault gives you a better chance for a kill. It also gives a better chance for the wolves to kill you.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -3697,7 +3697,7 @@
   },
   {
     "KEY":"AA001AG003BA02",
-    "text":"Shoot them from afar. It�s a lower risk attack, but the light is poor this late in the day and you may not get a good shot off before they run.",
+    "text":"Shoot them from afar. It's a lower risk attack, but the light is poor this late in the day and you may not get a good shot off before they run.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -4951,7 +4951,7 @@
   },
   {
     "KEY":"AA001AF001AA02",
-    "text":"There are too many of them. It�s better to wait until a few leave.",
+    "text":"There are too many of them. It's better to wait until a few leave.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -5347,7 +5347,7 @@
   },
   {
     "KEY":"AA001AF002AA01",
-    "text":"Aim your bow and start shooting at them from afar. It�s a longer distance and you may not get a good shot off.",
+    "text":"Aim your bow and start shooting at them from afar. It's a longer distance and you may not get a good shot off.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -6205,7 +6205,7 @@
   },
   {
     "KEY":"AA001AH001AC03",
-    "text":"Demand both. Your brother is already married and you have proven yourself to be one of the strongest men of the tribe. You don�t want to disappoint either of the girls and you will be a good husband to both.",
+    "text":"Demand both. Your brother is already married and you have proven yourself to be one of the strongest men of the tribe. You don't want to disappoint either of the girls and you will be a good husband to both.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -6733,7 +6733,7 @@
   },
   {
     "KEY":"AA001AH002AA01",
-    "text":"Comfort her and ask her how she�s feeling.",
+    "text":"Comfort her and ask her how she's feeling.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -6865,7 +6865,7 @@
   },
   {
     "KEY":"AA001AH002AA03",
-    "text":"Scold her and tell her to improve her attitude - that the whole tribe is struggling and if she contributed more, she�d feel better.",
+    "text":"Scold her and tell her to improve her attitude - that the whole tribe is struggling and if she contributed more, she'd feel better.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -7195,7 +7195,7 @@
   },
   {
     "KEY":"AA001AH003AA01",
-    "text":"Comfort her and ask her how she�s feeling.",
+    "text":"Comfort her and ask her how she's feeling.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -7327,7 +7327,7 @@
   },
   {
     "KEY":"AA001AH003AA03",
-    "text":"Scold her and tell her to improve her attitude - that the whole tribe is struggling and if she contributed more, she�d feel better.",
+    "text":"Scold her and tell her to improve her attitude - that the whole tribe is struggling and if she contributed more, she'd feel better.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -7657,7 +7657,7 @@
   },
   {
     "KEY":"AA001AH004AA01",
-    "text":"Comfort them and ask them how they�re feeling.",
+    "text":"Comfort them and ask them how they're feeling.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -7723,7 +7723,7 @@
   },
   {
     "KEY":"AA001AH004AA02",
-    "text":"Scold them and tell them to improve their attitudes - that the whole tribe is struggling and if they contributed more, they�d feel better.",
+    "text":"Scold them and tell them to improve their attitudes - that the whole tribe is struggling and if they contributed more, they'd feel better.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -8911,7 +8911,7 @@
   },
   {
     "KEY":"AA001AI001AA01",
-    "text":"Tell her how much you appreciate her hard work and all that she�s been doing for you lately, including cooking meals and supporting you with your responsibilities.",
+    "text":"Tell her how much you appreciate her hard work and all that she's been doing for you lately, including cooking meals and supporting you with your responsibilities.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -9373,7 +9373,7 @@
   },
   {
     "KEY":"AA001AI002AA01",
-    "text":"Tell her how much you appreciate her hard work and all that she�s been doing for you lately, including cooking meals and supporting you with your responsibilities.",
+    "text":"Tell her how much you appreciate her hard work and all that she's been doing for you lately, including cooking meals and supporting you with your responsibilities.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -9835,7 +9835,7 @@
   },
   {
     "KEY":"AA001AI003AA01",
-    "text":"Tell them both how much you appreciate them and all they�ve been doing to support you and the tribe.",
+    "text":"Tell them both how much you appreciate them and all they've been doing to support you and the tribe.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -10033,7 +10033,7 @@
   },
   {
     "KEY":"AA001AI003AA04",
-    "text":"Ignore them. They�re grown women and they can resolve their issues on their own.",
+    "text":"Ignore them. They're grown women and they can resolve their issues on their own.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -10561,7 +10561,7 @@
   },
   {
     "KEY":"AA001AJ000AC01",
-    "text":"Tell them they can get into the village by crossing the stream to the south. There are less guards posted there and they wouldn�t expect them.",
+    "text":"Tell them they can get into the village by crossing the stream to the south. There are less guards posted there and they wouldn't expect them.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -11287,7 +11287,7 @@
   },
   {
     "KEY":"AA001AJ001BA02",
-    "text":"Try to find your father or brother if they�re still alive so you can plot an escape.",
+    "text":"Try to find your father or brother if they're still alive so you can plot an escape.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -12739,7 +12739,7 @@
   },
   {
     "KEY":"AA001AK000AB01",
-    "text":"Pull out your bow and start firing on the raiders. You�re uphill and you have the advantage of high ground, but the raiders are awfully close to the foragers. If your aim isn�t true, you could hit one of your people instead.",
+    "text":"Pull out your bow and start firing on the raiders. You're uphill and you have the advantage of high ground, but the raiders are awfully close to the foragers. If your aim isn't true, you could hit one of your people instead.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -13663,7 +13663,7 @@
   },
   {
     "KEY":"AA001AK000BC02",
-    "text":"Let your brother go alone. It�s too risky and you�re needed at the village.",
+    "text":"Let your brother go alone. It's too risky and you're needed at the village.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -13795,7 +13795,7 @@
   },
   {
     "KEY":"AA001AK001AA02",
-    "text":"Lead a secondary group to attack the raiders� flank while they are distracted with your brother�s primary assault.",
+    "text":"Lead a secondary group to attack the raiders' flank while they are distracted with your brother's primary assault.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -13993,7 +13993,7 @@
   },
   {
     "KEY":"AA001AK001AD01",
-    "text":"Convene on your brother�s position to support him directly. Riskier, but could end the battle quicker.",
+    "text":"Convene on your brother's position to support him directly. Riskier, but could end the battle quicker.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -17161,7 +17161,7 @@
   },
   {
     "KEY":"AA002AC000AA01",
-    "text":"Forgive them. There�s no sense in leaving behind more wounds before passing.",
+    "text":"Forgive them. There's no sense in leaving behind more wounds before passing.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -17689,7 +17689,7 @@
   },
   {
     "KEY":"AA002AF000AA02",
-    "text":"Impress her. Mention how you saved your father�s life.",
+    "text":"Impress her. Mention how you saved your father's life.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -17821,7 +17821,7 @@
   },
   {
     "KEY":"AA002AF000AA04",
-    "text":"Assert yourself. Tell her you understand what it means for her reputation to be associated with you, but that you don�t live in fear of other people�s opinions and neither should she.",
+    "text":"Assert yourself. Tell her you understand what it means for her reputation to be associated with you, but that you don't live in fear of other people's opinions and neither should she.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -18085,7 +18085,7 @@
   },
   {
     "KEY":"AA002AF001AA02",
-    "text":"Disappear into the wilderness. No one will miss you and it will improve your tribe�s chances for survival.",
+    "text":"Disappear into the wilderness. No one will miss you and it will improve your tribe's chances for survival.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -18547,7 +18547,7 @@
   },
   {
     "KEY":"AA002AF000AD01",
-    "text":"Tell her you�re sorry for being so aggressive, but it�s the only way you would be able to get through to her.",
+    "text":"Tell her you're sorry for being so aggressive, but it's the only way you would be able to get through to her.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -19471,7 +19471,7 @@
   },
   {
     "KEY":"AA002AF002BA02",
-    "text":"Play it safe. You like her, but you don�t want to push your luck and drive her away.",
+    "text":"Play it safe. You like her, but you don't want to push your luck and drive her away.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -19867,7 +19867,7 @@
   },
   {
     "KEY":"AA002AF003AA02",
-    "text":"Keep to yourself and be glad that you haven�t been noticed.",
+    "text":"Keep to yourself and be glad that you haven't been noticed.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -20065,7 +20065,7 @@
   },
   {
     "KEY":"AA002AF003AD01",
-    "text":"Get closer and hide behind the bushes to hear what they�re talking about.",
+    "text":"Get closer and hide behind the bushes to hear what they're talking about.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -20263,7 +20263,7 @@
   },
   {
     "KEY":"AA002AF003BA02",
-    "text":"Keep quiet. There�s nothing you can do and you must stay alive to inform your father of what happened.",
+    "text":"Keep quiet. There's nothing you can do and you must stay alive to inform your father of what happened.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -20593,7 +20593,7 @@
   },
   {
     "KEY":"AA002AI000AA01",
-    "text":"Accept your father�s judgment. You are undeserving of anyone better and causing disagreement right now while the tribe is struggling could be disastrous. Besides, if you insisted on choosing your own bride and none others accepted, you would become the laughing stock of the entire tribe (more so than you�ve already been). Perhaps you would not be able to marry ever again at all.",
+    "text":"Accept your father's judgment. You are undeserving of anyone better and causing disagreement right now while the tribe is struggling could be disastrous. Besides, if you insisted on choosing your own bride and none others accepted, you would become the laughing stock of the entire tribe (more so than you've already been). Perhaps you would not be able to marry ever again at all.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -21055,7 +21055,7 @@
   },
   {
     "KEY":"AA002AI002BA01",
-    "text":"Tell them to hide in their homes and you�ll negotiate with the raiders when they come.",
+    "text":"Tell them to hide in their homes and you'll negotiate with the raiders when they come.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -21253,7 +21253,7 @@
   },
   {
     "KEY":"AA002AI002BC02",
-    "text":"Refuse. Tell them if they don�t leave, you�ll order your men to attack.",
+    "text":"Refuse. Tell them if they don't leave, you'll order your men to attack.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -21715,7 +21715,7 @@
   },
   {
     "KEY":"AA002AI000BB02",
-    "text":"Back down. Tell your father you changed your mind and you�ll accept Helga after all.",
+    "text":"Back down. Tell your father you changed your mind and you'll accept Helga after all.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -22309,7 +22309,7 @@
   },
   {
     "KEY":"AA002AI001AB02",
-    "text":"Refuse. Tell them if they don�t leave, you�ll order your men to attack.",
+    "text":"Refuse. Tell them if they don't leave, you'll order your men to attack.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -22771,7 +22771,7 @@
   },
   {
     "KEY":"AA002AI001BA01",
-    "text":"Agree with your brother. The raiders are ruthless and they�re assuredly defiling the women right now. Any time wasted puts their lives in more and more danger and you must do anything possible to save Dara.",
+    "text":"Agree with your brother. The raiders are ruthless and they're assuredly defiling the women right now. Any time wasted puts their lives in more and more danger and you must do anything possible to save Dara.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -22837,7 +22837,7 @@
   },
   {
     "KEY":"AA002AI001BA02",
-    "text":"Agree with your father. Send a party to negotiate and trade for the women�s release. It�s the best chance you have to keep the women alive.",
+    "text":"Agree with your father. Send a party to negotiate and trade for the women's release. It's the best chance you have to keep the women alive.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -22903,7 +22903,7 @@
   },
   {
     "KEY":"AA002AI003AA01",
-    "text":"Accept your role. Somebody needs to be able to warn the tribe in case of defeat. You�re crippled and you�ll be nothing but a liability in battle.",
+    "text":"Accept your role. Somebody needs to be able to warn the tribe in case of defeat. You're crippled and you'll be nothing but a liability in battle.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -23365,7 +23365,7 @@
   },
   {
     "KEY":"AA002AI003AD03",
-    "text":"Leave and follow your dead father�s instructions. Return to warn your tribe so they can escape the raiders� vengeance. You are a cripple and there�s nothing more than you can do. Playing a hero and dying or getting captured now will mean your people will receive no warning. You are playing with their lives.",
+    "text":"Leave and follow your dead father's instructions. Return to warn your tribe so they can escape the raiders' vengeance. You are a cripple and there's nothing more than you can do. Playing a hero and dying or getting captured now will mean your people will receive no warning. You are playing with their lives.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -24421,7 +24421,7 @@
   },
   {
     "KEY":"AA002AI004AE01",
-    "text":"Accept your role. Somebody needs to be able to warn the tribe in case of defeat. You�re crippled and you�ll be nothing but a liability in battle.",
+    "text":"Accept your role. Somebody needs to be able to warn the tribe in case of defeat. You're crippled and you'll be nothing but a liability in battle.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -24883,7 +24883,7 @@
   },
   {
     "KEY":"AA003AD000AA02",
-    "text":"Take one of the dogs south to try and track your brother�s hunting party.",
+    "text":"Take one of the dogs south to try and track your brother's hunting party.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -26005,7 +26005,7 @@
   },
   {
     "KEY":"AA003AF002AA03",
-    "text":"Abandon the tribe. They will never respect you. The tribe is falling apart and you�re better off on your own.",
+    "text":"Abandon the tribe. They will never respect you. The tribe is falling apart and you're better off on your own.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -26137,7 +26137,7 @@
   },
   {
     "KEY":"AA003AG000AA01",
-    "text":"Take one of the dogs and go find your brother alone. If you don�t do something, no one will.",
+    "text":"Take one of the dogs and go find your brother alone. If you don't do something, no one will.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -26203,7 +26203,7 @@
   },
   {
     "KEY":"AA003AG000AA02",
-    "text":"Back down. You�re not capable of surviving alone - it would be suicide, and this is not what you signed up for.",
+    "text":"Back down. You're not capable of surviving alone - it would be suicide, and this is not what you signed up for.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -26401,7 +26401,7 @@
   },
   {
     "KEY":"AA003AG002AA01",
-    "text":"Make camp and begin again at dawn. You�ve been traveling all day and you need the rest, and it�s too dangerous to travel in the dark.",
+    "text":"Make camp and begin again at dawn. You've been traveling all day and you need the rest, and it's too dangerous to travel in the dark.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -26731,7 +26731,7 @@
   },
   {
     "KEY":"AA003AG002AE02",
-    "text":"Turn back and return to the village. This has been a fool�s errand and you should leave now while you still have your life and report to your tribesmen that your brother is nowhere to be found.",
+    "text":"Turn back and return to the village. This has been a fool's errand and you should leave now while you still have your life and report to your tribesmen that your brother is nowhere to be found.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -28051,7 +28051,7 @@
   },
   {
     "KEY":"AA003AG004BI01",
-    "text":"Return to the village. This was way more than you bargained for and it�s time to head home. You�ve done the best you can.",
+    "text":"Return to the village. This was way more than you bargained for and it's time to head home. You've done the best you can.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -28117,7 +28117,7 @@
   },
   {
     "KEY":"AA003AG004BI02",
-    "text":"Continue pursuing your brother. You haven�t come all this way for nothing.",
+    "text":"Continue pursuing your brother. You haven't come all this way for nothing.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -28315,7 +28315,7 @@
   },
   {
     "KEY":"AA003AG005AA01",
-    "text":"Cover their wounds and help them back to the village. He�s your brother and you�ll do whatever it takes to save him.",
+    "text":"Cover their wounds and help them back to the village. He's your brother and you'll do whatever it takes to save him.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -28909,7 +28909,7 @@
   },
   {
     "KEY":"AA003AG003AA01",
-    "text":"Set up camp. You�re unlikely to find a better place and with the fresh water and nearby berries you can rest and stock up for the journey ahead.",
+    "text":"Set up camp. You're unlikely to find a better place and with the fresh water and nearby berries you can rest and stock up for the journey ahead.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -28975,7 +28975,7 @@
   },
   {
     "KEY":"AA003AG003AA02",
-    "text":"Keep going. There�s still some light out and you�re already taking the long way around - you have no time to spare if your brother is in danger.",
+    "text":"Keep going. There's still some light out and you're already taking the long way around - you have no time to spare if your brother is in danger.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -29305,7 +29305,7 @@
   },
   {
     "KEY":"AA003AG003AD01",
-    "text":"Follow the tracks. If your brother is still alive, you�re the only hope he and the tribe has.",
+    "text":"Follow the tracks. If your brother is still alive, you're the only hope he and the tribe has.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -29437,7 +29437,7 @@
   },
   {
     "KEY":"AA003AG003AE01",
-    "text":"Return home. There�s a good chance your brother and any others are dead and walking into the camp alone would be suicide.",
+    "text":"Return home. There's a good chance your brother and any others are dead and walking into the camp alone would be suicide.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -29503,7 +29503,7 @@
   },
   {
     "KEY":"AA003AG003AE02",
-    "text":"Attempt to infiltrate the camp and find your brother. If there�s a chance your brother or any of the hunters are alive, you have to take it.",
+    "text":"Attempt to infiltrate the camp and find your brother. If there's a chance your brother or any of the hunters are alive, you have to take it.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -29569,7 +29569,7 @@
   },
   {
     "KEY":"AA003AI000AA01",
-    "text":"Look in the large tent on the edge of the camp. It�s worn and dingy and the least habitable of the structures there.",
+    "text":"Look in the large tent on the edge of the camp. It's worn and dingy and the least habitable of the structures there.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -29635,7 +29635,7 @@
   },
   {
     "KEY":"AA003AI000AA02",
-    "text":"Look in the pen where the animals are kept. It�s large enough to hold prisoners as well.",
+    "text":"Look in the pen where the animals are kept. It's large enough to hold prisoners as well.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -29899,7 +29899,7 @@
   },
   {
     "KEY":"AA003AI001AA01",
-    "text":"Yes. You�ve come this far...",
+    "text":"Yes. You've come this far...",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -29965,7 +29965,7 @@
   },
   {
     "KEY":"AA003AI001AA02",
-    "text":"No. You�ve already risked too much. You�ve done the best you could. It�s time to retreat and head back to the village.",
+    "text":"No. You've already risked too much. You've done the best you could. It's time to retreat and head back to the village.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -30163,7 +30163,7 @@
   },
   {
     "KEY":"AA003AI002AA02",
-    "text":"Kill him. Dead men don�t make noise, but they bleed a lot.",
+    "text":"Kill him. Dead men don't make noise, but they bleed a lot.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -31351,7 +31351,7 @@
   },
   {
     "KEY":"AA003AG006AG01",
-    "text":"Offer your dog, your tools, food, supplies, and everything you�ve brought with you on your journey.",
+    "text":"Offer your dog, your tools, food, supplies, and everything you've brought with you on your journey.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -33331,7 +33331,7 @@
   },
   {
     "KEY":"AA003AF003AA01",
-    "text":"Argue that you have a rightful claim to leadership as your father�s last son remaining with the tribe.",
+    "text":"Argue that you have a rightful claim to leadership as your father's last son remaining with the tribe.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -33463,7 +33463,7 @@
   },
   {
     "KEY":"AA003AF003AA03",
-    "text":"Back down. The elders are clearly aggravated and it�s not worth getting into trouble.",
+    "text":"Back down. The elders are clearly aggravated and it's not worth getting into trouble.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -33991,7 +33991,7 @@
   },
   {
     "KEY":"AA003AJ000AA01",
-    "text":"Wait for your brother. Remain in place and figure out a strategy to find him. He�s out there somewhere and you can�t give up on him now.",
+    "text":"Wait for your brother. Remain in place and figure out a strategy to find him. He's out there somewhere and you can't give up on him now.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -34057,7 +34057,7 @@
   },
   {
     "KEY":"AA003AJ000AA02",
-    "text":"Begin the migration. Accept the reality that your brother is probably dead and you have to do what�s best for the tribe.",
+    "text":"Begin the migration. Accept the reality that your brother is probably dead and you have to do what's best for the tribe.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -34189,7 +34189,7 @@
   },
   {
     "KEY":"AA003AJ001AA02",
-    "text":"Jayroc and Noa (masons). They are stone cutters used to heavy hitting and manual labor. They�re extremely tough and resilient, but reckless and untrained in hunting and tracking.",
+    "text":"Jayroc and Noa (masons). They are stone cutters used to heavy hitting and manual labor. They're extremely tough and resilient, but reckless and untrained in hunting and tracking.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -34453,7 +34453,7 @@
   },
   {
     "KEY":"AA003AJ002AA02",
-    "text":"Begin the migration. The storm is abating very little and it seems that it�s only going to get worse in the coming days. However, migrating now in the heart of storm season will be extremely perilous.",
+    "text":"Begin the migration. The storm is abating very little and it seems that it's only going to get worse in the coming days. However, migrating now in the heart of storm season will be extremely perilous.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -34519,7 +34519,7 @@
   },
   {
     "KEY":"AA003AJ002AA03",
-    "text":"Stay put. It�s too dangerous to take action now that the storm is upon you.",
+    "text":"Stay put. It's too dangerous to take action now that the storm is upon you.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -34915,7 +34915,7 @@
   },
   {
     "KEY":"AA003AJ003AA01",
-    "text":"Send out a hunting and gathering party. You have few able bodies to send, but it�s either that or starve.",
+    "text":"Send out a hunting and gathering party. You have few able bodies to send, but it's either that or starve.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -34981,7 +34981,7 @@
   },
   {
     "KEY":"AA003AJ003AA02",
-    "text":"Begin the migration. The storm is abating very little and it seems that it�s only going to get worse in the coming days. However, migrating now in the heart of storm season will be extremely perilous.",
+    "text":"Begin the migration. The storm is abating very little and it seems that it's only going to get worse in the coming days. However, migrating now in the heart of storm season will be extremely perilous.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -35047,7 +35047,7 @@
   },
   {
     "KEY":"AA003AJ003AA03",
-    "text":"Stay put. It�s too dangerous to take action now that the storm is upon you.",
+    "text":"Stay put. It's too dangerous to take action now that the storm is upon you.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -35905,7 +35905,7 @@
   },
   {
     "KEY":"AA003AJ004AE01",
-    "text":"Advise him to take the eastern plains road. Your people have suffered so much already and it�s necessary to find them a new home as quickly as possible.",
+    "text":"Advise him to take the eastern plains road. Your people have suffered so much already and it's necessary to find them a new home as quickly as possible.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -36103,7 +36103,7 @@
   },
   {
     "KEY":"AA003AJ008AB01",
-    "text":"Accost them. Ask them where they�re headed and if they have any news on events in the area.",
+    "text":"Accost them. Ask them where they're headed and if they have any news on events in the area.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -36499,7 +36499,7 @@
   },
   {
     "KEY":"AA003AJ008BA01",
-    "text":"Agree with your brother and retreat. You are unprepared to fight open battle after such a long and weary journey. There�s too much at stake.",
+    "text":"Agree with your brother and retreat. You are unprepared to fight open battle after such a long and weary journey. There's too much at stake.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -36829,7 +36829,7 @@
   },
   {
     "KEY":"AA003AJ010AA02",
-    "text":"Disagree with your brother. You cannot give in to the raiders� demands. They will never be satisfied and they are clearly intimidated by your organized warriors. Now is the time to make a stand.",
+    "text":"Disagree with your brother. You cannot give in to the raiders' demands. They will never be satisfied and they are clearly intimidated by your organized warriors. Now is the time to make a stand.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -37819,7 +37819,7 @@
   },
   {
     "KEY":"AA003AJ009AC02",
-    "text":"Leave him be. You�ve helped him as much as you could and you cannot burden your tribe.",
+    "text":"Leave him be. You've helped him as much as you could and you cannot burden your tribe.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -39469,7 +39469,7 @@
   },
   {
     "KEY":"AA003AJ010BC02",
-    "text":"Prepare an ambush. Have your men hide and feign negotiation, then once the enemies� guard is down, strike.",
+    "text":"Prepare an ambush. Have your men hide and feign negotiation, then once the enemies' guard is down, strike.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -39931,7 +39931,7 @@
   },
   {
     "KEY":"AA003AJ010CB01",
-    "text":"Offer a division of territory, clearly demarcating boundaries and promise not to trespass on the raiders� hunting grounds.",
+    "text":"Offer a division of territory, clearly demarcating boundaries and promise not to trespass on the raiders' hunting grounds.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -40591,7 +40591,7 @@
   },
   {
     "KEY":"AA003AJ011AA01",
-    "text":"Urge him to round up the men and make an attack on the raider�s camp to try and retrieve the women.",
+    "text":"Urge him to round up the men and make an attack on the raider's camp to try and retrieve the women.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -40657,7 +40657,7 @@
   },
   {
     "KEY":"AA003AJ011AA02",
-    "text":"Go to the raider�s camp yourself and try to negotiate the women�s release.",
+    "text":"Go to the raider's camp yourself and try to negotiate the women's release.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -41977,7 +41977,7 @@
   },
   {
     "KEY":"AA003AJ006AA01",
-    "text":"Take the northern mountain road. It�s the fastest path to your destination, but it�s also used by the clans of the Mountain People who are known to be violent and erratic.",
+    "text":"Take the northern mountain road. It's the fastest path to your destination, but it's also used by the clans of the Mountain People who are known to be violent and erratic.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -43561,7 +43561,7 @@
   },
   {
     "KEY":"AA003AJ006DB02",
-    "text":"Run and let the surrounded tribe members die. The wolves are large and imposing and it wouldn�t be worth risking your life or the lives of the others for but a few stragglers.",
+    "text":"Run and let the surrounded tribe members die. The wolves are large and imposing and it wouldn't be worth risking your life or the lives of the others for but a few stragglers.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -44617,7 +44617,7 @@
   },
   {
     "KEY":"AA003AJ007AB01",
-    "text":"Keep going. You�re almost there.",
+    "text":"Keep going. You're almost there.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -45409,7 +45409,7 @@
   },
   {
     "KEY":"AA003AJ007CB02",
-    "text":"Leave them for dead. If you reach out, they�ll pull you in and you�ll die too.",
+    "text":"Leave them for dead. If you reach out, they'll pull you in and you'll die too.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -46201,7 +46201,7 @@
   },
   {
     "KEY":"AA003AJ007CI01",
-    "text":"Follow the river. It�s likely to lead to the Isle of Skorne, but you don�t know which fork to follow.",
+    "text":"Follow the river. It's likely to lead to the Isle of Skorne, but you don't know which fork to follow.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -46267,7 +46267,7 @@
   },
   {
     "KEY":"AA003AJ007CI02",
-    "text":"Follow the high trail. It leads deeper into the marshes, but where it leads, you�re not sure.",
+    "text":"Follow the high trail. It leads deeper into the marshes, but where it leads, you're not sure.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -46729,7 +46729,7 @@
   },
   {
     "KEY":"AA004AC000AA01",
-    "text":"Take the mountain path. You�ll avoid the wetlands, but the path is treacherous and known for its pitfalls.",
+    "text":"Take the mountain path. You'll avoid the wetlands, but the path is treacherous and known for its pitfalls.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -46861,7 +46861,7 @@
   },
   {
     "KEY":"AA004AF000AA",
-    "text":"Turn back and take the river path instead. Your father will lose valuable time due to your indecision, but he�ll never get the medicine he needs if you die on the rocks now.",
+    "text":"Turn back and take the river path instead. Your father will lose valuable time due to your indecision, but he'll never get the medicine he needs if you die on the rocks now.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -47059,7 +47059,7 @@
   },
   {
     "KEY":"AA004AE000AA02",
-    "text":"Try to find a way around. Time is of the essence, but you�ll do your father no favors getting swept away in the rapids.",
+    "text":"Try to find a way around. Time is of the essence, but you'll do your father no favors getting swept away in the rapids.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -48115,7 +48115,7 @@
   },
   {
     "KEY":"AA004AD000AA01",
-    "text":"Intervene. Your father would normally negotiate the problem, but he�s unconscious. If you don�t do something, no one will.",
+    "text":"Intervene. Your father would normally negotiate the problem, but he's unconscious. If you don't do something, no one will.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -48181,7 +48181,7 @@
   },
   {
     "KEY":"AA004AD000AA02",
-    "text":"Stay out of it. You�re just an adolescent and getting in the way could put you seriously at risk. The elders will handle the situation.",
+    "text":"Stay out of it. You're just an adolescent and getting in the way could put you seriously at risk. The elders will handle the situation.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -49633,7 +49633,7 @@
   },
   {
     "KEY":"AA004BI002AA02",
-    "text":"Keep going. The storm is still on its way and there�s no time to waste.",
+    "text":"Keep going. The storm is still on its way and there's no time to waste.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -50095,7 +50095,7 @@
   },
   {
     "KEY":"AA004BI003AA03",
-    "text":"Leave those who can�t keep up behind.  Though many won�t like it, you must do what�s best for the tribe.",
+    "text":"Leave those who can't keep up behind.  Though many won't like it, you must do what's best for the tribe.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -50359,7 +50359,7 @@
   },
   {
     "KEY":"AA004BJ000AA01",
-    "text":"Take the north mountain road. It has easier accessibility and allows for faster travel, but it�s also used by clans of the Mountain People who are erratic and fearsome.",
+    "text":"Take the north mountain road. It has easier accessibility and allows for faster travel, but it's also used by clans of the Mountain People who are erratic and fearsome.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -50425,7 +50425,7 @@
   },
   {
     "KEY":"AA004BJ000AA02",
-    "text":"Go through the Bonewoods. Travel will be harder and you�ll be more exposed to predators, but the trees will provide cover.",
+    "text":"Go through the Bonewoods. Travel will be harder and you'll be more exposed to predators, but the trees will provide cover.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -50689,7 +50689,7 @@
   },
   {
     "KEY":"AA004BJ001AB02",
-    "text":"Round up the men and prepare to charge the ranks of the Mountain People in your way. The storm will destroy you if you don�t.",
+    "text":"Round up the men and prepare to charge the ranks of the Mountain People in your way. The storm will destroy you if you don't.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -51679,7 +51679,7 @@
   },
   {
     "KEY":"AA004BL000AA02",
-    "text":"Kill them. It�s not worth the risk bringing them along.",
+    "text":"Kill them. It's not worth the risk bringing them along.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -51745,7 +51745,7 @@
   },
   {
     "KEY":"AA004BL000AA03",
-    "text":"Let them go. You don�t want to execute them and you don�t want the burden of bringing them along, but they will assuredly inform their clans of your presence and location.",
+    "text":"Let them go. You don't want to execute them and you don't want the burden of bringing them along, but they will assuredly inform their clans of your presence and location.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -53197,7 +53197,7 @@
   },
   {
     "KEY":"AA004BA000AA02",
-    "text":"Abandon the masons. They don�t know what they�re doing and you�ll be better off on your own.",
+    "text":"Abandon the masons. They don't know what they're doing and you'll be better off on your own.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -53263,7 +53263,7 @@
   },
   {
     "KEY":"AA004BB000AA01",
-    "text":"Stick with the hunters in hopes that they�ll sort their disagreements out. You won�t be able to survive in the wilderness alone.",
+    "text":"Stick with the hunters in hopes that they'll sort their disagreements out. You won't be able to survive in the wilderness alone.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -53329,7 +53329,7 @@
   },
   {
     "KEY":"AA004BB000AA02",
-    "text":"Abandon the hunters. They don�t know what they�re doing and you�ll be better off on your own.",
+    "text":"Abandon the hunters. They don't know what they're doing and you'll be better off on your own.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -53395,7 +53395,7 @@
   },
   {
     "KEY":"AA004BA001AA01",
-    "text":"Stick with the masons. You�ve traveled too far and you�ve no other options.",
+    "text":"Stick with the masons. You've traveled too far and you've no other options.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -54715,7 +54715,7 @@
   },
   {
     "KEY":"AA004AY000AA03",
-    "text":"Attack them before they realize you�re there.",
+    "text":"Attack them before they realize you're there.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -54781,7 +54781,7 @@
   },
   {
     "KEY":"AA004AY001AA01",
-    "text":"Offer them some of your food - You can�t see your people suffer.",
+    "text":"Offer them some of your food - You can't see your people suffer.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -55903,7 +55903,7 @@
   },
   {
     "KEY":"AA004BE000AA02",
-    "text":"Head out north towards the mountains. You might be able to avoid the storm, but you�ll have to camp out in the open and expose yourselves to the elements.",
+    "text":"Head out north towards the mountains. You might be able to avoid the storm, but you'll have to camp out in the open and expose yourselves to the elements.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -56563,7 +56563,7 @@
   },
   {
     "KEY":"AA004AU004AA01",
-    "text":"Take the high pass - It�s a shorter path to the village, but at a higher altitude and more dangerous.",
+    "text":"Take the high pass - It's a shorter path to the village, but at a higher altitude and more dangerous.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -56629,7 +56629,7 @@
   },
   {
     "KEY":"AA004AU004AA02",
-    "text":"Take the low path - It�s a longer way around, but safer. However, the longer journey will mean greater risk of running out of supplies and energy.",
+    "text":"Take the low path - It's a longer way around, but safer. However, the longer journey will mean greater risk of running out of supplies and energy.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -56959,7 +56959,7 @@
   },
   {
     "KEY":"AA004BC000AA01",
-    "text":"Bend over and do what you�re told - There�s no telling what they will do if you refuse.",
+    "text":"Bend over and do what you're told - There's no telling what they will do if you refuse.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -57025,7 +57025,7 @@
   },
   {
     "KEY":"AA004BC000AA02",
-    "text":"Refuse - You won�t let them take your dignity.",
+    "text":"Refuse - You won't let them take your dignity.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -57487,7 +57487,7 @@
   },
   {
     "KEY":"AA004BG000AA02",
-    "text":"Try to escape - By now it�s clear that with them you are doomed to the life of a slave. You�d rather die trying to escape and live a better life.",
+    "text":"Try to escape - By now it's clear that with them you are doomed to the life of a slave. You'd rather die trying to escape and live a better life.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -59071,7 +59071,7 @@
   },
   {
     "KEY":"AA004BK005AA02",
-    "text":"Leave them be. It�s not worth the risk attacking them.",
+    "text":"Leave them be. It's not worth the risk attacking them.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -59731,7 +59731,7 @@
   },
   {
     "KEY":"AA004BK004AA02",
-    "text":"Choose Evon - A daughter of the masons. She is full-figured, comely, and warm. Her family will be pleased and you�ll gain further support to your shelters.",
+    "text":"Choose Evon - A daughter of the masons. She is full-figured, comely, and warm. Her family will be pleased and you'll gain further support to your shelters.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -60127,7 +60127,7 @@
   },
   {
     "KEY":"AA004BO000AA02",
-    "text":"Wait for the storms to abate. The storms will not last forever and it�s too dangerous to go out when the winds are so violent.",
+    "text":"Wait for the storms to abate. The storms will not last forever and it's too dangerous to go out when the winds are so violent.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -60985,7 +60985,7 @@
   },
   {
     "KEY":"AA004BO002AA02",
-    "text":"Tell them you�re the tribe�s leader and offer to take the cannibals to your village. Promise them many more people in exchange for your life.",
+    "text":"Tell them you're the tribe's leader and offer to take the cannibals to your village. Promise them many more people in exchange for your life.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -61447,7 +61447,7 @@
   },
   {
     "KEY":"AA004BO002AD02",
-    "text":"Wait until a better opportunity in the morning. It�s too risky to go now. But a better opportunity might not come.",
+    "text":"Wait until a better opportunity in the morning. It's too risky to go now. But a better opportunity might not come.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -61777,7 +61777,7 @@
   },
   {
     "KEY":"AA004BP000AA02",
-    "text":"Retreat from the island and return to your tribe�s previous home.",
+    "text":"Retreat from the island and return to your tribe's previous home.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -63625,7 +63625,7 @@
   },
   {
     "KEY":"AA004BM006AA02",
-    "text":"Ask for mutually beneficial peace and imply catastrophic war if they don�t agree. Higher risk, higher reward.",
+    "text":"Ask for mutually beneficial peace and imply catastrophic war if they don't agree. Higher risk, higher reward.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -64285,7 +64285,7 @@
   },
   {
     "KEY":"AA004BM007AC02",
-    "text":"Take a defensive position and draw the enemy out. This might reduce your own casualties, but you�d also be giving the enemy a chance to regroup.",
+    "text":"Take a defensive position and draw the enemy out. This might reduce your own casualties, but you'd also be giving the enemy a chance to regroup.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -64747,7 +64747,7 @@
   },
   {
     "KEY":"AA004BM007AI02",
-    "text":"Kill them and loot their supplies. They�re not worth the trouble.",
+    "text":"Kill them and loot their supplies. They're not worth the trouble.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -65077,7 +65077,7 @@
   },
   {
     "KEY":"AA004BM004AA02",
-    "text":"Choose Evon - A daughter of the masons. She is full-figured, comely, and warm. Her family will be pleased and you�ll gain further support to your shelters.",
+    "text":"Choose Evon - A daughter of the masons. She is full-figured, comely, and warm. Her family will be pleased and you'll gain further support to your shelters.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -66067,7 +66067,7 @@
   },
   {
     "KEY":"AA004BN000AC02",
-    "text":"Wait it out until the blizzard abates. Though by the looks of it, the storm won�t be stopping any time soon, and with the food stores so depleted, waiting could mean death.",
+    "text":"Wait it out until the blizzard abates. Though by the looks of it, the storm won't be stopping any time soon, and with the food stores so depleted, waiting could mean death.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -66265,7 +66265,7 @@
   },
   {
     "KEY":"AA004BN000CE01",
-    "text":"Wait it out until the blizzard abates. But there�s no guarantee that it will.",
+    "text":"Wait it out until the blizzard abates. But there's no guarantee that it will.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -66595,7 +66595,7 @@
   },
   {
     "KEY":"AA004BN000AF02",
-    "text":"Let her be. You won�t force her if she refuses.",
+    "text":"Let her be. You won't force her if she refuses.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -67123,7 +67123,7 @@
   },
   {
     "KEY":"AA004BN001AA02",
-    "text":"Huddle together for warmth and wait until the blizzard subsides to go out. It�s too dangerous to go out now and you have enough food to survive for a while.",
+    "text":"Huddle together for warmth and wait until the blizzard subsides to go out. It's too dangerous to go out now and you have enough food to survive for a while.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -67453,7 +67453,7 @@
   },
   {
     "KEY":"AA004BN001AE02",
-    "text":"Sit tight and wait for them to come back. It�s not worth the risk playing hero and they�re perfectly capable of surviving on their own.",
+    "text":"Sit tight and wait for them to come back. It's not worth the risk playing hero and they're perfectly capable of surviving on their own.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -67981,7 +67981,7 @@
   },
   {
     "KEY":"AA004BN002AA02",
-    "text":"Migrate. Gather up the supplies and head down the mountains taking shelter below the tree line. Winter is almost over and you don�t want to risk any casualties.",
+    "text":"Migrate. Gather up the supplies and head down the mountains taking shelter below the tree line. Winter is almost over and you don't want to risk any casualties.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -68245,7 +68245,7 @@
   },
   {
     "KEY":"AA004BN003CA01",
-    "text":"Retreat. There are too many and it�s best to return to the caves.",
+    "text":"Retreat. There are too many and it's best to return to the caves.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -68971,7 +68971,7 @@
   },
   {
     "KEY":"AA004BN003AA02",
-    "text":"Offer your tribe�s food in exchange for your lives and beg for mercy.",
+    "text":"Offer your tribe's food in exchange for your lives and beg for mercy.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
@@ -69169,7 +69169,7 @@
   },
   {
     "KEY":"AA004BN003AC02",
-    "text":"Migrate. Gather up the supplies and head down the mountains taking shelter below the tree line. Winter is almost over and you don�t want to risk any casualties.",
+    "text":"Migrate. Gather up the supplies and head down the mountains taking shelter below the tree line. Winter is almost over and you don't want to risk any casualties.",
     "karmaCost":"",
     "intellectCost":"",
     "loveCost":"",
