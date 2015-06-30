@@ -36,152 +36,14 @@ var POINT_COST_MEGA_01 = 75;
 var POINT_COST_MEGA_02 = 100;
 var POINT_COST_MEGA_03 = 150;
 
-var choice = function (text, karmaCost, karmaBoost, intellectCost, intellectBoost, loveCost, loveBoost, powerCost, powerBoost, darkTetradCost, darkTetradBoost, destinationA, desinationA_Percentage, destinationB, desinationB_Percentage, destinationC, desinationC_Percentage, destinationD, desinationD_Percentage, additionalVariableCostA_Key, additionalVariableCostA, additionalVariableCostB_Key, additionalVariableCostB, additionalVariableBoostA_Key, additionalVariableBoostA, additionalVariableBoostB_Key, additionalVariableBoostB) {
-	this.text;
-	this.karmaCost = 0;
-	this.karmaBoost = 0;
-	this.intellectCost = 0;
-	this.intellectBoost = 0;
-	this.loveCost = 0;
-	this.loveBoost = 0;
-	this.powerCost = 0;
-	this.powerBoost = 0;
-	this.darkTetradCost = 0;
-	this.darkTetradBoost = 0;
-	this.destinationA;
-	this.destinationA_Percentage = 1;
-	this.destinationB;
-	this.destinationB_Percentage = 0;
-	this.destinationC;
-	this.destinationC_Percentage = 0;
-	this.destinationD;
-	this.destinationD_Percentage = 0;
-	this.additionalVariableCostA_Key;
-	this.additionalVariableCostA = 0;
-	this.additionalVariableCostB_Key;
-	this.additionalVariableCostB = 0;
-	this.additionalVariableBoostA_Key;
-	this.additionalVariableBoostA = 0;
-	this.additionalVariableBoostB_Key;
-	this.additionalVariableBoostB = 0;
-
-	//additional variables
-
-	if (typeof text !== 'undefined') {
-		this.text = text;
-	}
-	if (typeof karmaCost !== 'undefined') {
-		this.karmaCost = karmaCost;
-	}
-	if (typeof karmaBoost !== 'undefined') {
-		this.karmaBoost = karmaBoost;
-	}
-	if (typeof intellectCost !== 'undefined') {
-		this.intellectCost = intellectCost;
-	}
-	if (typeof intellectBoost !== 'undefined') {
-		this.intellectBoost = intellectBoost;
-	}
-	if (typeof loveCost !== 'undefined') {
-		this.loveCost = loveCost;
-	}
-	if (typeof loveBoost !== 'undefined') {
-		this.loveBoost = loveBoost;
-	}
-	if (typeof powerCost !== 'undefined') {
-		this.powerCost = powerCost;
-	}
-	if (typeof powerBoost !== 'undefined') {
-		this.powerBoost = powerBoost;
-	}
-	if (typeof darkTetradCost !== 'undefined') {
-		this.darkTetradCost = darkTetradCost;
-	}
-	if (typeof darkTetradBoost !== 'undefined') {
-		this.darkTetradBoost = darkTetradBoost;
-	}
-	if (typeof destinationA !== 'undefined') {
-		this.destinationA = destinationA;
-	}
-	if (typeof destinationA_Percentage !== 'undefined') {
-		this.destinationA_Percentage = destinationA_Percentage;
-	}
-	if (typeof destinationB !== 'undefined') {
-		this.destinationB = destinationB;
-	}
-	if (typeof destinationB_Percentage !== 'undefined') {
-		this.destinationB_Percentage = destinationB_Percentage;
-	}
-	if (typeof destinationC !== 'undefined') {
-		this.destinationC = destinationC;
-	}
-	if (typeof destinationC_Percentage !== 'undefined') {
-		this.destinationC_Percentage = destinationC_Percentage;
-	}
-	if (typeof destinationD !== 'undefined') {
-		this.destinationD = destinationD;
-	}
-	if (typeof destinationD_Percentage !== 'undefined') {
-		this.destinationD_Percentage = destinationD_Percentage;
-	}
-	if (typeof additionalVariableCostA_Key !== 'undefined') {
-		this.additionalVariableCostA_Key = additionalVariableCostA_Key;
-	}
-	if (typeof additionalVariableCostA !== 'undefined') {
-		this.additionalVariableCostA = additionalVariableCostA;
-	}
-	if (typeof additionalVariableCostB_Key !== 'undefined') {
-		this.additionalVariableCostB_Key = additionalVariableCostB_Key;
-	}
-	if (typeof additionalVariableCostB !== 'undefined') {
-		this.additionalVariableCostB = additionalVariableCostB;
-	}
-	if (typeof additionalVariableBoostA_Key !== 'undefined') {
-		this.additionalVariableBoostA_Key = additionalVariableBoostA_Key;
-	}
-	if (typeof additionalVariableBoostA !== 'undefined') {
-		this.additionalVariableBoostA = additionalVariableBoostA;
-	}
-	if (typeof additionalVariableBoostB_Key !== 'undefined') {
-		this.additionalVariableBoostB_Key = additionalVariableBoostB_Key;
-	}
-	if (typeof additionalVariableBoostB !== 'undefined') {
-		this.additionalVariableBoostB = additionalVariableBoostB;
-	}
-}
-
-var storyNode = function (referenceLabel, text) {
-	this.referenceLabel;
-	this.text;
-	this.choicesArray = [];
-
-	if (typeof referenceLabel !== 'undefined') {
-		this.referenceLabel = referenceLabel;
-	}
-	if (typeof text !== 'undefined') {
-		this.text = text;
-	}
-}
-
-//Add choice to set of choices in story node
-storyNode.prototype.addChoice = function (text, karma, intellect, love, power, darkTetrad, destination) {
-	choicesArray.push({ text: text, karma: karma, intellect: intellect, love: love, power: power, darkTetrad: darkTetrad, destination: destination });
-};
-
-//https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map
-var testStoryModuleMap = new Map();
-var testChoicesModuleMap = new Map();
-
-//Maybe use a csv file instead of hand coding all this shit?
-//http://papaparse.com/docs
-
-testStoryModuleMap.set("AA000AA000AB", "You join the hunting party and your father looks at you skeptically, unsure of what to make of your character. Your brother hardly pays you notice and the other hunters follow into the forest.\n\nAfter many hours of searching, the dogs come across the tracks of a group of wild pigs. The hunters prepare their nets and spears and follow the tracks. You see the pigs in the thickets and the others stalk them quietly. Your father holds you back, however, and together you observe the hunters’ tactics.\n\nOne of the pigs gets spooked and raises the alarm and the hunters chase the sprinting hogs. You make to follow, but turn abruptly at the nearby primal grunting. Before you stands a monstrous hulk of a boar with brutal tusks turned outward. The boar charges into your father and gores him and he struggles with the animal on the ground.\n\nWhat do you do?");
-
-var choiceAA000AA000AB = new choice({ text: "Help your father. The boar is very dangerous and you are a weak young man, but you must do something to help before it’s too late.", destinationA: "AA001AA000AA", destinationA_Percentage: .5, destinationB: "AA002AA000AA", destinationB_Percentage: .5});
-testChoicesModuleMap.set("AA000AA000AB", choiceAA000AA000AB);
 
 var currentModuleText;
 var currentModuleChoices;
+
+var currentModuleTextMap = new Map();
+//var currentModuleChoicesMap = new Map();
+var currentModuleChoicesData;
+var currentModuleLinkNodesData;
 
 var textManager = function ()
 {
@@ -196,47 +58,47 @@ textManager.prototype.loadModule = function (moduleNumber)
 		if (moduleNumber == MODULE_ASCENT_OF_MAN)
 		{
 			currentNodeKey = "AA000AA000AA";
-			this.loadJSON({ currentModuleTextPath: "/script/storyModules/module01AscentOfManTEXT.json", currentModuleChoicesPath: "/script/storyModules/module01AscentOfManCHOICES.json" });
+			this.loadJSON({ currentModuleTextPath: "/script/storyModules/module01AscentOfManTEXT.json", currentModuleChoicesPath: "/script/storyModules/module01AscentOfManCHOICES.json", currentModuleLinkNodesPath: "/script/storyModules/module01AscentOfManLINKNODES.json" });
 		}
 		else if (moduleNumber == MODULE_VALLEY_SPIRIT)
 		{
 			//currentNodeKey = "";
-			this.loadJSON({ currentModuleTextPath: "/script/storyModules/module02ValleySpiritTEXT.json", currentModuleChoicesPath: "/script/storyModules/module02ValleySpiritCHOICES.json" });
+			this.loadJSON({ currentModuleTextPath: "/script/storyModules/module02ValleySpiritTEXT.json", currentModuleChoicesPath: "/script/storyModules/module02ValleySpiritCHOICES.json", currentModuleLinkNodesPath: "/script/storyModules/module02ValleySpiritLINKNODES.json" });
 		}
 		else if (moduleNumber == MODULE_LOTTERY_IN_BABYLON)
 		{
 			//currentNodeKey = "";
-			this.loadJSON({ currentModuleTextPath: "/script/storyModules/module03LotteryInBabylonTEXT.json", currentModuleChoicesPath: "/script/storyModules/module03LotteryInBabylonCHOICES.json" });
+			this.loadJSON({ currentModuleTextPath: "/script/storyModules/module03LotteryInBabylonTEXT.json", currentModuleChoicesPath: "/script/storyModules/module03LotteryInBabylonCHOICES.json", currentModuleLinkNodesPath: "/script/storyModules/module03LotteryInBabylonLINKNODES.json" });
 		}
 		else if (moduleNumber == MODULE_THE_PROMETHEANS)
 		{
 			//currentNodeKey = "";
-			this.loadJSON({ currentModuleTextPath: "/script/storyModules/module04ThePrometheansTEXT.json", currentModuleChoicesPath: "/script/storyModules/module04ThePrometheansCHOICES.json" });
+			this.loadJSON({ currentModuleTextPath: "/script/storyModules/module04ThePrometheansTEXT.json", currentModuleChoicesPath: "/script/storyModules/module04ThePrometheansCHOICES.json", currentModuleLinkNodesPath: "/script/storyModules/module04ThePrometheansLINKNODES.json" });
 		}
 		else if (moduleNumber == MODULE_DEAD_PRESIDENTS)
 		{
 			//currentNodeKey = "";
-			this.loadJSON({ currentModuleTextPath: "/script/storyModules/module05DeadPresidentsTEXT.json", currentModuleChoicesPath: "/script/storyModules/module05DeadPresidentsCHOICES.json" });
+			this.loadJSON({ currentModuleTextPath: "/script/storyModules/module05DeadPresidentsTEXT.json", currentModuleChoicesPath: "/script/storyModules/module05DeadPresidentsCHOICES.json", currentModuleLinkNodesPath: "/script/storyModules/module05DeadPresidentsLINKNODES.json" });
 		}
 		else if (moduleNumber == MODULE_SHAKE_HANDS_WITH_THE_DEVIL)
 		{
 			//currentNodeKey = "";
-			this.loadJSON({ currentModuleTextPath: "/script/storyModules/module06ShakeHandsWithTheDevilTEXT.json", currentModuleChoicesPath: "/script/storyModules/module06ShakeHandsWithTheDevilCHOICES.json" });
+			this.loadJSON({ currentModuleTextPath: "/script/storyModules/module06ShakeHandsWithTheDevilTEXT.json", currentModuleChoicesPath: "/script/storyModules/module06ShakeHandsWithTheDevilCHOICES.json", currentModuleLinkNodesPath: "/script/storyModules/module06ShakeHandsWithTheDevilLINKNODES.json" });
 		}
 		else if (moduleNumber == MODULE_MORAL_HAZZARD)
 		{
 			//currentNodeKey = "";
-			this.loadJSON({ currentModuleTextPath: "/script/storyModules/module07MoralHazzardTEXT.json", currentModuleChoicesPath: "/script/storyModules/module07MoralHazzardCHOICES.json" });
+			this.loadJSON({ currentModuleTextPath: "/script/storyModules/module07MoralHazzardTEXT.json", currentModuleChoicesPath: "/script/storyModules/module07MoralHazzardCHOICES.json", currentModuleLinkNodesPath: "/script/storyModules/module07MoralHazzardLINKNODES.json" });
 		}
 		else if (moduleNumber == MODULE_PLUTOCRATS_OF_MARS)
 		{
 			//currentNodeKey = "";
-			this.loadJSON({ currentModuleTextPath: "/script/storyModules/module08PlutocratsOfMarsTEXT.json", currentModuleChoicesPath: "/script/storyModules/module08PlutocratsOfMarsCHOICES.json" });
+			this.loadJSON({ currentModuleTextPath: "/script/storyModules/module08PlutocratsOfMarsTEXT.json", currentModuleChoicesPath: "/script/storyModules/module08PlutocratsOfMarsCHOICES.json", currentModuleLinkNodesPath: "/script/storyModules/module08PlutocratsOfMarsLINKNODES.json" });
 		}
 		else if (moduleNumber == MODULE_GHOSTS_OF_PERSIA)
 		{
 			//currentNodeKey = "";
-			this.loadJSON({ currentModuleTextPath: "/script/storyModules/module09GhostsOfPersiaTEXT.json", currentModuleChoicesPath: "/script/storyModules/module09GhostsOfPersiaCHOICES.json" });
+			this.loadJSON({ currentModuleTextPath: "/script/storyModules/module09GhostsOfPersiaTEXT.json", currentModuleChoicesPath: "/script/storyModules/module09GhostsOfPersiaCHOICES.json", currentModuleLinkNodesPath: "/script/storyModules/module09GhostsOfPersiaLINKNODES.json" });
 		}
 		else {
 			//error - do nothing
@@ -293,7 +155,7 @@ textManager.prototype.parseModule = function (currentModuleTextPath, currentModu
 	});
 	*/
 }
-
+/*
 textManager.prototype.getText = function (key)
 {
 	//$ just means jquery, so $.getJSON means jquery.getJSON
@@ -304,12 +166,8 @@ textManager.prototype.getText = function (key)
 		});
 	}
 }
-
-var currentModuleTextMap = new Map();
-var currentModuleChoicesMap = new Map();
-var currentModuleChoicesData;
-
-textManager.prototype.loadJSON = function (currentModuleTextPath, currentModuleChoicesPath) {
+*/
+textManager.prototype.loadJSON = function (currentModuleTextPath, currentModuleChoicesPath, currentModuleLinkNodesPath) {
 	//if (typeof (currentModuleTextPath && currentModuleChoicesPath) !== 'undefined') {
 		$.getJSON('/script/storyModules/module01AscentOfManTEXT.json', function (data) {
 			//--This following section is the AJAX callback - executes upon successfully loading the data
@@ -325,6 +183,13 @@ textManager.prototype.loadJSON = function (currentModuleTextPath, currentModuleC
 			//--This following section is the AJAX callback - executes upon successfully loading the data
 			currentModuleChoicesData = data;
 			dataLoadedFlag2 = true;
+			//--End AJAX callback
+		});
+
+		$.getJSON('/script/storyModules/module01AscentOfManLINKNODES.json', function (data) {
+			//--This following section is the AJAX callback - executes upon successfully loading the data
+			currentModuleLinkNodesData = data;
+			dataLoadedFlag3 = true;
 			//--End AJAX callback
 		});
 	//}

@@ -164,11 +164,11 @@ theGame.prototype = {
 		var textPointsLove;
 		var textPointsDarkTetrad;
 		
-		var stylePointsPower = { font: mainFont, fill: fontColorPower, align: 'left', wordWrap: true, wordWrapWidth: frame01Width };
-		var stylePointsKarma = { font: mainFont, fill: fontColorKarma, align: 'left', wordWrap: true, wordWrapWidth: frame01Width };
-		var stylePointsIntellect = { font: mainFont, fill: fontColorIntellect, align: 'left', wordWrap: true, wordWrapWidth: frame01Width };
-		var stylePointsLove = { font: mainFont, fill: fontColorLove, align: 'left', wordWrap: true, wordWrapWidth: frame01Width };
-		var stylePointsDarkTetrad = { font: mainFont, fill: fontColorDarkTetrad, align: 'left', wordWrap: true, wordWrapWidth: frame01Width };
+		var stylePointsPower = { font: mainFont, fill: fontColorPower, align: 'left'};
+		var stylePointsKarma = { font: mainFont, fill: fontColorKarma, align: 'left'};
+		var stylePointsIntellect = { font: mainFont, fill: fontColorIntellect, align: 'left'};
+		var stylePointsLove = { font: mainFont, fill: fontColorLove, align: 'left'};
+		var stylePointsDarkTetrad = { font: mainFont, fill: fontColorDarkTetrad, align: 'left'};
 		
 		//currentSaveGame.playerPower
 		if (debugMode) {
@@ -183,12 +183,12 @@ theGame.prototype = {
 		var textTEST;
 		if (debugMode && testPASSED) {
 			textTEST = this.game.add.text(this.game.width / 2, frame01YPos / 2, "TEST PASSED", stylePointsKarma);
-		textTEST.anchor.setTo(0.5, 0.5);}
+			textTEST.anchor.setTo(0.5, 0.5);
+		}
 
 		//-------------------------------------
 		
 		//-------Masks-------
-
 		//	A mask is a Graphics object
 		var textMask01 = this.game.add.graphics(0, 0);
 		var textMask02 = this.game.add.graphics(0, 0);
@@ -204,9 +204,6 @@ theGame.prototype = {
 		var style2 = { font: 'bold 12pt Arial', fill: choiceColor, align: 'left', wordWrap: true, wordWrapWidth: frame01Width };
 
 		choicesTextGroup = this.game.add.group();
-
-		//var textPrint = testStoryModuleMap.get(currentNodeKey);
-		//var textPrint = mainTextManager.getText(currentNodeKey);
 
 		textPrint = currentModuleTextMap.get(currentNodeKey);
 		
@@ -262,14 +259,9 @@ theGame.prototype = {
 		//choicesTextGroup.anchor.setTo(0, 0);
 
 		this.loadChoices();
-
-		/*text2 = this.game.add.text(frame02XPos, frame02YPos, "Morbi ultricies ante orci, vitae semper nibh consectetur dignissim. \n\nDonec odio turpis, pharetra vel dolor a, malesuada vulputate turpis. \n\nIn vel porta urna,volutpat auctor ante. \n\nPhasellus quam nisi, consequat in elementum ut, accumsan in ex.\n\nSed pulvinar nunc urna, in porttitor lectus imperdiet nec.\n\nSuspendisse accumsan congue gravida. \n\nPhasellus quam nisi, consequat in elementum ut, accumsan in ex.\n\nSed pulvinar nunc urna, in porttitor lectus imperdiet nec.\n\nSuspendisse accumsan congue gravida.", style2);
-		text2.lineSpacing = -3.5;
-
-		text2.mask = textMask02;
-		*/
 		this.adjustSliders();
 
+		/*
 		//Slider movement calculations
 		rightSliderGap01 = slider01back.height - slider01.height;
 		text1_distance = (rightSliderGap01 / slider01back.height) * text1.height;
@@ -278,14 +270,7 @@ theGame.prototype = {
 		rightSliderGap02 = slider02back.height - slider02.height;
 		text2_distance = (rightSliderGap02 / slider02back.height) * choicesTextGroup.height;
 		text2_topGap = frame02YPos;
-
-		/*rightSliderGap02 = slider02back.height - slider02.height;
-		text2_distance = (rightSliderGap02 / slider02back.height) * text2.height;
-		text2_topGap = frame02YPos;*/
-
-		//text1.inputEnabled = true;
-		//text1.input.enableDrag({ lockCenter: false, pixelPerfect: false });
-		//text1.input.enableDrag({ pixelPerfect: false, boundsRect: textBounding01 });
+		*/
 
 		//For some reason text1 needs to be updated here and if you update earlier it shows up all wonky
 		text1.setText(textPrint); //!!!!!!!!!
@@ -381,12 +366,17 @@ theGame.prototype = {
 	iconSound: function () {
 
 	},
-	adjustSliders: function() {
+	adjustSliders: function () {
 		//Adjust slider height based on amount of text, or else hide
 		if (text1.height > frame01Height) {
 			slider01.visible = true;
 			slider01back.visible = true;
 			slider01.height = (frame01Height / text1.height) * frame01Height;
+
+			//Slider movement calculations
+			rightSliderGap01 = slider01back.height - slider01.height;
+			text1_distance = (rightSliderGap01 / slider01back.height) * text1.height;
+			text1_topGap = frame01YPos;
 		} else {
 			slider01.height = frame01Height;
 			slider01.visible = false;
@@ -396,6 +386,11 @@ theGame.prototype = {
 			slider02.visible = true;
 			slider02back.visible = true;
 			slider02.height = (frame02Height / choicesHeight) * frame02Height;
+
+			//Slider movement calculations
+			rightSliderGap02 = slider02back.height - slider02.height;
+			text2_distance = (rightSliderGap02 / slider02back.height) * choicesTextGroup.height;
+			text2_topGap = frame02YPos;
 		} else {
 			slider02.height = frame02Height;
 			slider02.visible = false;
@@ -613,9 +608,5 @@ theGame.prototype = {
 		if (slider02.visible == true) {
 			choicesTextGroup.y = 1 - (((slider02.y - text2_topGap) / rightSliderGap02) * text2_distance);
 		}
-		//text2.y = text2_topGap - (((slider02.y - text2_topGap) / rightSliderGap02) * text2_distance);
-		//text1.setText(textPrint); //!!!!!!!!!
-		//this.adjustSliders();
-		
 	}
 }

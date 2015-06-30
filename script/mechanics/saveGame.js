@@ -42,9 +42,8 @@ var saveGame = function (playerPower, playerKarma, playerDarkTetrad, playerIntel
 
 	//this.font = font;
 
-	//this.gameLog = some sort of data structure mapping player decisions
-	//this.additionalVariables = data structure logging other decisions (i.e. "if you gathered food last decision node, then...")
-	//this.gameLogMap = new map;
+	this.gameLog = []; //some sort of data structure mapping player decisions
+	this.additionalVariables = []; //data structure logging other decisions (i.e. "if you gathered food last decision node, then...")
 }
 
 //Set current story module
@@ -66,18 +65,30 @@ saveGame.prototype.loadLastNode = function () {
 }
 
 //Write story node outcome to game log
-saveGame.prototype.writeToGameLog = function (referenceNode, decision) {
-
+saveGame.prototype.writeToGameLog = function (referenceNode01, decision01) {
+	this.gameLog.push( { referenceNode: referenceNode01, decision: decision01 } );
 }
 
 //Write additional variables
-saveGame.prototype.writeToAdditionalVariables = function (reference, value) {
+saveGame.prototype.writeToAdditionalVariables = function (reference01, value01) {
 	//push reference and value pair onto additionalVariables data structure
+	this.additionalVariables.push( { reference: reference01, value: value01 } );
 }
 
 //Read additional variables
-saveGame.prototype.readAdditionalVariables = function (reference, value) {
+saveGame.prototype.readAdditionalVariables = function (reference01, value01) {
 	//search for reference and value pair in additionalVariables data structure
 	//if found, return value (true if boolean, number if integer)
 	//if not found, return false
+	for (var i = 0; i < this.additionalVariables.length; i++) {
+		if (this.additionalVariables[i].reference == reference01)
+		{
+			if (this.additionalVariables[i].value >= value01)
+			{
+				return true;
+			}
+		}
+	}
+
+	return false;
 }

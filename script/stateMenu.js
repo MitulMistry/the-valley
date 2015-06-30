@@ -19,6 +19,7 @@ var currentModule = MODULE_ASCENT_OF_MAN;
 var mainTextManager = new textManager();
 var dataLoadedFlag1 = false;
 var dataLoadedFlag2 = false;
+var dataLoadedFlag3 = false;
 
 mainMenu.prototype = {
 	create: function () {

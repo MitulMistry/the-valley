@@ -23,9 +23,10 @@ preload2.prototype = {
 
 		//Wait for JSON data to finish loading
 		//NEED TO SET UP A TIMEOUT IF DATA DOESN'T LOAD
-		if (dataLoadedFlag1 && dataLoadedFlag2) {
+		if (dataLoadedFlag1 && dataLoadedFlag2 && dataLoadedFlag3) {
 			dataLoadedFlag1 = false;
 			dataLoadedFlag2 = false;
+			dataLoadedFlag3 = false;
 			this.game.state.start("stateAdventure");
 		}
 	}
