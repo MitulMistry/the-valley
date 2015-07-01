@@ -157,6 +157,7 @@ theGame.prototype = {
 		//-------------------------------------
 		//currentNodeKey = "AA000AA000AB"; //Change start node for testing.
 		//currentNodeKey = "AA001AH001AD";
+		currentNodeKey = "AA001AG001AA";
 
 		var textPointsPower;
 		var textPointsKarma;
@@ -172,11 +173,11 @@ theGame.prototype = {
 		
 		//currentSaveGame.playerPower
 		if (debugMode) {
-			textPointsPower = this.game.add.text(this.game.width - frame01XPos + 30, frame01YPos, "100", stylePointsPower);
-			textPointsKarma = this.game.add.text(this.game.width - frame01XPos + 30, frame01YPos + 20, "100", stylePointsKarma);
-			textPointsIntellect = this.game.add.text(this.game.width - frame01XPos + 30, frame01YPos + 40, "100", stylePointsIntellect);
-			textPointsLove = this.game.add.text(this.game.width - frame01XPos + 30, frame01YPos + 60, "100", stylePointsLove);
-			textPointsDarkTetrad = this.game.add.text(this.game.width - frame01XPos + 30, frame01YPos + 80, "100", stylePointsDarkTetrad);
+			textPointsPower = this.game.add.text(this.game.width - frame01XPos + 30, frame01YPos, String(currentSaveGame.playerPower), stylePointsPower);
+			textPointsKarma = this.game.add.text(this.game.width - frame01XPos + 30, frame01YPos + 20, String(currentSaveGame.playerKarma), stylePointsKarma);
+			textPointsIntellect = this.game.add.text(this.game.width - frame01XPos + 30, frame01YPos + 40, String(currentSaveGame.playerIntellect), stylePointsIntellect);
+			textPointsLove = this.game.add.text(this.game.width - frame01XPos + 30, frame01YPos + 60, String(currentSaveGame.playerLove), stylePointsLove);
+			textPointsDarkTetrad = this.game.add.text(this.game.width - frame01XPos + 30, frame01YPos + 80, String(currentSaveGame.playerDarkTetrad), stylePointsDarkTetrad);
 		}
 
 		//To test if the code is getting to a breakpoint (before reaching this line), put textTest = true;
@@ -185,6 +186,8 @@ theGame.prototype = {
 			textTEST = this.game.add.text(this.game.width / 2, frame01YPos / 2, "TEST PASSED", stylePointsKarma);
 			textTEST.anchor.setTo(0.5, 0.5);
 		}
+
+		//textTEST2 = this.game.add.text(this.game.width / 2, frame01YPos / 2, currentSaveGame.playerPower, stylePointsKarma);
 
 		//-------------------------------------
 		
@@ -482,6 +485,7 @@ theGame.prototype = {
 			choice2.y = frame02YPos + choice1.height + choicesSpacer;
 			choice3.setText(currentModuleChoicesData[loadedChoices[2]].text);
 			choice3.y = frame02YPos + choice1.height + choice2.height + (choicesSpacer * 2);
+			choice3.fill = this.checkChoiceColor(loadedChoices[2]);
 			choice4.setText("");
 			choice5.setText("");
 			choicesHeight = choice1.height + choice2.height + choice3.height + (choicesSpacer * 2);
@@ -493,8 +497,10 @@ theGame.prototype = {
 			choice2.y = frame02YPos + choice1.height + choicesSpacer;
 			choice3.setText(currentModuleChoicesData[loadedChoices[2]].text);
 			choice3.y = frame02YPos + choice1.height + choice2.height + (choicesSpacer * 2);
+			choice3.fill = this.checkChoiceColor(loadedChoices[2]);
 			choice4.setText(currentModuleChoicesData[loadedChoices[3]].text);
 			choice4.y = frame02YPos + choice1.height + choice2.height + choice3.height + (choicesSpacer * 3);
+			choice4.fill = this.checkChoiceColor(loadedChoices[3]);
 			choice5.setText("");
 			choicesHeight = choice1.height + choice2.height + choice3.height + choice4.height + (choicesSpacer * 3);
 		}
@@ -505,14 +511,143 @@ theGame.prototype = {
 			choice2.y = frame02YPos + choice1.height + choicesSpacer;
 			choice3.setText(currentModuleChoicesData[loadedChoices[2]].text);
 			choice3.y = frame02YPos + choice1.height + choice2.height + (choicesSpacer * 2);
+			choice3.fill = this.checkChoiceColor(loadedChoices[2]);
 			choice4.setText(currentModuleChoicesData[loadedChoices[3]].text);
 			choice4.y = frame02YPos + choice1.height + choice2.height + choice3.height + (choicesSpacer * 3);
+			choice4.fill = this.checkChoiceColor(loadedChoices[3]);
 			choice5.setText(currentModuleChoicesData[loadedChoices[4]].text);
 			choice5.y = frame02YPos + choice1.height + choice2.height + choice3.height + +choice4.height + (choicesSpacer * 4);
+			choice5.fill = this.checkChoiceColor(loadedChoices[4]);
 			choicesHeight = choice1.height + choice2.height + choice3.height + choice4.height + choice5.height + (choicesSpacer * 4);
 		}
 		else {
 			//error
+		}
+	},
+	checkChoice: function (choiceArrayKey) {
+
+		if (currentModuleChoicesData[choiceArrayKey].karmaCost !== "") {
+			if (currentSaveGame.playerKarma >= this.parseChoiceCost(currentModuleChoicesData[choiceArrayKey].karmaCost)) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
+		else if (currentModuleChoicesData[choiceArrayKey].powerCost !== "") {
+			if (currentSaveGame.playerPower >= this.parseChoiceCost(currentModuleChoicesData[choiceArrayKey].powerCost)) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
+		else if (currentModuleChoicesData[choiceArrayKey].intellectCost !== "") {
+			if (currentSaveGame.playerIntellect >= this.parseChoiceCost(currentModuleChoicesData[choiceArrayKey].intellectCost)) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
+		else if (currentModuleChoicesData[choiceArrayKey].loveCost !== "") {
+			if (currentSaveGame.playerLove >= this.parseChoiceCost(currentModuleChoicesData[choiceArrayKey].loveCost)) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
+		else if (currentModuleChoicesData[choiceArrayKey].darkTetradCost !== "") {
+			if (currentSaveGame.playerDarkTetrad >= this.parseChoiceCost(currentModuleChoicesData[choiceArrayKey].powerDarkTetrad)) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
+		/*
+		else if () {
+			//CHECK FOR ADDITIONAL VARIABLES
+		}
+		*/
+		else {
+			return true;
+		}
+	},
+	checkChoiceColor: function (choiceArrayKey) {
+		//returns what color the text should be
+		if (currentModuleChoicesData[choiceArrayKey].karmaCost !== "")	{
+			return fontColorKarma;
+		}
+		else if (currentModuleChoicesData[choiceArrayKey].powerCost !== "") {
+			return fontColorPower;
+		}
+		else if (currentModuleChoicesData[choiceArrayKey].intellectCost !== "") {
+			return fontColorIntellect;
+		}
+		else if (currentModuleChoicesData[choiceArrayKey].loveCost !== "") {
+			return fontColorLove;
+		}
+		else if (currentModuleChoicesData[choiceArrayKey].darkTetradCost !== "") {
+			return fontColorDarkTetrad;
+		}
+		else {
+			return choiceColor;
+		}
+	},
+	parseChoiceCost: function (stringToParse) {
+		if (stringToParse === "mini01")
+		{
+			return POINT_COST_MINI_01;
+		}
+		else if (stringToParse === "mini02")
+		{				
+			return POINT_COST_MINI_02;
+		}
+		else if (stringToParse === "mini03")
+		{				
+			return POINT_COST_MINI_03;
+		}
+		else if (stringToParse === "moderate01")
+		{				
+			return POINT_COST_MODERATE_01;
+		}
+		else if (stringToParse === "moderate02")
+		{				
+			return POINT_COST_MODERATE_02;
+		}
+		else if (stringToParse === "moderate03")
+		{				
+			return POINT_COST_MODERATE_03;
+		}
+		else if (stringToParse === "heavy01")
+		{				
+			return POINT_COST_HEAVY_01;
+		}
+		else if (stringToParse === "heavy02")
+		{				
+			return POINT_COST_HEAVY_02;
+		}
+		else if (stringToParse === "heavy03")
+		{				
+			return POINT_COST_HEAVY_03;
+		}
+		else if (stringToParse === "mega01")
+		{				
+			return POINT_COST_MEGA_01;
+		}
+		else if (stringToParse === "mega02")
+		{				
+			return POINT_COST_MEGA_02;
+		}
+		else if (stringToParse === "mega03")
+		{				
+			return POINT_COST_MEGA_03;
+		}
+		else
+		{
+			return 0;
 		}
 	},
 	makeDecision: function (choiceNumber) {
