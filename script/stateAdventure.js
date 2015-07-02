@@ -153,9 +153,10 @@ theGame.prototype = {
 
 		//Debug items (Strip from final build)
 		//-------------------------------------
-		//currentNodeKey = "AA000AA000AB"; //Change start node for testing.
-		//currentNodeKey = "AA001AH001AD";
+		//currentSaveGame.currentNodeKey = "AA000AA000AB"; "AA001AH001AD" //Change start node for testing.
 		currentSaveGame.currentNodeKey = "AA001AG001AA";
+
+		//currentSaveGame.writeToAdditionalVariables("01JenethHappiness", 10);
 
 		var textPointsPower;
 		var textPointsKarma;
@@ -169,7 +170,6 @@ theGame.prototype = {
 		var stylePointsLove = { font: mainFont, fill: fontColorLove, align: 'left'};
 		var stylePointsDarkTetrad = { font: mainFont, fill: fontColorDarkTetrad, align: 'left'};
 		
-		//currentSaveGame.playerPower
 		if (debugMode) {
 			textPointsPower = this.game.add.text(this.game.width - frame01XPos + 30, frame01YPos, String(currentSaveGame.playerPower), stylePointsPower);
 			textPointsKarma = this.game.add.text(this.game.width - frame01XPos + 30, frame01YPos + 20, String(currentSaveGame.playerKarma), stylePointsKarma);
@@ -454,7 +454,6 @@ theGame.prototype = {
 			stringTest = currentModuleChoicesData[i].KEY;
 			if (stringTest.substring(0, 12) == currentSaveGame.currentNodeKey) {
 				//if (this.checkChoice(currentModuleChoicesData[i].KEY)) {
-					//console.log("SUCCESS: " + currentModuleChoicesData[i].KEY + " " + i);
 					loadedChoices.push(i);
 				//}				
 			}
@@ -732,16 +731,25 @@ theGame.prototype = {
 		//alert(destination);
 		if (destination.substring(0, 0) != "X")
 		{
-			currentSaveGame.currentNodeKey = destination;
-			textPrint = currentModuleTextMap.get(currentSaveGame.currentNodeKey);
-			text1.setText(textPrint);
-			text1.y = frame01YPos;
+			currentSaveGame.currentNodeKey = destination;			
 		}
 		else
 		{
-			//figure out the link node logic
-			//this.processLinkNode(destination);
+			//link node logic - loop through as many link nodes as necessary
+			var tempKey = this.processLinkNode(destination);
+			var tempDestination = tempKey;
+
+			while (tempKey.substring(0, 0) == "X") {
+				tempKey = this.processLinkNode(tempDestination);
+				tempDestination = tempKey;
+			}
+
+			currentSaveGame.currentNodeKey = tempDestination;
 		}
+
+		textPrint = currentModuleTextMap.get(currentSaveGame.currentNodeKey);
+		text1.setText(textPrint);
+		text1.y = frame01YPos;
 
 		//kern of duty text
 		//text1.setText('');
@@ -767,93 +775,170 @@ theGame.prototype = {
 		}
 
 		//or make this a while loop?
-		for (var i = 0; i < loadedChoices.length; i++) {
-			if (variable1 != "ELSE") {
-				if (equivalence1 === "") {
-					//then just check if variable1 is present
-				}
-				else if (equivalence1 === "=")
+		for (var i = 0; i < loadedLinkNodes.length; i++)
+		{
+			if (loadedLinkNodes[i].variable1 != "ELSE")
+			{
+				if (loadedLinkNodes[i].variable2 === "" || loadedLinkNodes[i].variable2 === null || loadedLinkNodes[i].variable2 === undefined)
 				{
-					 
-				}
-				else if (equivalence1 === "<")
-				{
-
-				}
-				else if (equivalence1 === "<=")
-				{
-
-				}
-				else if (equivalence1 === ">")
-				{
-
-				}
-				else if (equivalence1 === ">=")
-				{
-
-				}
-
-				if (variable2 != "")
-				{
-					//test if true
-
-					if (variable3 != "") {
-						//test if true
-					}
-				}						
-
-				if (operator1 === "")
-				{
-					//go to destination
-				}
-				else if (operator1 === "&&" && operator2 === "")
-				{
-					if (test1 && test2)
+					//then just check for variable1
+					if (currentSaveGame.checkAdditionalVariables(loadedLinkNodes[i].variable1, loadedLinkNodes[i].equivalence1, loadedLinkNodes[i].value1))
 					{
-						//go to destination
+						test1 = true;
+					}					
+				}				
+				else if (loadedLinkNodes[i].variable3 === "" || loadedLinkNodes[i].variable3 === null || loadedLinkNodes[i].variable3 === undefined)
+				{
+					//check for variable1 and variable2
+					if (currentSaveGame.checkAdditionalVariables(loadedLinkNodes[i].variable1, loadedLinkNodes[i].equivalence1, loadedLinkNodes[i].value1)) {
+						test1 = true;
+					}
+					
+					if (currentSaveGame.checkAdditionalVariables(loadedLinkNodes[i].variable2, loadedLinkNodes[i].equivalence2, loadedLinkNodes[i].value2)) {
+						test2 = true;
 					}
 				}
-				else if (operator1 === "||" && operator2 === "")
+				else
 				{
-					if (test1 || test2)
-					{
-						//go to destination
+					//check for variable1, variable2, and variable3
+					if (currentSaveGame.checkAdditionalVariables(loadedLinkNodes[i].variable1, loadedLinkNodes[i].equivalence1, loadedLinkNodes[i].value1)) {
+						test1 = true;
+					}
+
+					if (currentSaveGame.checkAdditionalVariables(loadedLinkNodes[i].variable2, loadedLinkNodes[i].equivalence2, loadedLinkNodes[i].value2)) {
+						test2 = true;
+					}
+
+					if (currentSaveGame.checkAdditionalVariables(loadedLinkNodes[i].variable3, loadedLinkNodes[i].equivalence3, loadedLinkNodes[i].value3)) {
+						test3 = true;
 					}
 				}
-				else if (operator1 === "&&" && operator2 === "&&")
-				{
-					if (test1 && test2 && test3)
-					{
+				//-------------------------------------------------------------------------
+				//Test the individual variables in combination
+				//-------------------------------------------------------------------------
+				if (loadedLinkNodes[i].operator1 === "" || loadedLinkNodes[i].operator1 === null || loadedLinkNodes[i].operator1 === undefined) {
+					if (test1) {
 						//go to destination
+						return this.getRandomLinkNodeDestination(loadedLinkNodes[i]);
 					}
 				}
-				else if (operator1 === "||" && operator2 === "&&")
-				{
-					if (test1 || test2 && test3)
-					{
+				else if (loadedLinkNodes[i].operator1 === "&&" && loadedLinkNodes[i].operator2 === "") {
+					if (test1 && test2) {
 						//go to destination
+						return this.getRandomLinkNodeDestination(loadedLinkNodes[i]);
 					}
 				}
-				else if (operator1 === "&&" && operator2 === "||")
-				{
-					if (test1 && test2 || test3)
-					{
+				else if (loadedLinkNodes[i].operator1 === "||" && loadedLinkNodes[i].operator2 === "") {
+					if (test1 || test2) {
 						//go to destination
+						return this.getRandomLinkNodeDestination(loadedLinkNodes[i]);
 					}
 				}
-				else if (operator1 === "||" && operator2 === "||")
-				{
-					if (test1 || test2 || test3)
-					{
+				else if (loadedLinkNodes[i].operator1 === "&&" && loadedLinkNodes[i].operator2 === "&&") {
+					if (test1 && test2 && test3) {
 						//go to destination
+						return this.getRandomLinkNodeDestination(loadedLinkNodes[i]);
+					}
+				}
+				else if (loadedLinkNodes[i].operator1 === "||" && loadedLinkNodes[i].operator2 === "&&") {
+					if (test1 || test2 && test3) {
+						//go to destination
+						return this.getRandomLinkNodeDestination(loadedLinkNodes[i]);
+					}
+				}
+				else if (loadedLinkNodes[i].operator1 === "&&" && loadedLinkNodes[i].operator2 === "||") {
+					if (test1 && test2 || test3) {
+						//go to destination
+						return this.getRandomLinkNodeDestination(loadedLinkNodes[i]);
+					}
+				}
+				else if (loadedLinkNodes[i].operator1 === "||" && loadedLinkNodes[i].operator2 === "||") {
+					if (test1 || test2 || test3) {
+						//go to destination
+						return this.getRandomLinkNodeDestination(loadedLinkNodes[i]);
 					}
 				}
 			}
 			else
 			{
-				//go to destination
+				//variable1 is ELSE and just go to destination
+				return this.getRandomLinkNodeDestination(loadedLinkNodes[i]);
 			}
-		}	
+		}
+		//If nothing is found, that's an error
+		alert("Something bad happened.");
+		return null;
+	},
+	getRandomLinkNodeDestination: function (linkNode) {
+
+		var destinationA_dieRoll;
+		var destinationB_dieRoll;
+		var destinationC_dieRoll;
+		var destinationD_dieRoll;
+
+		//alert(linkNode.destinationA_percentage);
+
+		if (linkNode.destinationA_percentage === null || linkNode.destinationA_percentage == "" || linkNode.destinationA_percentage == undefined) {
+			//There's only one destination, go to destinationA
+			return linkNode.destinationA;
+		}
+		else if (linkNode.destinationC_percentage === null || linkNode.destinationC_percentage == "" || linkNode.destinationC_percentage == undefined) {
+			//There's no third destination, so it's between destinationA and destinationB
+			destinationA_dieRoll = (Math.floor(Math.random() * 100) + 1) * linkNode.destinationA_percentage;
+			destinationB_dieRoll = (Math.floor(Math.random() * 100) + 1) * linkNode.destinationB_percentage;
+
+			if (destinationA_dieRoll > destinationB_dieRoll) {
+				//go to destinationA
+				return linkNode.destinationA;
+			}
+			else {
+				//go to destinationB
+				return linkNode.destinationB;
+			}
+		}
+		else if (linkNode.destinationD_percentage === null || linkNode.destinationD_percentage == "") {
+			//There's no fourth destination, so it's between destinationA and destinationB and destinationC
+			destinationA_dieRoll = (Math.floor(Math.random() * 100) + 1) * linkNode.destinationA_percentage;
+			destinationB_dieRoll = (Math.floor(Math.random() * 100) + 1) * linkNode.destinationB_percentage;
+			destinationC_dieRoll = (Math.floor(Math.random() * 100) + 1) * linkNode.destinationC_percentage;
+
+			if (destinationA_dieRoll > destinationB_dieRoll && destinationA_dieRoll > destinationC_dieRoll) {
+				//go to destinationA
+				return linkNode.destinationA;
+			}
+			else if (destinationB_dieRoll > destinationC_dieRoll) {
+				//go to destinationB
+				return linkNode.destinationB;
+			}
+			else {
+				//go to destinationC
+				return linkNode.destinationC;
+			}
+		}
+		else {
+			//There are four destinations
+			destinationA_dieRoll = (Math.floor(Math.random() * 100) + 1) * linkNode.destinationA_percentage;
+			destinationB_dieRoll = (Math.floor(Math.random() * 100) + 1) * linkNode.destinationB_percentage;
+			destinationC_dieRoll = (Math.floor(Math.random() * 100) + 1) * linkNode.destinationC_percentage;
+			destinationD_dieRoll = (Math.floor(Math.random() * 100) + 1) * linkNode.destinationD_percentage;
+
+			if (destinationA_dieRoll > destinationB_dieRoll && destinationA_dieRoll > destinationC_dieRoll && destinationA_dieRoll > destinationD_dieRoll) {
+				//go to destinationA
+				return linkNode.destinationA;
+			}
+			else if (destinationB_dieRoll > destinationC_dieRoll && destinationB_dieRoll > destinationD_dieRoll) {
+				//go to destinationB
+				return linkNode.destinationB;
+			}
+			else if (destinationC_dieRoll > destinationD_dieRoll) {
+				//go to destinationC
+				return linkNode.destinationC;
+			}
+			else {
+				//go to destinationD
+				return linkNode.destinationD;
+			}
+		}
 	},
 	update: function () {
 		//Move text based on sliders

@@ -67,20 +67,99 @@ saveGame.prototype.writeToAdditionalVariables = function (reference01, value01) 
 	this.additionalVariables.push( { reference: reference01, value: value01 } );
 }
 
-//Read additional variables
-saveGame.prototype.readAdditionalVariables = function (reference01, value01) {
+//Check for additional variables
+saveGame.prototype.checkAdditionalVariables = function (reference01, equivalence01, value01) {
 	//search for reference and value pair in additionalVariables data structure
-	//if found, return value (true if boolean, number if integer)
-	//if not found, return false
-	for (var i = 0; i < this.additionalVariables.length; i++) {
-		if (this.additionalVariables[i].reference == reference01)
-		{
-			if (this.additionalVariables[i].value >= value01)
-			{
-				return true;
+	//if found, checks for whether it's >, <, etc. to the value provided
+	//if it doesn't pass the test to the value, or if not found, returns false
+
+	if (equivalence01 === "" || equivalence01 === null || equivalence01 === undefined)
+	{
+		//just search for whether the additional variable is present - value doesn't matter
+		for (var i = 0; i < this.additionalVariables.length; i++) {
+			if (this.additionalVariables[i].reference == reference01) {
+				return true;				
 			}
 		}
+		return false;
 	}
-
-	return false;
+	else if (equivalence01 === "=")
+	{
+		for (var i = 0; i < this.additionalVariables.length; i++) {
+			if (this.additionalVariables[i].reference == reference01) {
+				if (this.additionalVariables[i].value == value01) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	else if (equivalence01 === "!=" && (value01 === "" || value01 === null || value01 === undefined)) {
+		//checks for if the additional variable is present at all, and returns false if present, true if not - opposite of first check in this series. e.g. if !(01JennethDead), then returns true.
+		for (var i = 0; i < this.additionalVariables.length; i++) {
+			if (this.additionalVariables[i].reference == reference01) {
+				return false;				
+			}
+		}
+		return true;
+	}
+	else if (equivalence01 === "!=") {
+		for (var i = 0; i < this.additionalVariables.length; i++) {
+			if (this.additionalVariables[i].reference == reference01) {
+				if (this.additionalVariables[i].value != value01) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	else if (equivalence01 === "<")
+	{
+		for (var i = 0; i < this.additionalVariables.length; i++) {
+			if (this.additionalVariables[i].reference == reference01) {
+				if (this.additionalVariables[i].value < value01) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	else if (equivalence01 === "<=")
+	{
+		for (var i = 0; i < this.additionalVariables.length; i++) {
+			if (this.additionalVariables[i].reference == reference01) {
+				if (this.additionalVariables[i].value <= value01) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	else if (equivalence01 === ">")
+	{
+		for (var i = 0; i < this.additionalVariables.length; i++) {
+			if (this.additionalVariables[i].reference == reference01) {
+				if (this.additionalVariables[i].value > value01) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	else if (equivalence01 === ">=")
+	{
+		for (var i = 0; i < this.additionalVariables.length; i++) {
+			if (this.additionalVariables[i].reference == reference01) {
+				if (this.additionalVariables[i].value >= value01) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	else
+	{
+		//in case anything goes wrong, defaults to returning false
+		return false;
+	}
 }
