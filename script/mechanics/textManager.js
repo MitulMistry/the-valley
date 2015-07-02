@@ -37,11 +37,10 @@ var POINT_COST_MEGA_02 = 100;
 var POINT_COST_MEGA_03 = 150;
 
 
-var currentModuleText;
-var currentModuleChoices;
+//var currentModuleText;
+//var currentModuleChoices;
 
 var currentModuleTextMap = new Map();
-//var currentModuleChoicesMap = new Map();
 var currentModuleChoicesData;
 var currentModuleLinkNodesData;
 

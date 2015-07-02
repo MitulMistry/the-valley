@@ -12,8 +12,8 @@ var saveGame = function (playerPower, playerKarma, playerDarkTetrad, playerIntel
 	this.fontSize = 13;
 	this.fontColor = '#EFB143';
 	this.numberOfModules = 0;
-	this.currentModule = 0;
-	this.currentNodeKey;
+	this.currentModule = MODULE_ASCENT_OF_MAN; // 0
+	this.currentNodeKey = "AA000AA000AA";
 
 	if (typeof playerPower !== 'undefined') {
 		this.playerPower = playerPower;
@@ -44,14 +44,6 @@ var saveGame = function (playerPower, playerKarma, playerDarkTetrad, playerIntel
 
 	this.gameLog = []; //some sort of data structure mapping player decisions
 	this.additionalVariables = []; //data structure logging other decisions (i.e. "if you gathered food last decision node, then...")
-}
-
-//Set current story module
-saveGame.prototype.setCurrentModule = function (module) {
-
-	if (typeof module !== 'undefined') {
-		this.currentModule = module;
-	}
 }
 
 //Update font preferences

@@ -14,8 +14,8 @@ var iconFacebookOverFrame = 15;
 var iconFacebookClickFrame = 16;
 
 var currentSaveGame = new saveGame();
-var currentNodeKey;// = "AA000AA000AA"; //AA000AA000AB
-var currentModule = MODULE_ASCENT_OF_MAN;
+//var currentNodeKey;// = "AA000AA000AA"; //AA000AA000AB
+//var currentModule = MODULE_ASCENT_OF_MAN;
 var mainTextManager = new textManager();
 var dataLoadedFlag1 = false;
 var dataLoadedFlag2 = false;
@@ -115,10 +115,10 @@ mainMenu.prototype = {
 
 		var menuText = this.game.add.text(this.game.width / 2, this.game.height * 0.9533, "Mitul Mistry 2015 - DEV 0.05", styleMenuText01);
 		menuText.anchor.setTo(0.5, 0.5);
-
+		/*
 		var menuText = this.game.add.text(this.game.width / 2, this.game.height * 0.98, "Created with Phaser", styleMenuText02);
 		menuText.anchor.setTo(0.5, 0.5);
-		
+		*/
 		//Fade in
 		var blackFade = this.game.add.sprite(0, 0, "rectangle_black");
 		blackFade.height = this.game.height;

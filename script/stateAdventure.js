@@ -75,8 +75,6 @@ var fontColorDarkTetrad = '#E60B1A';
 
 var textPrint;
 
-//currentNodeKey = "AA001AD000AA";
-
 /*
 --Relocated to stateMenu.js
 var currentNodeKey = "AA001AD000AA"; //AA000AA000AB
@@ -157,7 +155,7 @@ theGame.prototype = {
 		//-------------------------------------
 		//currentNodeKey = "AA000AA000AB"; //Change start node for testing.
 		//currentNodeKey = "AA001AH001AD";
-		currentNodeKey = "AA001AG001AA";
+		currentSaveGame.currentNodeKey = "AA001AG001AA";
 
 		var textPointsPower;
 		var textPointsKarma;
@@ -208,7 +206,7 @@ theGame.prototype = {
 
 		choicesTextGroup = this.game.add.group();
 
-		textPrint = currentModuleTextMap.get(currentNodeKey);
+		textPrint = currentModuleTextMap.get(currentSaveGame.currentNodeKey);
 		
 		//text1 = this.game.add.text(frame01XPos, frame01YPos, textPrint, style1);
 
@@ -360,8 +358,7 @@ theGame.prototype = {
 		window.open("https://www.facebook.com/sharer/sharer.php?u=http://MitulMistry.com", '_blank');
 	},
 	iconFont: function () {
-		//textPrint = currentModuleTextMap.get(currentNodeKey);
-		//text1.setText(textPrint);
+
 	},
 	iconSave: function () {
 		this.game.state.start("stateMenu");
@@ -444,6 +441,8 @@ theGame.prototype = {
 		var stringTest;
 		loadedChoices.length = 0; //Clear the array
 
+		var choicesFadeInLength = 300;
+
 		//Reset choice colors to white
 		choice1.fill = choiceColor;
 		choice2.fill = choiceColor;
@@ -453,15 +452,20 @@ theGame.prototype = {
 
 		for (var i = 0; i < currentModuleChoicesData.length; i++) {
 			stringTest = currentModuleChoicesData[i].KEY;
-			if (stringTest.substring(0, 12) == currentNodeKey) {
-				//console.log("SUCCESS: " + currentModuleChoicesData[i].KEY + " " + i);
-				loadedChoices.push(i);
+			if (stringTest.substring(0, 12) == currentSaveGame.currentNodeKey) {
+				//if (this.checkChoice(currentModuleChoicesData[i].KEY)) {
+					//console.log("SUCCESS: " + currentModuleChoicesData[i].KEY + " " + i);
+					loadedChoices.push(i);
+				//}				
 			}
 		}
 
 		if (loadedChoices.length == 1) {
 			choice1.setText(continueText);
 			choice1.y = frame02YPos;
+			choice1.alpha = 0;
+			//http://www.html5gamedevs.com/topic/8639-fade-out-text-after-2-second-delay/
+			this.game.add.tween(choice1).to({ alpha: 1 }, choicesFadeInLength, Phaser.Easing.Linear.None, true);
 			choice2.setText("");
 			choice3.setText("");
 			choice4.setText("");
@@ -651,7 +655,9 @@ theGame.prototype = {
 		}
 	},
 	makeDecision: function (choiceNumber) {
-		//alert("Decision made! Choice " + choiceNumber);
+
+		currentSaveGame.writeToGameLog(currentSaveGame.currentNodeKey, choiceNumber);
+
 		var tempReference = loadedChoices[choiceNumber - 1]; //-1 because starts with 0, so choice 1 is key 0 in the array
 		var destinationA_dieRoll;
 		var destinationB_dieRoll;
@@ -724,16 +730,130 @@ theGame.prototype = {
 	},
 	loadStoryNode: function (destination) {
 		//alert(destination);
-		currentNodeKey = destination;
-		textPrint = currentModuleTextMap.get(currentNodeKey);
-		text1.setText(textPrint);
-		text1.y = frame01YPos;
+		if (destination.substring(0, 0) != "X")
+		{
+			currentSaveGame.currentNodeKey = destination;
+			textPrint = currentModuleTextMap.get(currentSaveGame.currentNodeKey);
+			text1.setText(textPrint);
+			text1.y = frame01YPos;
+		}
+		else
+		{
+			//figure out the link node logic
+			//this.processLinkNode(destination);
+		}
 
 		//kern of duty text
 		//text1.setText('');
 
 		this.loadChoices();
 		this.adjustSliders();
+	},
+	processLinkNode: function (destination) {
+		var loadedLinkNodes = [];
+		var stringTest
+		var test1 = false;
+		var test2 = false;
+		var test3 = false;
+
+
+		//load the link nodes into the temp array
+		for (var i = 0; i < currentModuleLinkNodesData.length; i++)
+		{
+			stringTest = currentModuleLinkNodesData[i].KEY;
+			if (stringTest.substring(0, 13) == destination) {
+				loadedChoices.push(i);
+			}
+		}
+
+		//or make this a while loop?
+		for (var i = 0; i < loadedChoices.length; i++) {
+			if (variable1 != "ELSE") {
+				if (equivalence1 === "") {
+					//then just check if variable1 is present
+				}
+				else if (equivalence1 === "=")
+				{
+					 
+				}
+				else if (equivalence1 === "<")
+				{
+
+				}
+				else if (equivalence1 === "<=")
+				{
+
+				}
+				else if (equivalence1 === ">")
+				{
+
+				}
+				else if (equivalence1 === ">=")
+				{
+
+				}
+
+				if (variable2 != "")
+				{
+					//test if true
+
+					if (variable3 != "") {
+						//test if true
+					}
+				}						
+
+				if (operator1 === "")
+				{
+					//go to destination
+				}
+				else if (operator1 === "&&" && operator2 === "")
+				{
+					if (test1 && test2)
+					{
+						//go to destination
+					}
+				}
+				else if (operator1 === "||" && operator2 === "")
+				{
+					if (test1 || test2)
+					{
+						//go to destination
+					}
+				}
+				else if (operator1 === "&&" && operator2 === "&&")
+				{
+					if (test1 && test2 && test3)
+					{
+						//go to destination
+					}
+				}
+				else if (operator1 === "||" && operator2 === "&&")
+				{
+					if (test1 || test2 && test3)
+					{
+						//go to destination
+					}
+				}
+				else if (operator1 === "&&" && operator2 === "||")
+				{
+					if (test1 && test2 || test3)
+					{
+						//go to destination
+					}
+				}
+				else if (operator1 === "||" && operator2 === "||")
+				{
+					if (test1 || test2 || test3)
+					{
+						//go to destination
+					}
+				}
+			}
+			else
+			{
+				//go to destination
+			}
+		}	
 	},
 	update: function () {
 		//Move text based on sliders
