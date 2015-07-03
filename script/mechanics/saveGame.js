@@ -63,8 +63,20 @@ saveGame.prototype.writeToGameLog = function (referenceNode01, decision01) {
 
 //Write additional variables
 saveGame.prototype.writeToAdditionalVariables = function (reference01, value01) {
-	//push reference and value pair onto additionalVariables data structure
-	this.additionalVariables.push( { reference: reference01, value: value01 } );
+	var updated = false;
+
+	//Check if the variable already exists. If it does, update it.
+	for (var i = 0; i < this.additionalVariables.length; i++) {
+		if (this.additionalVariables[i].reference == reference01) {
+			this.additionalVariables[i].value += value01;
+			updated = true;
+		}
+	}
+
+	//If the variable doesn't exist, push reference and value pair onto additionalVariables object
+	if (!updated) {
+		this.additionalVariables.push({ reference: reference01, value: value01 });
+	}
 }
 
 //Check for additional variables
