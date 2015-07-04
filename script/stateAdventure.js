@@ -101,15 +101,15 @@ theGame.prototype = {
 		blackGradient2.scale.y = -1;
 
 		//Dimensions of the text windows 
-		frame01Width = this.game.width * 0.7225;
-		frame01Height = this.game.height * 0.5;
-		frame01XPos = ((this.game.width - frame01Width) / 2) - 11;
-		frame01YPos = this.game.height * 0.12;
+		frame01Width = Math.round( this.game.width * 0.7225 );
+		frame01Height = Math.round( this.game.height * 0.5 );
+		frame01XPos = Math.round( ((this.game.width - frame01Width) / 2) - 11 );
+		frame01YPos = Math.round( this.game.height * 0.12 );
 		
-		frame02Width = frame01Width;
-		frame02Height = this.game.height * 0.275; //0.3067
+		frame02Width = Math.round( frame01Width );
+		frame02Height = Math.round( this.game.height * 0.275 ); //0.3067
 		frame02XPos = frame01XPos;
-		frame02YPos = ((this.game.height - frame01YPos - frame01Height - frame02Height) / 2) + frame01YPos + frame01Height;
+		frame02YPos = Math.round( ((this.game.height - frame01YPos - frame01Height - frame02Height) / 2) + frame01YPos + frame01Height );
 
 		slider01back = this.game.add.sprite(this.game.width - frame01XPos, frame01YPos, "slider01_back");
 		slider02back = this.game.add.sprite(this.game.width - frame02XPos, frame02YPos, "slider02_back");
@@ -151,10 +151,12 @@ theGame.prototype = {
 		//Debug items (Strip from final build)
 		//-------------------------------------
 		//currentSaveGame.currentNodeKey = "AA000AA000AB"; "AA001AH001AD" //Change start node for testing.
-		currentSaveGame.currentNodeKey = "AA001AG001AA";
+		currentSaveGame.currentNodeKey = "AA001AG001AA"; //"AA004BM004AA"
+		//currentSaveGame.writeToAdditionalVariables("01MountainPeopleSaved");
 
-		//currentSaveGame.writeToAdditionalVariables("01JenethHappiness", 10);
-			
+		//currentSaveGame.currentNodeKey = "AA004BM004AE";
+		//currentSaveGame.writeToAdditionalVariables("01JenethHappiness", 10); 01MountainPeopleSaved
+		
 		var stylePointsPower = { font: mainFont, fill: fontColorPower, align: 'left'};
 		var stylePointsKarma = { font: mainFont, fill: fontColorKarma, align: 'left'};
 		var stylePointsIntellect = { font: mainFont, fill: fontColorIntellect, align: 'left'};
@@ -444,6 +446,8 @@ theGame.prototype = {
 			}
 		}
 
+		choicesTextGroup.y = 0; //reset y position of the text group
+
 		if (loadedChoices.length == 1) {
 			choice1.setText(continueText);
 			choice1.y = frame02YPos;
@@ -510,6 +514,7 @@ theGame.prototype = {
 		}
 		else {
 			//error
+			alert("ERROR: loadedChoices.length is out of bounds");
 		}
 	},
 	checkChoice: function (choiceArrayKey) {
@@ -824,27 +829,44 @@ theGame.prototype = {
 	},
 	loadStoryNode: function (destination) {
 
-		if (destination.substring(0, 0) != "X")
+		if (destination === "DEATH")
 		{
-			currentSaveGame.currentNodeKey = destination;			
+			textPrint = "DEATH";
+			text1.setText(textPrint);
+			text1.y = frame01YPos;
+		}
+		else if (destination === "END") {
+			textPrint = "END";
+			text1.setText(textPrint);
+			text1.y = frame01YPos;
 		}
 		else
 		{
-			//link node logic - loop through as many link nodes as necessary
-			var tempKey = this.processLinkNode(destination);
-			var tempDestination = tempKey;
+			if (destination.substring(0, 1) != "X") {
 
-			while (tempKey.substring(0, 0) == "X") {
-				tempKey = this.processLinkNode(tempDestination);
-				tempDestination = tempKey;
+				currentSaveGame.currentNodeKey = destination;
+
+				textPrint = currentModuleTextMap.get(currentSaveGame.currentNodeKey);
+				text1.setText(textPrint);
+				text1.y = frame01YPos;
 			}
+			else {
+				//link node logic - loop through as many link nodes as necessary
+				var tempKey = this.processLinkNode(destination);
+				var tempDestination = tempKey;
 
-			currentSaveGame.currentNodeKey = tempDestination;
+				while (tempKey.substring(0, 1) == "X") {
+					tempKey = this.processLinkNode(tempDestination);
+					tempDestination = tempKey;
+				}
+
+				currentSaveGame.currentNodeKey = tempDestination;
+
+				textPrint = currentModuleTextMap.get(currentSaveGame.currentNodeKey);
+				text1.setText(textPrint);
+				text1.y = frame01YPos;
+			}
 		}
-
-		textPrint = currentModuleTextMap.get(currentSaveGame.currentNodeKey);
-		text1.setText(textPrint);
-		text1.y = frame01YPos;
 
 		//kern of duty text
 		//text1.setText('');
@@ -864,7 +886,8 @@ theGame.prototype = {
 		{
 			stringTest = currentModuleLinkNodesData[i].KEY;
 			if (stringTest.substring(0, 13) == destination) {
-				loadedChoices.push(i);
+				//loadedLinkNodes.push(i);
+				loadedLinkNodes.push(currentModuleLinkNodesData[i]);
 			}
 		}
 

@@ -85,6 +85,8 @@ saveGame.prototype.checkAdditionalVariables = function (reference01, equivalence
 	//if found, checks for whether it's >, <, etc. to the value provided
 	//if it doesn't pass the test to the value, or if not found, returns false
 
+	var defaultValue = 0;
+
 	if (equivalence01 === "" || equivalence01 === null || equivalence01 === undefined)
 	{
 		//just search for whether the additional variable is present - value doesn't matter
@@ -115,13 +117,17 @@ saveGame.prototype.checkAdditionalVariables = function (reference01, equivalence
 		}
 		return true;
 	}
-	else if (equivalence01 === "!=") {
+	else if (equivalence01 === "!=" && !(value01 === "" || value01 === null || value01 === undefined)) {
 		for (var i = 0; i < this.additionalVariables.length; i++) {
 			if (this.additionalVariables[i].reference == reference01) {
 				if (this.additionalVariables[i].value != value01) {
 					return true;
 				}
 			}
+		}
+		if (value01 != defaultValue) {
+			//variable not found, so assume default negative
+			return true;
 		}
 		return false;
 	}
@@ -134,6 +140,10 @@ saveGame.prototype.checkAdditionalVariables = function (reference01, equivalence
 				}
 			}
 		}
+		if (value01 < defaultValue) {
+			//variable not found, so assume default negative
+			return true;
+		}
 		return false;
 	}
 	else if (equivalence01 === "<=")
@@ -144,6 +154,10 @@ saveGame.prototype.checkAdditionalVariables = function (reference01, equivalence
 					return true;
 				}
 			}
+		}
+		if (value01 <= defaultValue) {
+			//variable not found, so assume default negative
+			return true;
 		}
 		return false;
 	}
@@ -156,6 +170,10 @@ saveGame.prototype.checkAdditionalVariables = function (reference01, equivalence
 				}
 			}
 		}
+		if (value01 > defaultValue) {
+			//variable not found, so assume default negative
+			return true;
+		}
 		return false;
 	}
 	else if (equivalence01 === ">=")
@@ -166,6 +184,10 @@ saveGame.prototype.checkAdditionalVariables = function (reference01, equivalence
 					return true;
 				}
 			}
+		}
+		if (value01 >= defaultValue) {
+			//variable not found, so assume default negative
+			return true;
 		}
 		return false;
 	}
