@@ -661,7 +661,7 @@
   },
   {
     "KEY":"XAA001AJ001BE01",
-    "variable1":"01JenethHappiness ",
+    "variable1":"01JenethHappiness",
     "equivalence1":"<",
     "value1":1,
     "operator1":"",
@@ -705,7 +705,7 @@
   },
   {
     "KEY":"XAA001AJ001BF01",
-    "variable1":"01SylaHappiness ",
+    "variable1":"01SylaHappiness",
     "equivalence1":"<",
     "value1":1,
     "operator1":"",
@@ -793,7 +793,7 @@
   },
   {
     "KEY":"XAA001AJ001BB01",
-    "variable1":"01JenethHappiness ",
+    "variable1":"01JenethHappiness",
     "equivalence1":"<",
     "value1":1,
     "operator1":"",
@@ -837,7 +837,7 @@
   },
   {
     "KEY":"XAA001AJ001BC01",
-    "variable1":"01SylaHappiness ",
+    "variable1":"01SylaHappiness",
     "equivalence1":"<",
     "value1":1,
     "operator1":"",
@@ -881,7 +881,7 @@
   },
   {
     "KEY":"XAA001AJ001CA01",
-    "variable1":"01JenethHappiness ",
+    "variable1":"01JenethHappiness",
     "equivalence1":"<",
     "value1":1,
     "operator1":"",
@@ -925,7 +925,7 @@
   },
   {
     "KEY":"XAA001AJ001CB01",
-    "variable1":"01SylaHappiness ",
+    "variable1":"01SylaHappiness",
     "equivalence1":"<",
     "value1":1,
     "operator1":"",
@@ -969,7 +969,7 @@
   },
   {
     "KEY":"XAA001AJ001CC01",
-    "variable1":"01SylaHappiness ",
+    "variable1":"01SylaHappiness",
     "equivalence1":"<",
     "value1":1,
     "operator1":"",
@@ -1013,7 +1013,7 @@
   },
   {
     "KEY":"XAA001AJ001CD01",
-    "variable1":"01JenethHappiness ",
+    "variable1":"01JenethHappiness",
     "equivalence1":"<",
     "value1":1,
     "operator1":"",
@@ -1255,7 +1255,7 @@
   },
   {
     "KEY":"XAA001AK000BB01",
-    "variable1":"01JenethHappiness ",
+    "variable1":"01JenethHappiness",
     "equivalence1":"<",
     "value1":1,
     "operator1":"",
@@ -1299,7 +1299,7 @@
   },
   {
     "KEY":"XAA001AK000BC01",
-    "variable1":"01SylaHappiness ",
+    "variable1":"01SylaHappiness",
     "equivalence1":"<",
     "value1":1,
     "operator1":"",
@@ -1343,11 +1343,11 @@
   },
   {
     "KEY":"XAA001AK000BD01",
-    "variable1":"01JenethHappiness ",
+    "variable1":"01JenethHappiness",
     "equivalence1":"<",
     "value1":1,
     "operator1":"&&",
-    "variable2":"01SylaHappiness ",
+    "variable2":"01SylaHappiness",
     "equivalence2":"<",
     "value2":"1",
     "operator2":"",
@@ -1365,11 +1365,11 @@
   },
   {
     "KEY":"XAA001AK000BD02",
-    "variable1":"01JenethHappiness ",
+    "variable1":"01JenethHappiness",
     "equivalence1":">=",
     "value1":1,
     "operator1":"&&",
-    "variable2":"01SylaHappiness ",
+    "variable2":"01SylaHappiness",
     "equivalence2":"<",
     "value2":"1",
     "operator2":"",
@@ -1387,11 +1387,11 @@
   },
   {
     "KEY":"XAA001AK000BD03",
-    "variable1":"01JenethHappiness ",
+    "variable1":"01JenethHappiness",
     "equivalence1":"<",
     "value1":1,
     "operator1":"&&",
-    "variable2":"01SylaHappiness ",
+    "variable2":"01SylaHappiness",
     "equivalence2":">=",
     "value2":"1",
     "operator2":"",
@@ -1805,7 +1805,7 @@
   },
   {
     "KEY":"XAA001AK002CD01",
-    "variable1":"01JennethDead ",
+    "variable1":"01JennethDead",
     "equivalence1":"",
     "value1":null,
     "operator1":"&&",
@@ -1827,7 +1827,7 @@
   },
   {
     "KEY":"XAA001AK002CD02",
-    "variable1":"01JennethDead ",
+    "variable1":"01JennethDead",
     "equivalence1":"",
     "value1":null,
     "operator1":"&&",
@@ -1849,7 +1849,7 @@
   },
   {
     "KEY":"XAA001AK002CD03",
-    "variable1":"01JennethDead ",
+    "variable1":"01JennethDead",
     "equivalence1":"!=",
     "value1":null,
     "operator1":"&&",
@@ -1937,7 +1937,7 @@
   },
   {
     "KEY":"XAA002AF003AA01",
-    "variable1":"01EldersRespect ",
+    "variable1":"01EldersRespect",
     "equivalence1":">",
     "value1":0,
     "operator1":"",
@@ -2025,7 +2025,7 @@
   },
   {
     "KEY":"XAA002AI000AA01",
-    "variable1":"01EldersRespect ",
+    "variable1":"01EldersRespect",
     "equivalence1":">=",
     "value1":3,
     "operator1":"",
@@ -2047,7 +2047,7 @@
   },
   {
     "KEY":"XAA002AI000AA02",
-    "variable1":"01EldersRespect ",
+    "variable1":"01EldersRespect",
     "equivalence1":">=",
     "value1":1,
     "operator1":"",
@@ -2091,7 +2091,7 @@
   },
   {
     "KEY":"XAA002AI000BB01",
-    "variable1":"01DaraLikesYou ",
+    "variable1":"01DaraLikesYou",
     "equivalence1":"=",
     "value1":2,
     "operator1":"",
@@ -2113,7 +2113,7 @@
   },
   {
     "KEY":"XAA002AI000BB02",
-    "variable1":"01DaraLikesYou ",
+    "variable1":"01DaraLikesYou",
     "equivalence1":"=",
     "value1":1,
     "operator1":"",
@@ -2641,7 +2641,7 @@
   },
   {
     "KEY":"XAA004BK004AD01",
-    "variable1":"01Food ",
+    "variable1":"01Food",
     "equivalence1":"<=",
     "value1":0,
     "operator1":"",
@@ -2663,7 +2663,7 @@
   },
   {
     "KEY":"XAA004BK004AD02",
-    "variable1":"01Shelter ",
+    "variable1":"01Shelter",
     "equivalence1":"<=",
     "value1":0,
     "operator1":"",
@@ -2751,7 +2751,7 @@
   },
   {
     "KEY":"XAA004BO001AA01",
-    "variable1":"01Dogs ",
+    "variable1":"01Dogs",
     "equivalence1":"",
     "value1":null,
     "operator1":"||",
@@ -2795,7 +2795,7 @@
   },
   {
     "KEY":"XAA004BM004AF01",
-    "variable1":"01Food ",
+    "variable1":"01Food",
     "equivalence1":"<=",
     "value1":0,
     "operator1":"",
@@ -2817,7 +2817,7 @@
   },
   {
     "KEY":"XAA004BM004AF02",
-    "variable1":"01Shelter ",
+    "variable1":"01Shelter",
     "equivalence1":"<=",
     "value1":0,
     "operator1":"",
@@ -2993,11 +2993,11 @@
   },
   {
     "KEY":"XAA004BM004AG01",
-    "variable1":"01MountainPeopleKilled ",
+    "variable1":"01MountainPeopleKilled",
     "equivalence1":"",
     "value1":null,
     "operator1":"||",
-    "variable2":"01MountainPeopleSaved ",
+    "variable2":"01MountainPeopleSaved",
     "equivalence2":"",
     "value2":"",
     "operator2":"||",

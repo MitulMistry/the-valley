@@ -50,6 +50,11 @@ var loadedChoices = []; //array of index numbers to be used in the loaded JSON c
 var choicesHeight = 100;
 var continueText = "Continue..."; //Text to show when the choice is only to continue
 
+var textFadeInLength = 500;
+var choicesFadeInLength = 200;
+//var textUpdateIndex = 0;
+//var textUpdateLine = '';
+
 var rightSliderGap01;
 var text1_distance;
 var text1_topGap;
@@ -268,6 +273,7 @@ theGame.prototype = {
 
 		//For some reason text1 needs to be updated here and if you update earlier it shows up all wonky
 		text1.setText(textPrint); //!!!!!!!!!
+		this.fadeInText();
 		this.adjustSliders();
 
 		//--------Icons--------
@@ -361,11 +367,16 @@ theGame.prototype = {
 	},
 	adjustSliders: function () {
 		//Adjust slider height based on amount of text, or else hide
+		slider01.y = frame01YPos;
+		slider02.y = frame02YPos;
+
 		if (text1.height > frame01Height) {
 			slider01.visible = true;
 			slider01back.visible = true;
 			slider01.height = (frame01Height / text1.height) * frame01Height;
-
+			this.fadeSlider(slider01, 0, textFadeInLength);
+			this.fadeSlider(slider01back, 0, textFadeInLength);
+			
 			//Slider movement calculations
 			rightSliderGap01 = slider01back.height - slider01.height;
 			text1_distance = (rightSliderGap01 / slider01back.height) * text1.height;
@@ -379,6 +390,8 @@ theGame.prototype = {
 			slider02.visible = true;
 			slider02back.visible = true;
 			slider02.height = (frame02Height / choicesHeight) * frame02Height;
+			this.fadeSlider(slider02, textFadeInLength, choicesFadeInLength);
+			this.fadeSlider(slider02back, textFadeInLength, choicesFadeInLength);
 
 			//Slider movement calculations
 			rightSliderGap02 = slider02back.height - slider02.height;
@@ -389,6 +402,15 @@ theGame.prototype = {
 			slider02.visible = false;
 			slider02back.visible = false;
 		}
+	},
+	fadeSlider: function (slider, delay, duration) {
+		slider.alpha = 0;
+
+		this.game.time.events.add(delay, function () {
+
+			this.game.add.tween(slider).to({ alpha: 1 }, duration, Phaser.Easing.Linear.None, true);
+
+		}, this);
 	},
 	choiceOver: function (item) {
 		item.fill = choiceHighlightColor;
@@ -427,9 +449,7 @@ theGame.prototype = {
 
 		var stringTest;
 		loadedChoices.length = 0; //Clear the array
-
-		var choicesFadeInLength = 300;
-
+				
 		//Reset choice colors to white
 		choice1.fill = choiceColor;
 		choice2.fill = choiceColor;
@@ -451,9 +471,7 @@ theGame.prototype = {
 		if (loadedChoices.length == 1) {
 			choice1.setText(continueText);
 			choice1.y = frame02YPos;
-			choice1.alpha = 0;
-			//http://www.html5gamedevs.com/topic/8639-fade-out-text-after-2-second-delay/
-			this.game.add.tween(choice1).to({ alpha: 1 }, choicesFadeInLength, Phaser.Easing.Linear.None, true);
+			this.fadeInChoice(choice1, textFadeInLength);
 			choice2.setText("");
 			choice3.setText("");
 			choice4.setText("");
@@ -463,8 +481,10 @@ theGame.prototype = {
 		else if (loadedChoices.length == 2) {
 			choice1.setText(currentModuleChoicesData[loadedChoices[0]].text);
 			choice1.y = frame02YPos;
+			this.fadeInChoice(choice1, textFadeInLength);
 			choice2.setText(currentModuleChoicesData[loadedChoices[1]].text);
 			choice2.y = frame02YPos + choice1.height + choicesSpacer;
+			this.fadeInChoice(choice2, textFadeInLength + choicesFadeInLength);
 			choice3.setText("");
 			choice4.setText("");
 			choice5.setText("");
@@ -473,11 +493,14 @@ theGame.prototype = {
 		else if (loadedChoices.length == 3) {
 			choice1.setText(currentModuleChoicesData[loadedChoices[0]].text);
 			choice1.y = frame02YPos;
+			this.fadeInChoice(choice1, textFadeInLength);
 			choice2.setText(currentModuleChoicesData[loadedChoices[1]].text);
 			choice2.y = frame02YPos + choice1.height + choicesSpacer;
+			this.fadeInChoice(choice2, textFadeInLength + choicesFadeInLength);
 			choice3.setText(currentModuleChoicesData[loadedChoices[2]].text);
 			choice3.y = frame02YPos + choice1.height + choice2.height + (choicesSpacer * 2);
 			choice3.fill = this.checkChoiceColor(loadedChoices[2]);
+			this.fadeInChoice(choice3, textFadeInLength + (2 * choicesFadeInLength));
 			choice4.setText("");
 			choice5.setText("");
 			choicesHeight = choice1.height + choice2.height + choice3.height + (choicesSpacer * 2);
@@ -485,31 +508,40 @@ theGame.prototype = {
 		else if (loadedChoices.length == 4) {
 			choice1.setText(currentModuleChoicesData[loadedChoices[0]].text);
 			choice1.y = frame02YPos;
+			this.fadeInChoice(choice1, textFadeInLength);
 			choice2.setText(currentModuleChoicesData[loadedChoices[1]].text);
 			choice2.y = frame02YPos + choice1.height + choicesSpacer;
+			this.fadeInChoice(choice2, textFadeInLength + choicesFadeInLength);
 			choice3.setText(currentModuleChoicesData[loadedChoices[2]].text);
 			choice3.y = frame02YPos + choice1.height + choice2.height + (choicesSpacer * 2);
 			choice3.fill = this.checkChoiceColor(loadedChoices[2]);
+			this.fadeInChoice(choice3, textFadeInLength + (2 * choicesFadeInLength));
 			choice4.setText(currentModuleChoicesData[loadedChoices[3]].text);
 			choice4.y = frame02YPos + choice1.height + choice2.height + choice3.height + (choicesSpacer * 3);
 			choice4.fill = this.checkChoiceColor(loadedChoices[3]);
+			this.fadeInChoice(choice4, textFadeInLength + (3 * choicesFadeInLength));
 			choice5.setText("");
 			choicesHeight = choice1.height + choice2.height + choice3.height + choice4.height + (choicesSpacer * 3);
 		}
 		else if (loadedChoices.length == 5) {
 			choice1.setText(currentModuleChoicesData[loadedChoices[0]].text);
 			choice1.y = frame02YPos;
+			this.fadeInChoice(choice1, textFadeInLength);
 			choice2.setText(currentModuleChoicesData[loadedChoices[1]].text);
 			choice2.y = frame02YPos + choice1.height + choicesSpacer;
+			this.fadeInChoice(choice2, textFadeInLength + choicesFadeInLength);
 			choice3.setText(currentModuleChoicesData[loadedChoices[2]].text);
 			choice3.y = frame02YPos + choice1.height + choice2.height + (choicesSpacer * 2);
 			choice3.fill = this.checkChoiceColor(loadedChoices[2]);
+			this.fadeInChoice(choice3, textFadeInLength + (2 * choicesFadeInLength));
 			choice4.setText(currentModuleChoicesData[loadedChoices[3]].text);
 			choice4.y = frame02YPos + choice1.height + choice2.height + choice3.height + (choicesSpacer * 3);
 			choice4.fill = this.checkChoiceColor(loadedChoices[3]);
+			this.fadeInChoice(choice4, textFadeInLength + (3 * choicesFadeInLength));
 			choice5.setText(currentModuleChoicesData[loadedChoices[4]].text);
 			choice5.y = frame02YPos + choice1.height + choice2.height + choice3.height + +choice4.height + (choicesSpacer * 4);
 			choice5.fill = this.checkChoiceColor(loadedChoices[4]);
+			this.fadeInChoice(choice5, textFadeInLength + (4 * choicesFadeInLength));
 			choicesHeight = choice1.height + choice2.height + choice3.height + choice4.height + choice5.height + (choicesSpacer * 4);
 		}
 		else {
@@ -834,11 +866,13 @@ theGame.prototype = {
 			textPrint = "DEATH";
 			text1.setText(textPrint);
 			text1.y = frame01YPos;
+			this.fadeInText();
 		}
 		else if (destination === "END") {
 			textPrint = "END";
 			text1.setText(textPrint);
 			text1.y = frame01YPos;
+			this.fadeInText();
 		}
 		else
 		{
@@ -849,6 +883,10 @@ theGame.prototype = {
 				textPrint = currentModuleTextMap.get(currentSaveGame.currentNodeKey);
 				text1.setText(textPrint);
 				text1.y = frame01YPos;
+				this.fadeInText();
+
+				//text1.setText('');
+				//this.loadStoryText();
 			}
 			else {
 				//link node logic - loop through as many link nodes as necessary
@@ -865,6 +903,7 @@ theGame.prototype = {
 				textPrint = currentModuleTextMap.get(currentSaveGame.currentNodeKey);
 				text1.setText(textPrint);
 				text1.y = frame01YPos;
+				this.fadeInText();
 			}
 		}
 
@@ -874,6 +913,38 @@ theGame.prototype = {
 		this.loadChoices();
 		this.adjustSliders();
 	},
+	fadeInText: function () {
+
+		text1.alpha = 0;
+		//http://www.html5gamedevs.com/topic/8639-fade-out-text-after-2-second-delay/
+		this.game.add.tween(text1).to({ alpha: 1 }, textFadeInLength, Phaser.Easing.Linear.None, true);
+	},
+	fadeInChoice: function (choice, delay) {
+		choice.alpha = 0;
+
+		this.game.time.events.add(delay, function () {
+
+			this.game.add.tween(choice).to({ alpha: 1 }, choicesFadeInLength, Phaser.Easing.Linear.None, true);
+
+		}, this);		
+	},
+	/*
+	loadStoryText: function () {
+
+		textUpdateIndex = 0;
+
+		//first parameter is speed, second parameter is number of times event will repeat, third is event to fire, fourth is context - http://phaser.io/examples/v2/time/basic-repeat-event, https://phaser.io/examples/v2/text/kern-of-duty
+
+		this.game.time.events.repeat(5, textPrint.length + 1, this.updateText, this);
+	},
+	updateText: function () {
+
+		textUpdateIndex++;
+
+		textUpdateLine = textPrint.substring(0, textUpdateIndex);
+		text1.setText(textUpdateLine);
+	},
+	*/
 	processLinkNode: function (destination) {
 		var loadedLinkNodes = [];
 		var stringTest
