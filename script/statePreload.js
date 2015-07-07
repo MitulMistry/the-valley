@@ -35,7 +35,7 @@ preload.prototype = {
 	},
 	create: function () {
 		this.game.stage.backgroundColor = '#000000';
-		//this.game.state.start("stateSplash");
-		this.game.state.start("stateMenu");
+		this.game.state.start("stateSplash");
+		//this.game.state.start("stateMenu");
 	}
 }

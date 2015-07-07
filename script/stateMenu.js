@@ -14,9 +14,8 @@ var iconFacebookOverFrame = 15;
 var iconFacebookClickFrame = 16;
 
 var currentSaveGame = new saveGame();
-//var currentNodeKey;// = "AA000AA000AA"; //AA000AA000AB
-//var currentModule = MODULE_ASCENT_OF_MAN;
 var mainTextManager = new textManager();
+
 var dataLoadedFlag1 = false;
 var dataLoadedFlag2 = false;
 var dataLoadedFlag3 = false;
@@ -113,7 +112,7 @@ mainMenu.prototype = {
 		var styleMenuText01 = { font: 'bold 12pt Arial', fill: '#3A3A3A', align: 'left' };
 		var styleMenuText02 = { font: 'bold 10pt Arial', fill: '#3A3A3A', align: 'left' };
 
-		var menuText = this.game.add.text(this.game.width / 2, this.game.height * 0.9533, "Mitul Mistry 2015 - DEV 0.05", styleMenuText01);
+		var menuText = this.game.add.text(this.game.width / 2, this.game.height * 0.9533, "Mitul Mistry 2015 - DEV 0.75", styleMenuText01);
 		menuText.anchor.setTo(0.5, 0.5);
 		/*
 		var menuText = this.game.add.text(this.game.width / 2, this.game.height * 0.98, "Created with Phaser", styleMenuText02);

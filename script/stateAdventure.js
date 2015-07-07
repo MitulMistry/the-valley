@@ -22,8 +22,7 @@ var iconFacebookOverFrame = 15;
 var iconFacebookClickFrame = 16;
 
 //DEBUG MODE - turn on and off
-var debugMode = true;
-var testPASSED = false; //DEBUG - delete
+//var debugMode = true; //Moved to textManager.js
 
 var textPointsPower;
 var textPointsKarma;
@@ -85,6 +84,7 @@ var fontColorLove = '#FC32DA';
 var fontColorDarkTetrad = '#E60B1A';
 
 var textPrint;
+//var activeChoiceColor = "";
 
 theGame.prototype = {
 	create: function () {
@@ -134,7 +134,6 @@ theGame.prototype = {
 		*/
 
 		//--------Sliders--------
-		//Maybe use a 2x2 gray png and stretch to form borders instead? Then you can update them depending on size of text / screen
 		slider01.inputEnabled = true;
 		slider01.input.enableDrag({ boundsSprite: slider01back });
 		slider01.input.boundsSprite = slider01back;
@@ -175,15 +174,6 @@ theGame.prototype = {
 			textPointsLove = this.game.add.text(this.game.width - frame01XPos + 30, frame01YPos + 60, String(currentSaveGame.playerLove), stylePointsLove);
 			textPointsDarkTetrad = this.game.add.text(this.game.width - frame01XPos + 30, frame01YPos + 80, String(currentSaveGame.playerDarkTetrad), stylePointsDarkTetrad);
 		}
-
-		//To test if the code is getting to a breakpoint (before reaching this line), put textTest = true;
-		var textTEST;
-		if (debugMode && testPASSED) {
-			textTEST = this.game.add.text(this.game.width / 2, frame01YPos / 2, "TEST PASSED", stylePointsKarma);
-			textTEST.anchor.setTo(0.5, 0.5);
-		}
-
-		//textTEST2 = this.game.add.text(this.game.width / 2, frame01YPos / 2, currentSaveGame.playerPower, stylePointsKarma);
 
 		//-------------------------------------
 		
@@ -414,10 +404,20 @@ theGame.prototype = {
 	},
 	choiceOver: function (item) {
 		item.fill = choiceHighlightColor;
+		//activeChoiceColor = item.fill;
 	},
 	choiceOut: function (item) {
 		item.fill = choiceColor;
-		//item.fill = previous fill color;
+
+		/*
+		if (activeChoiceColor != "") {
+			//set fill to color recorded with choiceOver
+			item.fill = activeChoiceColor;
+		}
+		else {
+			item.fill = choiceColor;
+		}
+		*/
 	},
 	choiceDown: function (item) {
 		item.fill = choicePressColor;
@@ -867,12 +867,26 @@ theGame.prototype = {
 			text1.setText(textPrint);
 			text1.y = frame01YPos;
 			this.fadeInText();
+
+			choice1.setText("");
+			this.game.time.events.add(1500, function () {
+
+				this.game.state.start("stateMenu");
+
+			}, this);
 		}
 		else if (destination === "END") {
 			textPrint = "END";
 			text1.setText(textPrint);
 			text1.y = frame01YPos;
 			this.fadeInText();
+
+			choice1.setText("");
+			this.game.time.events.add(1500, function () {
+
+				this.game.state.start("stateMenu");
+
+			}, this);
 		}
 		else
 		{

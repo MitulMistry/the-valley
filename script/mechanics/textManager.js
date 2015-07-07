@@ -37,8 +37,7 @@ var POINT_COST_MEGA_02 = 100;
 var POINT_COST_MEGA_03 = 150;
 
 
-//var currentModuleText;
-//var currentModuleChoices;
+var debugMode = true; //TRIGGERS DEBUG MODE
 
 var currentModuleTextMap = new Map();
 var currentModuleChoicesData;
@@ -120,7 +119,6 @@ textManager.prototype.parseModule = function (currentModuleTextPath, currentModu
 
 	//Papa.parse("http://example.com/file.csv", { download: true, complete: function(results) { console.log(results); } });
 
-	//testPASSED = true;
 	//http://stackoverflow.com/questions/26266459/retrieve-parsed-data-from-csv-in-javascript-object-using-papa-parse
 
 	//https://www.google.com/search?q=fileInput.files&ie=utf-8&oe=utf-8#q=javascript+local+database

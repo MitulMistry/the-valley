@@ -4,11 +4,21 @@
 var saveGame = function (playerPower, playerKarma, playerDarkTetrad, playerIntellect, playerLove, numberOfModules, currentModule, currentNodeKey, fontSize, fontColor) {
 	//gameLog,
 
-	this.playerPower = 1000;
-	this.playerKarma = 1000;
-	this.playerDarkTetrad = 1000;
-	this.playerIntellect = 1000;
-	this.playerLove = 1000;
+	if (debugMode) {
+		this.playerPower = 1000;
+		this.playerKarma = 1000;
+		this.playerDarkTetrad = 1000;
+		this.playerIntellect = 1000;
+		this.playerLove = 1000;
+	}
+	else {
+		this.playerPower = 0;
+		this.playerKarma = 0;
+		this.playerDarkTetrad = 0;
+		this.playerIntellect = 0;
+		this.playerLove = 0;
+	}
+	
 	this.fontSize = 13;
 	this.fontColor = '#EFB143';
 	this.numberOfModules = 0;
