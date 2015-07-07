@@ -46,6 +46,7 @@ var choice4;
 var choice5;
 var choicesSpacer = 15;
 var loadedChoices = []; //array of index numbers to be used in the loaded JSON choice data object
+var choicesColorArray = []; // array of colors for each choice # to reference which color to return to after a mouse over
 var choicesHeight = 100;
 var continueText = "Continue..."; //Text to show when the choice is only to continue
 
@@ -154,20 +155,20 @@ theGame.prototype = {
 
 		//Debug items (Strip from final build)
 		//-------------------------------------
-		//currentSaveGame.currentNodeKey = "AA000AA000AB"; "AA001AH001AD" //Change start node for testing.
-		currentSaveGame.currentNodeKey = "AA001AG001AA"; //"AA004BM004AA"
-		//currentSaveGame.writeToAdditionalVariables("01MountainPeopleSaved");
-
-		//currentSaveGame.currentNodeKey = "AA004BM004AE";
-		//currentSaveGame.writeToAdditionalVariables("01JenethHappiness", 10); 01MountainPeopleSaved
-		
-		var stylePointsPower = { font: mainFont, fill: fontColorPower, align: 'left'};
-		var stylePointsKarma = { font: mainFont, fill: fontColorKarma, align: 'left'};
-		var stylePointsIntellect = { font: mainFont, fill: fontColorIntellect, align: 'left'};
-		var stylePointsLove = { font: mainFont, fill: fontColorLove, align: 'left'};
-		var stylePointsDarkTetrad = { font: mainFont, fill: fontColorDarkTetrad, align: 'left'};
-		
 		if (debugMode) {
+			//currentSaveGame.currentNodeKey = "AA000AA000AB"; "AA001AH001AD" //Change start node for testing.
+			currentSaveGame.currentNodeKey = "AA001AG001AA"; //"AA004BM004AA"
+			//currentSaveGame.writeToAdditionalVariables("01MountainPeopleSaved");
+
+			//currentSaveGame.currentNodeKey = "AA004BM004AE";
+			//currentSaveGame.writeToAdditionalVariables("01JenethHappiness", 10); 01MountainPeopleSaved
+
+			var stylePointsPower = { font: mainFont, fill: fontColorPower, align: 'left' };
+			var stylePointsKarma = { font: mainFont, fill: fontColorKarma, align: 'left' };
+			var stylePointsIntellect = { font: mainFont, fill: fontColorIntellect, align: 'left' };
+			var stylePointsLove = { font: mainFont, fill: fontColorLove, align: 'left' };
+			var stylePointsDarkTetrad = { font: mainFont, fill: fontColorDarkTetrad, align: 'left' };
+
 			textPointsPower = this.game.add.text(this.game.width - frame01XPos + 30, frame01YPos, String(currentSaveGame.playerPower), stylePointsPower);
 			textPointsKarma = this.game.add.text(this.game.width - frame01XPos + 30, frame01YPos + 20, String(currentSaveGame.playerKarma), stylePointsKarma);
 			textPointsIntellect = this.game.add.text(this.game.width - frame01XPos + 30, frame01YPos + 40, String(currentSaveGame.playerIntellect), stylePointsIntellect);
@@ -191,6 +192,7 @@ theGame.prototype = {
 		//Embedding fonts? Google Fonts?
 		var style1 = { font: mainFont, fill: mainFontColor, align: 'left', wordWrap: true, wordWrapWidth: frame01Width };
 		var style2 = { font: 'bold 12pt Arial', fill: choiceColor, align: 'left', wordWrap: true, wordWrapWidth: frame01Width };
+		//var style2 = { font: mainFont, fill: choiceColor, align: 'left', wordWrap: true, wordWrapWidth: frame01Width };
 
 		choicesTextGroup = this.game.add.group();
 
@@ -208,7 +210,7 @@ theGame.prototype = {
 		choice1.inputEnabled = true;
 		choice1.input.useHandCursor = true;
 		choice1.events.onInputOver.add(this.choiceOver, this);
-		choice1.events.onInputOut.add(this.choiceOut, this);
+		choice1.events.onInputOut.add(this.choiceOut1, this);
 		choice1.events.onInputDown.add(this.choiceDown, this);
 		choice1.events.onInputUp.add(this.choiceUp1, this);
 
@@ -216,7 +218,7 @@ theGame.prototype = {
 		choice2.inputEnabled = true;
 		choice2.input.useHandCursor = true;
 		choice2.events.onInputOver.add(this.choiceOver, this);
-		choice2.events.onInputOut.add(this.choiceOut, this);
+		choice2.events.onInputOut.add(this.choiceOut2, this);
 		choice2.events.onInputDown.add(this.choiceDown, this);
 		choice2.events.onInputUp.add(this.choiceUp2, this);
 
@@ -224,7 +226,7 @@ theGame.prototype = {
 		choice3.inputEnabled = true;
 		choice3.input.useHandCursor = true;
 		choice3.events.onInputOver.add(this.choiceOver, this);
-		choice3.events.onInputOut.add(this.choiceOut, this);
+		choice3.events.onInputOut.add(this.choiceOut3, this);
 		choice3.events.onInputDown.add(this.choiceDown, this);
 		choice3.events.onInputUp.add(this.choiceUp3, this);
 
@@ -232,7 +234,7 @@ theGame.prototype = {
 		choice4.inputEnabled = true;
 		choice4.input.useHandCursor = true;
 		choice4.events.onInputOver.add(this.choiceOver, this);
-		choice4.events.onInputOut.add(this.choiceOut, this);
+		choice4.events.onInputOut.add(this.choiceOut4, this);
 		choice4.events.onInputDown.add(this.choiceDown, this);
 		choice4.events.onInputUp.add(this.choiceUp4, this);
 
@@ -240,7 +242,7 @@ theGame.prototype = {
 		choice5.inputEnabled = true;
 		choice5.input.useHandCursor = true;
 		choice5.events.onInputOver.add(this.choiceOver, this);
-		choice5.events.onInputOut.add(this.choiceOut, this);
+		choice5.events.onInputOut.add(this.choiceOut5, this);
 		choice5.events.onInputDown.add(this.choiceDown, this);
 		choice5.events.onInputUp.add(this.choiceUp5, this);
 
@@ -406,18 +408,25 @@ theGame.prototype = {
 		item.fill = choiceHighlightColor;
 		//activeChoiceColor = item.fill;
 	},
+	/*
 	choiceOut: function (item) {
 		item.fill = choiceColor;
-
-		/*
-		if (activeChoiceColor != "") {
-			//set fill to color recorded with choiceOver
-			item.fill = activeChoiceColor;
-		}
-		else {
-			item.fill = choiceColor;
-		}
-		*/
+	},
+	*/
+	choiceOut1: function (item) {
+		item.fill = choicesColorArray[0];
+	},
+	choiceOut2: function (item) {
+		item.fill = choicesColorArray[1];
+	},
+	choiceOut3: function (item) {
+		item.fill = choicesColorArray[2];
+	},
+	choiceOut4: function (item) {
+		item.fill = choicesColorArray[3];
+	},
+	choiceOut5: function (item) {
+		item.fill = choicesColorArray[4];
 	},
 	choiceDown: function (item) {
 		item.fill = choicePressColor;
@@ -449,6 +458,7 @@ theGame.prototype = {
 
 		var stringTest;
 		loadedChoices.length = 0; //Clear the array
+		choicesColorArray.length = 0;
 				
 		//Reset choice colors to white
 		choice1.fill = choiceColor;
@@ -471,6 +481,7 @@ theGame.prototype = {
 		if (loadedChoices.length == 1) {
 			choice1.setText(continueText);
 			choice1.y = frame02YPos;
+			choicesColorArray.push(choice1.fill);
 			this.fadeInChoice(choice1, textFadeInLength);
 			choice2.setText("");
 			choice3.setText("");
@@ -481,9 +492,11 @@ theGame.prototype = {
 		else if (loadedChoices.length == 2) {
 			choice1.setText(currentModuleChoicesData[loadedChoices[0]].text);
 			choice1.y = frame02YPos;
+			choicesColorArray.push(choice1.fill);
 			this.fadeInChoice(choice1, textFadeInLength);
 			choice2.setText(currentModuleChoicesData[loadedChoices[1]].text);
 			choice2.y = frame02YPos + choice1.height + choicesSpacer;
+			choicesColorArray.push(choice2.fill);
 			this.fadeInChoice(choice2, textFadeInLength + choicesFadeInLength);
 			choice3.setText("");
 			choice4.setText("");
@@ -494,12 +507,15 @@ theGame.prototype = {
 			choice1.setText(currentModuleChoicesData[loadedChoices[0]].text);
 			choice1.y = frame02YPos;
 			this.fadeInChoice(choice1, textFadeInLength);
+			choicesColorArray.push(choice1.fill);
 			choice2.setText(currentModuleChoicesData[loadedChoices[1]].text);
 			choice2.y = frame02YPos + choice1.height + choicesSpacer;
+			choicesColorArray.push(choice2.fill);
 			this.fadeInChoice(choice2, textFadeInLength + choicesFadeInLength);
 			choice3.setText(currentModuleChoicesData[loadedChoices[2]].text);
 			choice3.y = frame02YPos + choice1.height + choice2.height + (choicesSpacer * 2);
 			choice3.fill = this.checkChoiceColor(loadedChoices[2]);
+			choicesColorArray.push(choice3.fill);
 			this.fadeInChoice(choice3, textFadeInLength + (2 * choicesFadeInLength));
 			choice4.setText("");
 			choice5.setText("");
@@ -508,17 +524,21 @@ theGame.prototype = {
 		else if (loadedChoices.length == 4) {
 			choice1.setText(currentModuleChoicesData[loadedChoices[0]].text);
 			choice1.y = frame02YPos;
+			choicesColorArray.push(choice1.fill);
 			this.fadeInChoice(choice1, textFadeInLength);
 			choice2.setText(currentModuleChoicesData[loadedChoices[1]].text);
 			choice2.y = frame02YPos + choice1.height + choicesSpacer;
+			choicesColorArray.push(choice2.fill);
 			this.fadeInChoice(choice2, textFadeInLength + choicesFadeInLength);
 			choice3.setText(currentModuleChoicesData[loadedChoices[2]].text);
 			choice3.y = frame02YPos + choice1.height + choice2.height + (choicesSpacer * 2);
 			choice3.fill = this.checkChoiceColor(loadedChoices[2]);
+			choicesColorArray.push(choice3.fill);
 			this.fadeInChoice(choice3, textFadeInLength + (2 * choicesFadeInLength));
 			choice4.setText(currentModuleChoicesData[loadedChoices[3]].text);
 			choice4.y = frame02YPos + choice1.height + choice2.height + choice3.height + (choicesSpacer * 3);
 			choice4.fill = this.checkChoiceColor(loadedChoices[3]);
+			choicesColorArray.push(choice4.fill);
 			this.fadeInChoice(choice4, textFadeInLength + (3 * choicesFadeInLength));
 			choice5.setText("");
 			choicesHeight = choice1.height + choice2.height + choice3.height + choice4.height + (choicesSpacer * 3);
@@ -526,21 +546,26 @@ theGame.prototype = {
 		else if (loadedChoices.length == 5) {
 			choice1.setText(currentModuleChoicesData[loadedChoices[0]].text);
 			choice1.y = frame02YPos;
+			choicesColorArray.push(choice1.fill);
 			this.fadeInChoice(choice1, textFadeInLength);
 			choice2.setText(currentModuleChoicesData[loadedChoices[1]].text);
 			choice2.y = frame02YPos + choice1.height + choicesSpacer;
+			choicesColorArray.push(choice2.fill);
 			this.fadeInChoice(choice2, textFadeInLength + choicesFadeInLength);
 			choice3.setText(currentModuleChoicesData[loadedChoices[2]].text);
 			choice3.y = frame02YPos + choice1.height + choice2.height + (choicesSpacer * 2);
 			choice3.fill = this.checkChoiceColor(loadedChoices[2]);
+			choicesColorArray.push(choice3.fill);
 			this.fadeInChoice(choice3, textFadeInLength + (2 * choicesFadeInLength));
 			choice4.setText(currentModuleChoicesData[loadedChoices[3]].text);
 			choice4.y = frame02YPos + choice1.height + choice2.height + choice3.height + (choicesSpacer * 3);
 			choice4.fill = this.checkChoiceColor(loadedChoices[3]);
+			choicesColorArray.push(choice4.fill);
 			this.fadeInChoice(choice4, textFadeInLength + (3 * choicesFadeInLength));
 			choice5.setText(currentModuleChoicesData[loadedChoices[4]].text);
 			choice5.y = frame02YPos + choice1.height + choice2.height + choice3.height + +choice4.height + (choicesSpacer * 4);
 			choice5.fill = this.checkChoiceColor(loadedChoices[4]);
+			choicesColorArray.push(choice5.fill);
 			this.fadeInChoice(choice5, textFadeInLength + (4 * choicesFadeInLength));
 			choicesHeight = choice1.height + choice2.height + choice3.height + choice4.height + choice5.height + (choicesSpacer * 4);
 		}

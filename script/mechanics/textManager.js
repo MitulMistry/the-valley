@@ -37,7 +37,7 @@ var POINT_COST_MEGA_02 = 100;
 var POINT_COST_MEGA_03 = 150;
 
 
-var debugMode = true; //TRIGGERS DEBUG MODE
+var debugMode = false; //TRIGGERS DEBUG MODE
 
 var currentModuleTextMap = new Map();
 var currentModuleChoicesData;

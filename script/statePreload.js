@@ -32,6 +32,9 @@ preload.prototype = {
 
 		this.game.load.image("rectangle_black", "img/primitive_rectangle_black.png");
 		this.game.load.image("blackGradient", "img/bg_black_gradient01.png");
+
+		//Sound
+		this.game.load.audio("01Ambient", "sound/01_ambient_ritual_incompetech.ogg");
 	},
 	create: function () {
 		this.game.stage.backgroundColor = '#000000';
