@@ -112,7 +112,7 @@ theGame.prototype = {
 		frame01YPos = Math.round( this.game.height * 0.12 );
 		
 		frame02Width = Math.round( frame01Width );
-		frame02Height = Math.round( this.game.height * 0.275 ); //0.3067
+		frame02Height = Math.round( this.game.height * 0.275 - 5); //0.3067 --- The -5 is there just to keep it from cutting off a line - can modify or remove depending on font size, etc. Actually, it may not much matter because different combinations of lines and line breaks cause unevenness, and it cuts lines off at different points.
 		frame02XPos = frame01XPos;
 		frame02YPos = Math.round( ((this.game.height - frame01YPos - frame01Height - frame02Height) / 2) + frame01YPos + frame01Height );
 
