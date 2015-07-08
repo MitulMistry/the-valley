@@ -175,6 +175,7 @@ mainMenu.prototype = {
 		//this.game.state.start("stateAdventure");
 		//currentSaveGame = new saveGame();
 		//currentSaveGame = new saveGame({ currentModule: MODULE_ASCENT_OF_MAN, currentNodeKey: "AA000AA000AA" });
+		click01.play();
 		this.game.state.start("statePreload2");
 	},
 	loadGameStart: function () {

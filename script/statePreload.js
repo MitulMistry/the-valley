@@ -35,6 +35,8 @@ preload.prototype = {
 
 		//Sound
 		this.game.load.audio("01Ambient", "sound/01_ambient_ritual_incompetech.ogg");
+		this.game.load.audio("click01", "sound/00_click01.ogg");
+
 	},
 	create: function () {
 		this.game.stage.backgroundColor = '#000000';

@@ -429,6 +429,7 @@ theGame.prototype = {
 		item.fill = choicesColorArray[4];
 	},
 	choiceDown: function (item) {
+		click01.play();
 		item.fill = choicePressColor;
 	},
 	choiceUp1: function (item) {
