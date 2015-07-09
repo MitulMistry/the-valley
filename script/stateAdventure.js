@@ -895,6 +895,7 @@ theGame.prototype = {
 			this.fadeInText();
 
 			choice1.setText("");
+			currentSaveGame.currentNodeKey = "AA000AA000AA";
 			this.game.time.events.add(1500, function () {
 
 				this.game.state.start("stateMenu");
@@ -908,6 +909,7 @@ theGame.prototype = {
 			this.fadeInText();
 
 			choice1.setText("");
+			currentSaveGame.currentNodeKey = "AA000AA000AA";
 			this.game.time.events.add(1500, function () {
 
 				this.game.state.start("stateMenu");

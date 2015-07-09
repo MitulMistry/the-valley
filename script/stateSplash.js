@@ -29,6 +29,7 @@ splash.prototype = {
 			this.game.add.tween(blackFade).to({ alpha: 0 }, fadeInLength, Phaser.Easing.Linear.None, true);
 
 			this.game.time.events.add(fadeInLength + delay, function () {
+			//this.game.time.events.add(1500, function () {
 
 				//Fade out
 				var blackFade2 = this.game.add.sprite(0, 0, "rectangle_black");
