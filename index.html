@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8" />
-	<!--The Valley (v0.01)-->
+	<!--The Valley (DEV 0.85)-->
 	<title>The Valley</title>
 
 	<!--Remember to use phaser.min for production-->
@@ -30,6 +30,14 @@
 	<!--<script src="lib/phaser-state-transition.js"></script>-->
 
 	<style>
+		@font-face {
+			font-family: 'BRLNSR';
+			src: url('fonts/BRLNSR.TTF') format('truetype');
+		}
+		.fontPreload {
+			position:absolute;
+			left:-100px;
+		}
 		body {
 			margin: 0;
 			background-color: #000000;
@@ -53,5 +61,6 @@
 	</script>
 </head>
 <body>
+	<div class="fontPreload" style="font-family: BRLNSR;">&nbsp;</div>
 </body>
 </html>

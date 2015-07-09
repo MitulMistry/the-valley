@@ -73,7 +73,7 @@ var frame02Height;
 var frame02XPos;
 var frame02YPos;
 
-var mainFont = '13pt Berlin Sans FB';
+var mainFont = '13pt BRLNSR';
 var mainFontColor = '#FFBD29';
 var choiceColor = '#FFFFFF';
 var choiceHighlightColor = '#FFF700';
@@ -429,7 +429,7 @@ theGame.prototype = {
 		item.fill = choicesColorArray[4];
 	},
 	choiceDown: function (item) {
-		click01.play();
+		//click01.play();
 		item.fill = choicePressColor;
 	},
 	choiceUp1: function (item) {

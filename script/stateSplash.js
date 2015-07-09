@@ -4,12 +4,12 @@ splash.prototype = {
 	create: function () {
 
 		music = this.game.add.audio("01Ambient");
-		//music.volume = .5;
+		music.volume = .5;
 		music.loop = true;
 		music.play();
 
-		click01 = this.game.add.audio("click01");
-		click01.volume = .7;
+		//click01 = this.game.add.audio("click01");
+		//click01.volume = .7;		
 
 		var fadeInLength = 750;
 		var delay = 1500;
