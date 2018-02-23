@@ -1,0 +1,26 @@
+{
+  "name": "the-valley",
+  "version": "1.0.0",
+  "description": "An HTML5 text adventure system using Phaser",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MitulMistry/the-valley.git"
+  },
+  "keywords": [
+    "text adventure",
+    "game",
+    "phaser"
+  ],
+  "author": "Mitul Mistry",
+  "bugs": {
+    "url": "https://github.com/MitulMistry/the-valley/issues"
+  },
+  "homepage": "https://github.com/MitulMistry/the-valley#readme"
+}
