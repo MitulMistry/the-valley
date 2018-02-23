@@ -22,5 +22,9 @@
   "bugs": {
     "url": "https://github.com/MitulMistry/the-valley/issues"
   },
-  "homepage": "https://github.com/MitulMistry/the-valley#readme"
+  "homepage": "https://github.com/MitulMistry/the-valley#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2"
+  }
 }
