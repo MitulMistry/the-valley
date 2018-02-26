@@ -1,3 +1,6 @@
+// import 'jquery';
+import Phaser from 'phaser';
+
 (function() {
   var game = new Phaser.Game(800, 600, Phaser.CANVAS, "game");
   //var game = new Phaser.Game("100", "100", Phaser.CANVAS, "game");
