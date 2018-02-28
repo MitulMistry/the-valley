@@ -1,4 +1,6 @@
-﻿var splash = function (game) { }
+import Phaser from 'phaser';
+
+var splash = function (game) { }
 
 splash.prototype = {
 	create: function () {
@@ -9,7 +11,7 @@ splash.prototype = {
 		music.play();
 
 		//click01 = this.game.add.audio("click01");
-		//click01.volume = .7;		
+		//click01.volume = .7;
 
 		var fadeInLength = 750;
 		var delay = 1500;
@@ -51,6 +53,6 @@ splash.prototype = {
 			this.game.state.start("stateMenu");
 		}
 
-			
+
 	}
 }

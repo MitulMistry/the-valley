@@ -1,4 +1,6 @@
-﻿var preload = function (game) { }
+import Phaser from 'phaser';
+
+var preload = function (game) { }
 
 preload.prototype = {
 	preload: function () {

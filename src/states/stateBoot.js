@@ -1,10 +1,12 @@
-﻿var boot = function (game) {
-	console.log("%cStarting my awesome game", "color:white; background:red");
+import Phaser from 'phaser';
+
+var boot = function (game) {
+	console.log("%cStarting game", "color:white; background:red");
 };
 
 boot.prototype = {
 	preload: function () {
-		this.game.load.image("loading", "img/menu_loading.png");
+		this.game.load.image("loading", "./assets/images/menu_loading.png");
 	},
 	create: function () {
 		this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;

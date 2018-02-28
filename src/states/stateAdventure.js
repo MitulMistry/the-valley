@@ -1,3 +1,5 @@
+import Phaser from 'phaser';
+
 ﻿var theGame = function (game) {
 
 }
@@ -106,12 +108,12 @@ theGame.prototype = {
 		blackGradient2.y = this.game.height;
 		blackGradient2.scale.y = -1;
 
-		//Dimensions of the text windows 
+		//Dimensions of the text windows
 		frame01Width = Math.round( this.game.width * 0.7225 );
 		frame01Height = Math.round( this.game.height * 0.5 );
 		frame01XPos = Math.round( ((this.game.width - frame01Width) / 2) - 11 );
 		frame01YPos = Math.round( this.game.height * 0.12 );
-		
+
 		frame02Width = Math.round( frame01Width );
 		frame02Height = Math.round( this.game.height * 0.275 - 5); //0.3067 --- The -5 is there just to keep it from cutting off a line - can modify or remove depending on font size, etc. Actually, it may not much matter because different combinations of lines and line breaks cause unevenness, and it cuts lines off at different points.
 		frame02XPos = frame01XPos;
@@ -177,7 +179,7 @@ theGame.prototype = {
 		}
 
 		//-------------------------------------
-		
+
 		//-------Masks-------
 		//	A mask is a Graphics object
 		var textMask01 = this.game.add.graphics(0, 0);
@@ -197,7 +199,7 @@ theGame.prototype = {
 		choicesTextGroup = this.game.add.group();
 
 		textPrint = currentModuleTextMap.get(currentSaveGame.currentNodeKey);
-		
+
 		//text1 = this.game.add.text(frame01XPos, frame01YPos, textPrint, style1);
 
 		text1 = this.game.add.text(frame01XPos, frame01YPos, "Morbi ultricies ante orci, vitae semper nibh consectetur dignissim. \n\nDonec odio turpis, pharetra vel dolor a, malesuada vulputate turpis. In vel porta urna,volutpat auctor ante. Phasellus quam nisi, consequat in elementum ut, accumsan in ex.\n\nSed pulvinar nunc urna, in porttitor lectus imperdiet nec. Suspendisse accumsan congue gravida. \n\nPhasellus quam nisi, consequat in elementum ut, accumsan in ex. Sed pulvinar nunc urna, in porttitor lectus imperdiet nec.\n\nSuspendisse accumsan congue gravida.", style1);
@@ -368,7 +370,7 @@ theGame.prototype = {
 			slider01.height = (frame01Height / text1.height) * frame01Height;
 			this.fadeSlider(slider01, 0, textFadeInLength);
 			this.fadeSlider(slider01back, 0, textFadeInLength);
-			
+
 			//Slider movement calculations
 			rightSliderGap01 = slider01back.height - slider01.height;
 			text1_distance = (rightSliderGap01 / slider01back.height) * text1.height;
@@ -377,7 +379,7 @@ theGame.prototype = {
 			slider01.height = frame01Height;
 			slider01.visible = false;
 			slider01back.visible = false;
-		}		
+		}
 		if (choicesHeight > frame02Height) {
 			slider02.visible = true;
 			slider02back.visible = true;
@@ -460,7 +462,7 @@ theGame.prototype = {
 		var stringTest;
 		loadedChoices.length = 0; //Clear the array
 		choicesColorArray.length = 0;
-				
+
 		//Reset choice colors to white
 		choice1.fill = choiceColor;
 		choice2.fill = choiceColor;
@@ -473,7 +475,7 @@ theGame.prototype = {
 			if (stringTest.substring(0, 12) == currentSaveGame.currentNodeKey) {
 				if (this.checkChoice(i)) {
 					loadedChoices.push(i);
-				}				
+				}
 			}
 		}
 
@@ -755,12 +757,12 @@ theGame.prototype = {
 	makeDecision: function (choiceNumber) {
 
 		currentSaveGame.writeToGameLog(currentSaveGame.currentNodeKey, choiceNumber);
-				
+
 		var tempReference = loadedChoices[choiceNumber - 1]; //-1 because starts with 0, so choice 1 is key 0 in the array
 
 		//------------------Adjust player spirit points------------------
 		this.adjustPlayerPoints(currentModuleChoicesData[tempReference].karmaBoost, currentModuleChoicesData[tempReference].intellectBoost, currentModuleChoicesData[tempReference].loveBoost, currentModuleChoicesData[tempReference].powerBoost, currentModuleChoicesData[tempReference].darkTetradBoost, currentModuleChoicesData[tempReference].additionalVariableBoostA_Key, currentModuleChoicesData[tempReference].additionalVariableBoostA_Value, currentModuleChoicesData[tempReference].additionalVariableBoostB_Key, currentModuleChoicesData[tempReference].additionalVariableBoostB_Value);
-		
+
 		//------------------Randomize destinations------------------
 
 		var destinationA_dieRoll;
@@ -774,7 +776,7 @@ theGame.prototype = {
 			//There's only one destination, go to destinationA
 			this.adjustPlayerPoints(currentModuleChoicesData[tempReference].destinationA_karmaBoost, currentModuleChoicesData[tempReference].destinationA_intellectBoost, currentModuleChoicesData[tempReference].destinationA_loveBoost, currentModuleChoicesData[tempReference].destinationA_powerBoost, currentModuleChoicesData[tempReference].destinationA_darkTetradBoost, currentModuleChoicesData[tempReference].destinationA_additionalVariableBoostA_Key, currentModuleChoicesData[tempReference].destinationA_additionalVariableBoostA_Value, currentModuleChoicesData[tempReference].destinationA_additionalVariableBoostB_Key, currentModuleChoicesData[tempReference].destinationA_additionalVariableBoostB_Value);
 
-			this.loadStoryNode(currentModuleChoicesData[tempReference].destinationA);			
+			this.loadStoryNode(currentModuleChoicesData[tempReference].destinationA);
 		}
 		else if (currentModuleChoicesData[tempReference].destinationC_percentage === null || currentModuleChoicesData[tempReference].destinationC_percentage == "" || currentModuleChoicesData[tempReference].destinationC_percentage == undefined) {
 			//There's no third destination, so it's between destinationA and destinationB
@@ -968,7 +970,7 @@ theGame.prototype = {
 
 			this.game.add.tween(choice).to({ alpha: 1 }, choicesFadeInLength, Phaser.Easing.Linear.None, true);
 
-		}, this);		
+		}, this);
 	},
 	/*
 	loadStoryText: function () {
@@ -993,7 +995,7 @@ theGame.prototype = {
 		var test1 = false;
 		var test2 = false;
 		var test3 = false;
-		
+
 		//load the link nodes into the temp array
 		for (var i = 0; i < currentModuleLinkNodesData.length; i++)
 		{
@@ -1015,15 +1017,15 @@ theGame.prototype = {
 					if (currentSaveGame.checkAdditionalVariables(loadedLinkNodes[i].variable1, loadedLinkNodes[i].equivalence1, loadedLinkNodes[i].value1))
 					{
 						test1 = true;
-					}					
-				}				
+					}
+				}
 				else if (loadedLinkNodes[i].variable3 === "" || loadedLinkNodes[i].variable3 === null || loadedLinkNodes[i].variable3 === undefined)
 				{
 					//check for variable1 and variable2
 					if (currentSaveGame.checkAdditionalVariables(loadedLinkNodes[i].variable1, loadedLinkNodes[i].equivalence1, loadedLinkNodes[i].value1)) {
 						test1 = true;
 					}
-					
+
 					if (currentSaveGame.checkAdditionalVariables(loadedLinkNodes[i].variable2, loadedLinkNodes[i].equivalence2, loadedLinkNodes[i].value2)) {
 						test2 = true;
 					}
@@ -1187,5 +1189,5 @@ theGame.prototype = {
 		if (slider02.visible == true) {
 			choicesTextGroup.y = 1 - (((slider02.y - text2_topGap) / rightSliderGap02) * text2_distance);
 		}
-	}	
+	}
 }

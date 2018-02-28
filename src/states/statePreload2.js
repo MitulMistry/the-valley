@@ -1,4 +1,6 @@
-﻿var preload2 = function (game) {
+import Phaser from 'phaser';
+
+var preload2 = function (game) {
 	//console.log("%cLoading story module", "color:white; background:green");
 };
 

@@ -1,3 +1,5 @@
+import Phaser from 'phaser';
+
 import SaveGame from '../mechanics/SaveGame';
 import TextManager from '../mechanics/TextManager';
 
