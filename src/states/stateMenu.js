@@ -1,3 +1,6 @@
+import SaveGame from '../mechanics/SaveGame';
+import TextManager from '../mechanics/TextManager';
+
 ﻿var mainMenu = function (game) { }
 
 //Sprite sheet frame numbers
@@ -13,8 +16,8 @@ var iconFacebookBaseFrame02 = 14;
 var iconFacebookOverFrame = 15;
 var iconFacebookClickFrame = 16;
 
-var currentSaveGame = new saveGame();
-var mainTextManager = new textManager();
+var currentSaveGame = new SaveGame();
+var mainTextManager = new TextManager();
 
 var dataLoadedFlag1 = false;
 var dataLoadedFlag2 = false;
@@ -63,7 +66,7 @@ mainMenu.prototype = {
 		loadGameButton.anchor.setTo(0.5, 0.5);
 		loadGameButton.frame = 3;
 		//loadGameButton.input.useHandCursor = true;
-		
+
 		/*
 		var quitGameButton = this.game.add.button(this.game.width / 2, this.game.height * 0.8, "menu02", this.quitGame, this, 1, 0, 2);
 		quitGameButton.anchor.setTo(0.5, 0.5);
