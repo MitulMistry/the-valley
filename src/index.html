@@ -2,37 +2,17 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8" />
-	<!--The Valley (DEV 0.85)-->
 	<title>The Valley</title>
-
-	<!--Remember to use phaser.min for production-->
-	<!-- <script src="lib/phaser.js"></script> -->
-	<!--<script src="lib/phaser.min.js"></script>-->
-
-	<!-- <script src="lib/papaparse.js"></script> -->
-	<!--<script src="lib/papaparse.min.js"></script>-->
-
-	<!-- <script src="lib/jquery-1.11.3.js"></script> -->
-	<!--<script src="lib/jquery-1.11.3.min.js"></script>-->
-
-	<script src="script/mechanics/textManager.js"></script>
-	<script src="script/mechanics/soundManager.js"></script>
-	<script src="script/mechanics/saveGame.js"></script>
-
-	<script src="script/stateBoot.js"></script>
-	<script src="script/statePreload.js"></script>
-	<script src="script/stateSplash.js"></script>
-	<script src="script/stateMenu.js"></script>
-	<script src="script/stateAdventure.js"></script>
-	<script src="script/stateAnotherLife.js"></script>
-	<script src="script/statePreload2.js"></script>
-
-	<!--<script src="lib/phaser-state-transition.js"></script>-->
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta http-equiv="cleartype" content="on">
+  <meta name="format-detection" content="telephone=no">
 
 	<style>
 		@font-face {
 			font-family: 'BRLNSR';
-			src: url('fonts/BRLNSR.TTF') format('truetype');
+			src: url('assets/fonts/BRLNSR.TTF') format('truetype');
 		}
 		.fontPreload {
 			position:absolute;
@@ -40,6 +20,7 @@
 		}
 		body {
 			margin: 0;
+			padding: 0;
 			background-color: #000000;
 			/*background-color: #272727;*/
 		}
@@ -61,6 +42,8 @@
 	</script> -->
 </head>
 <body>
-	<div class="fontPreload" style="font-family: BRLNSR;">&nbsp;</div>
+	<div class="fontPreload" id="content" style="font-family: BRLNSR;">&nbsp;</div>
+	<!-- uncomment the line bellow for cordova feature -->
+  <!-- <script type="text/javascript" src="cordova.js"></script> -->
 </body>
 </html>
