@@ -56,3 +56,12 @@ typings/
 
 # dotenv environment variables file
 .env
+
+# phaser-es6-webpack
+www/
+platforms/
+plugins/
+dist/
+.vscode/
+/index.html
+build/
