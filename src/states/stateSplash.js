@@ -1,5 +1,7 @@
 import Phaser from 'phaser';
 
+import globals from '../globals';
+
 export default class extends Phaser.State {
 	create() {
 		// music = this.add.audio("01Ambient");
@@ -16,8 +18,7 @@ export default class extends Phaser.State {
 
 		this.stage.backgroundColor = '#000000';
 
-		if (!debugMode) {
-
+		if (!globals.debugMode) {
 			var logo = this.add.sprite(this.game.width / 2, this.game.height / 2, "splashLogo");
 			logo.anchor.setTo(0.5, 0.5);
 

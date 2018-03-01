@@ -1,3 +1,5 @@
+import globals from '../globals';
+
 ﻿//constructor function https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects
 //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Introduction_to_Object-Oriented_JavaScript
 
@@ -5,7 +7,7 @@ export default class {
 	constructor(playerPower, playerKarma, playerDarkTetrad, playerIntellect, playerLove, numberOfModules, currentModule, currentNodeKey, fontSize, fontColor) {
 		//gameLog,
 
-		if (debugMode) {
+		if (globals.debugMode) {
 			this.playerPower = 1000;
 			this.playerKarma = 1000;
 			this.playerDarkTetrad = 1000;
