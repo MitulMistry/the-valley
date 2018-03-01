@@ -23,8 +23,8 @@ export default class extends Phaser.State {
 
 			//Fade in
 			var blackFade = this.add.sprite(0, 0, "rectangle_black");
-			blackFade.height = this.height;
-			blackFade.width = this.width;
+			blackFade.height = this.game.height;
+			blackFade.width = this.game.width;
 			this.add.tween(blackFade).to({ alpha: 0 }, fadeInLength, Phaser.Easing.Linear.None, true);
 
 			this.time.events.add(fadeInLength + delay, function () {
@@ -32,8 +32,8 @@ export default class extends Phaser.State {
 
 				//Fade out
 				var blackFade2 = this.add.sprite(0, 0, "rectangle_black");
-				blackFade2.height = this.height;
-				blackFade2.width = this.width;
+				blackFade2.height = this.game.height;
+				blackFade2.width = this.game.width;
 				blackFade2.alpha = 0;
 				this.add.tween(blackFade2).to({ alpha: 1 }, fadeOutLength, Phaser.Easing.Linear.None, true);
 
