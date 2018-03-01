@@ -1,9 +1,7 @@
 import Phaser from 'phaser';
 
-import SaveGame from '../mechanics/SaveGame';
-import TextManager from '../mechanics/TextManager';
-
-﻿var mainMenu = function (game) { }
+// import SaveGame from '../mechanics/SaveGame';
+// import TextManager from '../mechanics/TextManager';
 
 //Sprite sheet frame numbers
 var iconSoundBaseFrame = 6;
@@ -18,15 +16,15 @@ var iconFacebookBaseFrame02 = 14;
 var iconFacebookOverFrame = 15;
 var iconFacebookClickFrame = 16;
 
-var currentSaveGame = new SaveGame();
-var mainTextManager = new TextManager();
+// var currentSaveGame = new SaveGame();
+// var mainTextManager = new TextManager();
+//
+// var dataLoadedFlag1 = false;
+// var dataLoadedFlag2 = false;
+// var dataLoadedFlag3 = false;
 
-var dataLoadedFlag1 = false;
-var dataLoadedFlag2 = false;
-var dataLoadedFlag3 = false;
-
-mainMenu.prototype = {
-	create: function () {
+export default class extends Phaser.State {
+	create() {
 		this.game.stage.backgroundColor = '#000000';
 
 		//ADD FIRE EFFECT TO BG? Or Spiral galaxy effect?
@@ -131,8 +129,9 @@ mainMenu.prototype = {
 		blackFadeTween.to({ alpha: 0 }, 500);
 		blackFadeTween.start();
 		blackFade.destroy;
-	},
-	iconOver: function (sprite) {
+	}
+
+	iconOver(sprite) {
 		if (sprite.frame === iconTwitterBaseFrame02)
 		{
 			sprite.frame = iconTwitterOverFrame;
@@ -145,8 +144,9 @@ mainMenu.prototype = {
 		{
 			sprite.frame = iconSoundOverFrame;
 		}*/
-	},
-	iconOut: function (sprite) {
+	}
+
+	iconOut(sprite) {
 		if (sprite.frame === iconTwitterOverFrame) {
 			sprite.frame = iconTwitterBaseFrame02;
 		}
@@ -156,8 +156,9 @@ mainMenu.prototype = {
 		/*else if (sprite.frame === iconSoundOverFrame || sprite.frame === iconSoundClickFrame) {
 			sprite.frame = iconSoundBaseFrame;
 		}*/
-	},
-	iconDown: function (sprite) {
+	}
+
+	iconDown(sprite) {
 		if (sprite.frame === iconTwitterOverFrame) {
 			sprite.frame = iconTwitterBaseFrame02;
 			//sprite.frame = iconTwitterClickFrame;
@@ -170,36 +171,41 @@ mainMenu.prototype = {
 		/*else if (sprite.frame === iconSoundOverFrame) {
 			sprite.frame = iconSoundClickFrame;
 		}*/
-	},/*
+	}/*
 	iconUp: function (sprite) {
 		if (sprite.frame === iconSoundClickFrame) {
 			sprite.frame = iconSoundOverFrame;
 		}
 	},*/
-	newGameStart: function () {
+
+	newGameStart() {
 		//this.game.state.start("stateAdventure");
 		//currentSaveGame = new saveGame();
 		//currentSaveGame = new saveGame({ currentModule: MODULE_ASCENT_OF_MAN, currentNodeKey: "AA000AA000AA" });
 
 		//click01.play();
-		this.game.state.start("statePreload2");
-	},
-	loadGameStart: function () {
+		this.game.state.start("Preload2");
+	}
+
+	loadGameStart() {
 		//this.game.state.start("stateAdventure");
-	},
+	}
 	/*
 	quitGame: function () {
 		this.game.destroy();
 	},
 	*/
-	iconTwitter: function () {
+
+	iconTwitter() {
 		//Maybe have some funny tweets based on module you're playing, etc? "I just killed a gopher"
 		window.open("https://twitter.com/home?status=Check%20out%20the%20epic%20text%20adventure%20-%20%22The%20Valley%22%20http://MitulMistry.com/%20%23indiedev", '_blank');
-	},
-	iconFacebook: function () {
+	}
+
+	iconFacebook() {
 		window.open("https://www.facebook.com/sharer/sharer.php?u=http://MitulMistry.com", '_blank');
-	},
-	iconSound: function () {
+	}
+
+	iconSound() {
 
 	}
 }
