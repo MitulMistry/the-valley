@@ -1,4 +1,5 @@
 import globals from '../globals';
+import constants from '../constants';
 
 ﻿//constructor function https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects
 //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Introduction_to_Object-Oriented_JavaScript
@@ -25,7 +26,7 @@ export default class {
 		this.fontSize = 13;
 		this.fontColor = '#EFB143';
 		this.numberOfModules = 0;
-		this.currentModule = MODULE_ASCENT_OF_MAN; // 0
+		this.currentModule = constants.MODULE_ASCENT_OF_MAN; // 0
 		this.currentNodeKey = "AA000AA000AA";
 
 		if (typeof playerPower !== 'undefined') {
