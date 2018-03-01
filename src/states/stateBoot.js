@@ -2,27 +2,9 @@ import Phaser from 'phaser';
 import WebFont from 'webfontloader';
 import config from '../config';
 
-// var boot = function (game) {
-// 	console.log("%cStarting game", "color:white; background:red");
-// };
-//
-// boot.prototype = {
-// 	preload: function () {
-// 		this.game.load.image("loading", "./assets/images/menu_loading.png");
-// 	},
-// 	create: function () {
-// 		this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
-// 		this.scale.pageAlignHorizontally = true;
-// 		//this.scale.pageAlignVertically = true;
-// 		this.scale.setScreenSize();
-// 		this.game.state.start("statePreload");
-// 		this.game.stage.backgroundColor = '#000000';
-// 	}
-// }
-
 export default class extends Phaser.State {
 	init() {
-		console.log("%cStarting game", "color:white; background:red");
+		console.log('%cStarting game', 'color:white; background:red');
 
 		this.stage.backgroundColor = '#000000';
 
@@ -36,6 +18,8 @@ export default class extends Phaser.State {
 	}
 
 	preload() {
+		this.game.load.image('loading', './assets/images/menu_loading.png');
+
 		if (config.webfonts.length) { // check if webfonts set in config
 			WebFont.load({
 				google: {
