@@ -3,14 +3,18 @@ import $ from 'jquery';
 import globals from '../globals';
 import constants from '../constants';
 
-var currentModuleTextMap = new Map();
-var currentModuleChoicesData;
-var currentModuleLinkNodesData;
-
 export default class {
 	constructor() {
-
+		this.currentModuleTextMap = new Map();
+		this.currentModuleChoicesData = {};
+		this.currentModuleLinkNodesData = {};
 	}
+
+	// get currentModuleTextMap() { return this.currentModuleTextMap; }
+  //
+	// get currentModuleChoicesData() { return this.currentModuleChoicesData; }
+  //
+	// get currentModuleLinkNodesData() { return this.currentModuleLinkNodesData; }
 
 	loadModule (moduleNumber)	{
 		//this.loadJSON();
@@ -81,10 +85,12 @@ export default class {
 	*/
 	loadJSON (currentModuleTextPath, currentModuleChoicesPath, currentModuleLinkNodesPath) {
 		//if (typeof (currentModuleTextPath && currentModuleChoicesPath) !== 'undefined') {
+		let thisObj = this;
+
 			$.getJSON('/src/storyModules/module01AscentOfManTEXT.json', function (data) {
 				//--This following section is the AJAX callback - executes upon successfully loading the data
 				for (var i = 0; i < data.length; i++) {
-					currentModuleTextMap.set(data[i].KEY, data[i].TEXT);
+					thisObj.currentModuleTextMap.set(data[i].KEY, data[i].TEXT);
 					//console.log("SUCCESS: " + data[i].KEY + data[i].TEXT);
 				}
 				globals.dataLoadedFlag1 = true;
@@ -93,14 +99,14 @@ export default class {
 
 			$.getJSON('/src/storyModules/module01AscentOfManCHOICES.json', function (data) {
 				//--This following section is the AJAX callback - executes upon successfully loading the data
-				currentModuleChoicesData = data;
+				thisObj.currentModuleChoicesData = data;
 				globals.dataLoadedFlag2 = true;
 				//--End AJAX callback
 			});
 
 			$.getJSON('/src/storyModules/module01AscentOfManLINKNODES.json', function (data) {
 				//--This following section is the AJAX callback - executes upon successfully loading the data
-				currentModuleLinkNodesData = data;
+				thisObj.currentModuleLinkNodesData = data;
 				globals.dataLoadedFlag3 = true;
 				//--End AJAX callback
 			});

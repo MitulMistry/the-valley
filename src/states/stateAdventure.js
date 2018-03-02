@@ -1,6 +1,7 @@
 import Phaser from 'phaser';
 
 import globals from '../globals';
+import systems from '../systems';
 
 //Sprite sheet frame numbers
 var iconFontBaseFrame = 0;
@@ -20,9 +21,6 @@ var iconFacebookBaseFrame01 = 13;
 var iconFacebookBaseFrame02 = 14;
 var iconFacebookOverFrame = 15;
 var iconFacebookClickFrame = 16;
-
-//DEBUG MODE - turn on and off
-//var debugMode = true; //Moved to textManager.js
 
 var textPointsPower;
 var textPointsKarma;
