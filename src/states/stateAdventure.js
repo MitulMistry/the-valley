@@ -1,8 +1,6 @@
 import Phaser from 'phaser';
 
-﻿var theGame = function (game) {
-
-}
+import globals from '../globals';
 
 //Sprite sheet frame numbers
 var iconFontBaseFrame = 0;
@@ -89,8 +87,8 @@ var fontColorDarkTetrad = '#E60B1A';
 var textPrint;
 //var activeChoiceColor = "";
 
-theGame.prototype = {
-	create: function () {
+export default class extends Phaser.State {
+	create() {
 		this.game.stage.backgroundColor = '#000000';
 
 		//BG
@@ -157,7 +155,7 @@ theGame.prototype = {
 
 		//Debug items (Strip from final build)
 		//-------------------------------------
-		if (debugMode) {
+		if (globals.debugMode) {
 			//currentSaveGame.currentNodeKey = "AA000AA000AB"; "AA001AH001AD" //Change start node for testing.
 			currentSaveGame.currentNodeKey = "AA001AG001AA"; //"AA004BM004AA"
 			//currentSaveGame.writeToAdditionalVariables("01MountainPeopleSaved");
@@ -310,56 +308,68 @@ theGame.prototype = {
 		blackFadeTween.to({ alpha: 0 }, 500);
 		blackFadeTween.start();
 		blackFade.destroy;
-	},
-	sliderOver: function (sprite) {
+	}
+
+	sliderOver(sprite) {
 		sprite.frame = 1;
-	},
-	sliderOut: function (sprite) {
+	}
+
+	sliderOut(sprite) {
 		sprite.frame = 0;
-	},
-	sliderDown: function (sprite) {
+	}
+
+	sliderDown(sprite) {
 		sprite.frame = 2;
-	},
-	iconOver: function (sprite) {
+	}
+
+	iconOver(sprite) {
 		if (sprite.frame === iconTwitterBaseFrame01) {
 			sprite.frame = iconTwitterBaseFrame02;
 		}
 		else if (sprite.frame === iconFacebookBaseFrame01) {
 			sprite.frame = iconFacebookBaseFrame02;
 		}
-	},
-	iconOut: function (sprite) {
+	}
+
+	iconOut(sprite) {
 		if (sprite.frame === iconTwitterBaseFrame02) {
 			sprite.frame = iconTwitterBaseFrame01;
 		}
 		else if (sprite.frame === iconFacebookBaseFrame02) {
 			sprite.frame = iconFacebookBaseFrame01;
 		}
-	},
-	iconDown: function (sprite) {
+	}
+
+	iconDown(sprite) {
 		if (sprite.frame === iconTwitterBaseFrame02) {
 			sprite.frame = iconTwitterBaseFrame01;
 		}
 		else if (sprite.frame === iconFacebookBaseFrame02) {
 			sprite.frame = iconFacebookBaseFrame01;
 		}
-	},
-	iconTwitter: function () {
+	}
+
+	iconTwitter() {
 		window.open("https://twitter.com/home?status=Check%20out%20the%20epic%20text%20adventure%20-%20%22The%20Valley%22%20http://MitulMistry.com/%20%23indiedev", '_blank');
-	},
-	iconFacebook: function () {
+	}
+
+	iconFacebook() {
 		window.open("https://www.facebook.com/sharer/sharer.php?u=http://MitulMistry.com", '_blank');
-	},
-	iconFont: function () {
+	}
 
-	},
-	iconSave: function () {
+	iconFont() {
+
+	}
+
+	iconSave() {
 		this.game.state.start("stateMenu");
-	},
-	iconSound: function () {
+	}
 
-	},
-	adjustSliders: function () {
+	iconSound() {
+
+	}
+
+	adjustSliders() {
 		//Adjust slider height based on amount of text, or else hide
 		slider01.y = frame01YPos;
 		slider02.y = frame02YPos;
@@ -396,8 +406,9 @@ theGame.prototype = {
 			slider02.visible = false;
 			slider02back.visible = false;
 		}
-	},
-	fadeSlider: function (slider, delay, duration) {
+	}
+
+	fadeSlider(slider, delay, duration) {
 		slider.alpha = 0;
 
 		this.game.time.events.add(delay, function () {
@@ -405,58 +416,70 @@ theGame.prototype = {
 			this.game.add.tween(slider).to({ alpha: 1 }, duration, Phaser.Easing.Linear.None, true);
 
 		}, this);
-	},
-	choiceOver: function (item) {
+	}
+
+	choiceOver(item) {
 		item.fill = choiceHighlightColor;
 		//activeChoiceColor = item.fill;
-	},
+	}
+
 	/*
 	choiceOut: function (item) {
 		item.fill = choiceColor;
 	},
 	*/
-	choiceOut1: function (item) {
+	choiceOut1(item) {
 		item.fill = choicesColorArray[0];
-	},
-	choiceOut2: function (item) {
+	}
+
+	choiceOut2(item) {
 		item.fill = choicesColorArray[1];
-	},
-	choiceOut3: function (item) {
+	}
+
+	choiceOut3(item) {
 		item.fill = choicesColorArray[2];
-	},
-	choiceOut4: function (item) {
+	}
+
+	choiceOut4(item) {
 		item.fill = choicesColorArray[3];
-	},
-	choiceOut5: function (item) {
+	}
+
+	choiceOut5(item) {
 		item.fill = choicesColorArray[4];
-	},
-	choiceDown: function (item) {
+	}
+
+	choiceDown(item) {
 		//click01.play();
 		item.fill = choicePressColor;
-	},
-	choiceUp1: function (item) {
+	}
+
+	choiceUp1(item) {
 		//http://www.html5gamedevs.com/topic/5351-call-a-function-with-arguments-when-oninputdown/
 		item.fill = choiceHighlightColor;
 		this.makeDecision(1);
-	},
-	choiceUp2: function (item) {
+	}
+
+	choiceUp2(item) {
 		item.fill = choiceHighlightColor;
 		this.makeDecision(2);
-	},
-	choiceUp3: function (item) {
+	}
+
+	choiceUp3(item) {
 		item.fill = choiceHighlightColor;
 		this.makeDecision(3);
-	},
-	choiceUp4: function (item) {
+	}
+
+	choiceUp4(item) {
 		item.fill = choiceHighlightColor;
 		this.makeDecision(4);
-	},
-	choiceUp5: function (item) {
+	}
+
+	choiceUp5(item) {
 		item.fill = choiceHighlightColor;
 		this.makeDecision(5);
-	},
-	loadChoices: function() {
+	}
 
+	loadChoices() {
 		this.updateDebug(); //update debug items if debug mode is enabled
 
 		var stringTest;
@@ -576,9 +599,9 @@ theGame.prototype = {
 			//error
 			alert("ERROR: loadedChoices.length is out of bounds");
 		}
-	},
-	checkChoice: function (choiceArrayKey) {
+	}
 
+	checkChoice(choiceArrayKey) {
 		if (currentModuleChoicesData[choiceArrayKey].karmaCost !== "" && currentModuleChoicesData[choiceArrayKey].karmaCost !== null && currentModuleChoicesData[choiceArrayKey].karmaCost !== undefined) {
 			if (currentSaveGame.playerKarma >= this.parseChoiceCost(currentModuleChoicesData[choiceArrayKey].karmaCost)) {
 				return true;
@@ -668,8 +691,9 @@ theGame.prototype = {
 			//there are no costs for this choice, so return true
 			return true;
 		}
-	},
-	checkChoiceColor: function (choiceArrayKey) {
+	}
+
+	checkChoiceColor(choiceArrayKey) {
 		//returns what color the text should be
 		if (currentModuleChoicesData[choiceArrayKey].karmaCost !== "")	{
 			return fontColorKarma;
@@ -689,8 +713,9 @@ theGame.prototype = {
 		else {
 			return choiceColor;
 		}
-	},
-	parseChoiceCost: function (stringToParse) {
+	}
+
+	parseChoiceCost(stringToParse) {
 		if (stringToParse === "mini01") {
 			return POINT_COST_MINI_01;
 		}
@@ -730,8 +755,9 @@ theGame.prototype = {
 		else {
 			return 0;
 		}
-	},
-	parseChoiceBoost: function (stringToParse) {
+	}
+
+	parseChoiceBoost(stringToParse) {
 		if (stringToParse === "small") {
 			return POINT_BOOST_SMALL;
 		}
@@ -753,9 +779,9 @@ theGame.prototype = {
 		else {
 			return 0;
 		}
-	},
-	makeDecision: function (choiceNumber) {
+	}
 
+	makeDecision(choiceNumber) {
 		currentSaveGame.writeToGameLog(currentSaveGame.currentNodeKey, choiceNumber);
 
 		var tempReference = loadedChoices[choiceNumber - 1]; //-1 because starts with 0, so choice 1 is key 0 in the array
@@ -853,10 +879,10 @@ theGame.prototype = {
 				this.loadStoryNode(currentModuleChoicesData[tempReference].destinationD);
 			}
 		}
-	},
-	adjustPlayerPoints: function (karmaBoost, intellectBoost, loveBoost, powerBoost, darkTetradBoost, additionalVariableBoostA_Key, additionalVariableBoostA_Value, additionalVariableBoostB_Key, additionalVariableBoostB_Value) {
-		//Adjust player spirit points
+	}
 
+	adjustPlayerPoints(karmaBoost, intellectBoost, loveBoost, powerBoost, darkTetradBoost, additionalVariableBoostA_Key, additionalVariableBoostA_Value, additionalVariableBoostB_Key, additionalVariableBoostB_Value) {
+		//Adjust player spirit points
 		if (karmaBoost != null && karmaBoost != "" && karmaBoost != undefined) {
 			currentSaveGame.playerKarma += this.parseChoiceBoost(karmaBoost);
 		}
@@ -886,9 +912,9 @@ theGame.prototype = {
 				currentSaveGame.writeToAdditionalVariables(additionalVariableBoostB_Key, additionalVariableBoostB_Value);
 			}
 		}
-	},
-	loadStoryNode: function (destination) {
+	}
 
+	loadStoryNode(destination) {
 		if (destination === "DEATH")
 		{
 			textPrint = "DEATH";
@@ -956,14 +982,15 @@ theGame.prototype = {
 
 		this.loadChoices();
 		this.adjustSliders();
-	},
-	fadeInText: function () {
+	}
 
+	fadeInText() {
 		text1.alpha = 0;
 		//http://www.html5gamedevs.com/topic/8639-fade-out-text-after-2-second-delay/
 		this.game.add.tween(text1).to({ alpha: 1 }, textFadeInLength, Phaser.Easing.Linear.None, true);
-	},
-	fadeInChoice: function (choice, delay) {
+	}
+
+	fadeInChoice(choice, delay) {
 		choice.alpha = 0;
 
 		this.game.time.events.add(delay, function () {
@@ -971,7 +998,8 @@ theGame.prototype = {
 			this.game.add.tween(choice).to({ alpha: 1 }, choicesFadeInLength, Phaser.Easing.Linear.None, true);
 
 		}, this);
-	},
+	}
+
 	/*
 	loadStoryText: function () {
 
@@ -989,7 +1017,8 @@ theGame.prototype = {
 		text1.setText(textUpdateLine);
 	},
 	*/
-	processLinkNode: function (destination) {
+
+	processLinkNode(destination) {
 		var loadedLinkNodes = [];
 		var stringTest
 		var test1 = false;
@@ -1100,9 +1129,9 @@ theGame.prototype = {
 		//If nothing is found, that's an error
 		alert("Something bad happened.");
 		return null;
-	},
-	getRandomLinkNodeDestination: function (linkNode) {
+	}
 
+	getRandomLinkNodeDestination(linkNode) {
 		var destinationA_dieRoll;
 		var destinationB_dieRoll;
 		var destinationC_dieRoll;
@@ -1171,17 +1200,19 @@ theGame.prototype = {
 				return linkNode.destinationD;
 			}
 		}
-	},
-	updateDebug: function () {
-		if (debugMode) {
+	}
+
+	updateDebug() {
+		if (globals.debugMode) {
 			textPointsPower.setText(currentSaveGame.playerPower);
 			textPointsKarma.setText(currentSaveGame.playerKarma);
 			textPointsIntellect.setText(currentSaveGame.playerIntellect);
 			textPointsLove.setText(currentSaveGame.playerLove);
 			textPointsDarkTetrad.setText(currentSaveGame.playerDarkTetrad);
 		}
-	},
-	update: function () {
+	}
+
+	update() {
 		//Move text based on sliders
 		if (slider01.visible == true) {
 			text1.y = text1_topGap - (((slider01.y - text1_topGap) / rightSliderGap01) * text1_distance);
