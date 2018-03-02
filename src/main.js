@@ -2,12 +2,12 @@ import 'pixi';
 import 'p2';
 import Phaser from 'phaser';
 
-import BootState from './states/stateBoot';
-import PreloadState from './states/statePreload';
-import SplashState from './states/stateSplash';
-import MenuState from './states/stateMenu';
-import Preload2State from './states/statePreload2';
-import GameState from './states/stateAdventure';
+import BootState from './states/Boot';
+import PreloadState from './states/Preload';
+import SplashState from './states/Splash';
+import MenuState from './states/Menu';
+import Preload2State from './states/Preload2';
+import GameState from './states/Game';
 
 import config from './config';
 
