@@ -1,7 +1,7 @@
 import $ from 'jquery';
 
-import globals from '../globals';
-import constants from '../constants';
+import globals from '../globals/globals';
+import constants from '../globals/constants';
 
 export default class {
 	constructor() {

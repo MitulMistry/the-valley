@@ -1,5 +1,5 @@
-import globals from '../globals';
-import constants from '../constants';
+import globals from '../globals/globals';
+import constants from '../globals/constants';
 
 ﻿//constructor function https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects
 //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Introduction_to_Object-Oriented_JavaScript

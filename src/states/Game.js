@@ -1,7 +1,7 @@
 import Phaser from 'phaser';
 
-import globals from '../globals';
-import systems from '../systems';
+import globals from '../globals/globals';
+import systems from '../globals/systems';
 
 //Sprite sheet frame numbers
 var iconFontBaseFrame = 0;

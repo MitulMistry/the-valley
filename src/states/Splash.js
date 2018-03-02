@@ -1,6 +1,6 @@
 import Phaser from 'phaser';
 
-import globals from '../globals';
+import globals from '../globals/globals';
 
 export default class extends Phaser.State {
 	create() {
