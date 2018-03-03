@@ -1,6 +1,7 @@
 import Phaser from 'phaser';
 
 import globals from '../globals/globals';
+import constants from '../globals/constants';
 import systems from '../globals/systems';
 
 //Sprite sheet frame numbers
@@ -715,40 +716,40 @@ export default class extends Phaser.State {
 
 	parseChoiceCost(stringToParse) {
 		if (stringToParse === "mini01") {
-			return POINT_COST_MINI_01;
+			return constants.POINT_COST_MINI_01;
 		}
 		else if (stringToParse === "mini02") {
-			return POINT_COST_MINI_02;
+			return constants.POINT_COST_MINI_02;
 		}
 		else if (stringToParse === "mini03") {
-			return POINT_COST_MINI_03;
+			return constants.POINT_COST_MINI_03;
 		}
 		else if (stringToParse === "moderate01") {
-			return POINT_COST_MODERATE_01;
+			return constants.POINT_COST_MODERATE_01;
 		}
 		else if (stringToParse === "moderate02") {
-			return POINT_COST_MODERATE_02;
+			return constants.POINT_COST_MODERATE_02;
 		}
 		else if (stringToParse === "moderate03") {
-			return POINT_COST_MODERATE_03;
+			return constants.POINT_COST_MODERATE_03;
 		}
 		else if (stringToParse === "heavy01") {
-			return POINT_COST_HEAVY_01;
+			return constants.POINT_COST_HEAVY_01;
 		}
 		else if (stringToParse === "heavy02") {
-			return POINT_COST_HEAVY_02;
+			return constants.POINT_COST_HEAVY_02;
 		}
 		else if (stringToParse === "heavy03") {
-			return POINT_COST_HEAVY_03;
+			return constants.POINT_COST_HEAVY_03;
 		}
 		else if (stringToParse === "mega01") {
-			return POINT_COST_MEGA_01;
+			return constants.POINT_COST_MEGA_01;
 		}
 		else if (stringToParse === "mega02") {
-			return POINT_COST_MEGA_02;
+			return constants.POINT_COST_MEGA_02;
 		}
 		else if (stringToParse === "mega03") {
-			return POINT_COST_MEGA_03;
+			return constants.POINT_COST_MEGA_03;
 		}
 		else {
 			return 0;
@@ -757,22 +758,22 @@ export default class extends Phaser.State {
 
 	parseChoiceBoost(stringToParse) {
 		if (stringToParse === "small") {
-			return POINT_BOOST_SMALL;
+			return constants.POINT_BOOST_SMALL;
 		}
 		else if (stringToParse === "medium") {
-			return POINT_BOOST_MEDIUM;
+			return constants.POINT_BOOST_MEDIUM;
 		}
 		else if (stringToParse === "large") {
-			return POINT_BOOST_LARGE;
+			return constants.POINT_BOOST_LARGE;
 		}
 		else if (stringToParse === "large02") {
-			return POINT_BOOST_LARGE02;
+			return constants.POINT_BOOST_LARGE02;
 		}
 		else if (stringToParse === "huge") {
-			return POINT_BOOST_HUGE;
+			return constants.POINT_BOOST_HUGE;
 		}
 		else if (stringToParse === "medium") {
-			return POINT_BOOST_JACKPOT;
+			return constants.POINT_BOOST_JACKPOT;
 		}
 		else {
 			return 0;
