@@ -184,7 +184,7 @@ export default class extends Phaser.State {
 		//currentSaveGame = new saveGame({ currentModule: MODULE_ASCENT_OF_MAN, currentNodeKey: "AA000AA000AA" });
 
 		//click01.play();
-		this.game.state.start("Preload2");
+		this.game.state.start("GamePreload");
 	}
 
 	loadGameStart() {

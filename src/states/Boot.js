@@ -35,10 +35,10 @@ export default class extends Phaser.State {
 
 	render() {
 		if (config.webfonts.length && this.fontsReady) {
-      this.state.start('Preload')
+      this.state.start('MenuPreload')
     }
     if (!config.webfonts.length) {
-      this.state.start('Preload')
+      this.state.start('MenuPreload')
     }
 	}
 

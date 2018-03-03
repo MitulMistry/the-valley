@@ -3,10 +3,10 @@ import 'p2';
 import Phaser from 'phaser';
 
 import BootState from './states/Boot';
-import PreloadState from './states/Preload';
+import MenuPreloadState from './states/MenuPreload';
 import SplashState from './states/Splash';
 import MenuState from './states/Menu';
-import Preload2State from './states/Preload2';
+import GamePreloadState from './states/GamePreload';
 import GameState from './states/Game';
 
 import config from './config';
@@ -20,10 +20,10 @@ class Game extends Phaser.Game {
     super(width, height, Phaser.CANVAS, 'content', null);
 
     this.state.add('Boot', BootState, false);
-    this.state.add('Preload', PreloadState, false);
+    this.state.add('MenuPreload', MenuPreloadState, false);
     this.state.add('Splash', SplashState, false);
     this.state.add('Menu', MenuState, false);
-    this.state.add('Preload2', Preload2State, false);
+    this.state.add('GamePreload', GamePreloadState, false);
     this.state.add('Game', GameState, false);
     // this.state.add('AnotherLifeState', GameOver, false);
 
