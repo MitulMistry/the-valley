@@ -1,5 +1,6 @@
 import Phaser from 'phaser';
 import WebFont from 'webfontloader';
+
 import config from '../config';
 
 export default class extends Phaser.State {
@@ -18,7 +19,7 @@ export default class extends Phaser.State {
 	}
 
 	preload() {
-		this.game.load.image('loading', './assets/images/menu_loading.png');
+		this.load.image('loading', 'assets/images/menu_loading.png');
 
 		if (config.webfonts.length) { // check if webfonts set in config
 			WebFont.load({
