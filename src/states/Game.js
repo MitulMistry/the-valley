@@ -4,25 +4,6 @@ import globals from '../globals/globals';
 import constants from '../globals/constants';
 import systems from '../globals/systems';
 
-//Sprite sheet frame numbers
-var iconFontBaseFrame = 0;
-var iconFontOverFrame = 1;
-var iconFontClickFrame = 2;
-var iconSaveBaseFrame = 3;
-var iconSaveOverFrame = 4;
-var iconSaveClickFrame = 5;
-var iconSoundBaseFrame = 6;
-var iconSoundOverFrame = 7;
-var iconSoundClickFrame = 8;
-var iconTwitterBaseFrame01 = 9;
-var iconTwitterBaseFrame02 = 10;
-var iconTwitterOverFrame = 11;
-var iconTwitterClickFrame = 12;
-var iconFacebookBaseFrame01 = 13;
-var iconFacebookBaseFrame02 = 14;
-var iconFacebookOverFrame = 15;
-var iconFacebookClickFrame = 16;
-
 var textPointsPower;
 var textPointsKarma;
 var textPointsIntellect;
@@ -286,18 +267,18 @@ export default class extends Phaser.State {
 		iconFacebookButton.events.onInputOut.add(this.iconOut, this);
 		iconFacebookButton.events.onInputDown.add(this.iconDown, this);
 
-		var iconFontButton = this.game.add.button(this.game.width - iconXoffset, this.game.height * 0.72, "icons", this.iconFont, this, iconFontOverFrame, iconFontBaseFrame, iconFontClickFrame);
+		var iconFontButton = this.game.add.button(this.game.width - iconXoffset, this.game.height * 0.72, "icons", this.iconFont, this, constants.iconFontOverFrame, constants.iconFontBaseFrame, constants.iconFontClickFrame);
 		iconFontButton.anchor.setTo(0.5, 0.5);
-		iconFontButton.frame = iconFontBaseFrame;
+		iconFontButton.frame = constants.iconFontBaseFrame;
 
-		var iconSaveButton = this.game.add.button(this.game.width - iconXoffset, this.game.height * 0.8267, "icons", this.iconSave, this, iconSaveOverFrame, iconSaveBaseFrame, iconSaveClickFrame);
+		var iconSaveButton = this.game.add.button(this.game.width - iconXoffset, this.game.height * 0.8267, "icons", this.iconSave, this, constants.iconSaveOverFrame, constants.iconSaveBaseFrame, constants.iconSaveClickFrame);
 		iconSaveButton.anchor.setTo(0.5, 0.5);
-		iconSaveButton.frame = iconSaveBaseFrame;
+		iconSaveButton.frame = constants.iconSaveBaseFrame;
 		iconSaveButton.input.useHandCursor = true;
 
-		var iconSoundButton = this.game.add.button(this.game.width - iconXoffset, this.game.height * 0.9283, "icons", this.iconSound, this, iconSoundOverFrame, iconSoundBaseFrame, iconSoundClickFrame);
+		var iconSoundButton = this.game.add.button(this.game.width - iconXoffset, this.game.height * 0.9283, "icons", this.iconSound, this, constants.iconSoundOverFrame, constants.iconSoundBaseFrame, constants.iconSoundClickFrame);
 		iconSoundButton.anchor.setTo(0.5, 0.5);
-		iconSoundButton.frame = iconSoundBaseFrame;
+		iconSoundButton.frame = constants.iconSoundBaseFrame;
 
 		//Fade in
 		var blackFade = this.game.add.sprite(0, 0, "rectangle_black");
@@ -322,29 +303,29 @@ export default class extends Phaser.State {
 	}
 
 	iconOver(sprite) {
-		if (sprite.frame === iconTwitterBaseFrame01) {
-			sprite.frame = iconTwitterBaseFrame02;
+		if (sprite.frame === constants.iconTwitterBaseFrame01) {
+			sprite.frame = constants.iconTwitterBaseFrame02;
 		}
-		else if (sprite.frame === iconFacebookBaseFrame01) {
-			sprite.frame = iconFacebookBaseFrame02;
+		else if (sprite.frame === constants.iconFacebookBaseFrame01) {
+			sprite.frame = constants.iconFacebookBaseFrame02;
 		}
 	}
 
 	iconOut(sprite) {
-		if (sprite.frame === iconTwitterBaseFrame02) {
-			sprite.frame = iconTwitterBaseFrame01;
+		if (sprite.frame === constants.iconTwitterBaseFrame02) {
+			sprite.frame = constants.iconTwitterBaseFrame01;
 		}
-		else if (sprite.frame === iconFacebookBaseFrame02) {
-			sprite.frame = iconFacebookBaseFrame01;
+		else if (sprite.frame === constants.iconFacebookBaseFrame02) {
+			sprite.frame = constants.iconFacebookBaseFrame01;
 		}
 	}
 
 	iconDown(sprite) {
-		if (sprite.frame === iconTwitterBaseFrame02) {
-			sprite.frame = iconTwitterBaseFrame01;
+		if (sprite.frame === constants.iconTwitterBaseFrame02) {
+			sprite.frame = constants.iconTwitterBaseFrame01;
 		}
-		else if (sprite.frame === iconFacebookBaseFrame02) {
-			sprite.frame = iconFacebookBaseFrame01;
+		else if (sprite.frame === constants.iconFacebookBaseFrame02) {
+			sprite.frame = constants.iconFacebookBaseFrame01;
 		}
 	}
 

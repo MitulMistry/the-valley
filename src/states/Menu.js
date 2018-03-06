@@ -1,27 +1,6 @@
 import Phaser from 'phaser';
 
-// import SaveGame from '../mechanics/SaveGame';
-// import TextManager from '../mechanics/TextManager';
-
-//Sprite sheet frame numbers
-var iconSoundBaseFrame = 6;
-var iconSoundOverFrame = 7;
-var iconSoundClickFrame = 8;
-var iconTwitterBaseFrame01 = 9;
-var iconTwitterBaseFrame02 = 10;
-var iconTwitterOverFrame = 11;
-var iconTwitterClickFrame = 12;
-var iconFacebookBaseFrame01 = 13;
-var iconFacebookBaseFrame02 = 14;
-var iconFacebookOverFrame = 15;
-var iconFacebookClickFrame = 16;
-
-// var currentSaveGame = new SaveGame();
-// var mainTextManager = new TextManager();
-//
-// var dataLoadedFlag1 = false;
-// var dataLoadedFlag2 = false;
-// var dataLoadedFlag3 = false;
+import constants from '../globals/constants';
 
 export default class extends Phaser.State {
 	create() {
@@ -93,7 +72,7 @@ export default class extends Phaser.State {
 		iconTwitterButton.events.onInputOut.add(this.iconOut, this);
 		iconTwitterButton.events.onInputDown.add(this.iconDown, this);
 
-		//var iconFacebookButton = this.game.add.button(iconXoffset, this.game.height * 0.9283, "icons", this.iconFacebook, this, iconFacebookOverFrame, iconFacebookBaseFrame02, iconFacebookBaseFrame02);
+		//var iconFacebookButton = this.game.add.button(iconXoffset, this.game.height * 0.9283, "icons", this.iconFacebook, this, constants.iconFacebookOverFrame, constants.iconFacebookBaseFrame02, constants.iconFacebookBaseFrame02);
 		var iconFacebookButton = this.game.add.button(iconXoffset, this.game.height * 0.9283, "icons", this.iconFacebook, this);
 		iconFacebookButton.anchor.setTo(0.5, 0.5);
 		iconFacebookButton.frame = 14;
@@ -102,7 +81,7 @@ export default class extends Phaser.State {
 		iconFacebookButton.events.onInputOut.add(this.iconOut, this);
 		iconFacebookButton.events.onInputDown.add(this.iconDown, this);
 
-		var iconSoundButton = this.game.add.button(this.game.width - iconXoffset, this.game.height * 0.9283, "icons", this.iconSound, this, iconSoundOverFrame, iconSoundBaseFrame, iconSoundClickFrame);
+		var iconSoundButton = this.game.add.button(this.game.width - iconXoffset, this.game.height * 0.9283, "icons", this.iconSound, this, constants.iconSoundOverFrame, constants.iconSoundBaseFrame, constants.iconSoundClickFrame);
 		iconSoundButton.frame = 6;
 		iconSoundButton.anchor.setTo(0.5, 0.5);
 		//iconSoundButton.input.useHandCursor = true;
@@ -132,49 +111,49 @@ export default class extends Phaser.State {
 	}
 
 	iconOver(sprite) {
-		if (sprite.frame === iconTwitterBaseFrame02)
+		if (sprite.frame === constants.iconTwitterBaseFrame02)
 		{
-			sprite.frame = iconTwitterOverFrame;
+			sprite.frame = constants.iconTwitterOverFrame;
 		}
-		else if (sprite.frame === iconFacebookBaseFrame02)
+		else if (sprite.frame === constants.iconFacebookBaseFrame02)
 		{
-			sprite.frame = iconFacebookOverFrame;
+			sprite.frame = constants.iconFacebookOverFrame;
 		}
-		/*else if (sprite.frame === iconSoundBaseFrame)
+		/*else if (sprite.frame === constants.iconSoundBaseFrame)
 		{
-			sprite.frame = iconSoundOverFrame;
+			sprite.frame = constants.iconSoundOverFrame;
 		}*/
 	}
 
 	iconOut(sprite) {
-		if (sprite.frame === iconTwitterOverFrame) {
-			sprite.frame = iconTwitterBaseFrame02;
+		if (sprite.frame === constants.iconTwitterOverFrame) {
+			sprite.frame = constants.iconTwitterBaseFrame02;
 		}
-		else if (sprite.frame === iconFacebookOverFrame) {
-			sprite.frame = iconFacebookBaseFrame02;
+		else if (sprite.frame === constants.iconFacebookOverFrame) {
+			sprite.frame = constants.iconFacebookBaseFrame02;
 		}
-		/*else if (sprite.frame === iconSoundOverFrame || sprite.frame === iconSoundClickFrame) {
-			sprite.frame = iconSoundBaseFrame;
+		/*else if (sprite.frame === constants.iconSoundOverFrame || sprite.frame === constants.iconSoundClickFrame) {
+			sprite.frame = constants.iconSoundBaseFrame;
 		}*/
 	}
 
 	iconDown(sprite) {
-		if (sprite.frame === iconTwitterOverFrame) {
-			sprite.frame = iconTwitterBaseFrame02;
-			//sprite.frame = iconTwitterClickFrame;
+		if (sprite.frame === constants.iconTwitterOverFrame) {
+			sprite.frame = constants.iconTwitterBaseFrame02;
+			//sprite.frame = constants.iconTwitterClickFrame;
 			//this.game.time.events.add(500, iconOut(sprite), this);
 		}
-		else if (sprite.frame === iconFacebookOverFrame) {
-			sprite.frame = iconFacebookBaseFrame02;
-			//sprite.frame = iconFacebookClickFrame;
+		else if (sprite.frame === constants.iconFacebookOverFrame) {
+			sprite.frame = constants.iconFacebookBaseFrame02;
+			//sprite.frame = constants.iconFacebookClickFrame;
 		}
-		/*else if (sprite.frame === iconSoundOverFrame) {
-			sprite.frame = iconSoundClickFrame;
+		/*else if (sprite.frame === constants.iconSoundOverFrame) {
+			sprite.frame = constants.iconSoundClickFrame;
 		}*/
 	}/*
 	iconUp: function (sprite) {
-		if (sprite.frame === iconSoundClickFrame) {
-			sprite.frame = iconSoundOverFrame;
+		if (sprite.frame === constants.iconSoundClickFrame) {
+			sprite.frame = constants.iconSoundOverFrame;
 		}
 	},*/
 
