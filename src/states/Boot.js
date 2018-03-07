@@ -9,17 +9,13 @@ export default class extends Phaser.State {
 
 		this.stage.backgroundColor = '#000000';
 
-		// this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
-		// this.scale.pageAlignHorizontally = true;
-		// NOT USED: this.scale.pageAlignVertically = true;
-		// DEPRECATED: this.scale.setScreenSize(true);
-		// this.game.scale.refresh();
-
 		this.fontsReady = false;
 		this.fontsLoaded = this.fontsLoaded.bind(this);
 	}
 
 	preload() {
+		this.initializeScaleMode();
+
 		this.load.image('loading', 'assets/images/menu_loading.png');
 
 		if (config.webfonts.length) { // check if webfonts set in config
@@ -41,6 +37,15 @@ export default class extends Phaser.State {
     if (!config.webfonts.length) {
       this.state.start('MenuPreload');
     }
+	}
+
+	initializeScaleMode() { // set game screen to scale proportionally
+		// https://phaser.io/examples/v2/input/game-scale
+		this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+    this.scale.setMinMax(config.gameMinWidth, config.gameMinHeight, config.gameWidth, config.gameHeight);
+		this.scale.pageAlignHorizontally = true;
+	 	this.scale.pageAlignVertically = false;
+		this.scale.windowConstraints.bottom = 'visual'; // constrain to displayed screen area
 	}
 
 	fontsLoaded() {
