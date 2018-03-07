@@ -1006,12 +1006,12 @@ export default class extends Phaser.State {
 		var test3 = false;
 
 		//load the link nodes into the temp array
-		for (var i = 0; i < currentModuleLinkNodesData.length; i++)
+		for (var i = 0; i < globals.currentModuleLinkNodesData.length; i++)
 		{
-			stringTest = currentModuleLinkNodesData[i].KEY;
+			stringTest = globals.currentModuleLinkNodesData[i].KEY;
 			if (stringTest.substring(0, 13) == destination) {
 				//loadedLinkNodes.push(i);
-				loadedLinkNodes.push(currentModuleLinkNodesData[i]);
+				loadedLinkNodes.push(globals.currentModuleLinkNodesData[i]);
 			}
 		}
 
