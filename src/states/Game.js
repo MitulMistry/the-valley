@@ -53,7 +53,7 @@ var frame02Height;
 var frame02XPos;
 var frame02YPos;
 
-var mainFont = '13pt BRLNSR';
+var mainFont = '500 12.5pt Fira Sans'; // 13pt
 var mainFontColor = '#FFBD29';
 var choiceColor = '#FFFFFF';
 var choiceHighlightColor = '#FFF700';

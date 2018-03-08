@@ -4,5 +4,5 @@ export default {
   gameMinWidth: 400,
   gameMinHeight: 300,
   localStorageName: 'the-valley',
-  webfonts: [] // ['Bangers']
+  webfonts: ['Fira Sans:500'] // ['Bangers']
 }
