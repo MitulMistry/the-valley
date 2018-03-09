@@ -1,3 +1,4 @@
+// Webpack loads JSON files by default - parses as JavaScript objects
 import ascentOfManChoicesJSON from '../storyModules/module01AscentOfManCHOICES.json';
 import ascentOfManLinkNodesJSON from '../storyModules/module01AscentOfManLINKNODES.json';
 import ascentOfManTextJSON from '../storyModules/module01AscentOfManTEXT.json';
@@ -19,16 +20,13 @@ export default class {
 	}
 
 	loadJSON (moduleText, moduleChoices, moduleLinkNodes) {
-
 		for (var i in moduleText) {
 			globals.currentModuleTextMap.set(moduleText[i].KEY, moduleText[i].TEXT);
 		}
-		globals.dataLoadedFlag1 = true;
 
 		globals.currentModuleChoicesData = moduleChoices;
-		globals.dataLoadedFlag2 = true;
-
 		globals.currentModuleLinkNodesData = moduleLinkNodes;
-		globals.dataLoadedFlag3 = true;
+
+		globals.JSONLoadedFlag = true;
 	}
 }

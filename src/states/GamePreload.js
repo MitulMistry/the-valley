@@ -33,10 +33,8 @@ export default class extends Phaser.State {
 
 		//Wait for JSON data to finish loading
 		//NEED TO SET UP A TIMEOUT IF DATA DOESN'T LOAD
-		if (globals.dataLoadedFlag1 && globals.dataLoadedFlag2 && globals.dataLoadedFlag3) {
-			globals.dataLoadedFlag1 = false;
-			globals.dataLoadedFlag2 = false;
-			globals.dataLoadedFlag3 = false;
+		if (globals.JSONLoadedFlag) {
+			globals.JSONLoadedFlag = false;
 			this.state.start('Game');
 		}
 	}
