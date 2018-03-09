@@ -1,5 +1,3 @@
-import $ from 'jquery';
-
 import ascentOfManChoicesJSON from '../storyModules/module01AscentOfManCHOICES.json';
 import ascentOfManLinkNodesJSON from '../storyModules/module01AscentOfManLINKNODES.json';
 import ascentOfManTextJSON from '../storyModules/module01AscentOfManTEXT.json';
