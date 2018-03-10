@@ -5,7 +5,6 @@ import systems from '../globals/systems';
 
 export default class extends Phaser.State {
 	init() {
-		//console.log("%cLoading story module", "color:white; background:green");
 	}
 
 	preload() {
@@ -13,15 +12,11 @@ export default class extends Phaser.State {
 		loadingBar.anchor.setTo(0.5, 0.5);
 		this.load.setPreloadSprite(loadingBar);
 
-		//this.game.load.image("loading", "img/menu_loading.png");
-
-		console.log('%cLoading story module', 'color:white; background:green');
 		//Load the current module into map, whichever module is currently selected (either randomly chosen for new game or next module, or module number from save game. Or else have the randomness all determined in the save game object itself.
 		systems.mainTextManager.loadModule(systems.currentSaveGame.currentModule);
 	}
 
 	create() {
-		//this.game.state.start("stateAdventure");
 	}
 
 	update() {

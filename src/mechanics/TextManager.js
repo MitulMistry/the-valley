@@ -11,6 +11,8 @@ export default class {
 	}
 
 	loadModule (moduleNumber)	{
+		console.log('%cLoading story module ' + moduleNumber, 'color:white; background:green');
+
 		if (moduleNumber === constants.MODULE_ASCENT_OF_MAN) {
 			// currentNodeKey = "AA000AA000AA";
 			this.loadJSON(ascentOfManTextJSON, ascentOfManChoicesJSON, ascentOfManLinkNodesJSON);

@@ -45,20 +45,20 @@ if (window.cordova) {
         'deviceready',
         this.onDeviceReady.bind(this),
         false
-      )
+      );
     },
 
     // deviceready Event Handler
     //
     onDeviceReady: function () {
-      this.receivedEvent('deviceready')
+      this.receivedEvent('deviceready');
 
       // When the device is ready, start Phaser Boot state.
-      window.game.state.start('Boot')
+      window.game.state.start('Boot');
     },
 
     receivedEvent: function (id) {
-      console.log('Received Event: ' + id)
+      console.log('Received Event: ' + id);
     }
   };
 
