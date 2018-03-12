@@ -69,8 +69,6 @@ var textPrint;
 
 export default class extends Phaser.State {
 	create() {
-		console.log(this.time.events);
-
 		this.game.stage.backgroundColor = '#000000';
 
 		//BG

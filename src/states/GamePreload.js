@@ -16,7 +16,6 @@ export default class extends Phaser.State {
 
 		// set up timeout if data doesn't load
 		timeOut = this.time.events.add(Phaser.Timer.SECOND * 20, this.loadingTimeOut, this);
-		console.log(this.time.events);
 
 		//Load the current module into map, whichever module is currently selected (either randomly chosen for new game or next module, or module number from save game. Or else have the randomness all determined in the save game object itself.
 		systems.mainTextManager.loadModule(systems.currentSaveGame.currentModule);
