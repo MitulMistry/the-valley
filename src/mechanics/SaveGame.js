@@ -1,10 +1,7 @@
 import globals from '../globals/globals';
 import constants from '../globals/constants';
 
-﻿//constructor function https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects
-//https://developer.mozilla.org/en-US/docs/Web/JavaScript/Introduction_to_Object-Oriented_JavaScript
-
-export default class {
+﻿export default class {
 	constructor(playerPower, playerKarma, playerDarkTetrad, playerIntellect, playerLove, numberOfModules, currentModule, currentNodeKey, fontSize, fontColor) {
 		//gameLog,
 
@@ -27,7 +24,7 @@ export default class {
 		this.fontColor = '#EFB143';
 		this.numberOfModules = 0;
 		this.currentModule = constants.MODULE_ASCENT_OF_MAN; // 0
-		this.currentNodeKey = "AA000AA000AA";
+		this.currentNodeKey = 'AA000AA000AA';
 
 		if (typeof playerPower !== 'undefined') {
 			this.playerPower = playerPower;
@@ -57,7 +54,7 @@ export default class {
 		//this.font = font;
 
 		this.gameLog = []; //some sort of data structure mapping player decisions
-		this.additionalVariables = []; //data structure logging other decisions (i.e. "if you gathered food last decision node, then...")
+		this.additionalVariables = []; //data structure logging other decisions (i.e. 'if you gathered food last decision node, then...')
 	}
 
 	//Update font preferences
@@ -101,7 +98,7 @@ export default class {
 
 		var defaultValue = 0;
 
-		if (equivalence01 === "" || equivalence01 === null || equivalence01 === undefined)
+		if (equivalence01 === '' || equivalence01 === null || equivalence01 === undefined)
 		{
 			//just search for whether the additional variable is present - value doesn't matter
 			for (var i = 0; i < this.additionalVariables.length; i++) {
@@ -111,7 +108,7 @@ export default class {
 			}
 			return false;
 		}
-		else if (equivalence01 === "=")
+		else if (equivalence01 === '=')
 		{
 			for (var i = 0; i < this.additionalVariables.length; i++) {
 				if (this.additionalVariables[i].reference == reference01) {
@@ -122,7 +119,7 @@ export default class {
 			}
 			return false;
 		}
-		else if (equivalence01 === "!=" && (value01 === "" || value01 === null || value01 === undefined)) {
+		else if (equivalence01 === '!=' && (value01 === '' || value01 === null || value01 === undefined)) {
 			//checks for if the additional variable is present at all, and returns false if present, true if not - opposite of first check in this series. e.g. if !(01JennethDead), then returns true.
 			for (var i = 0; i < this.additionalVariables.length; i++) {
 				if (this.additionalVariables[i].reference == reference01) {
@@ -131,7 +128,7 @@ export default class {
 			}
 			return true;
 		}
-		else if (equivalence01 === "!=" && !(value01 === "" || value01 === null || value01 === undefined)) {
+		else if (equivalence01 === '!=' && !(value01 === '' || value01 === null || value01 === undefined)) {
 			for (var i = 0; i < this.additionalVariables.length; i++) {
 				if (this.additionalVariables[i].reference == reference01) {
 					if (this.additionalVariables[i].value != value01) {
@@ -145,7 +142,7 @@ export default class {
 			}
 			return false;
 		}
-		else if (equivalence01 === "<")
+		else if (equivalence01 === '<')
 		{
 			for (var i = 0; i < this.additionalVariables.length; i++) {
 				if (this.additionalVariables[i].reference == reference01) {
@@ -160,7 +157,7 @@ export default class {
 			}
 			return false;
 		}
-		else if (equivalence01 === "<=")
+		else if (equivalence01 === '<=')
 		{
 			for (var i = 0; i < this.additionalVariables.length; i++) {
 				if (this.additionalVariables[i].reference == reference01) {
@@ -175,7 +172,7 @@ export default class {
 			}
 			return false;
 		}
-		else if (equivalence01 === ">")
+		else if (equivalence01 === '>')
 		{
 			for (var i = 0; i < this.additionalVariables.length; i++) {
 				if (this.additionalVariables[i].reference == reference01) {
@@ -190,7 +187,7 @@ export default class {
 			}
 			return false;
 		}
-		else if (equivalence01 === ">=")
+		else if (equivalence01 === '>=')
 		{
 			for (var i = 0; i < this.additionalVariables.length; i++) {
 				if (this.additionalVariables[i].reference == reference01) {

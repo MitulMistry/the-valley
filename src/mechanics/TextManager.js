@@ -11,13 +11,13 @@ export default class {
 	}
 
 	loadModule (moduleNumber)	{
-		console.log('%cLoading story module ' + moduleNumber, 'color:white; background:green');
+		console.log('%c Loading story module ' + moduleNumber + ' ', 'color:white; background:orange;');
 
 		if (moduleNumber === constants.MODULE_ASCENT_OF_MAN) {
-			// currentNodeKey = "AA000AA000AA";
+			// systems.currentSaveGame.currentNodeKey = "AA000AA000AA";
 			this.loadJSON(ascentOfManTextJSON, ascentOfManChoicesJSON, ascentOfManLinkNodesJSON);
 		} else {
-			console.log('Error: Invalid story module.');
+			console.log('%cError: Invalid story module.', 'color:white; background:red;');
 		}
 	}
 

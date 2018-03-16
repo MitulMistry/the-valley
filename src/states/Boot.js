@@ -5,7 +5,7 @@ import config from '../config';
 
 export default class extends Phaser.State {
 	init() {
-		console.log('%cStarting game', 'color:white; background:red');
+		console.log('%c Starting game ', 'color:white; background:orange;');
 
 		this.stage.backgroundColor = '#000000';
 
