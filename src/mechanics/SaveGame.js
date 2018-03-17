@@ -2,8 +2,18 @@ import globals from '../globals/globals';
 import constants from '../globals/constants';
 
 ﻿export default class {
-	constructor(playerPower, playerKarma, playerDarkTetrad, playerIntellect, playerLove, numberOfModules, currentModule, currentNodeKey, fontSize, fontColor) {
-		//gameLog,
+	constructor(
+		playerPower = 0,
+		playerKarma = 0,
+		playerDarkTetrad = 0,
+		playerIntellect = 0,
+		playerLove = 0,
+		numberOfModules = 0,
+		currentModule,
+		currentNodeKey,
+		fontSize = 13,
+		fontColor = '#EFB143') {
+		// other parameters: gameLog, additionalVariables, font
 
 		if (globals.debugMode) {
 			this.playerPower = 1000;
@@ -12,49 +22,17 @@ import constants from '../globals/constants';
 			this.playerIntellect = 1000;
 			this.playerLove = 1000;
 		}
-		else {
-			this.playerPower = 0;
-			this.playerKarma = 0;
-			this.playerDarkTetrad = 0;
-			this.playerIntellect = 0;
-			this.playerLove = 0;
+
+		if (typeof currentModule === 'undefined') {
+			this.currentModule = constants.MODULE_ASCENT_OF_MAN; // 0
 		}
 
-		this.fontSize = 13;
-		this.fontColor = '#EFB143';
-		this.numberOfModules = 0;
-		this.currentModule = constants.MODULE_ASCENT_OF_MAN; // 0
-		this.currentNodeKey = 'AA000AA000AA';
-
-		if (typeof playerPower !== 'undefined') {
-			this.playerPower = playerPower;
-		}
-		if (typeof playerKarma !== 'undefined') {
-			this.playerKarma = playerKarma;
-		}
-		if (typeof playerDarkTetrad !== 'undefined') {
-			this.playerDarkTetrad = playerDarkTetrad;
-		}
-		if (typeof playerIntellect !== 'undefined') {
-			this.playerIntellect = playerIntellect;
-		}
-		if (typeof playerLove !== 'undefined') {
-			this.playerLove = playerLove;
-		}
-		if (typeof fontSize !== 'undefined') {
-			this.fontSize = fontSize;
-		}
-		if (typeof fontColor !== 'undefined') {
-			this.fontColor = fontColor;
-		}
-		if (typeof numberOfModules !== 'undefined') {
-			this.numberOfModules = numberOfModules;
+		if (typeof currentNodeKey === 'undefined') {
+			this.currentNodeKey = 'AA000AA000AA';
 		}
 
-		//this.font = font;
-
-		this.gameLog = []; //some sort of data structure mapping player decisions
-		this.additionalVariables = []; //data structure logging other decisions (i.e. 'if you gathered food last decision node, then...')
+		this.gameLog = []; // data structure (array of objects) logging player decisions
+		this.additionalVariables = []; // data structure (array of objects) logging other decisions (i.e. 'if you gathered food last decision node, then...')
 	}
 
 	//Update font preferences
