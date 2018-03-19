@@ -31,9 +31,10 @@ import constants from '../globals/constants';
 			this.currentNodeKey = 'AA000AA000AA';
 		}
 
-		this.gameLog = []; // data structure (array of objects to preserve order) logging player decisions
-		// this.additionalVariables = []; // data structure (array of objects) logging other decisions (i.e. 'if you gathered food last decision node, then...')
-		// this.gameLog = new Map(); // keys: referenceNodes, values: decisions
+		// data structure (array of objects to preserve order) logging player decisions
+		this.gameLog = [];
+
+		// data structure (Map) logging other decisions (i.e. 'if you gathered food last decision node, then...')
 		this.additionalVariables = new Map(); // keys: variable references, values: variable values
 	}
 
@@ -42,72 +43,48 @@ import constants from '../globals/constants';
 
 	}
 
-	//Load last story node written to game log
+	// Load last story node written to gameLog
 	loadLastNode () {
 
 	}
 
-	//Write story node outcome to game log
+	// Write story node outcome to gameLog
 	writeToGameLog (referenceNode01, decision01) {
 		this.gameLog.push( { referenceNode: referenceNode01, decision: decision01 } );
-		// this.gameLog[referenceNode01] = decision01;
 	}
 
-	//Write additional variables
+	// Write additional variables to data structure
 	writeToAdditionalVariables (reference01, value01) {
-		// var updated = false;
 
-		//Check if the variable already exists. If it does, update it.
-		// for (var i = 0; i < this.additionalVariables.length; i++) {
-		// 	if (this.additionalVariables[i].reference == reference01) {
-		// 		this.additionalVariables[i].value += value01;
-		// 		updated = true;
-		// 	}
-		// }
-
+		// Check if the variable already exists. If it does, update it.
 		if (this.additionalVariables.has(reference01)) {
 			let original = this.additionalVariables.get(reference01);
 			this.additionalVariables.set(reference01, original + value01);
 		} else {
 			this.additionalVariables.set(reference01, value01);
 		}
-
-		//If the variable doesn't exist, push reference and value pair onto additionalVariables object
-		// if (!updated) {
-		// 	this.additionalVariables.push({ reference: reference01, value: value01 });
-		// }
 	}
 
-	//Check for additional variables
+	// Check for additional variables in data structure
 	checkAdditionalVariables (reference01, equivalence01, value01) {
-		//search for reference and value pair in additionalVariables data structure
-		//if found, checks for whether it's >, <, etc. to the value provided
-		//if it doesn't pass the test to the value, or if not found, returns false
+		// search for reference and value pair in additionalVariables data structure
+		// if found, checks for whether it's >, <, etc. to the value provided
+		// if it doesn't pass the test to the value, or if not found, it returns false
 
 		var defaultValue = 0;
 
 		if (equivalence01 === '' || equivalence01 === null || equivalence01 === undefined)
 		{
-			//just search for whether the additional variable is present - value doesn't matter
-			// for (var i = 0; i < this.additionalVariables.length; i++) {
-				if (this.additionalVariables.has(reference01)) {
-					return true;
-				} else {
-					return false;
-				}
-			// }
+			// just search for whether the additional variable is present - value doesn't matter
+			if (this.additionalVariables.has(reference01)) {
+				return true;
+			} else {
+				return false;
+			}
 		}
 		else if (equivalence01 === '=')
 		{
-			// for (var i = 0; i < this.additionalVariables.length; i++) {
-			// 	if (this.additionalVariables[i].reference == reference01) {
-			// 		if (this.additionalVariables[i].value == value01) {
-			// 			return true;
-			// 		}
-			// 	}
-			// }
-			// return false;
-
+			// check for presence of variable and value
 			if (this.additionalVariables.get(reference01) === value01) {
 				return true;
 			} else {
@@ -115,14 +92,7 @@ import constants from '../globals/constants';
 			}
 		}
 		else if (equivalence01 === '!=' && (value01 === '' || value01 === null || value01 === undefined)) {
-			//checks for if the additional variable is present at all, and returns false if present, true if not - opposite of first check in this series. e.g. if !(01JennethDead), then returns true.
-			// for (var i = 0; i < this.additionalVariables.length; i++) {
-			// 	if (this.additionalVariables[i].reference == reference01) {
-			// 		return false;
-			// 	}
-			// }
-			// return true;
-
+			// checks for if the additional variable is present at all, and returns false if present, true if not - opposite of first check in this series. e.g. if !(01JennethDead), then returns true.
 			if (this.additionalVariables.has(reference01)) {
 				return false;
 			} else {
@@ -130,14 +100,6 @@ import constants from '../globals/constants';
 			}
 		}
 		else if (equivalence01 === '!=' && !(value01 === '' || value01 === null || value01 === undefined)) {
-			// for (var i = 0; i < this.additionalVariables.length; i++) {
-			// 	if (this.additionalVariables[i].reference == reference01) {
-			// 		if (this.additionalVariables[i].value != value01) {
-			// 			return true;
-			// 		}
-			// 	}
-			// }
-
 			if (this.additionalVariables.has(reference01) && this.additionalVariables.get(reference01) !== value01) {
 				return true;
 			}
@@ -150,14 +112,6 @@ import constants from '../globals/constants';
 		}
 		else if (equivalence01 === '<')
 		{
-			// for (var i = 0; i < this.additionalVariables.length; i++) {
-			// 	if (this.additionalVariables[i].reference == reference01) {
-			// 		if (this.additionalVariables[i].value < value01) {
-			// 			return true;
-			// 		}
-			// 	}
-			// }
-
 			if (this.additionalVariables.has(reference01) && this.additionalVariables.get(reference01) < value01) {
 				return true;
 			}
@@ -170,14 +124,6 @@ import constants from '../globals/constants';
 		}
 		else if (equivalence01 === '<=')
 		{
-			// for (var i = 0; i < this.additionalVariables.length; i++) {
-			// 	if (this.additionalVariables[i].reference == reference01) {
-			// 		if (this.additionalVariables[i].value <= value01) {
-			// 			return true;
-			// 		}
-			// 	}
-			// }
-
 			if (this.additionalVariables.has(reference01) && this.additionalVariables.get(reference01) <= value01) {
 				return true;
 			}
@@ -190,14 +136,6 @@ import constants from '../globals/constants';
 		}
 		else if (equivalence01 === '>')
 		{
-			// for (var i = 0; i < this.additionalVariables.length; i++) {
-			// 	if (this.additionalVariables[i].reference == reference01) {
-			// 		if (this.additionalVariables[i].value > value01) {
-			// 			return true;
-			// 		}
-			// 	}
-			// }
-
 			if (this.additionalVariables.has(reference01) && this.additionalVariables.get(reference01) > value01) {
 				return true;
 			}
@@ -210,14 +148,6 @@ import constants from '../globals/constants';
 		}
 		else if (equivalence01 === '>=')
 		{
-			// for (var i = 0; i < this.additionalVariables.length; i++) {
-			// 	if (this.additionalVariables[i].reference == reference01) {
-			// 		if (this.additionalVariables[i].value >= value01) {
-			// 			return true;
-			// 		}
-			// 	}
-			// }
-
 			if (this.additionalVariables.has(reference01) && this.additionalVariables.get(reference01) >= value01) {
 				return true;
 			}
