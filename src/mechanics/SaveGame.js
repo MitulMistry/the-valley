@@ -13,7 +13,7 @@ import constants from '../globals/constants';
 		currentNodeKey,
 		fontSize = 13,
 		fontColor = '#EFB143') {
-		// other parameters: gameLog, additionalVariables, font
+		// other parameters: gameLog, gameVariables, font
 
 		if (globals.debugMode) {
 			this.playerPower = 1000;
@@ -35,7 +35,7 @@ import constants from '../globals/constants';
 		this.gameLog = [];
 
 		// data structure (Map) logging other decisions (i.e. 'if you gathered food last decision node, then...')
-		this.additionalVariables = new Map(); // keys: variable references, values: variable values
+		this.gameVariables = new Map(); // keys: variable references, values: variable values
 	}
 
 	//Update font preferences
@@ -54,20 +54,20 @@ import constants from '../globals/constants';
 	}
 
 	// Write additional variables to data structure
-	writeToAdditionalVariables (reference01, value01) {
+	writeToGameVariables (reference01, value01) {
 
 		// Check if the variable already exists. If it does, update it.
-		if (this.additionalVariables.has(reference01)) {
-			let original = this.additionalVariables.get(reference01);
-			this.additionalVariables.set(reference01, original + value01);
+		if (this.gameVariables.has(reference01)) {
+			let original = this.gameVariables.get(reference01);
+			this.gameVariables.set(reference01, original + value01);
 		} else {
-			this.additionalVariables.set(reference01, value01);
+			this.gameVariables.set(reference01, value01);
 		}
 	}
 
 	// Check for additional variables in data structure
-	checkAdditionalVariables (reference01, equivalence01, value01) {
-		// search for reference and value pair in additionalVariables data structure
+	checkGameVariables (reference01, equivalence01, value01) {
+		// search for reference and value pair in gameVariables data structure
 		// if found, checks for whether it's >, <, etc. to the value provided
 		// if it doesn't pass the test to the value, or if not found, it returns false
 
@@ -76,7 +76,7 @@ import constants from '../globals/constants';
 		if (equivalence01 === '' || equivalence01 === null || equivalence01 === undefined)
 		{
 			// just search for whether the additional variable is present - value doesn't matter
-			if (this.additionalVariables.has(reference01)) {
+			if (this.gameVariables.has(reference01)) {
 				return true;
 			} else {
 				return false;
@@ -85,7 +85,7 @@ import constants from '../globals/constants';
 		else if (equivalence01 === '=')
 		{
 			// check for presence of variable and value
-			if (this.additionalVariables.get(reference01) === value01) {
+			if (this.gameVariables.get(reference01) === value01) {
 				return true;
 			} else {
 				return false;
@@ -93,14 +93,14 @@ import constants from '../globals/constants';
 		}
 		else if (equivalence01 === '!=' && (value01 === '' || value01 === null || value01 === undefined)) {
 			// checks for if the additional variable is present at all, and returns false if present, true if not - opposite of first check in this series. e.g. if !(01JennethDead), then returns true.
-			if (this.additionalVariables.has(reference01)) {
+			if (this.gameVariables.has(reference01)) {
 				return false;
 			} else {
 				return true;
 			}
 		}
 		else if (equivalence01 === '!=' && !(value01 === '' || value01 === null || value01 === undefined)) {
-			if (this.additionalVariables.has(reference01) && this.additionalVariables.get(reference01) !== value01) {
+			if (this.gameVariables.has(reference01) && this.gameVariables.get(reference01) !== value01) {
 				return true;
 			}
 
@@ -112,7 +112,7 @@ import constants from '../globals/constants';
 		}
 		else if (equivalence01 === '<')
 		{
-			if (this.additionalVariables.has(reference01) && this.additionalVariables.get(reference01) < value01) {
+			if (this.gameVariables.has(reference01) && this.gameVariables.get(reference01) < value01) {
 				return true;
 			}
 
@@ -124,7 +124,7 @@ import constants from '../globals/constants';
 		}
 		else if (equivalence01 === '<=')
 		{
-			if (this.additionalVariables.has(reference01) && this.additionalVariables.get(reference01) <= value01) {
+			if (this.gameVariables.has(reference01) && this.gameVariables.get(reference01) <= value01) {
 				return true;
 			}
 
@@ -136,7 +136,7 @@ import constants from '../globals/constants';
 		}
 		else if (equivalence01 === '>')
 		{
-			if (this.additionalVariables.has(reference01) && this.additionalVariables.get(reference01) > value01) {
+			if (this.gameVariables.has(reference01) && this.gameVariables.get(reference01) > value01) {
 				return true;
 			}
 
@@ -148,7 +148,7 @@ import constants from '../globals/constants';
 		}
 		else if (equivalence01 === '>=')
 		{
-			if (this.additionalVariables.has(reference01) && this.additionalVariables.get(reference01) >= value01) {
+			if (this.gameVariables.has(reference01) && this.gameVariables.get(reference01) >= value01) {
 				return true;
 			}
 
@@ -161,7 +161,7 @@ import constants from '../globals/constants';
 		else
 		{
 			//in case anything goes wrong, defaults to returning false
-			console.log('%c checkAdditionalVariables() error ', 'color:white; background:red;');
+			console.log('%c checkGameVariables() error ', 'color:white; background:red;');
 			return false;
 		}
 	}

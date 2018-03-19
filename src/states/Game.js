@@ -138,10 +138,10 @@ export default class extends Phaser.State {
 		if (globals.debugMode) {
 			//systems.currentSaveGame.currentNodeKey = "AA000AA000AB"; "AA001AH001AD" //Change start node for testing.
 			systems.currentSaveGame.currentNodeKey = "AA001AG001AA"; //"AA004BM004AA"
-			//systems.currentSaveGame.writeToAdditionalVariables("01MountainPeopleSaved");
+			//systems.currentSaveGame.writeToGameVariables("01MountainPeopleSaved");
 
 			//systems.currentSaveGame.currentNodeKey = "AA004BM004AE";
-			//systems.currentSaveGame.writeToAdditionalVariables("01JenethHappiness", 10); 01MountainPeopleSaved
+			//systems.currentSaveGame.writeToGameVariables("01JenethHappiness", 10); 01MountainPeopleSaved
 
 			var stylePointsPower = { font: mainFont, fill: fontColorPower, align: 'left' };
 			var stylePointsKarma = { font: mainFont, fill: fontColorKarma, align: 'left' };
@@ -631,7 +631,7 @@ export default class extends Phaser.State {
 				//There are two additional variable costs
 				if (globals.currentModuleChoicesData[choiceArrayKey].additionalVariableCost_Operator === "&&")
 				{
-					if (systems.currentSaveGame.checkAdditionalVariables(globals.currentModuleChoicesData[choiceArrayKey].additionalVariableCostA_Key, globals.currentModuleChoicesData[choiceArrayKey].additionalVariableCostA_Equivalence, globals.currentModuleChoicesData[choiceArrayKey].additionalVariableCostA_Value) && systems.currentSaveGame.checkAdditionalVariables(globals.currentModuleChoicesData[choiceArrayKey].additionalVariableCostB_Key, globals.currentModuleChoicesData[choiceArrayKey].additionalVariableCostB_Equivalence, globals.currentModuleChoicesData[choiceArrayKey].additionalVariableCostB_Value)) {
+					if (systems.currentSaveGame.checkGameVariables(globals.currentModuleChoicesData[choiceArrayKey].additionalVariableCostA_Key, globals.currentModuleChoicesData[choiceArrayKey].additionalVariableCostA_Equivalence, globals.currentModuleChoicesData[choiceArrayKey].additionalVariableCostA_Value) && systems.currentSaveGame.checkGameVariables(globals.currentModuleChoicesData[choiceArrayKey].additionalVariableCostB_Key, globals.currentModuleChoicesData[choiceArrayKey].additionalVariableCostB_Equivalence, globals.currentModuleChoicesData[choiceArrayKey].additionalVariableCostB_Value)) {
 						return true;
 					}
 					else {
@@ -640,7 +640,7 @@ export default class extends Phaser.State {
 				}
 				else if (globals.currentModuleChoicesData[choiceArrayKey].additionalVariableCost_Operator === "||")
 				{
-					if (systems.currentSaveGame.checkAdditionalVariables(globals.currentModuleChoicesData[choiceArrayKey].additionalVariableCostA_Key, globals.currentModuleChoicesData[choiceArrayKey].additionalVariableCostA_Equivalence, globals.currentModuleChoicesData[choiceArrayKey].additionalVariableCostA_Value) || systems.currentSaveGame.checkAdditionalVariables(globals.currentModuleChoicesData[choiceArrayKey].additionalVariableCostB_Key, globals.currentModuleChoicesData[choiceArrayKey].additionalVariableCostB_Equivalence, globals.currentModuleChoicesData[choiceArrayKey].additionalVariableCostB_Value)) {
+					if (systems.currentSaveGame.checkGameVariables(globals.currentModuleChoicesData[choiceArrayKey].additionalVariableCostA_Key, globals.currentModuleChoicesData[choiceArrayKey].additionalVariableCostA_Equivalence, globals.currentModuleChoicesData[choiceArrayKey].additionalVariableCostA_Value) || systems.currentSaveGame.checkGameVariables(globals.currentModuleChoicesData[choiceArrayKey].additionalVariableCostB_Key, globals.currentModuleChoicesData[choiceArrayKey].additionalVariableCostB_Equivalence, globals.currentModuleChoicesData[choiceArrayKey].additionalVariableCostB_Value)) {
 						return true;
 					}
 					else {
@@ -656,7 +656,7 @@ export default class extends Phaser.State {
 			else
 			{
 				//There's only one additional variable cost
-				if ( systems.currentSaveGame.checkAdditionalVariables(globals.currentModuleChoicesData[choiceArrayKey].additionalVariableCostA_Key, globals.currentModuleChoicesData[choiceArrayKey].additionalVariableCostA_Equivalence, globals.currentModuleChoicesData[choiceArrayKey].additionalVariableCostA_Value) )
+				if ( systems.currentSaveGame.checkGameVariables(globals.currentModuleChoicesData[choiceArrayKey].additionalVariableCostA_Key, globals.currentModuleChoicesData[choiceArrayKey].additionalVariableCostA_Equivalence, globals.currentModuleChoicesData[choiceArrayKey].additionalVariableCostA_Value) )
 				{
 					return true;
 				}
@@ -885,11 +885,11 @@ export default class extends Phaser.State {
 
 		if (additionalVariableBoostA_Key != null && additionalVariableBoostA_Key != "" && additionalVariableBoostA_Key != undefined) {
 
-			systems.currentSaveGame.writeToAdditionalVariables(additionalVariableBoostA_Key, additionalVariableBoostA_Value);
+			systems.currentSaveGame.writeToGameVariables(additionalVariableBoostA_Key, additionalVariableBoostA_Value);
 
 			if (additionalVariableBoostB_Key != null && additionalVariableBoostB_Key != "" && additionalVariableBoostB_Key != undefined) {
 
-				systems.currentSaveGame.writeToAdditionalVariables(additionalVariableBoostB_Key, additionalVariableBoostB_Value);
+				systems.currentSaveGame.writeToGameVariables(additionalVariableBoostB_Key, additionalVariableBoostB_Value);
 			}
 		}
 	}
@@ -1023,7 +1023,7 @@ export default class extends Phaser.State {
 				if (loadedLinkNodes[i].variable2 === "" || loadedLinkNodes[i].variable2 === null || loadedLinkNodes[i].variable2 === undefined)
 				{
 					//then just check for variable1
-					if (systems.currentSaveGame.checkAdditionalVariables(loadedLinkNodes[i].variable1, loadedLinkNodes[i].equivalence1, loadedLinkNodes[i].value1))
+					if (systems.currentSaveGame.checkGameVariables(loadedLinkNodes[i].variable1, loadedLinkNodes[i].equivalence1, loadedLinkNodes[i].value1))
 					{
 						test1 = true;
 					}
@@ -1031,26 +1031,26 @@ export default class extends Phaser.State {
 				else if (loadedLinkNodes[i].variable3 === "" || loadedLinkNodes[i].variable3 === null || loadedLinkNodes[i].variable3 === undefined)
 				{
 					//check for variable1 and variable2
-					if (systems.currentSaveGame.checkAdditionalVariables(loadedLinkNodes[i].variable1, loadedLinkNodes[i].equivalence1, loadedLinkNodes[i].value1)) {
+					if (systems.currentSaveGame.checkGameVariables(loadedLinkNodes[i].variable1, loadedLinkNodes[i].equivalence1, loadedLinkNodes[i].value1)) {
 						test1 = true;
 					}
 
-					if (systems.currentSaveGame.checkAdditionalVariables(loadedLinkNodes[i].variable2, loadedLinkNodes[i].equivalence2, loadedLinkNodes[i].value2)) {
+					if (systems.currentSaveGame.checkGameVariables(loadedLinkNodes[i].variable2, loadedLinkNodes[i].equivalence2, loadedLinkNodes[i].value2)) {
 						test2 = true;
 					}
 				}
 				else
 				{
 					//check for variable1, variable2, and variable3
-					if (systems.currentSaveGame.checkAdditionalVariables(loadedLinkNodes[i].variable1, loadedLinkNodes[i].equivalence1, loadedLinkNodes[i].value1)) {
+					if (systems.currentSaveGame.checkGameVariables(loadedLinkNodes[i].variable1, loadedLinkNodes[i].equivalence1, loadedLinkNodes[i].value1)) {
 						test1 = true;
 					}
 
-					if (systems.currentSaveGame.checkAdditionalVariables(loadedLinkNodes[i].variable2, loadedLinkNodes[i].equivalence2, loadedLinkNodes[i].value2)) {
+					if (systems.currentSaveGame.checkGameVariables(loadedLinkNodes[i].variable2, loadedLinkNodes[i].equivalence2, loadedLinkNodes[i].value2)) {
 						test2 = true;
 					}
 
-					if (systems.currentSaveGame.checkAdditionalVariables(loadedLinkNodes[i].variable3, loadedLinkNodes[i].equivalence3, loadedLinkNodes[i].value3)) {
+					if (systems.currentSaveGame.checkGameVariables(loadedLinkNodes[i].variable3, loadedLinkNodes[i].equivalence3, loadedLinkNodes[i].value3)) {
 						test3 = true;
 					}
 				}
