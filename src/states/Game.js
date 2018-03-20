@@ -342,7 +342,7 @@ export default class extends Phaser.State {
 	}
 
 	iconSave() {
-		this.game.state.start("stateMenu");
+		this.game.state.start("Menu");
 	}
 
 	iconSound() {
@@ -906,7 +906,7 @@ export default class extends Phaser.State {
 			systems.currentSaveGame.currentNodeKey = "AA000AA000AA";
 			this.game.time.events.add(1500, function () {
 
-				this.game.state.start("stateMenu");
+				this.game.state.start("Menu");
 
 			}, this);
 		}
@@ -920,7 +920,7 @@ export default class extends Phaser.State {
 			systems.currentSaveGame.currentNodeKey = "AA000AA000AA";
 			this.game.time.events.add(1500, function () {
 
-				this.game.state.start("stateMenu");
+				this.game.state.start("Menu");
 
 			}, this);
 		}
