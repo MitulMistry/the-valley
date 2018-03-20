@@ -73,93 +73,69 @@ import constants from '../globals/constants';
 
 		var defaultValue = 0;
 
-		if (equivalence === '' || equivalence === null || equivalence === undefined)
-		{
+		if (equivalence === '' || equivalence === null || equivalence === undefined) {
 			// just search for whether the additional variable is present - value doesn't matter
-			if (this.gameVariables.has(reference)) {
-				return true;
-			} else {
-				return false;
-			}
-		}
-		else if (equivalence === '=')
-		{
+			return (this.gameVariables.has(reference));
+
+		}	else if (equivalence === '=')	{
 			// check for presence of variable and value
-			if (this.gameVariables.get(reference) === value) {
-				return true;
-			} else {
-				return false;
-			}
-		}
-		else if (equivalence === '!=' && (value === '' || value === null || value === undefined)) {
+			return (this.gameVariables.get(reference) === value);
+
+		}	else if (equivalence === '!=' && (value === '' || value === null || value === undefined)) {
 			// checks for if the additional variable is present at all, and returns false if present, true if not - opposite of first check in this series. e.g. if !(01JennethDead), then returns true.
-			if (this.gameVariables.has(reference)) {
-				return false;
-			} else {
-				return true;
-			}
-		}
-		else if (equivalence === '!=' && !(value === '' || value === null || value === undefined)) {
+			return !(this.gameVariables.has(reference));
+
+		}	else if (equivalence === '!=' && !(value === '' || value === null || value === undefined)) {
 			if (this.gameVariables.has(reference) && this.gameVariables.get(reference) !== value) {
 				return true;
+			} else if (value != defaultValue) {
+				//variable not found, so assume default value (0)
+				return true;
+			} else {
+				return false;
 			}
 
-			if (value != defaultValue) {
-				//variable not found, so assume default negative
-				return true;
-			}
-			return false;
-		}
-		else if (equivalence === '<')
-		{
+		}	else if (equivalence === '<')	{
 			if (this.gameVariables.has(reference) && this.gameVariables.get(reference) < value) {
 				return true;
+			} else if (value < defaultValue) {
+				//variable not found, so assume default value (0)
+				return true;
+			} else {
+				return false;
 			}
 
-			if (value < defaultValue) {
-				//variable not found, so assume default negative
-				return true;
-			}
-			return false;
-		}
-		else if (equivalence === '<=')
-		{
+		}	else if (equivalence === '<=') {
 			if (this.gameVariables.has(reference) && this.gameVariables.get(reference) <= value) {
 				return true;
+			} else if (value <= defaultValue) {
+				//variable not found, so assume default value (0)
+				return true;
+			} else {
+				return false;
 			}
 
-			if (value <= defaultValue) {
-				//variable not found, so assume default negative
-				return true;
-			}
-			return false;
-		}
-		else if (equivalence === '>')
-		{
+		}	else if (equivalence === '>')	{
 			if (this.gameVariables.has(reference) && this.gameVariables.get(reference) > value) {
 				return true;
+			} else if (value > defaultValue) {
+				//variable not found, so assume default value (0)
+				return true;
+			} else {
+				return false;
 			}
 
-			if (value > defaultValue) {
-				//variable not found, so assume default negative
-				return true;
-			}
-			return false;
-		}
-		else if (equivalence === '>=')
-		{
+		}	else if (equivalence === '>=') {
 			if (this.gameVariables.has(reference) && this.gameVariables.get(reference) >= value) {
 				return true;
+			} else if (value >= defaultValue) {
+				//variable not found, so assume default value (0)
+				return true;
+			} else {
+				return false;
 			}
 
-			if (value >= defaultValue) {
-				//variable not found, so assume default negative
-				return true;
-			}
-			return false;
-		}
-		else
-		{
+		}	else {
 			//in case anything goes wrong, defaults to returning false
 			console.log('%c checkGameVariables() error ', 'color:white; background:red;');
 			return false;
