@@ -26,6 +26,16 @@ export default class {
 			globals.currentModuleTextMap.set(moduleText[i].KEY, moduleText[i].TEXT);
 		}
 
+		// let currentModuleChoicesMap = new Map();
+		// for (var j in moduleChoices) {
+		// 	currentModuleChoicesMap.set(moduleChoices[j].KEY, moduleChoices[j]);
+		// }
+		//
+		// let currentModuleLinkNodesMap = new Map();
+		// for (var k in moduleLinkNodes) {
+		// 	currentModuleLinkNodesMap.set(moduleLinkNodes[k].KEY, moduleLinkNodes[k]);
+		// }
+
 		globals.currentModuleChoicesData = moduleChoices;
 		globals.currentModuleLinkNodesData = moduleLinkNodes;
 
