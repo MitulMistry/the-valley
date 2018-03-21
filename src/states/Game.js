@@ -389,9 +389,7 @@ export default class extends Phaser.State {
 		slider.alpha = 0;
 
 		this.game.time.events.add(delay, function () {
-
 			this.game.add.tween(slider).to({ alpha: 1 }, duration, Phaser.Easing.Linear.None, true);
-
 		}, this);
 	}
 
@@ -607,7 +605,6 @@ export default class extends Phaser.State {
 		}
 		// CHECK FOR ADDITIONAL VARIABLES
 		else if (globals.currentModuleChoicesData[choiceArrayKey].additionalVariableCostA_Key !== '' && globals.currentModuleChoicesData[choiceArrayKey].additionalVariableCostA_Key !== null && globals.currentModuleChoicesData[choiceArrayKey].additionalVariableCostA_Key !== undefined) {
-
 			if (globals.currentModuleChoicesData[choiceArrayKey].additionalVariableCostB_Key !== '' && globals.currentModuleChoicesData[choiceArrayKey].additionalVariableCostB_Key !== null && globals.currentModuleChoicesData[choiceArrayKey].additionalVariableCostB_Key !== undefined) {
 				// There are two additional variable costs
 				if (globals.currentModuleChoicesData[choiceArrayKey].additionalVariableCost_Operator === '&&') {
@@ -819,11 +816,9 @@ export default class extends Phaser.State {
 		}
 
 		if (additionalVariableBoostA_Key !== null && additionalVariableBoostA_Key !== '' && additionalVariableBoostA_Key !== undefined) {
-
 			systems.currentSaveGame.writeToGameVariables(additionalVariableBoostA_Key, additionalVariableBoostA_Value);
 
 			if (additionalVariableBoostB_Key !== null && additionalVariableBoostB_Key !== '' && additionalVariableBoostB_Key !== undefined) {
-
 				systems.currentSaveGame.writeToGameVariables(additionalVariableBoostB_Key, additionalVariableBoostB_Value);
 			}
 		}
@@ -839,9 +834,7 @@ export default class extends Phaser.State {
 			choice1.setText('');
 			systems.currentSaveGame.currentNodeKey = 'AA000AA000AA';
 			this.game.time.events.add(1500, function () {
-
 				this.game.state.start('Menu');
-
 			}, this);
 		} else if (destination === 'END') {
 			textPrint = 'END';
@@ -852,13 +845,10 @@ export default class extends Phaser.State {
 			choice1.setText('');
 			systems.currentSaveGame.currentNodeKey = 'AA000AA000AA';
 			this.game.time.events.add(1500, function () {
-
 				this.game.state.start('Menu');
-
 			}, this);
 		} else {
 			if (destination.substring(0, 1) !== 'X') {
-
 				systems.currentSaveGame.currentNodeKey = destination;
 
 				textPrint = globals.currentModuleTextMap.get(systems.currentSaveGame.currentNodeKey);
@@ -904,9 +894,7 @@ export default class extends Phaser.State {
 		choice.alpha = 0;
 
 		this.game.time.events.add(delay, function () {
-
 			this.game.add.tween(choice).to({ alpha: 1 }, choicesFadeInLength, Phaser.Easing.Linear.None, true);
-
 		}, this);
 	}
 

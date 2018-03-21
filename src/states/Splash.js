@@ -42,10 +42,8 @@ export default class extends Phaser.State {
 			this.time.events.add(fadeInLength + delay + fadeOutLength, function () {
 				this.state.start('Menu');
 			}, this);
-
 		} else {
 			this.state.start('Menu');
 		}
-
 	}
 }

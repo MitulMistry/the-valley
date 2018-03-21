@@ -1,7 +1,8 @@
-﻿
 var music;
 var click01;
 
-var soundManager = function () {
+export default class {
+	constructor() {
+	}
 	// https://phaser.io/examples/v2/audio/restart-sound
 };

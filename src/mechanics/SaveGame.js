@@ -55,7 +55,6 @@ export default class {
 
 	// Write additional variables to data structure
 	writeToGameVariables (reference, value) {
-
 		// Check if the variable already exists. If it does, update it.
 		if (this.gameVariables.has(reference)) {
 			let original = this.gameVariables.get(reference);
@@ -76,16 +75,13 @@ export default class {
 		if (equivalence === '' || equivalence === null || equivalence === undefined) {
 			// just search for whether the additional variable is present - value doesn't matter
 			return (this.gameVariables.has(reference));
-
-		}	else if (equivalence === '=')	{
+		} else if (equivalence === '=')	{
 			// check for presence of variable and value
 			return (this.gameVariables.get(reference) === value);
-
-		}	else if (equivalence === '!=' && (value === '' || value === null || value === undefined)) {
+		} else if (equivalence === '!=' && (value === '' || value === null || value === undefined)) {
 			// checks for if the additional variable is present at all, and returns false if present, true if not - opposite of first check in this series. e.g. if !(01JennethDead), then returns true.
 			return !(this.gameVariables.has(reference));
-
-		}	else if (equivalence === '!=' && !(value === '' || value === null || value === undefined)) {
+		} else if (equivalence === '!=' && !(value === '' || value === null || value === undefined)) {
 			if (this.gameVariables.has(reference) && this.gameVariables.get(reference) !== value) {
 				return true;
 			} else if (value !== defaultValue) {
@@ -94,8 +90,7 @@ export default class {
 			} else {
 				return false;
 			}
-
-		}	else if (equivalence === '<')	{
+		} else if (equivalence === '<')	{
 			if (this.gameVariables.has(reference) && this.gameVariables.get(reference) < value) {
 				return true;
 			} else if (value < defaultValue) {
@@ -104,8 +99,7 @@ export default class {
 			} else {
 				return false;
 			}
-
-		}	else if (equivalence === '<=') {
+		} else if (equivalence === '<=') {
 			if (this.gameVariables.has(reference) && this.gameVariables.get(reference) <= value) {
 				return true;
 			} else if (value <= defaultValue) {
@@ -114,8 +108,7 @@ export default class {
 			} else {
 				return false;
 			}
-
-		}	else if (equivalence === '>')	{
+		} else if (equivalence === '>')	{
 			if (this.gameVariables.has(reference) && this.gameVariables.get(reference) > value) {
 				return true;
 			} else if (value > defaultValue) {
@@ -124,8 +117,7 @@ export default class {
 			} else {
 				return false;
 			}
-
-		}	else if (equivalence === '>=') {
+		} else if (equivalence === '>=') {
 			if (this.gameVariables.has(reference) && this.gameVariables.get(reference) >= value) {
 				return true;
 			} else if (value >= defaultValue) {
@@ -134,8 +126,7 @@ export default class {
 			} else {
 				return false;
 			}
-
-		}	else {
+		} else {
 			// in case anything goes wrong, defaults to returning false
 			console.log('%c checkGameVariables() error ', 'color:white; background:red;');
 			return false;

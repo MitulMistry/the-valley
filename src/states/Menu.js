@@ -47,12 +47,10 @@ export default class extends Phaser.State {
 		loadGameButton.frame = 3;
 		// loadGameButton.input.useHandCursor = true;
 
-		/*
-		var quitGameButton = this.game.add.button(this.game.width / 2, this.game.height * 0.8, 'menu02', this.quitGame, this, 1, 0, 2);
-		quitGameButton.anchor.setTo(0.5, 0.5);
-		quitGameButton.frame = 0;
-		quitGameButton.input.useHandCursor = true;
-		*/
+		// var quitGameButton = this.game.add.button(this.game.width / 2, this.game.height * 0.8, 'menu02', this.quitGame, this, 1, 0, 2);
+		// quitGameButton.anchor.setTo(0.5, 0.5);
+		// quitGameButton.frame = 0;
+		// quitGameButton.input.useHandCursor = true;
 
 		var gameLogo = this.game.add.sprite(this.game.width / 2, this.game.height * 0.9033, 'logo');
 		gameLogo.anchor.setTo(0.5, 0.5);
@@ -97,10 +95,10 @@ export default class extends Phaser.State {
 
 		var menuText = this.game.add.text(this.game.width / 2, this.game.height * 0.9533, 'Mitul Mistry ' + config.copyrightDate + ' v:' + config.version, styleMenuText01);
 		menuText.anchor.setTo(0.5, 0.5);
-		/*
-		var menuText = this.game.add.text(this.game.width / 2, this.game.height * 0.98, 'Created with Phaser', styleMenuText02);
-		menuText.anchor.setTo(0.5, 0.5);
-		*/
+
+		// var menuText = this.game.add.text(this.game.width / 2, this.game.height * 0.98, 'Created with Phaser', styleMenuText02);
+		// menuText.anchor.setTo(0.5, 0.5);
+
 		// Fade in
 		var blackFade = this.game.add.sprite(0, 0, 'rectangle_black');
 		blackFade.height = this.game.height;
@@ -117,10 +115,10 @@ export default class extends Phaser.State {
 		} else if (sprite.frame === constants.iconFacebookBaseFrame02) {
 			sprite.frame = constants.iconFacebookOverFrame;
 		}
-		/* else if (sprite.frame === constants.iconSoundBaseFrame)
-		{
-			sprite.frame = constants.iconSoundOverFrame;
-		}*/
+		// else if (sprite.frame === constants.iconSoundBaseFrame)
+		// {
+		// 	sprite.frame = constants.iconSoundOverFrame;
+		// }
 	}
 
 	iconOut(sprite) {
@@ -129,9 +127,9 @@ export default class extends Phaser.State {
 		} else if (sprite.frame === constants.iconFacebookOverFrame) {
 			sprite.frame = constants.iconFacebookBaseFrame02;
 		}
-		/* else if (sprite.frame === constants.iconSoundOverFrame || sprite.frame === constants.iconSoundClickFrame) {
-			sprite.frame = constants.iconSoundBaseFrame;
-		}*/
+		// else if (sprite.frame === constants.iconSoundOverFrame || sprite.frame === constants.iconSoundClickFrame) {
+		// 	sprite.frame = constants.iconSoundBaseFrame;
+		// }
 	}
 
 	iconDown(sprite) {
@@ -143,15 +141,15 @@ export default class extends Phaser.State {
 			sprite.frame = constants.iconFacebookBaseFrame02;
 			// sprite.frame = constants.iconFacebookClickFrame;
 		}
-		/* else if (sprite.frame === constants.iconSoundOverFrame) {
-			sprite.frame = constants.iconSoundClickFrame;
-		}*/
-	}/*
-	iconUp: function (sprite) {
-		if (sprite.frame === constants.iconSoundClickFrame) {
-			sprite.frame = constants.iconSoundOverFrame;
-		}
-	},*/
+		// else if (sprite.frame === constants.iconSoundOverFrame) {
+		// 	sprite.frame = constants.iconSoundClickFrame;
+		// }
+	}
+	// iconUp: function (sprite) {
+	// 	if (sprite.frame === constants.iconSoundClickFrame) {
+	// 		sprite.frame = constants.iconSoundOverFrame;
+	// 	}
+	// },
 
 	newGameStart() {
 		// this.game.state.start('stateAdventure');
@@ -165,11 +163,11 @@ export default class extends Phaser.State {
 	loadGameStart() {
 		// this.game.state.start('stateAdventure');
 	}
-	/*
-	quitGame: function () {
-		this.game.destroy();
-	},
-	*/
+
+	// quitGame: function () {
+	// 	this.game.destroy();
+	// },
+
 
 	iconTwitter() {
 		// Maybe have some funny tweets based on module you're playing, etc? 'I just killed a gopher'

@@ -5,6 +5,6 @@ export default {
 	gameMinHeight: 300,
 	localStorageName: 'the-valley',
 	copyrightDate: '2018',
-	version: 'DEV',  
+	version: 'DEV',
 	webfonts: ['Fira Sans:500'] // ['Lato', 'Fira Sans:500']
 };
