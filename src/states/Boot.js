@@ -21,9 +21,9 @@ export default class extends Phaser.State {
 		if (config.webfonts.length) { // check if webfonts set in config
 			WebFont.load({
 				google: {
-          families: config.webfonts
-        },
-        active: this.fontsLoaded
+					families: config.webfonts
+				},
+				active: this.fontsLoaded
 			});
 		}
 
@@ -32,17 +32,17 @@ export default class extends Phaser.State {
 
 	render() {
 		if (config.webfonts.length && this.fontsReady) {
-      this.state.start('MenuPreload');
-    }
-    if (!config.webfonts.length) {
-      this.state.start('MenuPreload');
-    }
+			this.state.start('MenuPreload');
+		}
+		if (!config.webfonts.length) {
+			this.state.start('MenuPreload');
+		}
 	}
 
 	initializeScaleMode() { // set game screen to scale proportionally
 		// https://phaser.io/examples/v2/input/game-scale
 		this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
-    this.scale.setMinMax(config.gameMinWidth, config.gameMinHeight, config.gameWidth, config.gameHeight);
+		this.scale.setMinMax(config.gameMinWidth, config.gameMinHeight, config.gameWidth, config.gameHeight);
 		this.scale.pageAlignHorizontally = true;
 	 	this.scale.pageAlignVertically = false;
 		this.scale.windowConstraints.bottom = 'visual'; // constrain to displayed screen area

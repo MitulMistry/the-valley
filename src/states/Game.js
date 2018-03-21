@@ -1000,7 +1000,7 @@ export default class extends Phaser.State {
 
 	processLinkNode(destination) {
 		var loadedLinkNodes = [];
-		var stringTest
+		var stringTest;
 		var test1 = false;
 		var test2 = false;
 		var test3 = false;

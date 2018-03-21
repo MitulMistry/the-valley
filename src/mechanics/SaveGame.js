@@ -1,7 +1,7 @@
 import globals from '../globals/globals';
 import constants from '../globals/constants';
 
-﻿export default class {
+export default class {
 	constructor(
 		playerPower = 0,
 		playerKarma = 0,
