@@ -28,7 +28,7 @@ var choicesSpacer = 15;
 var loadedChoices = []; // array of index numbers to be used in the loaded JSON choice data object
 var choicesColorArray = []; // array of colors for each choice # to reference which color to return to after a mouse over
 var choicesHeight = 100;
-var continueText = "Continue..."; // Text to show when the choice is only to continue
+var continueText = 'Continue...'; // Text to show when the choice is only to continue
 
 var textFadeInLength = 500;
 var choicesFadeInLength = 200;
@@ -72,15 +72,15 @@ export default class extends Phaser.State {
 		this.game.stage.backgroundColor = '#000000';
 
 		// BG
-		var menuBG = this.game.add.sprite(this.game.width / 2, this.game.height / 2, "menu_bg01");
+		var menuBG = this.game.add.sprite(this.game.width / 2, this.game.height / 2, 'menu_bg01');
 		menuBG.anchor.setTo(0.5, 0.5);
 		menuBG.alpha = .75;
 
 		// Rotate BG (50000)
 		// this.game.add.tween(menuBG).to({ angle: 360 }, 370000, Phaser.Easing.Linear.None, true).loop(true);
 
-		var blackGradient = this.game.add.sprite(0, 0, "blackGradient");
-		var blackGradient2 = this.game.add.sprite(0, 0, "blackGradient");
+		var blackGradient = this.game.add.sprite(0, 0, 'blackGradient');
+		var blackGradient2 = this.game.add.sprite(0, 0, 'blackGradient');
 		blackGradient.width = this.game.width;
 		blackGradient2.width = this.game.width;
 		blackGradient2.y = this.game.height;
@@ -97,13 +97,13 @@ export default class extends Phaser.State {
 		frame02XPos = frame01XPos;
 		frame02YPos = Math.round( ((this.game.height - frame01YPos - frame01Height - frame02Height) / 2) + frame01YPos + frame01Height );
 
-		slider01back = this.game.add.sprite(this.game.width - frame01XPos, frame01YPos, "slider01_back");
-		slider02back = this.game.add.sprite(this.game.width - frame02XPos, frame02YPos, "slider02_back");
+		slider01back = this.game.add.sprite(this.game.width - frame01XPos, frame01YPos, 'slider01_back');
+		slider02back = this.game.add.sprite(this.game.width - frame02XPos, frame02YPos, 'slider02_back');
 		slider01back.height = frame01Height;
 		slider02back.height = frame02Height;
-		slider01 = this.game.add.sprite(this.game.width - frame01XPos, frame01YPos, "slider01");
+		slider01 = this.game.add.sprite(this.game.width - frame01XPos, frame01YPos, 'slider01');
 		slider01.frame = 0;
-		slider02 = this.game.add.sprite(this.game.width - frame02XPos, frame02YPos, "slider01");
+		slider02 = this.game.add.sprite(this.game.width - frame02XPos, frame02YPos, 'slider01');
 		slider02.frame = 0;
 
 		/*
@@ -137,7 +137,7 @@ export default class extends Phaser.State {
 		// -------------------------------------
 		if (globals.debugMode) {
 			// systems.currentSaveGame.currentNodeKey = "AA000AA000AB"; "AA001AH001AD" //Change start node for testing.
-			systems.currentSaveGame.currentNodeKey = "AA001AG001AA"; // "AA004BM004AA"
+			systems.currentSaveGame.currentNodeKey = 'AA001AG001AA'; // "AA004BM004AA"
 			// systems.currentSaveGame.writeToGameVariables("01MountainPeopleSaved");
 
 			// systems.currentSaveGame.currentNodeKey = "AA004BM004AE";
@@ -180,13 +180,13 @@ export default class extends Phaser.State {
 
 		// text1 = this.game.add.text(frame01XPos, frame01YPos, textPrint, style1);
 
-		text1 = this.game.add.text(frame01XPos, frame01YPos, "Morbi ultricies ante orci, vitae semper nibh consectetur dignissim. \n\nDonec odio turpis, pharetra vel dolor a, malesuada vulputate turpis. In vel porta urna,volutpat auctor ante. Phasellus quam nisi, consequat in elementum ut, accumsan in ex.\n\nSed pulvinar nunc urna, in porttitor lectus imperdiet nec. Suspendisse accumsan congue gravida. \n\nPhasellus quam nisi, consequat in elementum ut, accumsan in ex. Sed pulvinar nunc urna, in porttitor lectus imperdiet nec.\n\nSuspendisse accumsan congue gravida.", style1);
+		text1 = this.game.add.text(frame01XPos, frame01YPos, 'Morbi ultricies ante orci, vitae semper nibh consectetur dignissim. \n\nDonec odio turpis, pharetra vel dolor a, malesuada vulputate turpis. In vel porta urna,volutpat auctor ante. Phasellus quam nisi, consequat in elementum ut, accumsan in ex.\n\nSed pulvinar nunc urna, in porttitor lectus imperdiet nec. Suspendisse accumsan congue gravida. \n\nPhasellus quam nisi, consequat in elementum ut, accumsan in ex. Sed pulvinar nunc urna, in porttitor lectus imperdiet nec.\n\nSuspendisse accumsan congue gravida.', style1);
 		// text1.lineSpacing = 5;
 
 		text1.mask = textMask01;
 
 		// Add choices to group? Then move group as a whole with slider?
-		choice1 = this.game.add.text(frame02XPos, frame02YPos, "Choice 1: Morbi ultricies ante orci, vitae semper nibh consectetur dignissim. Sed pulvinar nunc urna, in porttitor lectus imperdiet nec. Suspendisse accumsan congue gravida.", style2, choicesTextGroup);
+		choice1 = this.game.add.text(frame02XPos, frame02YPos, 'Choice 1: Morbi ultricies ante orci, vitae semper nibh consectetur dignissim. Sed pulvinar nunc urna, in porttitor lectus imperdiet nec. Suspendisse accumsan congue gravida.', style2, choicesTextGroup);
 		choice1.inputEnabled = true;
 		choice1.input.useHandCursor = true;
 		choice1.events.onInputOver.add(this.choiceOver, this);
@@ -194,7 +194,7 @@ export default class extends Phaser.State {
 		choice1.events.onInputDown.add(this.choiceDown, this);
 		choice1.events.onInputUp.add(this.choiceUp1, this);
 
-		choice2 = this.game.add.text(frame02XPos, frame02YPos + choice1.height + choicesSpacer, "Choice 2: Donec odio turpis, pharetra vel dolor a, malesuada vulputate turpis. Phasellus quam nisi, consequat in elementum ut, accumsan in ex.", style2, choicesTextGroup);
+		choice2 = this.game.add.text(frame02XPos, frame02YPos + choice1.height + choicesSpacer, 'Choice 2: Donec odio turpis, pharetra vel dolor a, malesuada vulputate turpis. Phasellus quam nisi, consequat in elementum ut, accumsan in ex.', style2, choicesTextGroup);
 		choice2.inputEnabled = true;
 		choice2.input.useHandCursor = true;
 		choice2.events.onInputOver.add(this.choiceOver, this);
@@ -202,7 +202,7 @@ export default class extends Phaser.State {
 		choice2.events.onInputDown.add(this.choiceDown, this);
 		choice2.events.onInputUp.add(this.choiceUp2, this);
 
-		choice3 = this.game.add.text(frame02XPos, frame02YPos + choice1.height + choice2.height + (choicesSpacer * 2), "Choice 3: In vel porta urna,volutpat auctor ante.", style2, choicesTextGroup);
+		choice3 = this.game.add.text(frame02XPos, frame02YPos + choice1.height + choice2.height + (choicesSpacer * 2), 'Choice 3: In vel porta urna,volutpat auctor ante.', style2, choicesTextGroup);
 		choice3.inputEnabled = true;
 		choice3.input.useHandCursor = true;
 		choice3.events.onInputOver.add(this.choiceOver, this);
@@ -210,7 +210,7 @@ export default class extends Phaser.State {
 		choice3.events.onInputDown.add(this.choiceDown, this);
 		choice3.events.onInputUp.add(this.choiceUp3, this);
 
-		choice4 = this.game.add.text(frame02XPos, frame02YPos + choice1.height + choice2.height + choice3.height + (choicesSpacer * 3), "Choice 4: Phasellus quam nisi, consequat in elementum ut, accumsan in ex.", style2, choicesTextGroup);
+		choice4 = this.game.add.text(frame02XPos, frame02YPos + choice1.height + choice2.height + choice3.height + (choicesSpacer * 3), 'Choice 4: Phasellus quam nisi, consequat in elementum ut, accumsan in ex.', style2, choicesTextGroup);
 		choice4.inputEnabled = true;
 		choice4.input.useHandCursor = true;
 		choice4.events.onInputOver.add(this.choiceOver, this);
@@ -218,7 +218,7 @@ export default class extends Phaser.State {
 		choice4.events.onInputDown.add(this.choiceDown, this);
 		choice4.events.onInputUp.add(this.choiceUp4, this);
 
-		choice5 = this.game.add.text(frame02XPos, frame02YPos + choice1.height + choice2.height + choice3.height + +choice4.height + (choicesSpacer * 4), "Choice 5: Suspendisse accumsan congue gravida. Phasellus quam nisi, consequat in elementum ut, accumsan in ex.", style2, choicesTextGroup);
+		choice5 = this.game.add.text(frame02XPos, frame02YPos + choice1.height + choice2.height + choice3.height + +choice4.height + (choicesSpacer * 4), 'Choice 5: Suspendisse accumsan congue gravida. Phasellus quam nisi, consequat in elementum ut, accumsan in ex.', style2, choicesTextGroup);
 		choice5.inputEnabled = true;
 		choice5.input.useHandCursor = true;
 		choice5.events.onInputOver.add(this.choiceOver, this);
@@ -251,7 +251,7 @@ export default class extends Phaser.State {
 		// --------Icons--------
 		var iconXoffset = this.game.width * .0625;
 
-		var iconTwitterButton = this.game.add.button(iconXoffset, this.game.height * 0.8267, "icons", this.iconTwitter, this);
+		var iconTwitterButton = this.game.add.button(iconXoffset, this.game.height * 0.8267, 'icons', this.iconTwitter, this);
 		iconTwitterButton.anchor.setTo(0.5, 0.5);
 		iconTwitterButton.frame = 9;
 		iconTwitterButton.input.useHandCursor = true;
@@ -259,7 +259,7 @@ export default class extends Phaser.State {
 		iconTwitterButton.events.onInputOut.add(this.iconOut, this);
 		iconTwitterButton.events.onInputDown.add(this.iconDown, this);
 
-		var iconFacebookButton = this.game.add.button(iconXoffset, this.game.height * 0.9283, "icons", this.iconFacebook, this);
+		var iconFacebookButton = this.game.add.button(iconXoffset, this.game.height * 0.9283, 'icons', this.iconFacebook, this);
 		iconFacebookButton.anchor.setTo(0.5, 0.5);
 		iconFacebookButton.frame = 13;
 		iconFacebookButton.input.useHandCursor = true;
@@ -267,21 +267,21 @@ export default class extends Phaser.State {
 		iconFacebookButton.events.onInputOut.add(this.iconOut, this);
 		iconFacebookButton.events.onInputDown.add(this.iconDown, this);
 
-		var iconFontButton = this.game.add.button(this.game.width - iconXoffset, this.game.height * 0.72, "icons", this.iconFont, this, constants.iconFontOverFrame, constants.iconFontBaseFrame, constants.iconFontClickFrame);
+		var iconFontButton = this.game.add.button(this.game.width - iconXoffset, this.game.height * 0.72, 'icons', this.iconFont, this, constants.iconFontOverFrame, constants.iconFontBaseFrame, constants.iconFontClickFrame);
 		iconFontButton.anchor.setTo(0.5, 0.5);
 		iconFontButton.frame = constants.iconFontBaseFrame;
 
-		var iconSaveButton = this.game.add.button(this.game.width - iconXoffset, this.game.height * 0.8267, "icons", this.iconSave, this, constants.iconSaveOverFrame, constants.iconSaveBaseFrame, constants.iconSaveClickFrame);
+		var iconSaveButton = this.game.add.button(this.game.width - iconXoffset, this.game.height * 0.8267, 'icons', this.iconSave, this, constants.iconSaveOverFrame, constants.iconSaveBaseFrame, constants.iconSaveClickFrame);
 		iconSaveButton.anchor.setTo(0.5, 0.5);
 		iconSaveButton.frame = constants.iconSaveBaseFrame;
 		iconSaveButton.input.useHandCursor = true;
 
-		var iconSoundButton = this.game.add.button(this.game.width - iconXoffset, this.game.height * 0.9283, "icons", this.iconSound, this, constants.iconSoundOverFrame, constants.iconSoundBaseFrame, constants.iconSoundClickFrame);
+		var iconSoundButton = this.game.add.button(this.game.width - iconXoffset, this.game.height * 0.9283, 'icons', this.iconSound, this, constants.iconSoundOverFrame, constants.iconSoundBaseFrame, constants.iconSoundClickFrame);
 		iconSoundButton.anchor.setTo(0.5, 0.5);
 		iconSoundButton.frame = constants.iconSoundBaseFrame;
 
 		// Fade in
-		var blackFade = this.game.add.sprite(0, 0, "rectangle_black");
+		var blackFade = this.game.add.sprite(0, 0, 'rectangle_black');
 		blackFade.height = this.game.height;
 		blackFade.width = this.game.width;
 		var blackFadeTween = this.game.add.tween(blackFade);
@@ -330,11 +330,11 @@ export default class extends Phaser.State {
 	}
 
 	iconTwitter() {
-		window.open("https://twitter.com/home?status=Check%20out%20the%20epic%20text%20adventure%20-%20%22The%20Valley%22%20http://MitulMistry.com/%20%23indiedev", '_blank');
+		window.open('https://twitter.com/home?status=Check%20out%20the%20epic%20text%20adventure%20-%20%22The%20Valley%22%20http://MitulMistry.com/%20%23indiedev', '_blank');
 	}
 
 	iconFacebook() {
-		window.open("https://www.facebook.com/sharer/sharer.php?u=http://MitulMistry.com", '_blank');
+		window.open('https://www.facebook.com/sharer/sharer.php?u=http://MitulMistry.com', '_blank');
 	}
 
 	iconFont() {
@@ -342,7 +342,7 @@ export default class extends Phaser.State {
 	}
 
 	iconSave() {
-		this.game.state.start("Menu");
+		this.game.state.start('Menu');
 	}
 
 	iconSound() {
@@ -489,10 +489,10 @@ export default class extends Phaser.State {
 			choice1.y = frame02YPos;
 			choicesColorArray.push(choice1.fill);
 			this.fadeInChoice(choice1, textFadeInLength);
-			choice2.setText("");
-			choice3.setText("");
-			choice4.setText("");
-			choice5.setText("");
+			choice2.setText('');
+			choice3.setText('');
+			choice4.setText('');
+			choice5.setText('');
 			choicesHeight = choice1.height;
 		}
 		else if (loadedChoices.length === 2) {
@@ -504,9 +504,9 @@ export default class extends Phaser.State {
 			choice2.y = frame02YPos + choice1.height + choicesSpacer;
 			choicesColorArray.push(choice2.fill);
 			this.fadeInChoice(choice2, textFadeInLength + choicesFadeInLength);
-			choice3.setText("");
-			choice4.setText("");
-			choice5.setText("");
+			choice3.setText('');
+			choice4.setText('');
+			choice5.setText('');
 			choicesHeight = choice1.height + choice2.height + choicesSpacer;
 		}
 		else if (loadedChoices.length === 3) {
@@ -523,8 +523,8 @@ export default class extends Phaser.State {
 			choice3.fill = this.checkChoiceColor(loadedChoices[2]);
 			choicesColorArray.push(choice3.fill);
 			this.fadeInChoice(choice3, textFadeInLength + (2 * choicesFadeInLength));
-			choice4.setText("");
-			choice5.setText("");
+			choice4.setText('');
+			choice5.setText('');
 			choicesHeight = choice1.height + choice2.height + choice3.height + (choicesSpacer * 2);
 		}
 		else if (loadedChoices.length === 4) {
@@ -546,7 +546,7 @@ export default class extends Phaser.State {
 			choice4.fill = this.checkChoiceColor(loadedChoices[3]);
 			choicesColorArray.push(choice4.fill);
 			this.fadeInChoice(choice4, textFadeInLength + (3 * choicesFadeInLength));
-			choice5.setText("");
+			choice5.setText('');
 			choicesHeight = choice1.height + choice2.height + choice3.height + choice4.height + (choicesSpacer * 3);
 		}
 		else if (loadedChoices.length === 5) {
@@ -577,12 +577,12 @@ export default class extends Phaser.State {
 		}
 		else {
 			// error
-			alert("ERROR: loadedChoices.length is out of bounds");
+			alert('ERROR: loadedChoices.length is out of bounds');
 		}
 	}
 
 	checkChoice(choiceArrayKey) {
-		if (globals.currentModuleChoicesData[choiceArrayKey].karmaCost !== "" && globals.currentModuleChoicesData[choiceArrayKey].karmaCost !== null && globals.currentModuleChoicesData[choiceArrayKey].karmaCost !== undefined) {
+		if (globals.currentModuleChoicesData[choiceArrayKey].karmaCost !== '' && globals.currentModuleChoicesData[choiceArrayKey].karmaCost !== null && globals.currentModuleChoicesData[choiceArrayKey].karmaCost !== undefined) {
 			if (systems.currentSaveGame.playerKarma >= this.parseChoiceCost(globals.currentModuleChoicesData[choiceArrayKey].karmaCost)) {
 				return true;
 			}
@@ -590,7 +590,7 @@ export default class extends Phaser.State {
 				return false;
 			}
 		}
-		else if (globals.currentModuleChoicesData[choiceArrayKey].powerCost !== "" && globals.currentModuleChoicesData[choiceArrayKey].powerCost !== null && globals.currentModuleChoicesData[choiceArrayKey].powerCost !== undefined) {
+		else if (globals.currentModuleChoicesData[choiceArrayKey].powerCost !== '' && globals.currentModuleChoicesData[choiceArrayKey].powerCost !== null && globals.currentModuleChoicesData[choiceArrayKey].powerCost !== undefined) {
 			if (systems.currentSaveGame.playerPower >= this.parseChoiceCost(globals.currentModuleChoicesData[choiceArrayKey].powerCost)) {
 				return true;
 			}
@@ -598,7 +598,7 @@ export default class extends Phaser.State {
 				return false;
 			}
 		}
-		else if (globals.currentModuleChoicesData[choiceArrayKey].intellectCost !== "" && globals.currentModuleChoicesData[choiceArrayKey].intellectCost !== null && globals.currentModuleChoicesData[choiceArrayKey].intellectCost !== undefined) {
+		else if (globals.currentModuleChoicesData[choiceArrayKey].intellectCost !== '' && globals.currentModuleChoicesData[choiceArrayKey].intellectCost !== null && globals.currentModuleChoicesData[choiceArrayKey].intellectCost !== undefined) {
 			if (systems.currentSaveGame.playerIntellect >= this.parseChoiceCost(globals.currentModuleChoicesData[choiceArrayKey].intellectCost)) {
 				return true;
 			}
@@ -606,7 +606,7 @@ export default class extends Phaser.State {
 				return false;
 			}
 		}
-		else if (globals.currentModuleChoicesData[choiceArrayKey].loveCost !== "" && globals.currentModuleChoicesData[choiceArrayKey].loveCost !== null && globals.currentModuleChoicesData[choiceArrayKey].loveCost !== undefined) {
+		else if (globals.currentModuleChoicesData[choiceArrayKey].loveCost !== '' && globals.currentModuleChoicesData[choiceArrayKey].loveCost !== null && globals.currentModuleChoicesData[choiceArrayKey].loveCost !== undefined) {
 			if (systems.currentSaveGame.playerLove >= this.parseChoiceCost(globals.currentModuleChoicesData[choiceArrayKey].loveCost)) {
 				return true;
 			}
@@ -614,7 +614,7 @@ export default class extends Phaser.State {
 				return false;
 			}
 		}
-		else if (globals.currentModuleChoicesData[choiceArrayKey].darkTetradCost !== "" && globals.currentModuleChoicesData[choiceArrayKey].darkTetradCost !== null && globals.currentModuleChoicesData[choiceArrayKey].darkTetradCost !== undefined) {
+		else if (globals.currentModuleChoicesData[choiceArrayKey].darkTetradCost !== '' && globals.currentModuleChoicesData[choiceArrayKey].darkTetradCost !== null && globals.currentModuleChoicesData[choiceArrayKey].darkTetradCost !== undefined) {
 			if (systems.currentSaveGame.playerDarkTetrad >= this.parseChoiceCost(globals.currentModuleChoicesData[choiceArrayKey].powerDarkTetrad)) {
 				return true;
 			}
@@ -623,13 +623,13 @@ export default class extends Phaser.State {
 			}
 		}
 		// CHECK FOR ADDITIONAL VARIABLES
-		else if (globals.currentModuleChoicesData[choiceArrayKey].additionalVariableCostA_Key !== "" && globals.currentModuleChoicesData[choiceArrayKey].additionalVariableCostA_Key !== null && globals.currentModuleChoicesData[choiceArrayKey].additionalVariableCostA_Key !== undefined)
+		else if (globals.currentModuleChoicesData[choiceArrayKey].additionalVariableCostA_Key !== '' && globals.currentModuleChoicesData[choiceArrayKey].additionalVariableCostA_Key !== null && globals.currentModuleChoicesData[choiceArrayKey].additionalVariableCostA_Key !== undefined)
 		{
 
-			if (globals.currentModuleChoicesData[choiceArrayKey].additionalVariableCostB_Key !== "" && globals.currentModuleChoicesData[choiceArrayKey].additionalVariableCostB_Key !== null && globals.currentModuleChoicesData[choiceArrayKey].additionalVariableCostB_Key !== undefined)
+			if (globals.currentModuleChoicesData[choiceArrayKey].additionalVariableCostB_Key !== '' && globals.currentModuleChoicesData[choiceArrayKey].additionalVariableCostB_Key !== null && globals.currentModuleChoicesData[choiceArrayKey].additionalVariableCostB_Key !== undefined)
 			{
 				// There are two additional variable costs
-				if (globals.currentModuleChoicesData[choiceArrayKey].additionalVariableCost_Operator === "&&")
+				if (globals.currentModuleChoicesData[choiceArrayKey].additionalVariableCost_Operator === '&&')
 				{
 					if (systems.currentSaveGame.checkGameVariables(globals.currentModuleChoicesData[choiceArrayKey].additionalVariableCostA_Key, globals.currentModuleChoicesData[choiceArrayKey].additionalVariableCostA_Equivalence, globals.currentModuleChoicesData[choiceArrayKey].additionalVariableCostA_Value) && systems.currentSaveGame.checkGameVariables(globals.currentModuleChoicesData[choiceArrayKey].additionalVariableCostB_Key, globals.currentModuleChoicesData[choiceArrayKey].additionalVariableCostB_Equivalence, globals.currentModuleChoicesData[choiceArrayKey].additionalVariableCostB_Value)) {
 						return true;
@@ -638,7 +638,7 @@ export default class extends Phaser.State {
 						return false;
 					}
 				}
-				else if (globals.currentModuleChoicesData[choiceArrayKey].additionalVariableCost_Operator === "||")
+				else if (globals.currentModuleChoicesData[choiceArrayKey].additionalVariableCost_Operator === '||')
 				{
 					if (systems.currentSaveGame.checkGameVariables(globals.currentModuleChoicesData[choiceArrayKey].additionalVariableCostA_Key, globals.currentModuleChoicesData[choiceArrayKey].additionalVariableCostA_Equivalence, globals.currentModuleChoicesData[choiceArrayKey].additionalVariableCostA_Value) || systems.currentSaveGame.checkGameVariables(globals.currentModuleChoicesData[choiceArrayKey].additionalVariableCostB_Key, globals.currentModuleChoicesData[choiceArrayKey].additionalVariableCostB_Equivalence, globals.currentModuleChoicesData[choiceArrayKey].additionalVariableCostB_Value)) {
 						return true;
@@ -675,19 +675,19 @@ export default class extends Phaser.State {
 
 	checkChoiceColor(choiceArrayKey) {
 		// returns what color the text should be
-		if (globals.currentModuleChoicesData[choiceArrayKey].karmaCost !== "")	{
+		if (globals.currentModuleChoicesData[choiceArrayKey].karmaCost !== '')	{
 			return fontColorKarma;
 		}
-		else if (globals.currentModuleChoicesData[choiceArrayKey].powerCost !== "") {
+		else if (globals.currentModuleChoicesData[choiceArrayKey].powerCost !== '') {
 			return fontColorPower;
 		}
-		else if (globals.currentModuleChoicesData[choiceArrayKey].intellectCost !== "") {
+		else if (globals.currentModuleChoicesData[choiceArrayKey].intellectCost !== '') {
 			return fontColorIntellect;
 		}
-		else if (globals.currentModuleChoicesData[choiceArrayKey].loveCost !== "") {
+		else if (globals.currentModuleChoicesData[choiceArrayKey].loveCost !== '') {
 			return fontColorLove;
 		}
-		else if (globals.currentModuleChoicesData[choiceArrayKey].darkTetradCost !== "") {
+		else if (globals.currentModuleChoicesData[choiceArrayKey].darkTetradCost !== '') {
 			return fontColorDarkTetrad;
 		}
 		else {
@@ -696,40 +696,40 @@ export default class extends Phaser.State {
 	}
 
 	parseChoiceCost(stringToParse) {
-		if (stringToParse === "mini01") {
+		if (stringToParse === 'mini01') {
 			return constants.POINT_COST_MINI_01;
 		}
-		else if (stringToParse === "mini02") {
+		else if (stringToParse === 'mini02') {
 			return constants.POINT_COST_MINI_02;
 		}
-		else if (stringToParse === "mini03") {
+		else if (stringToParse === 'mini03') {
 			return constants.POINT_COST_MINI_03;
 		}
-		else if (stringToParse === "moderate01") {
+		else if (stringToParse === 'moderate01') {
 			return constants.POINT_COST_MODERATE_01;
 		}
-		else if (stringToParse === "moderate02") {
+		else if (stringToParse === 'moderate02') {
 			return constants.POINT_COST_MODERATE_02;
 		}
-		else if (stringToParse === "moderate03") {
+		else if (stringToParse === 'moderate03') {
 			return constants.POINT_COST_MODERATE_03;
 		}
-		else if (stringToParse === "heavy01") {
+		else if (stringToParse === 'heavy01') {
 			return constants.POINT_COST_HEAVY_01;
 		}
-		else if (stringToParse === "heavy02") {
+		else if (stringToParse === 'heavy02') {
 			return constants.POINT_COST_HEAVY_02;
 		}
-		else if (stringToParse === "heavy03") {
+		else if (stringToParse === 'heavy03') {
 			return constants.POINT_COST_HEAVY_03;
 		}
-		else if (stringToParse === "mega01") {
+		else if (stringToParse === 'mega01') {
 			return constants.POINT_COST_MEGA_01;
 		}
-		else if (stringToParse === "mega02") {
+		else if (stringToParse === 'mega02') {
 			return constants.POINT_COST_MEGA_02;
 		}
-		else if (stringToParse === "mega03") {
+		else if (stringToParse === 'mega03') {
 			return constants.POINT_COST_MEGA_03;
 		}
 		else {
@@ -738,22 +738,22 @@ export default class extends Phaser.State {
 	}
 
 	parseChoiceBoost(stringToParse) {
-		if (stringToParse === "small") {
+		if (stringToParse === 'small') {
 			return constants.POINT_BOOST_SMALL;
 		}
-		else if (stringToParse === "medium") {
+		else if (stringToParse === 'medium') {
 			return constants.POINT_BOOST_MEDIUM;
 		}
-		else if (stringToParse === "large") {
+		else if (stringToParse === 'large') {
 			return constants.POINT_BOOST_LARGE;
 		}
-		else if (stringToParse === "large02") {
+		else if (stringToParse === 'large02') {
 			return constants.POINT_BOOST_LARGE02;
 		}
-		else if (stringToParse === "huge") {
+		else if (stringToParse === 'huge') {
 			return constants.POINT_BOOST_HUGE;
 		}
-		else if (stringToParse === "medium") {
+		else if (stringToParse === 'medium') {
 			return constants.POINT_BOOST_JACKPOT;
 		}
 		else {
@@ -778,13 +778,13 @@ export default class extends Phaser.State {
 
 		// alert(globals.currentModuleChoicesData[tempReference].destinationA_percentage);
 
-		if (globals.currentModuleChoicesData[tempReference].destinationA_percentage === null || globals.currentModuleChoicesData[tempReference].destinationA_percentage === "" || globals.currentModuleChoicesData[tempReference].destinationA_percentage === undefined) {
+		if (globals.currentModuleChoicesData[tempReference].destinationA_percentage === null || globals.currentModuleChoicesData[tempReference].destinationA_percentage === '' || globals.currentModuleChoicesData[tempReference].destinationA_percentage === undefined) {
 			// There's only one destination, go to destinationA
 			this.adjustPlayerPoints(globals.currentModuleChoicesData[tempReference].destinationA_karmaBoost, globals.currentModuleChoicesData[tempReference].destinationA_intellectBoost, globals.currentModuleChoicesData[tempReference].destinationA_loveBoost, globals.currentModuleChoicesData[tempReference].destinationA_powerBoost, globals.currentModuleChoicesData[tempReference].destinationA_darkTetradBoost, globals.currentModuleChoicesData[tempReference].destinationA_additionalVariableBoostA_Key, globals.currentModuleChoicesData[tempReference].destinationA_additionalVariableBoostA_Value, globals.currentModuleChoicesData[tempReference].destinationA_additionalVariableBoostB_Key, globals.currentModuleChoicesData[tempReference].destinationA_additionalVariableBoostB_Value);
 
 			this.loadStoryNode(globals.currentModuleChoicesData[tempReference].destinationA);
 		}
-		else if (globals.currentModuleChoicesData[tempReference].destinationC_percentage === null || globals.currentModuleChoicesData[tempReference].destinationC_percentage === "" || globals.currentModuleChoicesData[tempReference].destinationC_percentage === undefined) {
+		else if (globals.currentModuleChoicesData[tempReference].destinationC_percentage === null || globals.currentModuleChoicesData[tempReference].destinationC_percentage === '' || globals.currentModuleChoicesData[tempReference].destinationC_percentage === undefined) {
 			// There's no third destination, so it's between destinationA and destinationB
 			destinationA_dieRoll = (Math.floor(Math.random() * 100) + 1) * globals.currentModuleChoicesData[tempReference].destinationA_percentage;
 			destinationB_dieRoll = (Math.floor(Math.random() * 100) + 1) * globals.currentModuleChoicesData[tempReference].destinationB_percentage;
@@ -802,7 +802,7 @@ export default class extends Phaser.State {
 				this.loadStoryNode(globals.currentModuleChoicesData[tempReference].destinationB);
 			}
 		}
-		else if (globals.currentModuleChoicesData[tempReference].destinationD_percentage === null || globals.currentModuleChoicesData[tempReference].destinationD_percentage === "") {
+		else if (globals.currentModuleChoicesData[tempReference].destinationD_percentage === null || globals.currentModuleChoicesData[tempReference].destinationD_percentage === '') {
 			// There's no fourth destination, so it's between destinationA and destinationB and destinationC
 			destinationA_dieRoll = (Math.floor(Math.random() * 100) + 1) * globals.currentModuleChoicesData[tempReference].destinationA_percentage;
 			destinationB_dieRoll = (Math.floor(Math.random() * 100) + 1) * globals.currentModuleChoicesData[tempReference].destinationB_percentage;
@@ -863,31 +863,31 @@ export default class extends Phaser.State {
 
 	adjustPlayerPoints(karmaBoost, intellectBoost, loveBoost, powerBoost, darkTetradBoost, additionalVariableBoostA_Key, additionalVariableBoostA_Value, additionalVariableBoostB_Key, additionalVariableBoostB_Value) {
 		// Adjust player spirit points
-		if (karmaBoost !== null && karmaBoost !== "" && karmaBoost !== undefined) {
+		if (karmaBoost !== null && karmaBoost !== '' && karmaBoost !== undefined) {
 			systems.currentSaveGame.playerKarma += this.parseChoiceBoost(karmaBoost);
 		}
 
-		if (intellectBoost !== null && intellectBoost !== "" && intellectBoost !== undefined) {
+		if (intellectBoost !== null && intellectBoost !== '' && intellectBoost !== undefined) {
 			systems.currentSaveGame.playerIntellect += this.parseChoiceBoost(intellectBoost);
 		}
 
-		if (loveBoost !== null && loveBoost !== "" && loveBoost !== undefined) {
+		if (loveBoost !== null && loveBoost !== '' && loveBoost !== undefined) {
 			systems.currentSaveGame.playerLove += this.parseChoiceBoost(loveBoost);
 		}
 
-		if (powerBoost !== null && powerBoost !== "" && powerBoost !== undefined) {
+		if (powerBoost !== null && powerBoost !== '' && powerBoost !== undefined) {
 			systems.currentSaveGame.playerPower += this.parseChoiceBoost(powerBoost);
 		}
 
-		if (darkTetradBoost !== null && darkTetradBoost !== "" && darkTetradBoost !== undefined) {
+		if (darkTetradBoost !== null && darkTetradBoost !== '' && darkTetradBoost !== undefined) {
 			systems.currentSaveGame.playerDarkTetrad += this.parseChoiceBoost(darkTetradBoost);
 		}
 
-		if (additionalVariableBoostA_Key !== null && additionalVariableBoostA_Key !== "" && additionalVariableBoostA_Key !== undefined) {
+		if (additionalVariableBoostA_Key !== null && additionalVariableBoostA_Key !== '' && additionalVariableBoostA_Key !== undefined) {
 
 			systems.currentSaveGame.writeToGameVariables(additionalVariableBoostA_Key, additionalVariableBoostA_Value);
 
-			if (additionalVariableBoostB_Key !== null && additionalVariableBoostB_Key !== "" && additionalVariableBoostB_Key !== undefined) {
+			if (additionalVariableBoostB_Key !== null && additionalVariableBoostB_Key !== '' && additionalVariableBoostB_Key !== undefined) {
 
 				systems.currentSaveGame.writeToGameVariables(additionalVariableBoostB_Key, additionalVariableBoostB_Value);
 			}
@@ -895,38 +895,38 @@ export default class extends Phaser.State {
 	}
 
 	loadStoryNode(destination) {
-		if (destination === "DEATH")
+		if (destination === 'DEATH')
 		{
-			textPrint = "DEATH";
+			textPrint = 'DEATH';
 			text1.setText(textPrint);
 			text1.y = frame01YPos;
 			this.fadeInText();
 
-			choice1.setText("");
-			systems.currentSaveGame.currentNodeKey = "AA000AA000AA";
+			choice1.setText('');
+			systems.currentSaveGame.currentNodeKey = 'AA000AA000AA';
 			this.game.time.events.add(1500, function () {
 
-				this.game.state.start("Menu");
+				this.game.state.start('Menu');
 
 			}, this);
 		}
-		else if (destination === "END") {
-			textPrint = "END";
+		else if (destination === 'END') {
+			textPrint = 'END';
 			text1.setText(textPrint);
 			text1.y = frame01YPos;
 			this.fadeInText();
 
-			choice1.setText("");
-			systems.currentSaveGame.currentNodeKey = "AA000AA000AA";
+			choice1.setText('');
+			systems.currentSaveGame.currentNodeKey = 'AA000AA000AA';
 			this.game.time.events.add(1500, function () {
 
-				this.game.state.start("Menu");
+				this.game.state.start('Menu');
 
 			}, this);
 		}
 		else
 		{
-			if (destination.substring(0, 1) !== "X") {
+			if (destination.substring(0, 1) !== 'X') {
 
 				systems.currentSaveGame.currentNodeKey = destination;
 
@@ -943,7 +943,7 @@ export default class extends Phaser.State {
 				var tempKey = this.processLinkNode(destination);
 				var tempDestination = tempKey;
 
-				while (tempKey.substring(0, 1) === "X") {
+				while (tempKey.substring(0, 1) === 'X') {
 					tempKey = this.processLinkNode(tempDestination);
 					tempDestination = tempKey;
 				}
@@ -1018,9 +1018,9 @@ export default class extends Phaser.State {
 		// or make this a while loop?
 		for (var i = 0; i < loadedLinkNodes.length; i++)
 		{
-			if (loadedLinkNodes[i].variable1 !== "ELSE")
+			if (loadedLinkNodes[i].variable1 !== 'ELSE')
 			{
-				if (loadedLinkNodes[i].variable2 === "" || loadedLinkNodes[i].variable2 === null || loadedLinkNodes[i].variable2 === undefined)
+				if (loadedLinkNodes[i].variable2 === '' || loadedLinkNodes[i].variable2 === null || loadedLinkNodes[i].variable2 === undefined)
 				{
 					// then just check for variable1
 					if (systems.currentSaveGame.checkGameVariables(loadedLinkNodes[i].variable1, loadedLinkNodes[i].equivalence1, loadedLinkNodes[i].value1))
@@ -1028,7 +1028,7 @@ export default class extends Phaser.State {
 						test1 = true;
 					}
 				}
-				else if (loadedLinkNodes[i].variable3 === "" || loadedLinkNodes[i].variable3 === null || loadedLinkNodes[i].variable3 === undefined)
+				else if (loadedLinkNodes[i].variable3 === '' || loadedLinkNodes[i].variable3 === null || loadedLinkNodes[i].variable3 === undefined)
 				{
 					// check for variable1 and variable2
 					if (systems.currentSaveGame.checkGameVariables(loadedLinkNodes[i].variable1, loadedLinkNodes[i].equivalence1, loadedLinkNodes[i].value1)) {
@@ -1057,43 +1057,43 @@ export default class extends Phaser.State {
 				// -------------------------------------------------------------------------
 				// Test the individual variables in combination
 				// -------------------------------------------------------------------------
-				if (loadedLinkNodes[i].operator1 === "" || loadedLinkNodes[i].operator1 === null || loadedLinkNodes[i].operator1 === undefined) {
+				if (loadedLinkNodes[i].operator1 === '' || loadedLinkNodes[i].operator1 === null || loadedLinkNodes[i].operator1 === undefined) {
 					if (test1) {
 						// go to destination
 						return this.getRandomLinkNodeDestination(loadedLinkNodes[i]);
 					}
 				}
-				else if (loadedLinkNodes[i].operator1 === "&&" && loadedLinkNodes[i].operator2 === "") {
+				else if (loadedLinkNodes[i].operator1 === '&&' && loadedLinkNodes[i].operator2 === '') {
 					if (test1 && test2) {
 						// go to destination
 						return this.getRandomLinkNodeDestination(loadedLinkNodes[i]);
 					}
 				}
-				else if (loadedLinkNodes[i].operator1 === "||" && loadedLinkNodes[i].operator2 === "") {
+				else if (loadedLinkNodes[i].operator1 === '||' && loadedLinkNodes[i].operator2 === '') {
 					if (test1 || test2) {
 						// go to destination
 						return this.getRandomLinkNodeDestination(loadedLinkNodes[i]);
 					}
 				}
-				else if (loadedLinkNodes[i].operator1 === "&&" && loadedLinkNodes[i].operator2 === "&&") {
+				else if (loadedLinkNodes[i].operator1 === '&&' && loadedLinkNodes[i].operator2 === '&&') {
 					if (test1 && test2 && test3) {
 						// go to destination
 						return this.getRandomLinkNodeDestination(loadedLinkNodes[i]);
 					}
 				}
-				else if (loadedLinkNodes[i].operator1 === "||" && loadedLinkNodes[i].operator2 === "&&") {
+				else if (loadedLinkNodes[i].operator1 === '||' && loadedLinkNodes[i].operator2 === '&&') {
 					if (test1 || test2 && test3) {
 						// go to destination
 						return this.getRandomLinkNodeDestination(loadedLinkNodes[i]);
 					}
 				}
-				else if (loadedLinkNodes[i].operator1 === "&&" && loadedLinkNodes[i].operator2 === "||") {
+				else if (loadedLinkNodes[i].operator1 === '&&' && loadedLinkNodes[i].operator2 === '||') {
 					if (test1 && test2 || test3) {
 						// go to destination
 						return this.getRandomLinkNodeDestination(loadedLinkNodes[i]);
 					}
 				}
-				else if (loadedLinkNodes[i].operator1 === "||" && loadedLinkNodes[i].operator2 === "||") {
+				else if (loadedLinkNodes[i].operator1 === '||' && loadedLinkNodes[i].operator2 === '||') {
 					if (test1 || test2 || test3) {
 						// go to destination
 						return this.getRandomLinkNodeDestination(loadedLinkNodes[i]);
@@ -1107,7 +1107,7 @@ export default class extends Phaser.State {
 			}
 		}
 		// If nothing is found, that's an error
-		alert("Something bad happened.");
+		alert('Something bad happened.');
 		return null;
 	}
 
@@ -1119,11 +1119,11 @@ export default class extends Phaser.State {
 
 		// alert(linkNode.destinationA_percentage);
 
-		if (linkNode.destinationA_percentage === null || linkNode.destinationA_percentage === "" || linkNode.destinationA_percentage === undefined) {
+		if (linkNode.destinationA_percentage === null || linkNode.destinationA_percentage === '' || linkNode.destinationA_percentage === undefined) {
 			// There's only one destination, go to destinationA
 			return linkNode.destinationA;
 		}
-		else if (linkNode.destinationC_percentage === null || linkNode.destinationC_percentage === "" || linkNode.destinationC_percentage === undefined) {
+		else if (linkNode.destinationC_percentage === null || linkNode.destinationC_percentage === '' || linkNode.destinationC_percentage === undefined) {
 			// There's no third destination, so it's between destinationA and destinationB
 			destinationA_dieRoll = (Math.floor(Math.random() * 100) + 1) * linkNode.destinationA_percentage;
 			destinationB_dieRoll = (Math.floor(Math.random() * 100) + 1) * linkNode.destinationB_percentage;
@@ -1137,7 +1137,7 @@ export default class extends Phaser.State {
 				return linkNode.destinationB;
 			}
 		}
-		else if (linkNode.destinationD_percentage === null || linkNode.destinationD_percentage === "") {
+		else if (linkNode.destinationD_percentage === null || linkNode.destinationD_percentage === '') {
 			// There's no fourth destination, so it's between destinationA and destinationB and destinationC
 			destinationA_dieRoll = (Math.floor(Math.random() * 100) + 1) * linkNode.destinationA_percentage;
 			destinationB_dieRoll = (Math.floor(Math.random() * 100) + 1) * linkNode.destinationB_percentage;
