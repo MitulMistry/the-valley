@@ -112,12 +112,9 @@ export default class extends Phaser.State {
 	}
 
 	iconOver(sprite) {
-		if (sprite.frame === constants.iconTwitterBaseFrame02)
-		{
+		if (sprite.frame === constants.iconTwitterBaseFrame02) {
 			sprite.frame = constants.iconTwitterOverFrame;
-		}
-		else if (sprite.frame === constants.iconFacebookBaseFrame02)
-		{
+		} else if (sprite.frame === constants.iconFacebookBaseFrame02) {
 			sprite.frame = constants.iconFacebookOverFrame;
 		}
 		/* else if (sprite.frame === constants.iconSoundBaseFrame)
@@ -129,8 +126,7 @@ export default class extends Phaser.State {
 	iconOut(sprite) {
 		if (sprite.frame === constants.iconTwitterOverFrame) {
 			sprite.frame = constants.iconTwitterBaseFrame02;
-		}
-		else if (sprite.frame === constants.iconFacebookOverFrame) {
+		} else if (sprite.frame === constants.iconFacebookOverFrame) {
 			sprite.frame = constants.iconFacebookBaseFrame02;
 		}
 		/* else if (sprite.frame === constants.iconSoundOverFrame || sprite.frame === constants.iconSoundClickFrame) {
@@ -143,8 +139,7 @@ export default class extends Phaser.State {
 			sprite.frame = constants.iconTwitterBaseFrame02;
 			// sprite.frame = constants.iconTwitterClickFrame;
 			// this.game.time.events.add(500, iconOut(sprite), this);
-		}
-		else if (sprite.frame === constants.iconFacebookOverFrame) {
+		} else if (sprite.frame === constants.iconFacebookOverFrame) {
 			sprite.frame = constants.iconFacebookBaseFrame02;
 			// sprite.frame = constants.iconFacebookClickFrame;
 		}
