@@ -27,7 +27,7 @@ export default class extends Phaser.State {
 			});
 		}
 
-		//Loading bar/message?
+		// Loading bar/message?
 	}
 
 	render() {

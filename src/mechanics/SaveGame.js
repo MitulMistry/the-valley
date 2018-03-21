@@ -38,7 +38,7 @@ export default class {
 		this.gameVariables = new Map(); // keys: variable references, values: variable values
 	}
 
-	//Update font preferences
+	// Update font preferences
 	updateFontPreferences (font, fontColor, fontSize) {
 
 	}
@@ -89,7 +89,7 @@ export default class {
 			if (this.gameVariables.has(reference) && this.gameVariables.get(reference) !== value) {
 				return true;
 			} else if (value != defaultValue) {
-				//variable not found, so assume default value (0)
+				// variable not found, so assume default value (0)
 				return true;
 			} else {
 				return false;
@@ -99,7 +99,7 @@ export default class {
 			if (this.gameVariables.has(reference) && this.gameVariables.get(reference) < value) {
 				return true;
 			} else if (value < defaultValue) {
-				//variable not found, so assume default value (0)
+				// variable not found, so assume default value (0)
 				return true;
 			} else {
 				return false;
@@ -109,7 +109,7 @@ export default class {
 			if (this.gameVariables.has(reference) && this.gameVariables.get(reference) <= value) {
 				return true;
 			} else if (value <= defaultValue) {
-				//variable not found, so assume default value (0)
+				// variable not found, so assume default value (0)
 				return true;
 			} else {
 				return false;
@@ -119,7 +119,7 @@ export default class {
 			if (this.gameVariables.has(reference) && this.gameVariables.get(reference) > value) {
 				return true;
 			} else if (value > defaultValue) {
-				//variable not found, so assume default value (0)
+				// variable not found, so assume default value (0)
 				return true;
 			} else {
 				return false;
@@ -129,14 +129,14 @@ export default class {
 			if (this.gameVariables.has(reference) && this.gameVariables.get(reference) >= value) {
 				return true;
 			} else if (value >= defaultValue) {
-				//variable not found, so assume default value (0)
+				// variable not found, so assume default value (0)
 				return true;
 			} else {
 				return false;
 			}
 
 		}	else {
-			//in case anything goes wrong, defaults to returning false
+			// in case anything goes wrong, defaults to returning false
 			console.log('%c checkGameVariables() error ', 'color:white; background:red;');
 			return false;
 		}

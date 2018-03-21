@@ -1,5 +1,5 @@
 export default {
-	//Sprite sheet frame numbers
+	// Sprite sheet frame numbers
 	iconFontBaseFrame: 0,
 	iconFontOverFrame: 1,
 	iconFontClickFrame: 2,
@@ -18,18 +18,18 @@ export default {
 	iconFacebookOverFrame: 15,
 	iconFacebookClickFrame: 16,
 
-	//Story module numbers
-	MODULE_ASCENT_OF_MAN: 1, //AA
-	MODULE_VALLEY_SPIRIT: 2, //AB
-	MODULE_LOTTERY_IN_BABYLON: 3, //AC
-	MODULE_THE_PROMETHEANS: 4, //AD
-	MODULE_DEAD_PRESIDENTS: 5, //AE
-	MODULE_SHAKE_HANDS_WITH_THE_DEVIL: 6, //AF
-	MODULE_MORAL_HAZZARD: 7, //AG
-	MODULE_PLUTOCRATS_OF_MARS: 8, //AH
-	MODULE_GHOSTS_OF_PERSIA: 9, //AI
+	// Story module numbers
+	MODULE_ASCENT_OF_MAN: 1, // AA
+	MODULE_VALLEY_SPIRIT: 2, // AB
+	MODULE_LOTTERY_IN_BABYLON: 3, // AC
+	MODULE_THE_PROMETHEANS: 4, // AD
+	MODULE_DEAD_PRESIDENTS: 5, // AE
+	MODULE_SHAKE_HANDS_WITH_THE_DEVIL: 6, // AF
+	MODULE_MORAL_HAZZARD: 7, // AG
+	MODULE_PLUTOCRATS_OF_MARS: 8, // AH
+	MODULE_GHOSTS_OF_PERSIA: 9, // AI
 
-	//Point boost values for power, intellect, love, etc. for decisions
+	// Point boost values for power, intellect, love, etc. for decisions
 	POINT_BOOST_SMALL: 1,
 	POINT_BOOST_MEDIUM: 2,
 	POINT_BOOST_LARGE: 4,
@@ -37,7 +37,7 @@ export default {
 	POINT_BOOST_HUGE: 12,
 	POINT_BOOST_JACKPOT: 25,
 
-	//Point costs for decisions
+	// Point costs for decisions
 	POINT_COST_MINI_01: 1,
 	POINT_COST_MINI_02: 3,
 	POINT_COST_MINI_03: 5,

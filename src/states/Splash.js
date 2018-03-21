@@ -13,8 +13,8 @@ export default class extends Phaser.State {
 		// music.loop = true;
 		// music.play();
 
-		//click01 = this.add.audio('click01');
-		//click01.volume = .7;
+		// click01 = this.add.audio('click01');
+		// click01.volume = .7;
 
 		var fadeInLength = 750;
 		var delay = 1500;
@@ -24,13 +24,13 @@ export default class extends Phaser.State {
 			var logo = this.add.sprite(this.game.width / 2, this.game.height / 2, 'splashLogo');
 			logo.anchor.setTo(0.5, 0.5);
 
-			//Fade in
+			// Fade in
 			var blackFade = this.add.sprite(0, 0, 'rectangle_black');
 			blackFade.height = this.game.height;
 			blackFade.width = this.game.width;
 			this.add.tween(blackFade).to({ alpha: 0 }, fadeInLength, Phaser.Easing.Linear.None, true);
 
-			//Fade out
+			// Fade out
 			this.time.events.add(fadeInLength + delay, function () {
 				var blackFade2 = this.add.sprite(0, 0, 'rectangle_black');
 				blackFade2.height = this.game.height;
