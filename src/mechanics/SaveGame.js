@@ -88,7 +88,7 @@ export default class {
 		}	else if (equivalence === '!=' && !(value === '' || value === null || value === undefined)) {
 			if (this.gameVariables.has(reference) && this.gameVariables.get(reference) !== value) {
 				return true;
-			} else if (value != defaultValue) {
+			} else if (value !== defaultValue) {
 				// variable not found, so assume default value (0)
 				return true;
 			} else {
