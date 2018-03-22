@@ -68,93 +68,15 @@ var textPrint;
 // var activeChoiceColor = "";
 
 export default class extends Phaser.State {
-	create() {
+	init() {
 		this.game.stage.backgroundColor = '#000000';
+	}
 
-		// BG
-		var menuBG = this.game.add.sprite(this.game.width / 2, this.game.height / 2, 'menu_bg01');
-		menuBG.anchor.setTo(0.5, 0.5);
-		menuBG.alpha = 0.75;
-
-		// Rotate BG (50000)
-		// this.game.add.tween(menuBG).to({ angle: 360 }, 370000, Phaser.Easing.Linear.None, true).loop(true);
-
-		var blackGradient = this.game.add.sprite(0, 0, 'blackGradient');
-		var blackGradient2 = this.game.add.sprite(0, 0, 'blackGradient');
-		blackGradient.width = this.game.width;
-		blackGradient2.width = this.game.width;
-		blackGradient2.y = this.game.height;
-		blackGradient2.scale.y = -1;
-
-		// Dimensions of the text windows
-		frame01Width = Math.round(this.game.width * 0.7225);
-		frame01Height = Math.round(this.game.height * 0.5);
-		frame01XPos = Math.round(((this.game.width - frame01Width) / 2) - 11);
-		frame01YPos = Math.round(this.game.height * 0.12);
-
-		frame02Width = Math.round(frame01Width);
-		frame02Height = Math.round(this.game.height * 0.275 - 5); // 0.3067 --- The -5 is there just to keep it from cutting off a line - can modify or remove depending on font size, etc. Actually, it may not much matter because different combinations of lines and line breaks cause unevenness, and it cuts lines off at different points.
-		frame02XPos = frame01XPos;
-		frame02YPos = Math.round(((this.game.height - frame01YPos - frame01Height - frame02Height) / 2) + frame01YPos + frame01Height);
-
-		slider01back = this.game.add.sprite(this.game.width - frame01XPos, frame01YPos, 'slider01_back');
-		slider02back = this.game.add.sprite(this.game.width - frame02XPos, frame02YPos, 'slider02_back');
-		slider01back.height = frame01Height;
-		slider02back.height = frame02Height;
-		slider01 = this.game.add.sprite(this.game.width - frame01XPos, frame01YPos, 'slider01');
-		slider01.frame = 0;
-		slider02 = this.game.add.sprite(this.game.width - frame02XPos, frame02YPos, 'slider01');
-		slider02.frame = 0;
-
-		// Adjust sliders width
-		// slider01.width = 16;
-		// slider02.width = 16;
-		// slider01back.width = 16;
-		// slider02back.width = 16;
-
-		// --------Sliders--------
-		slider01.inputEnabled = true;
-		slider01.input.enableDrag({ boundsSprite: slider01back });
-		slider01.input.boundsSprite = slider01back;
-		slider01.input.dragFromCenter = false;
-		slider01.input.allowHorizontalDrag = false;
-		slider01.events.onInputOver.add(this.sliderOver, this);
-		slider01.events.onInputOut.add(this.sliderOut, this);
-		slider01.events.onInputDown.add(this.sliderDown, this);
-
-		slider02.inputEnabled = true;
-		slider02.input.enableDrag({ boundsSprite: slider02back });
-		slider02.input.boundsSprite = slider02back;
-		slider02.input.dragFromCenter = false;
-		slider02.input.allowHorizontalDrag = false;
-		slider02.events.onInputOver.add(this.sliderOver, this);
-		slider02.events.onInputOut.add(this.sliderOut, this);
-		slider02.events.onInputDown.add(this.sliderDown, this);
-
-		// Debug items (Strip from final build)
-		// -------------------------------------
-		if (globals.debugMode) {
-			// systems.currentSaveGame.currentNodeKey = "AA000AA000AB"; "AA001AH001AD" //Change start node for testing.
-			systems.currentSaveGame.currentNodeKey = 'AA001AG001AA'; // "AA004BM004AA"
-			// systems.currentSaveGame.writeToGameVariables("01MountainPeopleSaved");
-
-			// systems.currentSaveGame.currentNodeKey = "AA004BM004AE";
-			// systems.currentSaveGame.writeToGameVariables("01JenethHappiness", 10); 01MountainPeopleSaved
-
-			var stylePointsPower = { font: mainFont, fill: fontColorPower, align: 'left' };
-			var stylePointsKarma = { font: mainFont, fill: fontColorKarma, align: 'left' };
-			var stylePointsIntellect = { font: mainFont, fill: fontColorIntellect, align: 'left' };
-			var stylePointsLove = { font: mainFont, fill: fontColorLove, align: 'left' };
-			var stylePointsDarkTetrad = { font: mainFont, fill: fontColorDarkTetrad, align: 'left' };
-
-			textPointsPower = this.game.add.text(this.game.width - frame01XPos + 30, frame01YPos, String(systems.currentSaveGame.playerPower), stylePointsPower);
-			textPointsKarma = this.game.add.text(this.game.width - frame01XPos + 30, frame01YPos + 20, String(systems.currentSaveGame.playerKarma), stylePointsKarma);
-			textPointsIntellect = this.game.add.text(this.game.width - frame01XPos + 30, frame01YPos + 40, String(systems.currentSaveGame.playerIntellect), stylePointsIntellect);
-			textPointsLove = this.game.add.text(this.game.width - frame01XPos + 30, frame01YPos + 60, String(systems.currentSaveGame.playerLove), stylePointsLove);
-			textPointsDarkTetrad = this.game.add.text(this.game.width - frame01XPos + 30, frame01YPos + 80, String(systems.currentSaveGame.playerDarkTetrad), stylePointsDarkTetrad);
-		}
-
-		// -------------------------------------
+	create() {
+		this.setupBackground();
+		this.calculateTextWindows();
+		this.setupTextSliders();
+		this.setupDebugItems();
 
 		// -------Masks-------
 		//	A mask is a Graphics object
@@ -230,23 +152,116 @@ export default class extends Phaser.State {
 		this.loadChoices();
 		this.adjustSliders();
 
-		/*
-		//Slider movement calculations
-		rightSliderGap01 = slider01back.height - slider01.height;
-		text01Distance = (rightSliderGap01 / slider01back.height) * text1.height;
-		text01TopGap = frame01YPos;
-
-		rightSliderGap02 = slider02back.height - slider02.height;
-		text02Distance = (rightSliderGap02 / slider02back.height) * choicesTextGroup.height;
-		text02TopGap = frame02YPos;
-		*/
-
 		// For some reason text1 needs to be updated here and if you update earlier it shows up all wonky
 		text1.setText(textPrint); // !!!!!!!!!
 		this.fadeInText();
 		this.adjustSliders();
 
-		// --------Icons--------
+		this.setupIcons();
+		this.fadeInScreen();		
+	}
+
+	setupBackground() {
+		var menuBG = this.game.add.sprite(this.game.width / 2, this.game.height / 2, 'menu_bg01');
+		menuBG.anchor.setTo(0.5, 0.5);
+		menuBG.alpha = 0.75;
+
+		// Rotate BG (50000)
+		// this.game.add.tween(menuBG).to({ angle: 360 }, 370000, Phaser.Easing.Linear.None, true).loop(true);
+
+		var blackGradient = this.game.add.sprite(0, 0, 'blackGradient');
+		var blackGradient2 = this.game.add.sprite(0, 0, 'blackGradient');
+		blackGradient.width = this.game.width;
+		blackGradient2.width = this.game.width;
+		blackGradient2.y = this.game.height;
+		blackGradient2.scale.y = -1;
+	}
+
+	calculateTextWindows() {
+		// Dimensions of the text windows
+		frame01Width = Math.round(this.game.width * 0.7225);
+		frame01Height = Math.round(this.game.height * 0.5);
+		frame01XPos = Math.round(((this.game.width - frame01Width) / 2) - 11);
+		frame01YPos = Math.round(this.game.height * 0.12);
+
+		frame02Width = Math.round(frame01Width);
+		frame02Height = Math.round(this.game.height * 0.275 - 5); // 0.3067 --- The -5 is there just to keep it from cutting off a line - can modify or remove depending on font size, etc. Actually, it may not much matter because different combinations of lines and line breaks cause unevenness, and it cuts lines off at different points.
+		frame02XPos = frame01XPos;
+		frame02YPos = Math.round(((this.game.height - frame01YPos - frame01Height - frame02Height) / 2) + frame01YPos + frame01Height);
+	}
+
+	setupTextSliders() {
+		slider01back = this.game.add.sprite(this.game.width - frame01XPos, frame01YPos, 'slider01_back');
+		slider02back = this.game.add.sprite(this.game.width - frame02XPos, frame02YPos, 'slider02_back');
+		slider01back.height = frame01Height;
+		slider02back.height = frame02Height;
+		slider01 = this.game.add.sprite(this.game.width - frame01XPos, frame01YPos, 'slider01');
+		slider01.frame = 0;
+		slider02 = this.game.add.sprite(this.game.width - frame02XPos, frame02YPos, 'slider01');
+		slider02.frame = 0;
+
+		// Adjust sliders width
+		// slider01.width = 16;
+		// slider02.width = 16;
+		// slider01back.width = 16;
+		// slider02back.width = 16;
+
+		// --------Sliders--------
+		slider01.inputEnabled = true;
+		slider01.input.enableDrag({ boundsSprite: slider01back });
+		slider01.input.boundsSprite = slider01back;
+		slider01.input.dragFromCenter = false;
+		slider01.input.allowHorizontalDrag = false;
+		slider01.events.onInputOver.add(this.sliderOver, this);
+		slider01.events.onInputOut.add(this.sliderOut, this);
+		slider01.events.onInputDown.add(this.sliderDown, this);
+
+		slider02.inputEnabled = true;
+		slider02.input.enableDrag({ boundsSprite: slider02back });
+		slider02.input.boundsSprite = slider02back;
+		slider02.input.dragFromCenter = false;
+		slider02.input.allowHorizontalDrag = false;
+		slider02.events.onInputOver.add(this.sliderOver, this);
+		slider02.events.onInputOut.add(this.sliderOut, this);
+		slider02.events.onInputDown.add(this.sliderDown, this);
+	}
+
+	setupDebugItems() {
+		if (globals.debugMode) {
+			// systems.currentSaveGame.currentNodeKey = "AA000AA000AB"; "AA001AH001AD" //Change start node for testing.
+			systems.currentSaveGame.currentNodeKey = 'AA001AG001AA'; // "AA004BM004AA"
+			// systems.currentSaveGame.writeToGameVariables("01MountainPeopleSaved");
+
+			// systems.currentSaveGame.currentNodeKey = "AA004BM004AE";
+			// systems.currentSaveGame.writeToGameVariables("01JenethHappiness", 10); 01MountainPeopleSaved
+
+			var stylePointsPower = { font: mainFont, fill: fontColorPower, align: 'left' };
+			var stylePointsKarma = { font: mainFont, fill: fontColorKarma, align: 'left' };
+			var stylePointsIntellect = { font: mainFont, fill: fontColorIntellect, align: 'left' };
+			var stylePointsLove = { font: mainFont, fill: fontColorLove, align: 'left' };
+			var stylePointsDarkTetrad = { font: mainFont, fill: fontColorDarkTetrad, align: 'left' };
+
+			textPointsPower = this.game.add.text(this.game.width - frame01XPos + 30, frame01YPos, String(systems.currentSaveGame.playerPower), stylePointsPower);
+			textPointsKarma = this.game.add.text(this.game.width - frame01XPos + 30, frame01YPos + 20, String(systems.currentSaveGame.playerKarma), stylePointsKarma);
+			textPointsIntellect = this.game.add.text(this.game.width - frame01XPos + 30, frame01YPos + 40, String(systems.currentSaveGame.playerIntellect), stylePointsIntellect);
+			textPointsLove = this.game.add.text(this.game.width - frame01XPos + 30, frame01YPos + 60, String(systems.currentSaveGame.playerLove), stylePointsLove);
+			textPointsDarkTetrad = this.game.add.text(this.game.width - frame01XPos + 30, frame01YPos + 80, String(systems.currentSaveGame.playerDarkTetrad), stylePointsDarkTetrad);
+		}
+	}
+
+	setupMasks() {
+		
+	}
+
+	setupText() {
+
+	}
+
+	setupChoices() {
+
+	}
+
+	setupIcons() {
 		var iconXoffset = this.game.width * 0.0625;
 
 		var iconTwitterButton = this.game.add.button(iconXoffset, this.game.height * 0.8267, 'icons', this.iconTwitter, this);
@@ -277,8 +292,9 @@ export default class extends Phaser.State {
 		var iconSoundButton = this.game.add.button(this.game.width - iconXoffset, this.game.height * 0.9283, 'icons', this.iconSound, this, constants.iconSoundOverFrame, constants.iconSoundBaseFrame, constants.iconSoundClickFrame);
 		iconSoundButton.anchor.setTo(0.5, 0.5);
 		iconSoundButton.frame = constants.iconSoundBaseFrame;
+	}
 
-		// Fade in
+	fadeInScreen() { // extract to stateUtilities with time parameter for reuse
 		var blackFade = this.game.add.sprite(0, 0, 'rectangle_black');
 		blackFade.height = this.game.height;
 		blackFade.width = this.game.width;
