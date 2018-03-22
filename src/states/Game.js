@@ -468,7 +468,7 @@ export default class extends Phaser.State {
 		choice4.fill = choiceColor;
 		choice5.fill = choiceColor;
 
-		for (var i = 0; i < globals.currentModuleChoicesData.length; i++) {
+		for (var i in globals.currentModuleChoicesData) {
 			stringTest = globals.currentModuleChoicesData[i].KEY;
 			if (stringTest.substring(0, 12) === systems.currentSaveGame.currentNodeKey) {
 				if (this.checkChoice(i)) {
@@ -920,11 +920,11 @@ export default class extends Phaser.State {
 		var test3 = false;
 
 		// load the link nodes into the temp array
-		for (var i = 0; i < globals.currentModuleLinkNodesData.length; i++) {
-			stringTest = globals.currentModuleLinkNodesData[i].KEY;
+		for (var j in globals.currentModuleLinkNodesData) {
+			stringTest = globals.currentModuleLinkNodesData[j].KEY;
 			if (stringTest.substring(0, 13) === destination) {
 				// loadedLinkNodes.push(i);
-				loadedLinkNodes.push(globals.currentModuleLinkNodesData[i]);
+				loadedLinkNodes.push(globals.currentModuleLinkNodesData[j]);
 			}
 		}
 
