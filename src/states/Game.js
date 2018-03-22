@@ -983,12 +983,12 @@ export default class extends Phaser.State {
 						return this.getRandomLinkNodeDestination(loadedLinkNodes[i]);
 					}
 				} else if (loadedLinkNodes[i].operator1 === '||' && loadedLinkNodes[i].operator2 === '&&') {
-					if (test1 || test2 && test3) {
+					if ((test1 || test2) && test3) {
 						// go to destination
 						return this.getRandomLinkNodeDestination(loadedLinkNodes[i]);
 					}
 				} else if (loadedLinkNodes[i].operator1 === '&&' && loadedLinkNodes[i].operator2 === '||') {
-					if (test1 && test2 || test3) {
+					if ((test1 && test2) || test3) {
 						// go to destination
 						return this.getRandomLinkNodeDestination(loadedLinkNodes[i]);
 					}
