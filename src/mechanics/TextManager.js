@@ -7,10 +7,7 @@ import globals from '../globals/globals';
 import constants from '../globals/constants';
 
 export default class {
-	constructor() {
-	}
-
-	loadModule (moduleNumber)	{
+	loadModule(moduleNumber)	{
 		console.log('%c Loading story module ' + moduleNumber + ' ', 'color:white; background:orange;');
 
 		if (moduleNumber === constants.MODULE_ASCENT_OF_MAN) {
@@ -21,7 +18,7 @@ export default class {
 		}
 	}
 
-	loadJSON (moduleText, moduleChoices, moduleLinkNodes) {
+	loadJSON(moduleText, moduleChoices, moduleLinkNodes) {
 		for (var i in moduleText) {
 			globals.currentModuleTextMap.set(moduleText[i].KEY, moduleText[i].TEXT);
 		}

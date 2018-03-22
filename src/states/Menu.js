@@ -59,7 +59,7 @@ export default class extends Phaser.State {
 		// mailto support@quantumrabbit.com ? or quantumrabbit@gmail.com
 
 		// Icons
-		var iconXoffset = this.game.width * .0625;
+		var iconXoffset = this.game.width * 0.0625;
 
 		// over, out, down
 		// var iconTwitterButton = this.game.add.button(iconXoffset, this.game.height * 0.8267, 'icons', this.iconTwitter, this, 11, 10, 10);
@@ -91,7 +91,7 @@ export default class extends Phaser.State {
 
 		// Text info
 		var styleMenuText01 = { font: 'bold 12pt Arial', fill: '#3A3A3A', align: 'left' };
-		var styleMenuText02 = { font: 'bold 10pt Arial', fill: '#3A3A3A', align: 'left' };
+		// var styleMenuText02 = { font: 'bold 10pt Arial', fill: '#3A3A3A', align: 'left' };
 
 		var menuText = this.game.add.text(this.game.width / 2, this.game.height * 0.9533, 'Mitul Mistry ' + config.copyrightDate + ' v:' + config.version, styleMenuText01);
 		menuText.anchor.setTo(0.5, 0.5);
@@ -106,7 +106,7 @@ export default class extends Phaser.State {
 		var blackFadeTween = this.game.add.tween(blackFade);
 		blackFadeTween.to({ alpha: 0 }, 500);
 		blackFadeTween.start();
-		blackFade.destroy;
+		// FIX: blackFade.destroy();
 	}
 
 	iconOver(sprite) {
@@ -167,7 +167,6 @@ export default class extends Phaser.State {
 	// quitGame: function () {
 	// 	this.game.destroy();
 	// },
-
 
 	iconTwitter() {
 		// Maybe have some funny tweets based on module you're playing, etc? 'I just killed a gopher'

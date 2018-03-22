@@ -12,7 +12,7 @@ var textPointsDarkTetrad;
 
 // global variables
 var text1;
-var text2;
+// var text2;
 var slider01;
 var slider02;
 var slider01back;
@@ -74,7 +74,7 @@ export default class extends Phaser.State {
 		// BG
 		var menuBG = this.game.add.sprite(this.game.width / 2, this.game.height / 2, 'menu_bg01');
 		menuBG.anchor.setTo(0.5, 0.5);
-		menuBG.alpha = .75;
+		menuBG.alpha = 0.75;
 
 		// Rotate BG (50000)
 		// this.game.add.tween(menuBG).to({ angle: 360 }, 370000, Phaser.Easing.Linear.None, true).loop(true);
@@ -87,15 +87,15 @@ export default class extends Phaser.State {
 		blackGradient2.scale.y = -1;
 
 		// Dimensions of the text windows
-		frame01Width = Math.round( this.game.width * 0.7225 );
-		frame01Height = Math.round( this.game.height * 0.5 );
-		frame01XPos = Math.round( ((this.game.width - frame01Width) / 2) - 11 );
-		frame01YPos = Math.round( this.game.height * 0.12 );
+		frame01Width = Math.round(this.game.width * 0.7225);
+		frame01Height = Math.round(this.game.height * 0.5);
+		frame01XPos = Math.round(((this.game.width - frame01Width) / 2) - 11);
+		frame01YPos = Math.round(this.game.height * 0.12);
 
-		frame02Width = Math.round( frame01Width );
-		frame02Height = Math.round( this.game.height * 0.275 - 5); // 0.3067 --- The -5 is there just to keep it from cutting off a line - can modify or remove depending on font size, etc. Actually, it may not much matter because different combinations of lines and line breaks cause unevenness, and it cuts lines off at different points.
+		frame02Width = Math.round(frame01Width);
+		frame02Height = Math.round(this.game.height * 0.275 - 5); // 0.3067 --- The -5 is there just to keep it from cutting off a line - can modify or remove depending on font size, etc. Actually, it may not much matter because different combinations of lines and line breaks cause unevenness, and it cuts lines off at different points.
 		frame02XPos = frame01XPos;
-		frame02YPos = Math.round( ((this.game.height - frame01YPos - frame01Height - frame02Height) / 2) + frame01YPos + frame01Height );
+		frame02YPos = Math.round(((this.game.height - frame01YPos - frame01Height - frame02Height) / 2) + frame01YPos + frame01Height);
 
 		slider01back = this.game.add.sprite(this.game.width - frame01XPos, frame01YPos, 'slider01_back');
 		slider02back = this.game.add.sprite(this.game.width - frame02XPos, frame02YPos, 'slider02_back');
@@ -106,13 +106,11 @@ export default class extends Phaser.State {
 		slider02 = this.game.add.sprite(this.game.width - frame02XPos, frame02YPos, 'slider01');
 		slider02.frame = 0;
 
-		/*
-		//Adjust sliders width
-		slider01.width = 16;
-		slider02.width = 16;
-		slider01back.width = 16;
-		slider02back.width = 16;
-		*/
+		// Adjust sliders width
+		// slider01.width = 16;
+		// slider02.width = 16;
+		// slider01back.width = 16;
+		// slider02back.width = 16;
 
 		// --------Sliders--------
 		slider01.inputEnabled = true;
@@ -171,7 +169,7 @@ export default class extends Phaser.State {
 
 		// Embedding fonts? Google Fonts?
 		var style1 = { font: mainFont, fill: mainFontColor, align: 'left', wordWrap: true, wordWrapWidth: frame01Width };
-		var style2 = { font: 'bold 12pt Arial', fill: choiceColor, align: 'left', wordWrap: true, wordWrapWidth: frame01Width };
+		var style2 = { font: 'bold 12pt Arial', fill: choiceColor, align: 'left', wordWrap: true, wordWrapWidth: frame02Width };
 		// var style2 = { font: mainFont, fill: choiceColor, align: 'left', wordWrap: true, wordWrapWidth: frame01Width };
 
 		choicesTextGroup = this.game.add.group();
@@ -249,7 +247,7 @@ export default class extends Phaser.State {
 		this.adjustSliders();
 
 		// --------Icons--------
-		var iconXoffset = this.game.width * .0625;
+		var iconXoffset = this.game.width * 0.0625;
 
 		var iconTwitterButton = this.game.add.button(iconXoffset, this.game.height * 0.8267, 'icons', this.iconTwitter, this);
 		iconTwitterButton.anchor.setTo(0.5, 0.5);
@@ -287,7 +285,7 @@ export default class extends Phaser.State {
 		var blackFadeTween = this.game.add.tween(blackFade);
 		blackFadeTween.to({ alpha: 0 }, 500);
 		blackFadeTween.start();
-		blackFade.destroy;
+		// FIX: blackFade.destroy();
 	}
 
 	sliderOver(sprite) {
@@ -602,9 +600,7 @@ export default class extends Phaser.State {
 			} else {
 				return false;
 			}
-		}
-		// CHECK FOR ADDITIONAL VARIABLES
-		else if (globals.currentModuleChoicesData[choiceArrayKey].additionalVariableCostA_Key !== '' && globals.currentModuleChoicesData[choiceArrayKey].additionalVariableCostA_Key !== null && globals.currentModuleChoicesData[choiceArrayKey].additionalVariableCostA_Key !== undefined) {
+		} else if (globals.currentModuleChoicesData[choiceArrayKey].additionalVariableCostA_Key !== '' && globals.currentModuleChoicesData[choiceArrayKey].additionalVariableCostA_Key !== null && globals.currentModuleChoicesData[choiceArrayKey].additionalVariableCostA_Key !== undefined) { // CHECK FOR ADDITIONAL VARIABLES
 			if (globals.currentModuleChoicesData[choiceArrayKey].additionalVariableCostB_Key !== '' && globals.currentModuleChoicesData[choiceArrayKey].additionalVariableCostB_Key !== null && globals.currentModuleChoicesData[choiceArrayKey].additionalVariableCostB_Key !== undefined) {
 				// There are two additional variable costs
 				if (globals.currentModuleChoicesData[choiceArrayKey].additionalVariableCost_Operator === '&&') {
@@ -621,11 +617,11 @@ export default class extends Phaser.State {
 					}
 				} else {
 					// Then there's an error
-					false;
+					return false;
 				}
 			} else {
 				// There's only one additional variable cost
-				if ( systems.currentSaveGame.checkGameVariables(globals.currentModuleChoicesData[choiceArrayKey].additionalVariableCostA_Key, globals.currentModuleChoicesData[choiceArrayKey].additionalVariableCostA_Equivalence, globals.currentModuleChoicesData[choiceArrayKey].additionalVariableCostA_Value) ) {
+				if (systems.currentSaveGame.checkGameVariables(globals.currentModuleChoicesData[choiceArrayKey].additionalVariableCostA_Key, globals.currentModuleChoicesData[choiceArrayKey].additionalVariableCostA_Equivalence, globals.currentModuleChoicesData[choiceArrayKey].additionalVariableCostA_Value)) {
 					return true;
 				} else {
 					return false;
@@ -898,23 +894,21 @@ export default class extends Phaser.State {
 		}, this);
 	}
 
-	/*
-	loadStoryText: function () {
+	// loadStoryText: function () {
 
-		textUpdateIndex = 0;
+	// 	textUpdateIndex = 0;
 
-		//first parameter is speed, second parameter is number of times event will repeat, third is event to fire, fourth is context - http://phaser.io/examples/v2/time/basic-repeat-event, https://phaser.io/examples/v2/text/kern-of-duty
+	// 	// first parameter is speed, second parameter is number of times event will repeat, third is event to fire, fourth is context - http://phaser.io/examples/v2/time/basic-repeat-event, https://phaser.io/examples/v2/text/kern-of-duty
 
-		this.game.time.events.repeat(5, textPrint.length + 1, this.updateText, this);
-	},
-	updateText: function () {
+	// 	this.game.time.events.repeat(5, textPrint.length + 1, this.updateText, this);
+	// },
+	// updateText: function () {
 
-		textUpdateIndex++;
+	// 	textUpdateIndex++;
 
-		textUpdateLine = textPrint.substring(0, textUpdateIndex);
-		text1.setText(textUpdateLine);
-	},
-	*/
+	// 	textUpdateLine = textPrint.substring(0, textUpdateIndex);
+	// 	text1.setText(textUpdateLine);
+	// },
 
 	processLinkNode(destination) {
 		var loadedLinkNodes = [];

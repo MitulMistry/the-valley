@@ -44,7 +44,7 @@ export default class extends Phaser.State {
 		this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 		this.scale.setMinMax(config.gameMinWidth, config.gameMinHeight, config.gameWidth, config.gameHeight);
 		this.scale.pageAlignHorizontally = true;
-	 	this.scale.pageAlignVertically = false;
+		this.scale.pageAlignVertically = false;
 		this.scale.windowConstraints.bottom = 'visual'; // constrain to displayed screen area
 	}
 

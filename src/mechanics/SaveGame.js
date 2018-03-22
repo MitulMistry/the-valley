@@ -39,22 +39,22 @@ export default class {
 	}
 
 	// Update font preferences
-	updateFontPreferences (font, fontColor, fontSize) {
+	updateFontPreferences(font, fontColor, fontSize) {
 
 	}
 
 	// Load last story node written to gameLog
-	loadLastNode () {
+	loadLastNode() {
 
 	}
 
 	// Write story node outcome to gameLog
-	writeToGameLog (textNodeKey, decision) {
-		this.gameLog.push( { textNodeKey: textNodeKey, decision: decision } );
+	writeToGameLog(textNodeKey, decision) {
+		this.gameLog.push({ textNodeKey: textNodeKey, decision: decision });
 	}
 
 	// Write additional variables to data structure
-	writeToGameVariables (reference, value) {
+	writeToGameVariables(reference, value) {
 		// Check if the variable already exists. If it does, update it.
 		if (this.gameVariables.has(reference)) {
 			let original = this.gameVariables.get(reference);
@@ -65,7 +65,7 @@ export default class {
 	}
 
 	// Check for additional variables in data structure
-	checkGameVariables (reference, equivalence, value) {
+	checkGameVariables(reference, equivalence, value) {
 		// search for reference and value pair in gameVariables data structure
 		// if found, checks for whether it's >, <, etc. to the value provided
 		// if it doesn't pass the test to the value, or if not found, it returns false
