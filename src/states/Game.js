@@ -36,12 +36,12 @@ var choicesFadeInLength = 200;
 // var textUpdateLine = '';
 
 var rightSliderGap01;
-var text1_distance;
-var text1_topGap;
+var text01Distance;
+var text01TopGap;
 
 var rightSliderGap02;
-var text2_distance;
-var text2_topGap;
+var text02Distance;
+var text02TopGap;
 
 var frame01Width;
 var frame01Height;
@@ -233,12 +233,12 @@ export default class extends Phaser.State {
 		/*
 		//Slider movement calculations
 		rightSliderGap01 = slider01back.height - slider01.height;
-		text1_distance = (rightSliderGap01 / slider01back.height) * text1.height;
-		text1_topGap = frame01YPos;
+		text01Distance = (rightSliderGap01 / slider01back.height) * text1.height;
+		text01TopGap = frame01YPos;
 
 		rightSliderGap02 = slider02back.height - slider02.height;
-		text2_distance = (rightSliderGap02 / slider02back.height) * choicesTextGroup.height;
-		text2_topGap = frame02YPos;
+		text02Distance = (rightSliderGap02 / slider02back.height) * choicesTextGroup.height;
+		text02TopGap = frame02YPos;
 		*/
 
 		// For some reason text1 needs to be updated here and if you update earlier it shows up all wonky
@@ -360,8 +360,8 @@ export default class extends Phaser.State {
 
 			// Slider movement calculations
 			rightSliderGap01 = slider01back.height - slider01.height;
-			text1_distance = (rightSliderGap01 / slider01back.height) * text1.height;
-			text1_topGap = frame01YPos;
+			text01Distance = (rightSliderGap01 / slider01back.height) * text1.height;
+			text01TopGap = frame01YPos;
 		} else {
 			slider01.height = frame01Height;
 			slider01.visible = false;
@@ -376,8 +376,8 @@ export default class extends Phaser.State {
 
 			// Slider movement calculations
 			rightSliderGap02 = slider02back.height - slider02.height;
-			text2_distance = (rightSliderGap02 / slider02back.height) * choicesTextGroup.height;
-			text2_topGap = frame02YPos;
+			text02Distance = (rightSliderGap02 / slider02back.height) * choicesTextGroup.height;
+			text02TopGap = frame02YPos;
 		} else {
 			slider02.height = frame02Height;
 			slider02.visible = false;
@@ -710,10 +710,10 @@ export default class extends Phaser.State {
 
 		// ------------------Randomize destinations------------------
 
-		var destinationA_dieRoll;
-		var destinationB_dieRoll;
-		var destinationC_dieRoll;
-		var destinationD_dieRoll;
+		var dieRollDestinationA;
+		var dieRollDestinationB;
+		var dieRollDestinationC;
+		var dieRollDestinationD;
 
 		// alert(globals.currentModuleChoicesData[tempReference].destinationA_percentage);
 
@@ -724,10 +724,10 @@ export default class extends Phaser.State {
 			this.loadStoryNode(globals.currentModuleChoicesData[tempReference].destinationA);
 		} else if (globals.currentModuleChoicesData[tempReference].destinationC_percentage === null || globals.currentModuleChoicesData[tempReference].destinationC_percentage === '' || globals.currentModuleChoicesData[tempReference].destinationC_percentage === undefined) {
 			// There's no third destination, so it's between destinationA and destinationB
-			destinationA_dieRoll = (Math.floor(Math.random() * 100) + 1) * globals.currentModuleChoicesData[tempReference].destinationA_percentage;
-			destinationB_dieRoll = (Math.floor(Math.random() * 100) + 1) * globals.currentModuleChoicesData[tempReference].destinationB_percentage;
+			dieRollDestinationA = (Math.floor(Math.random() * 100) + 1) * globals.currentModuleChoicesData[tempReference].destinationA_percentage;
+			dieRollDestinationB = (Math.floor(Math.random() * 100) + 1) * globals.currentModuleChoicesData[tempReference].destinationB_percentage;
 
-			if (destinationA_dieRoll > destinationB_dieRoll) {
+			if (dieRollDestinationA > dieRollDestinationB) {
 				// go to destinationA
 				this.adjustPlayerPoints(globals.currentModuleChoicesData[tempReference].destinationA_karmaBoost, globals.currentModuleChoicesData[tempReference].destinationA_intellectBoost, globals.currentModuleChoicesData[tempReference].destinationA_loveBoost, globals.currentModuleChoicesData[tempReference].destinationA_powerBoost, globals.currentModuleChoicesData[tempReference].destinationA_darkTetradBoost, globals.currentModuleChoicesData[tempReference].destinationA_additionalVariableBoostA_Key, globals.currentModuleChoicesData[tempReference].destinationA_additionalVariableBoostA_Value, globals.currentModuleChoicesData[tempReference].destinationA_additionalVariableBoostB_Key, globals.currentModuleChoicesData[tempReference].destinationA_additionalVariableBoostB_Value);
 
@@ -740,16 +740,16 @@ export default class extends Phaser.State {
 			}
 		} else if (globals.currentModuleChoicesData[tempReference].destinationD_percentage === null || globals.currentModuleChoicesData[tempReference].destinationD_percentage === '') {
 			// There's no fourth destination, so it's between destinationA and destinationB and destinationC
-			destinationA_dieRoll = (Math.floor(Math.random() * 100) + 1) * globals.currentModuleChoicesData[tempReference].destinationA_percentage;
-			destinationB_dieRoll = (Math.floor(Math.random() * 100) + 1) * globals.currentModuleChoicesData[tempReference].destinationB_percentage;
-			destinationC_dieRoll = (Math.floor(Math.random() * 100) + 1) * globals.currentModuleChoicesData[tempReference].destinationC_percentage;
+			dieRollDestinationA = (Math.floor(Math.random() * 100) + 1) * globals.currentModuleChoicesData[tempReference].destinationA_percentage;
+			dieRollDestinationB = (Math.floor(Math.random() * 100) + 1) * globals.currentModuleChoicesData[tempReference].destinationB_percentage;
+			dieRollDestinationC = (Math.floor(Math.random() * 100) + 1) * globals.currentModuleChoicesData[tempReference].destinationC_percentage;
 
-			if (destinationA_dieRoll > destinationB_dieRoll && destinationA_dieRoll > destinationC_dieRoll) {
+			if (dieRollDestinationA > dieRollDestinationB && dieRollDestinationA > dieRollDestinationC) {
 				// go to destinationA
 				this.adjustPlayerPoints(globals.currentModuleChoicesData[tempReference].destinationA_karmaBoost, globals.currentModuleChoicesData[tempReference].destinationA_intellectBoost, globals.currentModuleChoicesData[tempReference].destinationA_loveBoost, globals.currentModuleChoicesData[tempReference].destinationA_powerBoost, globals.currentModuleChoicesData[tempReference].destinationA_darkTetradBoost, globals.currentModuleChoicesData[tempReference].destinationA_additionalVariableBoostA_Key, globals.currentModuleChoicesData[tempReference].destinationA_additionalVariableBoostA_Value, globals.currentModuleChoicesData[tempReference].destinationA_additionalVariableBoostB_Key, globals.currentModuleChoicesData[tempReference].destinationA_additionalVariableBoostB_Value);
 
 				this.loadStoryNode(globals.currentModuleChoicesData[tempReference].destinationA);
-			} else if (destinationB_dieRoll > destinationC_dieRoll) {
+			} else if (dieRollDestinationB > dieRollDestinationC) {
 				// go to destinationB
 				this.adjustPlayerPoints(globals.currentModuleChoicesData[tempReference].destinationB_karmaBoost, globals.currentModuleChoicesData[tempReference].destinationB_intellectBoost, globals.currentModuleChoicesData[tempReference].destinationB_loveBoost, globals.currentModuleChoicesData[tempReference].destinationB_powerBoost, globals.currentModuleChoicesData[tempReference].destinationB_darkTetradBoost, globals.currentModuleChoicesData[tempReference].destinationB_additionalVariableBoostA_Key, globals.currentModuleChoicesData[tempReference].destinationB_additionalVariableBoostA_Value, globals.currentModuleChoicesData[tempReference].destinationB_additionalVariableBoostB_Key, globals.currentModuleChoicesData[tempReference].destinationB_additionalVariableBoostB_Value);
 
@@ -762,22 +762,22 @@ export default class extends Phaser.State {
 			}
 		} else {
 			// There are four destinations
-			destinationA_dieRoll = (Math.floor(Math.random() * 100) + 1) * globals.currentModuleChoicesData[tempReference].destinationA_percentage;
-			destinationB_dieRoll = (Math.floor(Math.random() * 100) + 1) * globals.currentModuleChoicesData[tempReference].destinationB_percentage;
-			destinationC_dieRoll = (Math.floor(Math.random() * 100) + 1) * globals.currentModuleChoicesData[tempReference].destinationC_percentage;
-			destinationD_dieRoll = (Math.floor(Math.random() * 100) + 1) * globals.currentModuleChoicesData[tempReference].destinationD_percentage;
+			dieRollDestinationA = (Math.floor(Math.random() * 100) + 1) * globals.currentModuleChoicesData[tempReference].destinationA_percentage;
+			dieRollDestinationB = (Math.floor(Math.random() * 100) + 1) * globals.currentModuleChoicesData[tempReference].destinationB_percentage;
+			dieRollDestinationC = (Math.floor(Math.random() * 100) + 1) * globals.currentModuleChoicesData[tempReference].destinationC_percentage;
+			dieRollDestinationD = (Math.floor(Math.random() * 100) + 1) * globals.currentModuleChoicesData[tempReference].destinationD_percentage;
 
-			if (destinationA_dieRoll > destinationB_dieRoll && destinationA_dieRoll > destinationC_dieRoll && destinationA_dieRoll > destinationD_dieRoll) {
+			if (dieRollDestinationA > dieRollDestinationB && dieRollDestinationA > dieRollDestinationC && dieRollDestinationA > dieRollDestinationD) {
 				// go to destinationA
 				this.adjustPlayerPoints(globals.currentModuleChoicesData[tempReference].destinationA_karmaBoost, globals.currentModuleChoicesData[tempReference].destinationA_intellectBoost, globals.currentModuleChoicesData[tempReference].destinationA_loveBoost, globals.currentModuleChoicesData[tempReference].destinationA_powerBoost, globals.currentModuleChoicesData[tempReference].destinationA_darkTetradBoost, globals.currentModuleChoicesData[tempReference].destinationA_additionalVariableBoostA_Key, globals.currentModuleChoicesData[tempReference].destinationA_additionalVariableBoostA_Value, globals.currentModuleChoicesData[tempReference].destinationA_additionalVariableBoostB_Key, globals.currentModuleChoicesData[tempReference].destinationA_additionalVariableBoostB_Value);
 
 				this.loadStoryNode(globals.currentModuleChoicesData[tempReference].destinationA);
-			} else if (destinationB_dieRoll > destinationC_dieRoll && destinationB_dieRoll > destinationD_dieRoll) {
+			} else if (dieRollDestinationB > dieRollDestinationC && dieRollDestinationB > dieRollDestinationD) {
 				// go to destinationB
 				this.adjustPlayerPoints(globals.currentModuleChoicesData[tempReference].destinationB_karmaBoost, globals.currentModuleChoicesData[tempReference].destinationB_intellectBoost, globals.currentModuleChoicesData[tempReference].destinationB_loveBoost, globals.currentModuleChoicesData[tempReference].destinationB_powerBoost, globals.currentModuleChoicesData[tempReference].destinationB_darkTetradBoost, globals.currentModuleChoicesData[tempReference].destinationB_additionalVariableBoostA_Key, globals.currentModuleChoicesData[tempReference].destinationB_additionalVariableBoostA_Value, globals.currentModuleChoicesData[tempReference].destinationB_additionalVariableBoostB_Key, globals.currentModuleChoicesData[tempReference].destinationB_additionalVariableBoostB_Value);
 
 				this.loadStoryNode(globals.currentModuleChoicesData[tempReference].destinationB);
-			} else if (destinationC_dieRoll > destinationD_dieRoll) {
+			} else if (dieRollDestinationC > dieRollDestinationD) {
 				// go to destinationC
 				this.adjustPlayerPoints(globals.currentModuleChoicesData[tempReference].destinationC_karmaBoost, globals.currentModuleChoicesData[tempReference].destinationC_intellectBoost, globals.currentModuleChoicesData[tempReference].destinationC_loveBoost, globals.currentModuleChoicesData[tempReference].destinationC_powerBoost, globals.currentModuleChoicesData[tempReference].destinationC_darkTetradBoost, globals.currentModuleChoicesData[tempReference].destinationC_additionalVariableBoostA_Key, globals.currentModuleChoicesData[tempReference].destinationC_additionalVariableBoostA_Value, globals.currentModuleChoicesData[tempReference].destinationC_additionalVariableBoostB_Key, globals.currentModuleChoicesData[tempReference].destinationC_additionalVariableBoostB_Value);
 
@@ -1009,10 +1009,10 @@ export default class extends Phaser.State {
 	}
 
 	getRandomLinkNodeDestination(linkNode) {
-		var destinationA_dieRoll;
-		var destinationB_dieRoll;
-		var destinationC_dieRoll;
-		var destinationD_dieRoll;
+		var dieRollDestinationA;
+		var dieRollDestinationB;
+		var dieRollDestinationC;
+		var dieRollDestinationD;
 
 		// alert(linkNode.destinationA_percentage);
 
@@ -1021,10 +1021,10 @@ export default class extends Phaser.State {
 			return linkNode.destinationA;
 		} else if (linkNode.destinationC_percentage === null || linkNode.destinationC_percentage === '' || linkNode.destinationC_percentage === undefined) {
 			// There's no third destination, so it's between destinationA and destinationB
-			destinationA_dieRoll = (Math.floor(Math.random() * 100) + 1) * linkNode.destinationA_percentage;
-			destinationB_dieRoll = (Math.floor(Math.random() * 100) + 1) * linkNode.destinationB_percentage;
+			dieRollDestinationA = (Math.floor(Math.random() * 100) + 1) * linkNode.destinationA_percentage;
+			dieRollDestinationB = (Math.floor(Math.random() * 100) + 1) * linkNode.destinationB_percentage;
 
-			if (destinationA_dieRoll > destinationB_dieRoll) {
+			if (dieRollDestinationA > dieRollDestinationB) {
 				// go to destinationA
 				return linkNode.destinationA;
 			} else {
@@ -1033,14 +1033,14 @@ export default class extends Phaser.State {
 			}
 		} else if (linkNode.destinationD_percentage === null || linkNode.destinationD_percentage === '') {
 			// There's no fourth destination, so it's between destinationA and destinationB and destinationC
-			destinationA_dieRoll = (Math.floor(Math.random() * 100) + 1) * linkNode.destinationA_percentage;
-			destinationB_dieRoll = (Math.floor(Math.random() * 100) + 1) * linkNode.destinationB_percentage;
-			destinationC_dieRoll = (Math.floor(Math.random() * 100) + 1) * linkNode.destinationC_percentage;
+			dieRollDestinationA = (Math.floor(Math.random() * 100) + 1) * linkNode.destinationA_percentage;
+			dieRollDestinationB = (Math.floor(Math.random() * 100) + 1) * linkNode.destinationB_percentage;
+			dieRollDestinationC = (Math.floor(Math.random() * 100) + 1) * linkNode.destinationC_percentage;
 
-			if (destinationA_dieRoll > destinationB_dieRoll && destinationA_dieRoll > destinationC_dieRoll) {
+			if (dieRollDestinationA > dieRollDestinationB && dieRollDestinationA > dieRollDestinationC) {
 				// go to destinationA
 				return linkNode.destinationA;
-			} else if (destinationB_dieRoll > destinationC_dieRoll) {
+			} else if (dieRollDestinationB > dieRollDestinationC) {
 				// go to destinationB
 				return linkNode.destinationB;
 			} else {
@@ -1049,18 +1049,18 @@ export default class extends Phaser.State {
 			}
 		} else {
 			// There are four destinations
-			destinationA_dieRoll = (Math.floor(Math.random() * 100) + 1) * linkNode.destinationA_percentage;
-			destinationB_dieRoll = (Math.floor(Math.random() * 100) + 1) * linkNode.destinationB_percentage;
-			destinationC_dieRoll = (Math.floor(Math.random() * 100) + 1) * linkNode.destinationC_percentage;
-			destinationD_dieRoll = (Math.floor(Math.random() * 100) + 1) * linkNode.destinationD_percentage;
+			dieRollDestinationA = (Math.floor(Math.random() * 100) + 1) * linkNode.destinationA_percentage;
+			dieRollDestinationB = (Math.floor(Math.random() * 100) + 1) * linkNode.destinationB_percentage;
+			dieRollDestinationC = (Math.floor(Math.random() * 100) + 1) * linkNode.destinationC_percentage;
+			dieRollDestinationD = (Math.floor(Math.random() * 100) + 1) * linkNode.destinationD_percentage;
 
-			if (destinationA_dieRoll > destinationB_dieRoll && destinationA_dieRoll > destinationC_dieRoll && destinationA_dieRoll > destinationD_dieRoll) {
+			if (dieRollDestinationA > dieRollDestinationB && dieRollDestinationA > dieRollDestinationC && dieRollDestinationA > dieRollDestinationD) {
 				// go to destinationA
 				return linkNode.destinationA;
-			} else if (destinationB_dieRoll > destinationC_dieRoll && destinationB_dieRoll > destinationD_dieRoll) {
+			} else if (dieRollDestinationB > dieRollDestinationC && dieRollDestinationB > dieRollDestinationD) {
 				// go to destinationB
 				return linkNode.destinationB;
-			} else if (destinationC_dieRoll > destinationD_dieRoll) {
+			} else if (dieRollDestinationC > dieRollDestinationD) {
 				// go to destinationC
 				return linkNode.destinationC;
 			} else {
@@ -1083,10 +1083,10 @@ export default class extends Phaser.State {
 	update() {
 		// Move text based on sliders
 		if (slider01.visible === true) {
-			text1.y = text1_topGap - (((slider01.y - text1_topGap) / rightSliderGap01) * text1_distance);
+			text1.y = text01TopGap - (((slider01.y - text01TopGap) / rightSliderGap01) * text01Distance);
 		}
 		if (slider02.visible === true) {
-			choicesTextGroup.y = 1 - (((slider02.y - text2_topGap) / rightSliderGap02) * text2_distance);
+			choicesTextGroup.y = 1 - (((slider02.y - text02TopGap) / rightSliderGap02) * text02Distance);
 		}
 	}
 }

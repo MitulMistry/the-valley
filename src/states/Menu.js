@@ -11,19 +11,19 @@ export default class extends Phaser.State {
 		// var menuBG = this.game.add.sprite(this.game.width / 2, this.game.height / 2, 'menu_bg01');
 		// menuBG.anchor.setTo(0.5, 0.5);
 
-		var menuBG_circle01 = this.game.add.sprite(this.game.width / 2, this.game.height / 2, 'menu_bg_circle01');
-		menuBG_circle01.anchor.setTo(0.5, 0.5);
-		var menuBG_circle02 = this.game.add.sprite(this.game.width / 2, this.game.height / 2, 'menu_bg_circle02');
-		menuBG_circle02.anchor.setTo(0.5, 0.5);
-		var menuBG_circle03 = this.game.add.sprite(this.game.width / 2, this.game.height / 2, 'menu_bg_circle03');
-		menuBG_circle03.anchor.setTo(0.5, 0.5);
+		var backgroundCircle01 = this.game.add.sprite(this.game.width / 2, this.game.height / 2, 'menu_bg_circle01');
+		backgroundCircle01.anchor.setTo(0.5, 0.5);
+		var backgroundCircle02 = this.game.add.sprite(this.game.width / 2, this.game.height / 2, 'menu_bg_circle02');
+		backgroundCircle02.anchor.setTo(0.5, 0.5);
+		var backgroundCircle03 = this.game.add.sprite(this.game.width / 2, this.game.height / 2, 'menu_bg_circle03');
+		backgroundCircle03.anchor.setTo(0.5, 0.5);
 
 		// Rotate BG
 		// this.game.add.tween(menuBG).to({ angle: 360 }, 50000, Phaser.Easing.Linear.None, true).loop(true);
 
-		this.game.add.tween(menuBG_circle01).to({ angle: -360 }, 130000, Phaser.Easing.Linear.None, true).loop(true);
-		this.game.add.tween(menuBG_circle02).to({ angle: 360 }, 80000, Phaser.Easing.Linear.None, true).loop(true);
-		this.game.add.tween(menuBG_circle03).to({ angle: -360 }, 30000, Phaser.Easing.Linear.None, true).loop(true);
+		this.game.add.tween(backgroundCircle01).to({ angle: -360 }, 130000, Phaser.Easing.Linear.None, true).loop(true);
+		this.game.add.tween(backgroundCircle02).to({ angle: 360 }, 80000, Phaser.Easing.Linear.None, true).loop(true);
+		this.game.add.tween(backgroundCircle03).to({ angle: -360 }, 30000, Phaser.Easing.Linear.None, true).loop(true);
 
 		var blackGradient = this.game.add.sprite(0, 0, 'blackGradient');
 		var blackGradient2 = this.game.add.sprite(0, 0, 'blackGradient');
