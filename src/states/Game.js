@@ -284,8 +284,10 @@ export default class extends Phaser.State {
 		blackFade.width = this.game.width;
 		var blackFadeTween = this.game.add.tween(blackFade);
 		blackFadeTween.to({ alpha: 0 }, 500);
+		blackFadeTween.onComplete.add(function () {
+			blackFade.destroy();
+		});
 		blackFadeTween.start();
-		// FIX: blackFade.destroy();
 	}
 
 	sliderOver(sprite) {

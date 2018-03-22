@@ -106,7 +106,9 @@ export default class extends Phaser.State {
 		var blackFadeTween = this.game.add.tween(blackFade);
 		blackFadeTween.to({ alpha: 0 }, 500);
 		blackFadeTween.start();
-		// FIX: blackFade.destroy();
+		blackFadeTween.onComplete.add(function () {
+			blackFade.destroy();
+		});
 	}
 
 	iconOver(sprite) {
