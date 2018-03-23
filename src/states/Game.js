@@ -70,6 +70,15 @@ var fontColorDarkTetrad = '#E60B1A';
 var textPrint;
 // var activeChoiceColor = "";
 
+const dummyText = {
+	body: 'Morbi ultricies ante orci, vitae semper nibh consectetur dignissim. \n\nDonec odio turpis, pharetra vel dolor a, malesuada vulputate turpis. In vel porta urna,volutpat auctor ante. Phasellus quam nisi, consequat in elementum ut, accumsan in ex.\n\nSed pulvinar nunc urna, in porttitor lectus imperdiet nec. Suspendisse accumsan congue gravida. \n\nPhasellus quam nisi, consequat in elementum ut, accumsan in ex. Sed pulvinar nunc urna, in porttitor lectus imperdiet nec.\n\nSuspendisse accumsan congue gravida.',
+	choice1: 'Choice 1: Morbi ultricies ante orci, vitae semper nibh consectetur dignissim. Sed pulvinar nunc urna, in porttitor lectus imperdiet nec. Suspendisse accumsan congue gravida.',
+	choice2: 'Choice 2: Donec odio turpis, pharetra vel dolor a, malesuada vulputate turpis. Phasellus quam nisi, consequat in elementum ut, accumsan in ex.',
+	choice3: 'Choice 3: In vel porta urna,volutpat auctor ante.',
+	choice4: 'Choice 4: Phasellus quam nisi, consequat in elementum ut, accumsan in ex.',
+	choice5: 'Choice 5: Suspendisse accumsan congue gravida. Phasellus quam nisi, consequat in elementum ut, accumsan in ex.'
+};
+
 export default class extends Phaser.State {
 	constructor() {
 		super();
@@ -94,13 +103,10 @@ export default class extends Phaser.State {
 
 		this.setupChoices();
 		this.loadChoices();
-		this.adjustSliders();
 
-		// For some reason text1 needs to be updated here and if you update earlier it shows up all wonky
-		text1.setText(textPrint); // !!!!!!!!!
 		this.fadeInText();
 		this.adjustSliders();
-
+		
 		this.setupIcons();
 		this.fadeInScreen();
 	}
@@ -108,7 +114,7 @@ export default class extends Phaser.State {
 	setupBackground() {
 		var menuBG = this.game.add.sprite(this.game.width / 2, this.game.height / 2, 'menu_bg01');
 		menuBG.anchor.setTo(0.5, 0.5);
-		menuBG.alpha = 0.75;
+		menuBG.alpha = 0.75;'Choice 5: Suspendisse accumsan congue gravida. Phasellus quam nisi, consequat in elementum ut, accumsan in ex.'
 
 		// Rotate BG (50000)
 		// this.game.add.tween(menuBG).to({ angle: 360 }, 370000, Phaser.Easing.Linear.None, true).loop(true);
@@ -213,9 +219,7 @@ export default class extends Phaser.State {
 	setupText() {
 		textPrint = globals.currentModuleTextMap.get(systems.currentSaveGame.currentNodeKey);
 
-		// text1 = this.game.add.text(frame01XPos, frame01YPos, textPrint, this.textStyle);
-
-		text1 = this.game.add.text(frame01XPos, frame01YPos, 'Morbi ultricies ante orci, vitae semper nibh consectetur dignissim. \n\nDonec odio turpis, pharetra vel dolor a, malesuada vulputate turpis. In vel porta urna,volutpat auctor ante. Phasellus quam nisi, consequat in elementum ut, accumsan in ex.\n\nSed pulvinar nunc urna, in porttitor lectus imperdiet nec. Suspendisse accumsan congue gravida. \n\nPhasellus quam nisi, consequat in elementum ut, accumsan in ex. Sed pulvinar nunc urna, in porttitor lectus imperdiet nec.\n\nSuspendisse accumsan congue gravida.', this.textStyle);
+		text1 = this.game.add.text(frame01XPos, frame01YPos, textPrint, this.textStyle);
 		// text1.lineSpacing = 5;
 
 		text1.mask = textMask01;
@@ -225,7 +229,7 @@ export default class extends Phaser.State {
 		// Add choices to group so they can be moved together with slider.
 		choicesTextGroup = this.game.add.group();
 
-		choice1 = this.game.add.text(frame02XPos, frame02YPos, 'Choice 1: Morbi ultricies ante orci, vitae semper nibh consectetur dignissim. Sed pulvinar nunc urna, in porttitor lectus imperdiet nec. Suspendisse accumsan congue gravida.', this.choicesStyle, choicesTextGroup);
+		choice1 = this.game.add.text(frame02XPos, frame02YPos, dummyText.choice1, this.choicesStyle, choicesTextGroup);
 		choice1.inputEnabled = true;
 		choice1.input.useHandCursor = true;
 		choice1.events.onInputOver.add(this.choiceOver, this);
@@ -233,7 +237,7 @@ export default class extends Phaser.State {
 		choice1.events.onInputDown.add(this.choiceDown, this);
 		choice1.events.onInputUp.add(this.choiceUp1, this);
 
-		choice2 = this.game.add.text(frame02XPos, frame02YPos + choice1.height + choicesSpacer, 'Choice 2: Donec odio turpis, pharetra vel dolor a, malesuada vulputate turpis. Phasellus quam nisi, consequat in elementum ut, accumsan in ex.', this.choicesStyle, choicesTextGroup);
+		choice2 = this.game.add.text(frame02XPos, frame02YPos + choice1.height + choicesSpacer, dummyText.choice2, this.choicesStyle, choicesTextGroup);
 		choice2.inputEnabled = true;
 		choice2.input.useHandCursor = true;
 		choice2.events.onInputOver.add(this.choiceOver, this);
@@ -241,7 +245,7 @@ export default class extends Phaser.State {
 		choice2.events.onInputDown.add(this.choiceDown, this);
 		choice2.events.onInputUp.add(this.choiceUp2, this);
 
-		choice3 = this.game.add.text(frame02XPos, frame02YPos + choice1.height + choice2.height + (choicesSpacer * 2), 'Choice 3: In vel porta urna,volutpat auctor ante.', this.choicesStyle, choicesTextGroup);
+		choice3 = this.game.add.text(frame02XPos, frame02YPos + choice1.height + choice2.height + (choicesSpacer * 2), dummyText.choice3, this.choicesStyle, choicesTextGroup);
 		choice3.inputEnabled = true;
 		choice3.input.useHandCursor = true;
 		choice3.events.onInputOver.add(this.choiceOver, this);
@@ -249,7 +253,7 @@ export default class extends Phaser.State {
 		choice3.events.onInputDown.add(this.choiceDown, this);
 		choice3.events.onInputUp.add(this.choiceUp3, this);
 
-		choice4 = this.game.add.text(frame02XPos, frame02YPos + choice1.height + choice2.height + choice3.height + (choicesSpacer * 3), 'Choice 4: Phasellus quam nisi, consequat in elementum ut, accumsan in ex.', this.choicesStyle, choicesTextGroup);
+		choice4 = this.game.add.text(frame02XPos, frame02YPos + choice1.height + choice2.height + choice3.height + (choicesSpacer * 3), dummyText.choice4, this.choicesStyle, choicesTextGroup);
 		choice4.inputEnabled = true;
 		choice4.input.useHandCursor = true;
 		choice4.events.onInputOver.add(this.choiceOver, this);
@@ -257,7 +261,7 @@ export default class extends Phaser.State {
 		choice4.events.onInputDown.add(this.choiceDown, this);
 		choice4.events.onInputUp.add(this.choiceUp4, this);
 
-		choice5 = this.game.add.text(frame02XPos, frame02YPos + choice1.height + choice2.height + choice3.height + +choice4.height + (choicesSpacer * 4), 'Choice 5: Suspendisse accumsan congue gravida. Phasellus quam nisi, consequat in elementum ut, accumsan in ex.', this.choicesStyle, choicesTextGroup);
+		choice5 = this.game.add.text(frame02XPos, frame02YPos + choice1.height + choice2.height + choice3.height + choice4.height + (choicesSpacer * 4), dummyText.choice5, this.choicesStyle, choicesTextGroup);
 		choice5.inputEnabled = true;
 		choice5.input.useHandCursor = true;
 		choice5.events.onInputOver.add(this.choiceOver, this);
@@ -717,7 +721,7 @@ export default class extends Phaser.State {
 			return constants.POINT_BOOST_LARGE02;
 		} else if (stringToParse === 'huge') {
 			return constants.POINT_BOOST_HUGE;
-		} else if (stringToParse === 'medium') {
+		} else if (stringToParse === 'jackpot') {
 			return constants.POINT_BOOST_JACKPOT;
 		} else {
 			return 0;
