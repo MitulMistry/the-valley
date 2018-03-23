@@ -11,7 +11,7 @@ var textPointsLove;
 var textPointsDarkTetrad;
 
 // global variables
-var text1;
+var storyText;
 var slider01;
 var slider02;
 var slider01back;
@@ -217,10 +217,10 @@ export default class extends Phaser.State {
 	setupText() {
 		var textPrint = globals.currentModuleTextMap.get(systems.currentSaveGame.currentNodeKey);
 
-		text1 = this.game.add.text(frame01XPos, frame01YPos, textPrint, this.textStyle);
-		// text1.lineSpacing = 5;
+		storyText = this.game.add.text(frame01XPos, frame01YPos, textPrint, this.textStyle);
+		// storyText.lineSpacing = 5;
 
-		text1.mask = textMask01;
+		storyText.mask = textMask01;
 	}
 
 	setupChoices() {
@@ -377,16 +377,16 @@ export default class extends Phaser.State {
 		slider01.y = frame01YPos;
 		slider02.y = frame02YPos;
 
-		if (text1.height > frame01Height) {
+		if (storyText.height > frame01Height) {
 			slider01.visible = true;
 			slider01back.visible = true;
-			slider01.height = (frame01Height / text1.height) * frame01Height;
+			slider01.height = (frame01Height / storyText.height) * frame01Height;
 			this.fadeSlider(slider01, 0, textFadeInLength);
 			this.fadeSlider(slider01back, 0, textFadeInLength);
 
 			// Slider movement calculations
 			rightSliderGap01 = slider01back.height - slider01.height;
-			text01Distance = (rightSliderGap01 / slider01back.height) * text1.height;
+			text01Distance = (rightSliderGap01 / slider01back.height) * storyText.height;
 			text01TopGap = frame01YPos;
 		} else {
 			slider01.height = frame01Height;
@@ -853,8 +853,8 @@ export default class extends Phaser.State {
 
 		if (destination === 'DEATH') {
 			textPrint = 'DEATH';
-			text1.setText(textPrint);
-			text1.y = frame01YPos;
+			storyText.setText(textPrint);
+			storyText.y = frame01YPos;
 			this.fadeInText();
 
 			choice1.setText('');
@@ -864,8 +864,8 @@ export default class extends Phaser.State {
 			}, this);
 		} else if (destination === 'END') {
 			textPrint = 'END';
-			text1.setText(textPrint);
-			text1.y = frame01YPos;
+			storyText.setText(textPrint);
+			storyText.y = frame01YPos;
 			this.fadeInText();
 
 			choice1.setText('');
@@ -878,11 +878,11 @@ export default class extends Phaser.State {
 				systems.currentSaveGame.currentNodeKey = destination;
 
 				textPrint = globals.currentModuleTextMap.get(systems.currentSaveGame.currentNodeKey);
-				text1.setText(textPrint);
-				text1.y = frame01YPos;
+				storyText.setText(textPrint);
+				storyText.y = frame01YPos;
 				this.fadeInText();
 
-				// text1.setText('');
+				// storyText.setText('');
 				// this.loadStoryText();
 			} else {
 				// link node logic - loop through as many link nodes as necessary
@@ -897,23 +897,23 @@ export default class extends Phaser.State {
 				systems.currentSaveGame.currentNodeKey = tempDestination;
 
 				textPrint = globals.currentModuleTextMap.get(systems.currentSaveGame.currentNodeKey);
-				text1.setText(textPrint);
-				text1.y = frame01YPos;
+				storyText.setText(textPrint);
+				storyText.y = frame01YPos;
 				this.fadeInText();
 			}
 		}
 
 		// kern of duty text
-		// text1.setText('');
+		// storyText.setText('');
 
 		this.loadChoices();
 		this.adjustSliders();
 	}
 
 	fadeInText() {
-		text1.alpha = 0;
+		storyText.alpha = 0;
 		// http://www.html5gamedevs.com/topic/8639-fade-out-text-after-2-second-delay/
-		this.game.add.tween(text1).to({ alpha: 1 }, textFadeInLength, Phaser.Easing.Linear.None, true);
+		this.game.add.tween(storyText).to({ alpha: 1 }, textFadeInLength, Phaser.Easing.Linear.None, true);
 	}
 
 	fadeInChoice(choice, delay) {
@@ -937,7 +937,7 @@ export default class extends Phaser.State {
 	// 	textUpdateIndex++;
 
 	// 	textUpdateLine = textPrint.substring(0, textUpdateIndex);
-	// 	text1.setText(textUpdateLine);
+	// 	storyText.setText(textUpdateLine);
 	// },
 
 	processLinkNode(destination) {
@@ -1111,7 +1111,7 @@ export default class extends Phaser.State {
 	update() {
 		// Move text based on sliders
 		if (slider01.visible === true) {
-			text1.y = text01TopGap - (((slider01.y - text01TopGap) / rightSliderGap01) * text01Distance);
+			storyText.y = text01TopGap - (((slider01.y - text01TopGap) / rightSliderGap01) * text01Distance);
 		}
 		if (slider02.visible === true) {
 			choicesTextGroup.y = 1 - (((slider02.y - text02TopGap) / rightSliderGap02) * text02Distance);
