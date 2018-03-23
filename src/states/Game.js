@@ -53,6 +53,9 @@ var frame02Height;
 var frame02XPos;
 var frame02YPos;
 
+var textMask01;
+var textMask02;
+
 var mainFont = '500 12.5pt Fira Sans'; // 13pt
 var mainFontColor = '#FFBD29';
 var choiceColor = '#FFFFFF';
@@ -68,87 +71,28 @@ var textPrint;
 // var activeChoiceColor = "";
 
 export default class extends Phaser.State {
+	constructor() {
+		super();
+		this.textStyle = {};
+		this.choicesStyle = {};
+	}
+
 	init() {
 		this.game.stage.backgroundColor = '#000000';
 	}
 
+	// Sets up all graphical elements for game
 	create() {
 		this.setupBackground();
 		this.calculateTextWindows();
 		this.setupTextSliders();
 		this.setupDebugItems();
 
-		// -------Masks-------
-		//	A mask is a Graphics object
-		var textMask01 = this.game.add.graphics(0, 0);
-		var textMask02 = this.game.add.graphics(0, 0);
+		this.setupMasks();
+		this.setupTextStyles();
+		this.setupText();
 
-		//	Shapes drawn to the Graphics object must be filled.
-		textMask01.beginFill(0xffffff);
-		textMask01.drawRect(frame01XPos, frame01YPos, this.game.width, frame01Height);
-		textMask02.beginFill(0xffffff);
-		textMask02.drawRect(frame02XPos, frame02YPos, this.game.width, frame02Height);
-
-		// Embedding fonts? Google Fonts?
-		var style1 = { font: mainFont, fill: mainFontColor, align: 'left', wordWrap: true, wordWrapWidth: frame01Width };
-		var style2 = { font: 'bold 12pt Arial', fill: choiceColor, align: 'left', wordWrap: true, wordWrapWidth: frame02Width };
-		// var style2 = { font: mainFont, fill: choiceColor, align: 'left', wordWrap: true, wordWrapWidth: frame01Width };
-
-		choicesTextGroup = this.game.add.group();
-
-		textPrint = globals.currentModuleTextMap.get(systems.currentSaveGame.currentNodeKey);
-
-		// text1 = this.game.add.text(frame01XPos, frame01YPos, textPrint, style1);
-
-		text1 = this.game.add.text(frame01XPos, frame01YPos, 'Morbi ultricies ante orci, vitae semper nibh consectetur dignissim. \n\nDonec odio turpis, pharetra vel dolor a, malesuada vulputate turpis. In vel porta urna,volutpat auctor ante. Phasellus quam nisi, consequat in elementum ut, accumsan in ex.\n\nSed pulvinar nunc urna, in porttitor lectus imperdiet nec. Suspendisse accumsan congue gravida. \n\nPhasellus quam nisi, consequat in elementum ut, accumsan in ex. Sed pulvinar nunc urna, in porttitor lectus imperdiet nec.\n\nSuspendisse accumsan congue gravida.', style1);
-		// text1.lineSpacing = 5;
-
-		text1.mask = textMask01;
-
-		// Add choices to group? Then move group as a whole with slider?
-		choice1 = this.game.add.text(frame02XPos, frame02YPos, 'Choice 1: Morbi ultricies ante orci, vitae semper nibh consectetur dignissim. Sed pulvinar nunc urna, in porttitor lectus imperdiet nec. Suspendisse accumsan congue gravida.', style2, choicesTextGroup);
-		choice1.inputEnabled = true;
-		choice1.input.useHandCursor = true;
-		choice1.events.onInputOver.add(this.choiceOver, this);
-		choice1.events.onInputOut.add(this.choiceOut1, this);
-		choice1.events.onInputDown.add(this.choiceDown, this);
-		choice1.events.onInputUp.add(this.choiceUp1, this);
-
-		choice2 = this.game.add.text(frame02XPos, frame02YPos + choice1.height + choicesSpacer, 'Choice 2: Donec odio turpis, pharetra vel dolor a, malesuada vulputate turpis. Phasellus quam nisi, consequat in elementum ut, accumsan in ex.', style2, choicesTextGroup);
-		choice2.inputEnabled = true;
-		choice2.input.useHandCursor = true;
-		choice2.events.onInputOver.add(this.choiceOver, this);
-		choice2.events.onInputOut.add(this.choiceOut2, this);
-		choice2.events.onInputDown.add(this.choiceDown, this);
-		choice2.events.onInputUp.add(this.choiceUp2, this);
-
-		choice3 = this.game.add.text(frame02XPos, frame02YPos + choice1.height + choice2.height + (choicesSpacer * 2), 'Choice 3: In vel porta urna,volutpat auctor ante.', style2, choicesTextGroup);
-		choice3.inputEnabled = true;
-		choice3.input.useHandCursor = true;
-		choice3.events.onInputOver.add(this.choiceOver, this);
-		choice3.events.onInputOut.add(this.choiceOut3, this);
-		choice3.events.onInputDown.add(this.choiceDown, this);
-		choice3.events.onInputUp.add(this.choiceUp3, this);
-
-		choice4 = this.game.add.text(frame02XPos, frame02YPos + choice1.height + choice2.height + choice3.height + (choicesSpacer * 3), 'Choice 4: Phasellus quam nisi, consequat in elementum ut, accumsan in ex.', style2, choicesTextGroup);
-		choice4.inputEnabled = true;
-		choice4.input.useHandCursor = true;
-		choice4.events.onInputOver.add(this.choiceOver, this);
-		choice4.events.onInputOut.add(this.choiceOut4, this);
-		choice4.events.onInputDown.add(this.choiceDown, this);
-		choice4.events.onInputUp.add(this.choiceUp4, this);
-
-		choice5 = this.game.add.text(frame02XPos, frame02YPos + choice1.height + choice2.height + choice3.height + +choice4.height + (choicesSpacer * 4), 'Choice 5: Suspendisse accumsan congue gravida. Phasellus quam nisi, consequat in elementum ut, accumsan in ex.', style2, choicesTextGroup);
-		choice5.inputEnabled = true;
-		choice5.input.useHandCursor = true;
-		choice5.events.onInputOver.add(this.choiceOver, this);
-		choice5.events.onInputOut.add(this.choiceOut5, this);
-		choice5.events.onInputDown.add(this.choiceDown, this);
-		choice5.events.onInputUp.add(this.choiceUp5, this);
-
-		choicesTextGroup.mask = textMask02;
-		// choicesTextGroup.anchor.setTo(0, 0);
-
+		this.setupChoices();
 		this.loadChoices();
 		this.adjustSliders();
 
@@ -158,7 +102,7 @@ export default class extends Phaser.State {
 		this.adjustSliders();
 
 		this.setupIcons();
-		this.fadeInScreen();		
+		this.fadeInScreen();
 	}
 
 	setupBackground() {
@@ -249,16 +193,80 @@ export default class extends Phaser.State {
 		}
 	}
 
+	setupTextStyles() { // calculateTextWindows() must be run prior to this method for wordWrapWidth values
+		this.textStyle = { font: mainFont, fill: mainFontColor, align: 'left', wordWrap: true, wordWrapWidth: frame01Width };
+		this.choicesStyle = { font: 'bold 12pt Arial', fill: choiceColor, align: 'left', wordWrap: true, wordWrapWidth: frame02Width };
+	}
+
 	setupMasks() {
-		
+		// A mask is a Graphics object
+		textMask01 = this.game.add.graphics(0, 0);
+		textMask02 = this.game.add.graphics(0, 0);
+
+		// Shapes drawn to the Graphics object must be filled.
+		textMask01.beginFill(0xffffff);
+		textMask01.drawRect(frame01XPos, frame01YPos, this.game.width, frame01Height);
+		textMask02.beginFill(0xffffff);
+		textMask02.drawRect(frame02XPos, frame02YPos, this.game.width, frame02Height);
 	}
 
 	setupText() {
+		textPrint = globals.currentModuleTextMap.get(systems.currentSaveGame.currentNodeKey);
 
+		// text1 = this.game.add.text(frame01XPos, frame01YPos, textPrint, this.textStyle);
+
+		text1 = this.game.add.text(frame01XPos, frame01YPos, 'Morbi ultricies ante orci, vitae semper nibh consectetur dignissim. \n\nDonec odio turpis, pharetra vel dolor a, malesuada vulputate turpis. In vel porta urna,volutpat auctor ante. Phasellus quam nisi, consequat in elementum ut, accumsan in ex.\n\nSed pulvinar nunc urna, in porttitor lectus imperdiet nec. Suspendisse accumsan congue gravida. \n\nPhasellus quam nisi, consequat in elementum ut, accumsan in ex. Sed pulvinar nunc urna, in porttitor lectus imperdiet nec.\n\nSuspendisse accumsan congue gravida.', this.textStyle);
+		// text1.lineSpacing = 5;
+
+		text1.mask = textMask01;
 	}
 
 	setupChoices() {
+		// Add choices to group so they can be moved together with slider.
+		choicesTextGroup = this.game.add.group();
 
+		choice1 = this.game.add.text(frame02XPos, frame02YPos, 'Choice 1: Morbi ultricies ante orci, vitae semper nibh consectetur dignissim. Sed pulvinar nunc urna, in porttitor lectus imperdiet nec. Suspendisse accumsan congue gravida.', this.choicesStyle, choicesTextGroup);
+		choice1.inputEnabled = true;
+		choice1.input.useHandCursor = true;
+		choice1.events.onInputOver.add(this.choiceOver, this);
+		choice1.events.onInputOut.add(this.choiceOut1, this);
+		choice1.events.onInputDown.add(this.choiceDown, this);
+		choice1.events.onInputUp.add(this.choiceUp1, this);
+
+		choice2 = this.game.add.text(frame02XPos, frame02YPos + choice1.height + choicesSpacer, 'Choice 2: Donec odio turpis, pharetra vel dolor a, malesuada vulputate turpis. Phasellus quam nisi, consequat in elementum ut, accumsan in ex.', this.choicesStyle, choicesTextGroup);
+		choice2.inputEnabled = true;
+		choice2.input.useHandCursor = true;
+		choice2.events.onInputOver.add(this.choiceOver, this);
+		choice2.events.onInputOut.add(this.choiceOut2, this);
+		choice2.events.onInputDown.add(this.choiceDown, this);
+		choice2.events.onInputUp.add(this.choiceUp2, this);
+
+		choice3 = this.game.add.text(frame02XPos, frame02YPos + choice1.height + choice2.height + (choicesSpacer * 2), 'Choice 3: In vel porta urna,volutpat auctor ante.', this.choicesStyle, choicesTextGroup);
+		choice3.inputEnabled = true;
+		choice3.input.useHandCursor = true;
+		choice3.events.onInputOver.add(this.choiceOver, this);
+		choice3.events.onInputOut.add(this.choiceOut3, this);
+		choice3.events.onInputDown.add(this.choiceDown, this);
+		choice3.events.onInputUp.add(this.choiceUp3, this);
+
+		choice4 = this.game.add.text(frame02XPos, frame02YPos + choice1.height + choice2.height + choice3.height + (choicesSpacer * 3), 'Choice 4: Phasellus quam nisi, consequat in elementum ut, accumsan in ex.', this.choicesStyle, choicesTextGroup);
+		choice4.inputEnabled = true;
+		choice4.input.useHandCursor = true;
+		choice4.events.onInputOver.add(this.choiceOver, this);
+		choice4.events.onInputOut.add(this.choiceOut4, this);
+		choice4.events.onInputDown.add(this.choiceDown, this);
+		choice4.events.onInputUp.add(this.choiceUp4, this);
+
+		choice5 = this.game.add.text(frame02XPos, frame02YPos + choice1.height + choice2.height + choice3.height + +choice4.height + (choicesSpacer * 4), 'Choice 5: Suspendisse accumsan congue gravida. Phasellus quam nisi, consequat in elementum ut, accumsan in ex.', this.choicesStyle, choicesTextGroup);
+		choice5.inputEnabled = true;
+		choice5.input.useHandCursor = true;
+		choice5.events.onInputOver.add(this.choiceOver, this);
+		choice5.events.onInputOut.add(this.choiceOut5, this);
+		choice5.events.onInputDown.add(this.choiceDown, this);
+		choice5.events.onInputUp.add(this.choiceUp5, this);
+
+		choicesTextGroup.mask = textMask02;
+		// choicesTextGroup.anchor.setTo(0, 0);
 	}
 
 	setupIcons() {
