@@ -12,7 +12,6 @@ var textPointsDarkTetrad;
 
 // global variables
 var text1;
-// var text2;
 var slider01;
 var slider02;
 var slider01back;
@@ -67,7 +66,6 @@ var fontColorIntellect = '#00B0FF';
 var fontColorLove = '#FC32DA';
 var fontColorDarkTetrad = '#E60B1A';
 
-var textPrint;
 // var activeChoiceColor = "";
 
 const dummyText = {
@@ -217,7 +215,7 @@ export default class extends Phaser.State {
 	}
 
 	setupText() {
-		textPrint = globals.currentModuleTextMap.get(systems.currentSaveGame.currentNodeKey);
+		var textPrint = globals.currentModuleTextMap.get(systems.currentSaveGame.currentNodeKey);
 
 		text1 = this.game.add.text(frame01XPos, frame01YPos, textPrint, this.textStyle);
 		// text1.lineSpacing = 5;
@@ -851,6 +849,8 @@ export default class extends Phaser.State {
 	}
 
 	loadStoryNode(destination) {
+		var textPrint;
+
 		if (destination === 'DEATH') {
 			textPrint = 'DEATH';
 			text1.setText(textPrint);
