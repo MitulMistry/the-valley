@@ -104,7 +104,7 @@ export default class extends Phaser.State {
 
 		this.fadeInText();
 		this.adjustSliders();
-		
+
 		this.setupIcons();
 		this.fadeInScreen();
 	}
@@ -112,7 +112,7 @@ export default class extends Phaser.State {
 	setupBackground() {
 		var menuBG = this.game.add.sprite(this.game.width / 2, this.game.height / 2, 'menu_bg01');
 		menuBG.anchor.setTo(0.5, 0.5);
-		menuBG.alpha = 0.75;'Choice 5: Suspendisse accumsan congue gravida. Phasellus quam nisi, consequat in elementum ut, accumsan in ex.'
+		menuBG.alpha = 0.75;
 
 		// Rotate BG (50000)
 		// this.game.add.tween(menuBG).to({ angle: 360 }, 370000, Phaser.Easing.Linear.None, true).loop(true);
