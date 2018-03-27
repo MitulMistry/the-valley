@@ -12,7 +12,6 @@
     "cordova": "webpack --config webpack.cordova.config.js",
     "test": "eslint './src/**/*.js'",
     "test-fix": "eslint './src/**/*.js' --fix",
-    "postinstall": "webpack --config webpack.production.config.js",
     "start": "node server.js"
   },
   "repository": {
