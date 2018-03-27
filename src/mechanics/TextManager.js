@@ -1,7 +1,7 @@
 // Webpack loads JSON files by default - parses as JavaScript objects
-import ascentOfManChoicesJSON from '../storyModules/module01AscentOfManCHOICES.json';
-import ascentOfManLinkNodesJSON from '../storyModules/module01AscentOfManLINKNODES.json';
-import ascentOfManTextJSON from '../storyModules/module01AscentOfManTEXT.json';
+// import ascentOfManChoicesJSON from '../storyModules/module01AscentOfManCHOICES.json';
+// import ascentOfManLinkNodesJSON from '../storyModules/module01AscentOfManLINKNODES.json';
+// import ascentOfManTextJSON from '../storyModules/module01AscentOfManTEXT.json';
 
 import globals from '../globals/globals';
 import constants from '../globals/constants';
