@@ -64,4 +64,4 @@ plugins/
 dist/
 .vscode/
 /index.html
-build/
+ build/assets/
