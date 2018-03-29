@@ -1,10 +1,9 @@
 var express = require('express'); // https://github.com/heroku/node-js-getting-started/blob/master/index.js
-
 var app = express();
 
 app.set('port', (process.env.PORT || 5000)); // gets port from environment or else defaults to 5000
 
-app.use(express.static(__dirname + '/build')); // read files from this folder
+app.use(express.static(path.join(__dirname, 'build'))); // read files from this folder
 
 app.get('/', function(req, res) { // request, response
   res.render('index.html');
