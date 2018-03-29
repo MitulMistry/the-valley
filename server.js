@@ -1,4 +1,5 @@
 var express = require('express'); // https://github.com/heroku/node-js-getting-started/blob/master/index.js
+var path = require('path');
 var app = express();
 
 app.set('port', (process.env.PORT || 5000)); // gets port from environment or else defaults to 5000
