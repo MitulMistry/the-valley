@@ -23,11 +23,11 @@ The game initiates through [index.html](../master/src/index.html) and loads scri
 ### [States](../master/src/states)
 The game runs through Phaser states that load and run different aspects of the project (menu, splash screen, etc.).
 
-### [Mechanics](../master/src/mechnics)
+### [Mechanics](../master/src/mechanics)
 The game uses systems to load text and manage the game state.
 
 ### Other
-The game stores data in [globals](../master/src/globals), loads JSON files under [story modules](../master/src/storyModules), and keeps graphics under [assets](../master/src/assets).
+The game stores data in [globals](../master/src/globals), loads JSON files under [story modules](../master/src/storyModules), and keeps graphics under [assets](../master/assets).
 
 ## Commands
 `npm run dev` - Use Webpack to build for development and run server.
