@@ -7,35 +7,35 @@ import globals from '../globals/globals';
 import constants from '../globals/constants';
 
 export default class {
-	loadModule(moduleNumber)	{
-		console.log('%c Loading story module ' + moduleNumber + ' ', 'color:white; background:orange;');
+  loadModule(moduleNumber) {
+    console.log('%c Loading story module ' + moduleNumber + ' ', 'color:white; background:orange;');
 
-		if (moduleNumber === constants.MODULE_ASCENT_OF_MAN) {
-			// systems.currentSaveGame.currentNodeKey = "AA000AA000AA";
-			this.loadJSON(ascentOfManTextJSON, ascentOfManChoicesJSON, ascentOfManLinkNodesJSON);
-		} else {
-			console.log('%cError: Invalid story module.', 'color:white; background:red;');
-		}
-	}
+    if (moduleNumber === constants.MODULE_ASCENT_OF_MAN) {
+      // systems.currentSaveGame.currentNodeKey = "AA000AA000AA";
+      this.loadJSON(ascentOfManTextJSON, ascentOfManChoicesJSON, ascentOfManLinkNodesJSON);
+    } else {
+      console.log('%cError: Invalid story module.', 'color:white; background:red;');
+    }
+  }
 
-	loadJSON(moduleText, moduleChoices, moduleLinkNodes) {
-		for (var i in moduleText) {
-			globals.currentModuleTextMap.set(moduleText[i].KEY, moduleText[i].TEXT);
-		}
+  loadJSON(moduleText, moduleChoices, moduleLinkNodes) {
+    for (var i in moduleText) {
+      globals.currentModuleTextMap.set(moduleText[i].KEY, moduleText[i].TEXT);
+    }
 
-		// let currentModuleChoicesMap = new Map();
-		// for (var j in moduleChoices) {
-		// 	currentModuleChoicesMap.set(moduleChoices[j].KEY, moduleChoices[j]);
-		// }
-		//
-		// let currentModuleLinkNodesMap = new Map();
-		// for (var k in moduleLinkNodes) {
-		// 	currentModuleLinkNodesMap.set(moduleLinkNodes[k].KEY, moduleLinkNodes[k]);
-		// }
+    // let currentModuleChoicesMap = new Map();
+    // for (var j in moduleChoices) {
+    //   currentModuleChoicesMap.set(moduleChoices[j].KEY, moduleChoices[j]);
+    // }
 
-		globals.currentModuleChoicesData = moduleChoices;
-		globals.currentModuleLinkNodesData = moduleLinkNodes;
+    // let currentModuleLinkNodesMap = new Map();
+    // for (var k in moduleLinkNodes) {
+    //   currentModuleLinkNodesMap.set(moduleLinkNodes[k].KEY, moduleLinkNodes[k]);
+    // }
 
-		globals.JSONLoadedFlag = true;
-	}
+    globals.currentModuleChoicesData = moduleChoices;
+    globals.currentModuleLinkNodesData = moduleLinkNodes;
+
+    globals.JSONLoadedFlag = true;
+  }
 }

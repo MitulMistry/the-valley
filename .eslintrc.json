@@ -10,8 +10,6 @@
   },
   "rules": {
     "import/no-unresolved": [2],
-    "indent": [2, "tab"],
-    "no-tabs": 0,
     "semi": [2, "always"],
     "space-before-function-paren": ["error", {
         "anonymous": "always",

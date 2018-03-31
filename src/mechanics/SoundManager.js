@@ -1,3 +1,3 @@
 export default class {
-	// https://phaser.io/examples/v2/audio/restart-sound
+  // https://phaser.io/examples/v2/audio/restart-sound
 };
