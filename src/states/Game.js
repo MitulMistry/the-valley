@@ -293,6 +293,8 @@ export default class extends Phaser.State {
     var iconFontButton = this.game.add.button(this.game.width - iconXoffset, this.game.height * 0.72, 'icons', this.iconFont, this, constants.iconFontOverFrame, constants.iconFontBaseFrame, constants.iconFontClickFrame);
     iconFontButton.anchor.setTo(0.5, 0.5);
     iconFontButton.frame = constants.iconFontBaseFrame;
+    iconFontButton.inputEnabled = false; // disable font button
+    iconFontButton.alpha = 0.5;
 
     var iconSaveButton = this.game.add.button(this.game.width - iconXoffset, this.game.height * 0.8267, 'icons', this.iconSave, this, constants.iconSaveOverFrame, constants.iconSaveBaseFrame, constants.iconSaveClickFrame);
     iconSaveButton.anchor.setTo(0.5, 0.5);
@@ -302,6 +304,8 @@ export default class extends Phaser.State {
     var iconSoundButton = this.game.add.button(this.game.width - iconXoffset, this.game.height * 0.9283, 'icons', this.iconSound, this, constants.iconSoundOverFrame, constants.iconSoundBaseFrame, constants.iconSoundClickFrame);
     iconSoundButton.anchor.setTo(0.5, 0.5);
     iconSoundButton.frame = constants.iconSoundBaseFrame;
+    iconSoundButton.inputEnabled = false; // disable sound button
+    iconSoundButton.alpha = 0.5;
   }
 
   fadeInScreen() { // extract to stateUtilities with time parameter for reuse

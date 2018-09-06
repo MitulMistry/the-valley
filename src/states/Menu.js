@@ -45,6 +45,9 @@ export default class extends Phaser.State {
     var loadGameButton = this.game.add.button(this.game.width / 2, this.game.height * 0.6333, 'menu01', this.loadGameStart, this, 4, 3, 5);
     loadGameButton.anchor.setTo(0.5, 0.5);
     loadGameButton.frame = 3;
+
+    loadGameButton.inputEnabled = false; // disable load game button
+    loadGameButton.alpha = 0.3;
     // loadGameButton.input.useHandCursor = true;
 
     // var quitGameButton = this.game.add.button(this.game.width / 2, this.game.height * 0.8, 'menu02', this.quitGame, this, 1, 0, 2);
@@ -80,9 +83,10 @@ export default class extends Phaser.State {
     iconFacebookButton.events.onInputOut.add(this.iconOut, this);
     iconFacebookButton.events.onInputDown.add(this.iconDown, this);
 
-    var iconSoundButton = this.game.add.button(this.game.width - iconXoffset, this.game.height * 0.9283, 'icons', this.iconSound, this, constants.iconSoundOverFrame, constants.iconSoundBaseFrame, constants.iconSoundClickFrame);
-    iconSoundButton.frame = 6;
-    iconSoundButton.anchor.setTo(0.5, 0.5);
+    // var iconSoundButton = this.game.add.button(this.game.width - iconXoffset, this.game.height * 0.9283, 'icons', this.iconSound, this, constants.iconSoundOverFrame, constants.iconSoundBaseFrame, constants.iconSoundClickFrame);
+    // iconSoundButton.frame = 6;
+    // iconSoundButton.anchor.setTo(0.5, 0.5);
+    
     // iconSoundButton.input.useHandCursor = true;
     // iconSoundButton.events.onInputOver.add(this.iconOver, this);
     // iconSoundButton.events.onInputOut.add(this.iconOut, this);
