@@ -12,11 +12,11 @@ export default class extends Phaser.State {
 
     // Load assets
     // -------------------------
-    this.load.image('splashLogo', 'assets/images/quantum_logo.png');
+    this.load.image('splashLogo', 'assets/images/mm_splash_logo.png');
 
     // Main menu graphics
     this.load.image('gametitle', 'assets/images/menu_gametitle.png');
-    this.load.image('logo', 'assets/images/menu_logo.png');
+    this.load.image('logo', 'assets/images/mm_menu_logo.png');
     this.load.image('menu_bg01', 'assets/images/menu_bg01.png');
 
     this.load.image('menu_bg_circle01', 'assets/images/menu_bg_circle01.png');

@@ -90,7 +90,7 @@ export default class extends Phaser.State {
     // iconSoundButton.events.onInputUp.add(this.iconUp, this);
 
     // Text info
-    var styleMenuText01 = { font: 'bold 12pt Arial', fill: '#3A3A3A', align: 'left' };
+    var styleMenuText01 = { font: 'bold 12pt Arial', fill: '#3B3B3B', align: 'left' };
     // var styleMenuText02 = { font: 'bold 10pt Arial', fill: '#3A3A3A', align: 'left' };
 
     var menuText = this.game.add.text(this.game.width / 2, this.game.height * 0.9533, 'Mitul Mistry ' + config.copyrightDate + ' v:' + config.version, styleMenuText01);
