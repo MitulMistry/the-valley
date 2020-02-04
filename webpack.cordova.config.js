@@ -1,6 +1,6 @@
 var path = require('path')
 var webpack = require('webpack')
-var CleanWebpackPlugin = require('clean-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var CopyWebpackPlugin = require('copy-webpack-plugin')
 
@@ -30,7 +30,9 @@ module.exports = {
   },
   plugins: [
     definePlugin,
-    new CleanWebpackPlugin(['www']),
+    new CleanWebpackPlugin({
+      cleanOnceBeforeBuildPatterns: ['www']
+    }),
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     new webpack.optimize.UglifyJsPlugin({
       drop_console: true,
