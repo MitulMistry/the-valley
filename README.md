@@ -43,4 +43,6 @@ Node Package Manager (NPM) is used for dependencies. To install the application 
 
 1. Install [Node.js](https://nodejs.org/). NPM comes packaged with it.
 2. Run `npm install` in the command line while in the project directory. It will install dependencies from the [package.json file](../master/package.json).
-3. To build for development and run the local dev server at http://localhost:3000, run `npm run dev`. 
+3. To build for development and run the local dev server at http://localhost:3000, run `npm run dev`.
+
+For production, if deploying to Heroku, set the config variable `NPM_CONFIG_PRODUCTION` to `false` so it properly installs Webpack before building the application.
