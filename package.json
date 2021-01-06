@@ -12,7 +12,6 @@
     "cordova": "webpack --config webpack.cordova.config.js",
     "test": "eslint './src/**/*.js'",
     "test-fix": "eslint './src/**/*.js' --fix",
-    "heroku-prebuild": "npm install --dev",
     "postinstall": "webpack --config webpack.production.config.js",
     "start": "node server.js"
   },
@@ -61,7 +60,7 @@
     "webfontloader": "^1.6.28"
   },
   "engines": {
-    "node": "10.14.1"
+    "node": "12.20.1"
   },
   "cordova": {
     "platforms": [
